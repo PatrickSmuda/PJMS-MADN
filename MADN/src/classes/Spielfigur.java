@@ -8,7 +8,7 @@ enum FarbEnum{
 }
 
 public class Spielfigur {
-	private FarbEnum farbe;
+	private FarbEnum farbe; // testtest
 	private int position;
 	
 	public Spielfigur(int farbe){
