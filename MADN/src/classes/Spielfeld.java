@@ -1,25 +1,25 @@
 package classes;
 
-enum FeldTyp{
-	Normalfeld,
-	Startfeld,
-	Endfeld
-}
-
 public class Spielfeld {
 	
 	private Spielfigur figur;
 	private static int id;
 	private FeldTyp typ;
+	private Spieler spielerFeld;
+	private FarbEnum feldFarbe;
 	
-	public Spielfeld(int typ){
+	public Spielfeld(FeldTyp typ, FarbEnum farbe){
 		switch(typ)
 		{
-		case 0: this.typ = FeldTyp.Normalfeld; id++; break;
-		case 1: this.typ = FeldTyp.Startfeld; break;
-		case 2: this.typ = FeldTyp.Endfeld; break;
+		case Normalfeld: this.typ = FeldTyp.Normalfeld; figur = null; feldFarbe = null; break;
+		case Startfeld: this.typ = FeldTyp.Startfeld; figur = new Spielfigur(farbe); feldFarbe = figur.getFarbe(); break;
+		case Endfeld: this.typ = FeldTyp.Endfeld;  figur = null; feldFarbe = farbe; break;
 		default: throw new RuntimeException("Kein gültiges Feld konnte erstellt werden!");
 		}
+	}
+	
+	public String toString(){
+		return this.feldFarbe+" "+this.typ;
 	}
 	
 }
