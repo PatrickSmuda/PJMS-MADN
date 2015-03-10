@@ -7,6 +7,6 @@ public class Spielbrett {
 	public Spielbrett(){
 		feld = new Spielfeld[76];
 	}
-	//ASDF
+	//ASDFa
 	
 }
