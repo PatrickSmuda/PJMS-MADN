@@ -3,7 +3,7 @@ package classes;
 //Test Kommentar
 
 public class Spielfigur {
-	private FarbEnum farbe;
+	private FarbEnum farbe; // testtestblabla
 	private int position;
 	
 	public Spielfigur(FarbEnum farbe){
