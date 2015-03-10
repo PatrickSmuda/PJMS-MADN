@@ -5,7 +5,7 @@ public class Spielfeld {
 	private Spielfigur figur;
 	private static int id;
 	private FeldTyp typ;
-	//private Spieler spielerFeld;
+	private Spieler spielerFeld;
 	private FarbEnum feldFarbe;
 	
 	public Spielfeld(FeldTyp typ, FarbEnum farbe){
