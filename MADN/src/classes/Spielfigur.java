@@ -10,7 +10,7 @@ public class Spielfigur {
 	
 	/**
 	 * Der Konstruktor setzt die Farbe der Figur
-	 * @param farbe Farbe der Figut
+	 * @param farbe Farbe der Figur
 	 */
 	public Spielfigur(FarbEnum farbe){
 		this.farbe = farbe;
