@@ -1,5 +1,6 @@
 package classes;
 
+//Test Kommentar
 enum FarbEnum{
 	rot,
 	blau,
