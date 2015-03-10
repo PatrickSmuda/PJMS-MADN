@@ -12,6 +12,8 @@ public class test {
 		Spielfigur s = new Spielfigur(1);
 		//Test123
 		//Test SmudaPatrick
+		//lulululululululululululu
+		//lalalalalalalalalalalala
 		
 	}
 
