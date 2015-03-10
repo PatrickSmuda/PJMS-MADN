@@ -11,7 +11,6 @@ public class test {
 
 		Spielfigur s = new Spielfigur(1);
 		
-		//test von PatrickSmuda!
 	}
 
 }
