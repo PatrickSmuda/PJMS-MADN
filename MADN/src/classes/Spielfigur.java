@@ -1,28 +1,35 @@
 package classes;
-
-//Test Kommentar
-enum FarbEnum{
-	rot,
-	blau,
-	grün,
-	gelb
-}
-
+/**
+ * Die Klasse Spielfigur
+ * @author Sebastian Stumm
+ * @version 1.0
+ */
 public class Spielfigur {
 	private FarbEnum farbe;
-	private int position;
+	private Spielfeld position;
 	
-	public Spielfigur(int farbe){
-		switch(farbe){
-		case 0: this.farbe = FarbEnum.rot; break;
-		case 1: this.farbe = FarbEnum.blau; break;
-		case 2: this.farbe = FarbEnum.grün; break;
-		case 3: this.farbe = FarbEnum.gelb; break;
-		default: throw new RuntimeException("Farbe existiert nicht");
-		}
+	/**
+	 * Der Konstruktor setzt die Farbe und Startposition der Figur
+	 * @param farbe Farbe der Spielfigur
+	 * @param position Spielfeld auf der die Spielfigur startet
+	 */
+	public Spielfigur(FarbEnum farbe, Spielfeld position){
+		if(farbe == null || position == null) throw new RuntimeException("Ungültige Farbe oder Position der Spielfigur");
+		this.farbe = farbe;
+		this.position = position;
+	}
+	/**
+	 * Die Methode gibt die Farbe der Figur zurück
+	 * @return farbe, die Farbe der Figur 
+	 */
+	public FarbEnum getFarbe(){
+		return this.farbe;
 	}
 	
-	
+	public void bewegeAuf(Spielfeld position){
+		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert nicht");
+		this.position = position;
+	}
 
 }
 

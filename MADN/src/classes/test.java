@@ -4,12 +4,13 @@ public class test {
 
 	public static void main(String[] args) {
 	Würfel myWürfel = new Würfel();
-		
-		for(int i = 0; i  < 100; i++){
-			System.out.println(myWürfel.werfen());
-		}
+	Spielbrett mySpielbrett = new Spielbrett();
+	
+	for(int i = 0; i < mySpielbrett.getBrett().length; i++){
+		System.out.println(mySpielbrett.getBrett()[i].toString());
+	}
 
-		Spielfigur s = new Spielfigur(1);
+		
 		//Test123
 		//Test SmudaPatrick
 		//lulululululululululululu
