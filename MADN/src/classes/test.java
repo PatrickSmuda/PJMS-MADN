@@ -10,6 +10,7 @@ public class test {
 		}
 
 		Spielfigur s = new Spielfigur(1);
+		//Test123
 		
 	}
 
