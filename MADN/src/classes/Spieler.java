@@ -17,12 +17,13 @@ public class Spieler {
 
 	/**
 	 * Konstruktor
-	 * @param Name des Spielers
-	 * @param Farbe des Spielers
+	 * @param name Name des Spielers
+	 * @param farbe Farbe des Spielers
 	 */
 	public Spieler(String name, int farbe)
 	{
 		this.name = name;
+		würfel = new Würfel();
 		switch(farbe)
 		{
 		case 0: this.farbe = FarbEnum.rot; break;
@@ -30,6 +31,10 @@ public class Spieler {
 		case 2: this.farbe = FarbEnum.grün; break;
 		case 3: this.farbe = FarbEnum.gelb; break;
 		default: throw new RuntimeException("Farbe existiert nicht");
+		/*
+		 * Ich kann die einzelnen Figuren noch nicht initialisieren, da gibts Probleme mit dem Konstruktor der
+		 * Spielfigur und des Spielfelds.
+		 */
 		}
 	}
 }
