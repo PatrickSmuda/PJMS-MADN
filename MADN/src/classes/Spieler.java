@@ -20,21 +20,23 @@ public class Spieler {
 	 * @param name Name des Spielers
 	 * @param farbe Farbe des Spielers
 	 */
-	public Spieler(String name, int farbe)
+	public Spieler(String name, FarbEnum farbe)
 	{
+		if(name == null) throw new RuntimeException("Ungültiger Name!");
 		this.name = name;
 		würfel = new Würfel();
 		switch(farbe)
 		{
-		case 0: this.farbe = FarbEnum.rot; break;
-		case 1: this.farbe = FarbEnum.blau; break;
-		case 2: this.farbe = FarbEnum.grün; break;
-		case 3: this.farbe = FarbEnum.gelb; break;
+		case rot: this.farbe = FarbEnum.rot; break;
+		case blau: this.farbe = FarbEnum.blau; break;
+		case grün: this.farbe = FarbEnum.grün; break;
+		case gelb: this.farbe = FarbEnum.gelb; break;
 		default: throw new RuntimeException("Farbe existiert nicht");
-		/*
-		 * Ich kann die einzelnen Figuren noch nicht initialisieren, da gibts Probleme mit dem Konstruktor der
-		 * Spielfigur und des Spielfelds.
-		 */
 		}
+		fig_1 = new Spielfigur(farbe, null);
+		fig_2 = new Spielfigur(farbe, null);
+		fig_3 = new Spielfigur(farbe, null);
+		fig_4 = new Spielfigur(farbe, null);
+		
 	}
 }
