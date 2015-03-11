@@ -25,9 +25,19 @@ public class Spielfigur {
 	public FarbEnum getFarbe(){
 		return this.farbe;
 	}
-	
+	/**
+	 * Die Methode setzt die Spielfigur auf das Startfeld zurück
+	 */
+	public void geschlagen(){
+		this.position = blub;
+	}
+	/**
+	 * Methode zum bewegen der Spielfigur
+	 * @param position Position auf welche die Spielfigur zieht
+	 */
 	public void bewegeAuf(Spielfeld position){
-		if(position == null || position.getFigur() != null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert nicht");
+		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert");
+		if(position.getFigur() != null) position.getFigur().geschlagen();
 		this.position = position;
 	}
 
