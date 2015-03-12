@@ -4,6 +4,7 @@ package classes;
  * @author Johannes Mändle
  * @version 1.0
  */
+import java.util.*;
 
 public class Spieler {
 
@@ -14,6 +15,7 @@ public class Spieler {
 	private Spielfigur fig_2;
 	private Spielfigur fig_3;
 	private Spielfigur fig_4;
+	private static int zähler =1;
 
 	/**
 	 * Konstruktor
@@ -22,6 +24,7 @@ public class Spieler {
 	 */
 	public Spieler(String name, FarbEnum farbe)
 	{
+		if (zähler > 4) throw new RuntimeException("Zu viele Spieler");
 		if(name == null) throw new RuntimeException("Ungültiger Name!");
 		this.name = name;
 		würfel = new Würfel();
@@ -37,6 +40,6 @@ public class Spieler {
 		fig_2 = new Spielfigur(farbe, null);
 		fig_3 = new Spielfigur(farbe, null);
 		fig_4 = new Spielfigur(farbe, null);
-		
+		zähler++;
 	}
 }
