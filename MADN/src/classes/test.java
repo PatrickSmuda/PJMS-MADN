@@ -4,18 +4,13 @@ public class test {
 
 	public static void main(String[] args) {
 	Würfel myWürfel = new Würfel();
-	Spielbrett mySpielbrett = new Spielbrett();
-	
-	for(int i = 0; i < mySpielbrett.getBrett().length; i++){
-		System.out.println(mySpielbrett.getBrett()[i].toString());
-	}
 
-		
-		//Test123
-		//Test SmudaPatrick
-		//lulululululululululululu
-		//lalalalalalalalalalalala
-		
+	Spieler s = new Spieler("", FarbEnum.rot);
+	Spieler s2 = new Spieler("test", FarbEnum.rot);
+	Spieler s3 = new Spieler("test", FarbEnum.rot);
+	Spieler s4 = new Spieler("test", FarbEnum.rot);
+	//Spieler s5 = new Spieler("test", FarbEnum.rot);
+	//Spieler s6 = new Spieler("test", FarbEnum.rot);
 	}
 
 }
