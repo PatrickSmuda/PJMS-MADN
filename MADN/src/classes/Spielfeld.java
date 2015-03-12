@@ -5,7 +5,7 @@ public class Spielfeld {
 	private Spielfigur figur;
 	private static int id;
 	private FeldTyp typ;
-	private Spieler spielerFeld; //blabla
+	private Spieler spielerFeld; 
 	private FarbEnum feldFarbe;
 	
 	public Spielfeld(FeldTyp typ, FarbEnum farbe, int id){
@@ -18,7 +18,7 @@ public class Spielfeld {
 		}
 	}
 	
-	public int getId(){ 
+	public static int getId(){ 
 		return id;
 	}
 	
