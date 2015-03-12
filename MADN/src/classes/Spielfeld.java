@@ -8,6 +8,7 @@ public class Spielfeld {
 	private Spieler spielerFeld;
 	private FarbEnum feldFarbe;
 	
+	
 	public Spielfeld(FeldTyp typ, FarbEnum farbe){
 		switch(typ)
 		{
