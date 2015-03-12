@@ -5,9 +5,8 @@ public class Spielfeld {
 	private Spielfigur figur;
 	private static int id;
 	private FeldTyp typ;
-	private Spieler spielerFeld;
+	private Spieler spielerFeld; //blabla
 	private FarbEnum feldFarbe;
-	
 	
 	public Spielfeld(FeldTyp typ, FarbEnum farbe, int id){
 		switch(typ)
