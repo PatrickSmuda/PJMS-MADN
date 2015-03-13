@@ -8,6 +8,11 @@ public class Spielfigur {
 	private FarbEnum farbe;
 	private Spielfeld position;
 	
+	private static int anz_rot;
+	private static int anz_blau;
+	private static int anz_grün;
+	private static int anz_gelb;
+	
 	/**
 	 * Der Konstruktor setzt die Farbe und Startposition der Figur
 	 * @param farbe Farbe der Spielfigur
@@ -17,6 +22,13 @@ public class Spielfigur {
 		if(farbe == null || position == null || position.getFigur() != null) throw new RuntimeException("Ungültige Farbe oder Position der Spielfigur");
 		this.farbe = farbe;
 		this.position = position;
+		switch(this.farbe)
+		{
+		case rot: if(this.anz_rot >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_rot++; break;
+		case blau: if(this.anz_blau >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_blau++; break;
+		case grün: if(this.anz_grün >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_grün++; break;
+		case gelb: if(this.anz_gelb >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_gelb++; break;
+		}
 	}
 	/**
 	 * Die Methode gibt die Farbe der Figur zurück
