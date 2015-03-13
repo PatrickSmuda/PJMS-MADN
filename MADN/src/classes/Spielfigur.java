@@ -56,7 +56,7 @@ public class Spielfigur {
 	 * @param position Position auf welche die Spielfigur zieht
 	 */
 	public void bewegeAuf(Spielfeld position){
-		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert");
+		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert nicht");
 		if(position.getFigur() != null) position.getFigur().geschlagen();
 		this.position = position;
 	}

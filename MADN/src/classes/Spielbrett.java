@@ -2,7 +2,7 @@ package classes;
 /**
  * Klasse Spielbrett
  * @author Patrick Smuda
- * @version 0.2
+ * @version 1.0
  */
 public class Spielbrett{
 	
