@@ -1,5 +1,9 @@
 package classes;
-
+/**
+ * Die Klasse Spielfeld
+ * @author ""
+ * @version 1.0
+ */
 public class Spielfeld {
 	
 	private Spielfigur figur;

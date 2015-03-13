@@ -17,12 +17,12 @@ public class Spielbrett{
 		
 		spielbrett = new Spielfeld[72];
 		
-		//Normale Spielfelder
+		//Normale Spielfelder (ID´s 0 - 39)
 		for (int n = 0; n < 40; n++) {
 			spielbrett[n] = new Spielfeld(FeldTyp.Normalfeld, null, n);
 		}
 		
-		//Die Startfelder der Spieler
+		//Die Startfelder der Spieler (ID´s 40 - 55)
 		for (int n = 40; n < 44; n++) {
 			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.blau, n);
 		}
@@ -36,7 +36,7 @@ public class Spielbrett{
 			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.rot, n);
 		}
 		
-		//Die Endfelder der Spieler
+		//Die Endfelder der Spieler (ID´s 56 - 71)
 		for(int n = 56; n < 60; n++){
 			spielbrett[n] = new Spielfeld(FeldTyp.Endfeld, FarbEnum.blau, n);
 		}
@@ -50,10 +50,15 @@ public class Spielbrett{
 			spielbrett[n] = new Spielfeld(FeldTyp.Endfeld, FarbEnum.rot, n);
 		}
 	}
+
+	
+	
+	
 	
 	public Spielfeld[] getSpielbrett(){
 		return this.spielbrett;
 	}
 	
+	
+	
 }
-
