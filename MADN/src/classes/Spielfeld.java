@@ -18,6 +18,10 @@ public class Spielfeld {
 		}
 	}
 	
+	public Spielfigur getFigur(){
+		return this.figur;
+	}
+	
 	public static int getId(){ 
 		return id;
 	}

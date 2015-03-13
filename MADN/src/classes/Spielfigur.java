@@ -41,7 +41,7 @@ public class Spielfigur {
 	 * Die Methode setzt die Spielfigur auf das Startfeld zurück
 	 */
 	public void geschlagen(){
-		this.position = blub;
+		//this.position = 
 	}
 	/**
 	 * Methode zum bewegen der Spielfigur
