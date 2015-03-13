@@ -40,10 +40,10 @@ public class Spielfigur {
 	/**
 	 * Die Methode setzt die Spielfigur auf das Startfeld zurück
 	 */
-	public void geschlagen(Spielfeld position){
-		/*(position.getFigur().getFarbe())
+	public void geschlagen(){
+		/*switch(this.farbe)
 		{
-		case rot: position.getFigur().position = startfeld wenn frei;break;
+		case rot: this.position = startfeld wenn frei;break;
 		case blau: break;
 		case grün: break;
 		case gelb: break;
@@ -57,7 +57,7 @@ public class Spielfigur {
 	 */
 	public void bewegeAuf(Spielfeld position){
 		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert");
-		if(position.getFigur() != null) position.getFigur().geschlagen(position);
+		if(position.getFigur() != null) position.getFigur().geschlagen();
 		this.position = position;
 	}
 
