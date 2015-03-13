@@ -51,13 +51,8 @@ public class Spielbrett{
 		}
 	}
 	
-	
 	public Spielfeld[] getSpielbrett(){
 		return this.spielbrett;
-	}
-	
-	private void setSpielbrett(Spielfeld[] spielbrett) {
-		this.spielbrett = spielbrett;
 	}
 	
 }
