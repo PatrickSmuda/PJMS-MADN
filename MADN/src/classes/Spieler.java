@@ -15,6 +15,7 @@ public class Spieler {
 	private Spielfigur fig_2;
 	private Spielfigur fig_3;
 	private Spielfigur fig_4;
+	private KI ki;
 	private static int zähler =1;
 
 	/**
@@ -22,10 +23,11 @@ public class Spieler {
 	 * @param name Name des Spielers
 	 * @param farbe Farbe des Spielers
 	 */
-	public Spieler(String name, FarbEnum farbe)
+	public Spieler(String name, FarbEnum farbe, KI ki)
 	{
 		if (zähler > 4) throw new RuntimeException("Zu viele Spieler");
 		if(name == null) throw new RuntimeException("Ungültiger Name!");
+		if (ki != null) this.ki = ki;
 		this.name = name;
 		würfel = new Würfel();
 		switch(farbe)
