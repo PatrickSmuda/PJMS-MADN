@@ -14,7 +14,7 @@ public class Spielfigur {
 	 * @param position Spielfeld auf der die Spielfigur startet
 	 */
 	public Spielfigur(FarbEnum farbe, Spielfeld position){
-		if(farbe == null || position == null || position.getFigur() != null) throw new RuntimeException("Ungültige Farbe oder Position der Spielfigur");
+		//if(farbe == null || position == null || position.getFigur() != null) throw new RuntimeException("Ungültige Farbe oder Position der Spielfigur");
 		this.farbe = farbe;
 		this.position = position;
 	}
@@ -29,7 +29,7 @@ public class Spielfigur {
 	 * Die Methode setzt die Spielfigur auf das Startfeld zurück
 	 */
 	public void geschlagen(){
-		this.position = blub;
+		//this.position = blub;
 	}
 	/**
 	 * Methode zum bewegen der Spielfigur
@@ -37,7 +37,7 @@ public class Spielfigur {
 	 */
 	public void bewegeAuf(Spielfeld position){
 		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert");
-		if(position.getFigur() != null) position.getFigur().geschlagen();
+		//if(position.getFigur() != null) position.getFigur().geschlagen();
 		this.position = position;
 	}
 
