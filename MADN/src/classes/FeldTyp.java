@@ -1,11 +1,11 @@
 package classes;
 /**
  * Die Feldtyp Enumeration
- * @author ""
+ * @author Sebastian Stumm
  * @version 1.0
  */
 public enum FeldTyp {
 	Normalfeld,
 	Startfeld,
-	Endfeld
+	Endfeld;
 }
