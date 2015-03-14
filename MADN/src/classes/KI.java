@@ -1,6 +1,6 @@
 package classes;
 
-public class KI {
+class KI {
 	
 	public KI(){
 		
