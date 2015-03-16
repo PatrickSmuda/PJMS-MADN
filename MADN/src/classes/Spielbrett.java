@@ -51,16 +51,14 @@ public class Spielbrett{
 		}
 	}
 
-	
+	/**
+	 * Gibt das Spielfeld mit der übergebenen ID zurück
+	 * @param id Spielfeld-ID
+	 * @return Spielfeld Das angefragte Spielfeld
+	 */
 	public Spielfeld getFeld(int id){
 		if(id < 0 || id > 72) throw new RuntimeException("Feld existiert nicht!");
 		return this.spielbrett[id];
 	}
-	
-	
-	public Spielfeld[] getSpielbrett(){
-		return this.spielbrett;
-	}
-	
 	
 }
