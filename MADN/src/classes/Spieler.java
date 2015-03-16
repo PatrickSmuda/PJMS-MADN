@@ -26,6 +26,7 @@ public class Spieler {
 		if(name == null) throw new RuntimeException("Ungültiger Name!");
 		if (ki != null) this.ki = ki;
 		if (spielbrett == null) throw new RuntimeException("Kein Spielbrett");
+		this.spielbrett = spielbrett;
 		this.name = name;
 		würfel = new Würfel();
 		spielfigur  = new Spielfigur[4];
