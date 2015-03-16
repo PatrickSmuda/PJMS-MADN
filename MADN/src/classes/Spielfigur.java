@@ -23,6 +23,7 @@ public class Spielfigur {
 		if(farbe == null || position == null || position.getFigur() != null) throw new RuntimeException("Ungültige Farbe oder Position der Spielfigur");
 		this.farbe = farbe;
 		this.startPosition = position;
+		this.position = startPosition;
 		switch(this.farbe)
 		{
 		case rot: if(this.anz_rot >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_rot++; break;
