@@ -7,17 +7,16 @@ package classes;
 public class Spielfeld {
 	
 	private Spielfigur figur;
-	private static int id;
+	private int id;
 	private FeldTyp typ;
-	private Spieler spielerFeld; 
 	private FarbEnum feldFarbe;
 	
 	public Spielfeld(FeldTyp typ, FarbEnum farbe, int id){
 		switch(typ)
 		{
-		case Normalfeld: this.typ = FeldTyp.Normalfeld; figur = null; feldFarbe = null;  break;
-		case Startfeld: this.typ = FeldTyp.Startfeld; figur = null; feldFarbe = figur.getFarbe();  break;
-		case Endfeld: this.typ = FeldTyp.Endfeld;  figur = null; feldFarbe = farbe;  break;
+		case Normalfeld: this.typ = FeldTyp.Normalfeld; this.id=id; figur = null; feldFarbe = null;  break;
+		case Startfeld: this.typ = FeldTyp.Startfeld; this.id=id; figur = null; feldFarbe = figur.getFarbe();  break;
+		case Endfeld: this.typ = FeldTyp.Endfeld; this.id=id;  figur = null; feldFarbe = farbe;  break;
 		default: throw new RuntimeException("Kein gültiges Feld konnte erstellt werden!");
 		}
 	}
@@ -26,8 +25,8 @@ public class Spielfeld {
 		return this.figur;
 	}
 	
-	public static int getId(){ 
-		return id;
+	public int getId(){ 
+		return this.id;
 	}
 	
 	public FeldTyp getTyp(){ 
