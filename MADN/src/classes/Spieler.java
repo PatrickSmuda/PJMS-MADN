@@ -20,15 +20,15 @@ public class Spieler {
 	 * @param name Name des Spielers
 	 * @param farbe Farbe des Spielers
 	 */
-	public Spieler(String name, FarbEnum farbe, KI ki)
+	public Spieler(String name, FarbEnum farbe, KI ki, Spielbrett spielbrett)
 	{
 		if (zähler > 4) throw new RuntimeException("Zu viele Spieler");
 		if(name == null) throw new RuntimeException("Ungültiger Name!");
 		if (ki != null) this.ki = ki;
+		if (spielbrett == null) throw new RuntimeException("Kein Spielbrett");
 		this.name = name;
 		würfel = new Würfel();
 		spielfigur  = new Spielfigur[4];
-		spielbrett = new Spielbrett();
 		figurenInit(farbe);
 		zähler++;
 	}
