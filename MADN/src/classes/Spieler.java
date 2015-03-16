@@ -45,7 +45,7 @@ public class Spieler {
 		case rot: 
 			this.farbe = FarbEnum.rot; 
 			for(int i =0; i<spielfigur.length; i++){
-				//spielfigur[i] = new Spielfigur(farbe, r1);
+				//spielfigur[i] = new Spielfigur(farbe, spielbrett.);
 			}
 			break;
 		case blau: 
