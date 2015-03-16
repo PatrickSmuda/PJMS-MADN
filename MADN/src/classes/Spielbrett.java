@@ -51,10 +51,6 @@ public class Spielbrett{
 		}
 	}
 
-	
-	
-	
-	
 	public Spielfeld[] getSpielbrett(){
 		return this.spielbrett;
 	}
