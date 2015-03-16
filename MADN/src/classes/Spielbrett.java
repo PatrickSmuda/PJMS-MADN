@@ -51,6 +51,7 @@ public class Spielbrett{
 		}
 	}
 
+	
 	/**
 	 * Gibt das Spielfeld mit der übergebenen ID zurück
 	 * @param id Spielfeld-ID
