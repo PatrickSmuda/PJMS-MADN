@@ -24,8 +24,8 @@ public class Spieler {
 	{
 		if (zähler > 4) throw new RuntimeException("Zu viele Spieler");
 		if(name == null) throw new RuntimeException("Ungültiger Name!");
-		if (ki != null) this.ki = ki;
 		if (spielbrett == null) throw new RuntimeException("Kein Spielbrett");
+		if (ki != null) this.ki = ki;
 		this.spielbrett = spielbrett;
 		this.name = name;
 		würfel = new Würfel();
@@ -34,6 +34,24 @@ public class Spieler {
 		zähler++;
 	}
 
+	/**
+	 * Gibt eine der vier Spielfiguren zurück
+	 * @param n Figur 1, 2, 3 oder 4
+	 * @return Spielfigur Gibt die Spielfigur zurück
+	 */
+	public Spielfigur getFigur(int n){
+		if (n <0 || n>3) throw new RuntimeException("Ungültige Position");
+		return spielfigur[n];
+	}
+	
+	/**
+	 * Gibt den Würfel des Spielers zurück
+	 * @return würfel 
+	 */
+	public Würfel getWürfel(){
+		return this.würfel;
+	}
+	
 	/**
 	 * Die Methode initialisiert die Spielfiguren mit der übergebenen Farbe 
 	 * und stellt sie auf ihre jeweilige Startposition.
@@ -71,7 +89,7 @@ public class Spieler {
 				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z3++));
 			}
 			break;
-		default: throw new RuntimeException("Farbe existiert nicht");
+		default: throw new RuntimeException("Farbe nicht verfügbar");
 		}
 	}
 }
