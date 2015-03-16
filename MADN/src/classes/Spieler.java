@@ -35,7 +35,7 @@ public class Spieler {
 
 	/**
 	 * Die Methode initialisiert die Spielfiguren mit der übergebenen Farbe 
-	 * und stellt sie auf ihre jeweilige Startposition.
+	 * und stellt sie auf ihre jeweilige Startposition
 	 * @param farbe Die Farbe der Spielfiguren
 	 */
 	public void figurenInit(FarbEnum farbe)
