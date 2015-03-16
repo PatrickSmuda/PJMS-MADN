@@ -38,7 +38,7 @@ public class Spieler {
 	 * und stellt sie auf ihre jeweilige Startposition.
 	 * @param farbe Die Farbe der Spielfiguren
 	 */
-	public void figurenInit(FarbEnum farbe)
+	private void figurenInit(FarbEnum farbe)
 	{
 		switch(farbe)
 		{
