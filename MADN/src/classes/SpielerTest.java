@@ -20,6 +20,7 @@ public class SpielerTest {
 		Spieler s = new Spieler("Stefan", FarbEnum.rot, null, sb);
 		System.out.println(s.getFigur(0).getFarbe());
 		System.out.println(s.getFigur(2).getPosition());
+		System.out.println(s.getFigur(2).getPosition().getId());
 		
 	}
 	
