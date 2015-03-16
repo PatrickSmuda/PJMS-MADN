@@ -13,7 +13,7 @@ public class Spielbrett{
 	 * @param typ Typ des Feldes
 	 * @param farbe Farbe des Feldes
 	 */
-	public Spielbrett(FeldTyp typ, FarbEnum farbe){
+	public Spielbrett(){
 		
 		spielbrett = new Spielfeld[72];
 		
