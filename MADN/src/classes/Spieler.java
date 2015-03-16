@@ -41,6 +41,7 @@ public class Spieler {
 	 */
 	public Spielfigur getFigur(int n){
 		if (n <0 || n>3) throw new RuntimeException("Ungültige Position");
+		if(spielfigur == null || spielfigur.length == 0) throw new RuntimeException("Keine Spielfiguren vorhanden");
 		return spielfigur[n];
 	}
 	
