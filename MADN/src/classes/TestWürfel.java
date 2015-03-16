@@ -1,26 +1,18 @@
-package JUnitTests;
+package classes;
 
 import static org.junit.Assert.*;
 
-import org.junit.AfterClass;
 import org.junit.Test;
 
-import classes.Würfel;
-
-public class TestMADN {
+public class TestWürfel {
 	protected classes.Würfel w;
-	
-	
+
 	@Test
 	public void test() {
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 1000; i++) {
 			if (Würfel.werfen() < 1 || Würfel.werfen() > 6) {
-				fail();
+				fail("Würfel soll nur 1-6 ausgeben");
 			}
-			
 		}
-	
 	}
-	
-	
 }
