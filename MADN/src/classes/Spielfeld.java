@@ -14,9 +14,9 @@ public class Spielfeld {
 	public Spielfeld(FeldTyp typ, FarbEnum farbe, int id){
 		switch(typ)
 		{
-		case Normalfeld: this.typ = FeldTyp.Normalfeld; this.id=id; figur = null; feldFarbe = null;  break;
-		case Startfeld: this.typ = FeldTyp.Startfeld; this.id=id; figur = null; feldFarbe = figur.getFarbe();  break;
-		case Endfeld: this.typ = FeldTyp.Endfeld; this.id=id;  figur = null; feldFarbe = farbe;  break;
+		case Normalfeld: this.typ = FeldTyp.Normalfeld; this.id=id;  feldFarbe = farbe;  break;
+		case Startfeld: this.typ = FeldTyp.Startfeld; this.id=id;  feldFarbe = farbe;  break;
+		case Endfeld: this.typ = FeldTyp.Endfeld; this.id=id;  feldFarbe = farbe;  break;
 		default: throw new RuntimeException("Kein gültiges Feld konnte erstellt werden!");
 		}
 	}
