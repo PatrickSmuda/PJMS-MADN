@@ -35,7 +35,7 @@ public class Spieler {
 
 	/**
 	 * Die Methode initialisiert die Spielfiguren mit der übergebenen Farbe 
-	 * und stellt sie auf ihre jeweilige Startposition
+	 * und stellt sie auf ihre jeweilige Startposition.
 	 * @param farbe Die Farbe der Spielfiguren
 	 */
 	public void figurenInit(FarbEnum farbe)
@@ -44,26 +44,30 @@ public class Spieler {
 		{
 		case rot: 
 			this.farbe = FarbEnum.rot; 
+			int z = 40;
 			for(int i =0; i<spielfigur.length; i++){
-				//spielfigur[i] = new Spielfigur(farbe, spielbrett.);
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z++));
 			}
 			break;
 		case blau: 
 			this.farbe = FarbEnum.blau; 
 			for(int i =0; i<spielfigur.length; i++){
-				//spielfigur[i] = new Spielfigur(farbe, r1);
+				int z1 = 44;
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z1++));
 			}
 			break;
 		case grün: 
 			this.farbe = FarbEnum.grün;
 			for(int i =0; i<spielfigur.length; i++){
-				//spielfigur[i] = new Spielfigur(farbe, r1);
+				int z2=48;
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z2++));
 			}
 			break;
 		case gelb: 
 			this.farbe = FarbEnum.gelb;
+			int z3=52;
 			for(int i =0; i<spielfigur.length; i++){
-				//spielfigur[i] = new Spielfigur(farbe, r1);
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z3++));
 			}
 			break;
 		default: throw new RuntimeException("Farbe existiert nicht");
