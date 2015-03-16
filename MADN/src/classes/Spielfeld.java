@@ -25,6 +25,12 @@ public class Spielfeld {
 		return this.figur;
 	}
 	
+	public void setFigur(Spielfigur figur){
+		if(figur!=null){
+		this.figur=figur;
+		} else throw new RuntimeException ("Andere Spielfigur ist schon drauf");
+	}
+	
 	public int getId(){ 
 		return this.id;
 	}
