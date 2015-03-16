@@ -7,6 +7,7 @@ package classes;
 public class Spielfigur {
 	private FarbEnum farbe;
 	private Spielfeld position;
+	private Spielfeld startPosition;
 	
 	private static int anz_rot;
 	private static int anz_blau;
@@ -41,15 +42,15 @@ public class Spielfigur {
 	 * Die Methode setzt die Spielfigur auf das Startfeld zurück
 	 */
 	public void geschlagen(){
-		/*switch(this.farbe)
+		switch(this.farbe)
 		{
-		case rot: this.position = startfeld wenn frei;break;
+		case rot: this.position = this.startPosition; break;
 		case blau: break;
 		case grün: break;
 		case gelb: break;
 		default: throw new RuntimeException("Farbe der Figur nicht vorhanden");
 		}
-		*/
+		
 	}
 	/**
 	 * Methode zum bewegen der Spielfigur
