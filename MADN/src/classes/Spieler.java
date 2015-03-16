@@ -27,7 +27,7 @@ public class Spieler {
 		if (ki != null) this.ki = ki;
 		this.name = name;
 		würfel = new Würfel();
-		spielfigur  = new Spielfigur[3];
+		spielfigur  = new Spielfigur[4];
 		spielbrett = new Spielbrett();
 		figurenInit(farbe);
 		zähler++;
