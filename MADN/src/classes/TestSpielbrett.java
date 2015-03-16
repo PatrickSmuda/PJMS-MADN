@@ -10,9 +10,9 @@ public class TestSpielbrett {
 	
 	@Test
 	public void test() {
-//		if (condition) {
-//			fail("Not yet implemented");
-//		}
+		if (s.getFeld(1).getFigur() != null ) {
+			fail("Not yet implemented");
+		}
 		
 	}
 
