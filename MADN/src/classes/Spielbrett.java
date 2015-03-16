@@ -24,16 +24,16 @@ public class Spielbrett{
 		
 		//Die Startfelder der Spieler (ID´s 40 - 55)
 		for (int n = 40; n < 44; n++) {
-			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.blau, n);
+			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.rot, n);
 		}
 		for (int n = 44; n < 48; n++) {
-			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.grün, n);
+			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.blau, n);
 		}
 		for (int n = 48; n < 52; n++) {
-			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.gelb, n);
+			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.grün, n);
 		}
 		for (int n = 52; n < 56; n++) {
-			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.rot, n);
+			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.gelb, n);
 		}
 		
 		//Die Endfelder der Spieler (ID´s 56 - 71)
@@ -52,7 +52,10 @@ public class Spielbrett{
 	}
 
 	
-	
+	public Spielfeld getFeld(int id){
+		if(id < 0 || id > 72) throw new RuntimeException("Feld existiert nicht!");
+		return this.spielbrett[id];
+	}
 	
 	
 	public Spielfeld[] getSpielbrett(){
