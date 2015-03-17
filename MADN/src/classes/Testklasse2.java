@@ -8,6 +8,7 @@ public class Testklasse2 {
 
 		System.out.println("Hi");
 		System.out.println("und nochmal!!!");
+		System.out.println("und so");
 	}
 
 }
