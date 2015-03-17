@@ -39,9 +39,19 @@ public class Spielfigur {
 	public FarbEnum getFarbe(){
 		return this.farbe;
 	}
-	
+	/**
+	 * Die Methode gibt die Position der Figur zurück
+	 * @return position Position der Figur auf dem Spielbrett
+	 */
 	public Spielfeld getPosition(){
 		return this.position;
+	}
+	/**
+	 * Die Methode gibt die Startposition der Figur zurück
+	 * @return position Position der Figur auf dem Spielbrett
+	 */
+	public Spielfeld getStartPosition(){
+		return this.startPosition;
 	}
 	
 	/*
