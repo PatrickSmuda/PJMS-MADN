@@ -12,6 +12,7 @@ public class SpielfigurTests {
 
 	private Spielfigur sf[];
 	private Spielbrett sb;
+	private Spieler s;
 	/**
 	 * Prüffall für anzahl der Figuren
 	 */
@@ -19,10 +20,10 @@ public class SpielfigurTests {
 	public void anzTest() {
 		sb = new Spielbrett();
 		sf= new Spielfigur[10];
-		
+		s = new Spieler("Hugo", FarbEnum.rot, null, sb);
 		try{
 			for(int i = 0; i < sf.length; i++){
-				//sf[i] = new Spielfigur(FarbEnum.rot, sb.getFeld(i));
+				sf[i] = new Spielfigur(FarbEnum.rot, sb.getFeld(i),s);
 			}
 		}catch(RuntimeException e){
 			//Test erfolgreich
@@ -40,7 +41,7 @@ public class SpielfigurTests {
 		sf= new Spielfigur[4];
 		try{
 			for(int i = 0; i < sf.length; i++){
-				//sf[i] = new Spielfigur(FarbEnum.rot, null);
+				sf[i] = new Spielfigur(FarbEnum.rot, null,s);
 			}
 		}catch(RuntimeException e){
 			//Test erfolgreich
@@ -58,7 +59,7 @@ public class SpielfigurTests {
 		sf= new Spielfigur[4];
 		try{
 			for(int i = 0; i < sf.length; i++){
-			//	sf[i] = new Spielfigur(null, sb.getFeld(i));
+				sf[i] = new Spielfigur(null, sb.getFeld(i),s);
 			}
 		}catch(RuntimeException e){
 			//Test erfolgreich
