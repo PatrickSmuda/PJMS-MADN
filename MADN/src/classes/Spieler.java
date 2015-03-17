@@ -67,28 +67,36 @@ public class Spieler {
 			int z = 40;
 			
 			for(int i =0; i<spielfigur.length; i++){
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z++));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z));
+				spielbrett.getFeld(z).setFigur(spielfigur[i]);
+				z++;
 			}
 			break;
 		case blau: 
 			this.farbe = FarbEnum.blau; 
+			int z1 = 44;
 			for(int i =0; i<spielfigur.length; i++){
-				int z1 = 44;
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z1++));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z1));
+				spielbrett.getFeld(z1).setFigur(spielfigur[i]);
+				z1++;
 			}
 			break;
 		case grün: 
 			this.farbe = FarbEnum.grün;
+			int z2=48;
 			for(int i =0; i<spielfigur.length; i++){
-				int z2=48;
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z2++));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z2));
+				spielbrett.getFeld(z2).setFigur(spielfigur[i]);
+				z2++;
 			}
 			break;
 		case gelb: 
 			this.farbe = FarbEnum.gelb;
 			int z3=52;
 			for(int i =0; i<spielfigur.length; i++){
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z3++));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z3));
+				spielbrett.getFeld(z3).setFigur(spielfigur[i]);
+				z3++;
 			}
 			break;
 		default: throw new RuntimeException("Farbe nicht verfügbar");
