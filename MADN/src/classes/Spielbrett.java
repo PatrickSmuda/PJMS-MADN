@@ -10,8 +10,6 @@ public class Spielbrett{
 	
 	/**
 	 * Der Konstruktor setzt das Spielfeld fest
-	 * @param typ Typ des Feldes
-	 * @param farbe Farbe des Feldes
 	 */
 	public Spielbrett(){
 		

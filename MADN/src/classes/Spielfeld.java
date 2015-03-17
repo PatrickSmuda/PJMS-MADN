@@ -14,9 +14,9 @@ public class Spielfeld {
 	
 	/**Konstruktor übergibt den Feldtyp, die Farbe und die ID vom Feld
 	 * 
-	 * @param typ
-	 * @param farbe
-	 * @param id
+	 * @param typ Typ des Feldes
+	 * @param farbe Farbe des Feldes
+	 * @param id Id des Feldes
 	 */
 	public Spielfeld(FeldTyp typ, FarbEnum farbe, int id){
 		switch(typ)
@@ -29,7 +29,7 @@ public class Spielfeld {
 	}
 	
 	/**Gibt die Spielfigur zurück
-	 * @return
+	 * @return figur Gibt die Spielfigur zurück
 	 */
 	public Spielfigur getFigur(){
 		return this.figur;
@@ -51,22 +51,22 @@ public class Spielfeld {
 	
 	/**Gibt den Feldtypen zurück
 	 * 
-	 * @return
+	 * @return typ Gibt den Typ des Feldes zurück
 	 */
 	public FeldTyp getTyp(){ 
 		return this.typ;
 	}
 	
 	/**Die Methode gibt die Farbe vom Feld zurück
-	 * @return
+	 * @return feldfarbe Gibt die Farbe des Feldes zurück
 	 */
 	public FarbEnum getFeldFarbe(){ 
 		return this.feldFarbe;
 	}
 	
-	
-	public String toString(){
+
+	/*public String toString(){
 		return this.feldFarbe+" "+this.typ;
-	}
+	}*/
 	
 }
