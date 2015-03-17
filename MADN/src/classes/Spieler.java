@@ -99,7 +99,7 @@ public class Spieler {
 				z3++;
 			}
 			break;
-		default: throw new RuntimeException("Farbe nicht verfügbar");
+		default: throw new RuntimeException("Farbe nicht verfügbar.");
 		}
 	}
 }
