@@ -6,6 +6,7 @@ public class Testklasse2 {
 		System.out.println("Ausgabe 1");
 		System.out.println("Hallo");
 
+		System.out.println("Hi");
 	}
 
 }
