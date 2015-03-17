@@ -12,15 +12,39 @@ import org.junit.Test;
  */
 public class SpielfigurTests {
 
-	private Spielfigur sf;
+	private Spielfigur sf[];
 	private Spielbrett sb;
 	
 	@Test
-	public void test() {
+	public void anzTest() {
 		sb = new Spielbrett();
-		sf = new Spielfigur(FarbEnum.rot,sb.getFeld(25));
-		//if(sf.getFarbe()==null)fail("Farbe der Figur ist null");
-		if(sf.getPosition()==null)fail("Figur steht auf keinem Feld");
+		sf= new Spielfigur[10];
+		try{
+			for(int i = 0; i < sf.length; i++){
+				sf[i] = new Spielfigur(FarbEnum.rot, sb.getFeld(i));
+			}
+		}catch(RuntimeException e){
+			//Test erfolgreich
+			return;
+		}
+		fail("Mehr als 4 Figuren einer Farbe wurden erstellt!");
 	}
+	
+	
+	@Test
+	public void feldTest() {
+		sb = new Spielbrett();
+		sf= new Spielfigur[4];
+		try{
+			for(int i = 0; i < sf.length; i++){
+				sf[i] = new Spielfigur(FarbEnum.rot, null);
+			}
+		}catch(RuntimeException e){
+			//Test erfolgreich
+			return;
+		}
+		fail("Figur konnte auf null gestellt werden!");
+	}
+	
 
 }
