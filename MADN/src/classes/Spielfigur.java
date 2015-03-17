@@ -4,10 +4,11 @@ package classes;
  * @author Sebastian Stumm
  * @version 1.0
  */
-public class Spielfigur {
+ class Spielfigur {
 	private FarbEnum farbe;
 	private Spielfeld position;
 	private Spielfeld startPosition;
+	private Spieler spieler;
 	
 	private static int anz_rot;
 	private static int anz_blau;
@@ -19,8 +20,10 @@ public class Spielfigur {
 	 * @param farbe Farbe der Spielfigur
 	 * @param position Spielfeld auf der die Spielfigur startet
 	 */
-	public Spielfigur(FarbEnum farbe, Spielfeld position){
+	public Spielfigur(FarbEnum farbe, Spielfeld position, Spieler spieler){
 		if(farbe == null || position == null || position.getFigur() != null) throw new RuntimeException("Ungültige Farbe oder Position der Spielfigur");
+		if (spieler == null) throw new RuntimeException("Spieler muss vorhanden sein!");
+		this.spieler = spieler;
 		this.farbe = farbe;
 		this.startPosition = position;
 		this.position = startPosition;

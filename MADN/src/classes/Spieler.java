@@ -67,7 +67,7 @@ public class Spieler {
 			int z = 40;
 			
 			for(int i =0; i<spielfigur.length; i++){
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z), this);
 				spielbrett.getFeld(z).setFigur(spielfigur[i]);
 				z++;
 			}
@@ -76,7 +76,7 @@ public class Spieler {
 			this.farbe = FarbEnum.blau; 
 			int z1 = 44;
 			for(int i =0; i<spielfigur.length; i++){
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z1));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z1), this);
 				spielbrett.getFeld(z1).setFigur(spielfigur[i]);
 				z1++;
 			}
@@ -85,7 +85,7 @@ public class Spieler {
 			this.farbe = FarbEnum.grün;
 			int z2=48;
 			for(int i =0; i<spielfigur.length; i++){
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z2));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z2), this);
 				spielbrett.getFeld(z2).setFigur(spielfigur[i]);
 				z2++;
 			}
@@ -94,7 +94,7 @@ public class Spieler {
 			this.farbe = FarbEnum.gelb;
 			int z3=52;
 			for(int i =0; i<spielfigur.length; i++){
-				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z3));
+				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z3), this);
 				spielbrett.getFeld(z3).setFigur(spielfigur[i]);
 				z3++;
 			}
