@@ -1,21 +1,39 @@
 package classes;
-
+/**
+ * Die Klasse zum testen der Funktionalität des Spielbretts
+ * @author Patrick Smuda
+ * @version 1.0
+ */
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestSpielbrett {
 	protected Spielbrett s;
 
+	
+	@Before
+	public void init() {
+		s = new Spielbrett();
+	}
+	
+	/**
+	 * Prüffall für die Anzahl der Spielfelder auf dem Spielbrett
+	 */
 	@Test
 	public void test() {
-		s = new Spielbrett();
 		try {
 			s.getFeld(-1);
 		} catch (RuntimeException e) {
 			return;
 		}
-		fail();
+		
+		try {
+			s.getFeld(71);
+		} catch (RuntimeException e) {
+			return;
+		}
+		fail("Fehler beim Spielbrett");
 	}
-
 }
