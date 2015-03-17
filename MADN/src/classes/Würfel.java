@@ -5,11 +5,13 @@ package classes;
  * @version 1.0
  */
 public class Würfel {
-
+	
+	/**
+	 * Default-Konstruktor der Klasse Würfel
+	 */
 	public Würfel(){
 		
 	}
-	
 	
 	/**
 	 * Funktion werfen()
