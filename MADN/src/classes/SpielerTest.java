@@ -27,6 +27,9 @@ public class SpielerTest {
 	public void test() {
 		Spielbrett sb = new Spielbrett();
 		Spieler s = new Spieler("Stefan", FarbEnum.rot, null, sb);
+		
+		
+		
 		Spieler s3 = new Spieler("Stefan", FarbEnum.grün, null, sb);
 		Spieler s4 = new Spieler("Stefan", FarbEnum.blau, null, sb);
 		Spieler s2 = new Spieler("Stefan", FarbEnum.gelb, null, sb);
