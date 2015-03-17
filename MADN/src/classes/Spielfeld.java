@@ -12,7 +12,12 @@ public class Spielfeld {
 	private FarbEnum feldFarbe;
 	
 	
-	//Konstruktor übergibt den Feldtyp, die Farbe und die ID vom Feld
+	/**Konstruktor übergibt den Feldtyp, die Farbe und die ID vom Feld
+	 * 
+	 * @param typ
+	 * @param farbe
+	 * @param id
+	 */
 	public Spielfeld(FeldTyp typ, FarbEnum farbe, int id){
 		switch(typ)
 		{
@@ -23,7 +28,9 @@ public class Spielfeld {
 		}
 	}
 	
-	//Gibt die Spielfigur zurück
+	/**Gibt die Spielfigur zurück
+	 * @return
+	 */
 	public Spielfigur getFigur(){
 		return this.figur;
 	}
@@ -35,17 +42,24 @@ public class Spielfeld {
 		} else throw new RuntimeException ("Andere Spielfigur ist schon drauf");
 	}
 	
-	//Gibt die ID für das Feld zurück
+	/**Gibt die ID für das Feld zurück
+	 * */
+	
 	public int getId(){ 
 		return this.id;
 	}
 	
-	//Gibt den Feldtypen zurück
+	/**Gibt den Feldtypen zurück
+	 * 
+	 * @return
+	 */
 	public FeldTyp getTyp(){ 
 		return this.typ;
 	}
 	
-	//Die Methode gibt die Farbe vom Feld zurück
+	/**Die Methode gibt die Farbe vom Feld zurück
+	 * @return
+	 */
 	public FarbEnum getFeldFarbe(){ 
 		return this.feldFarbe;
 	}
