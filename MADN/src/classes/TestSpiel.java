@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class SpielTest {
+public class TestSpiel {
 	protected Spielbrett s;
 	protected Wuerfel w;
 	protected Spieler s1;
