@@ -52,6 +52,13 @@ public class Spieler {
 	public Wuerfel getWuerfel(){
 		return this.wuerfel;
 	}
+	/**
+	 * Gibt die Farbe des Spielers zurück
+	 * @return farbe
+	 */
+	public FarbEnum getFarbe(){
+		return this.farbe;
+	}
 	
 	/**
 	 * Die Methode initialisiert die Spielfiguren mit der uebergebenen Farbe 
