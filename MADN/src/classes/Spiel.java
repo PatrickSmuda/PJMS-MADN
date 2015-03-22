@@ -4,7 +4,10 @@ public class Spiel {
 
 	private Spielbrett spielbrett;
 	private Spieler[] spieler;
-	private Spieler istAmZug;
+	private Spieler spielerAmZug;
+	private Spielfigur ausgewaehlteFigur;
+	private boolean darfWuerfeln;
+	private int bewegungsWert;
 	
 	public Spiel(Spieler s1, Spieler s2, Spieler s3, Spieler s4){
 		if (s1 == null || s2 == null) throw new RuntimeException("Ungültige Eingabe");
@@ -45,6 +48,48 @@ public class Spiel {
 		this.spielbrett = new Spielbrett();
 		
 	}
+	
+	public boolean hatFreieFigur(Spieler spieler){
+		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
+				spieler.getFigur(1).getPosition().getTyp() == FeldTyp.Startfeld &&
+				spieler.getFigur(2).getPosition().getTyp() == FeldTyp.Startfeld &&
+				spieler.getFigur(3).getPosition().getTyp() == FeldTyp.Startfeld )return false;
+		return true;
+	}
+	
+	public void figurAuswaehlen(Spielfigur figur){
+		if(figur == null || figur.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
+		this.ausgewaehlteFigur = figur;
+	}
+	
+	private void aufStartPositionSetzen(Spielfigur figur){
+		switch(figur.getFarbe())
+		{
+		case rot: this.spielbrett.getFeld(0).setFigur(figur); break;
+		case blau: this.spielbrett.getFeld(11).setFigur(figur); break;
+		case gruen: this.spielbrett.getFeld(21).setFigur(figur); break;
+		case gelb: this.spielbrett.getFeld(31).setFigur(figur); break;
+		}
+	}
+	
+	public void wuerfeln(){
+		if(this.darfWuerfeln == true && hatFreieFigur(this.spielerAmZug) == true){
+			this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
+			if(this.bewegungsWert == 6) this.darfWuerfeln = true;
+			else this.darfWuerfeln = false;
+		}
+		if(this.darfWuerfeln == true && hatFreieFigur(this.spielerAmZug) == false){
+			this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
+			if(this.bewegungsWert == 6){
+				for(int i = 0; i < 4; i++){
+					if(this.spielerAmZug.getFigur(i).getPosition().getTyp() == FeldTyp.Startfeld){
+						aufStartPositionSetzen(this.spielerAmZug.getFigur(i));
+					}
+				}
+			}
+		}
+	}
+	
 	
 	public void zugBeenden(){
 		
