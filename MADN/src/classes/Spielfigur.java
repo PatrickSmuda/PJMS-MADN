@@ -42,6 +42,10 @@ package classes;
 	public FarbEnum getFarbe(){
 		return this.farbe;
 	}
+	
+	public void setPosition(Spielfeld sf){
+		this.position = sf;
+	}
 	/**
 	 * Die Methode gibt die Position der Figur zurueck
 	 * @return position Position der Figur auf dem Spielbrett

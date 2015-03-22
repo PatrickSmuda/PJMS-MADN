@@ -29,12 +29,23 @@ public class Spiel {
 	 */
 	public void bewegeAuf(Spielfeld position, Spielfigur sf){
 		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert nicht");
-		if(position.getFigur() != null) position.getFigur().geschlagen(sf);
-		this.position = position;
+		if(position.getFigur() != null){
+			if (position.getFigur().getFarbe().equals(sf.getFarbe())){
+				zugBeenden();
+			}else{
+				geschlagen(position.getFigur());
+			}
+		}
+		sf.setPosition(position);
 	}
 	
 	public void spielStarten(){
 		this.spielbrett = new Spielbrett();
+		
+	}
+	
+	public void zugBeenden(){
+		
 	}
 	
 }
