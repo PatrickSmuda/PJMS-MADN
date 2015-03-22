@@ -39,6 +39,10 @@ public class Spiel {
 		sf.setPosition(position);
 	}
 	
+	public void figurRaus(Spieler s){
+		s.getFigur(0).getFarbe();
+	}
+	
 	public void spielStarten(){
 		this.spielbrett = new Spielbrett();
 		
