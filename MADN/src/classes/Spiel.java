@@ -78,16 +78,6 @@ public class Spiel {
 			if(this.bewegungsWert == 6) this.darfWuerfeln = true;
 			else this.darfWuerfeln = false;
 		}
-		if(this.darfWuerfeln == true && hatFreieFigur(this.spielerAmZug) == false){
-			this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
-			if(this.bewegungsWert == 6){
-				for(int i = 0; i < 4; i++){
-					if(this.spielerAmZug.getFigur(i).getPosition().getTyp() == FeldTyp.Startfeld){
-						aufStartPositionSetzen(this.spielerAmZug.getFigur(i));
-					}
-				}
-			}
-		}
 	}
 	
 	
