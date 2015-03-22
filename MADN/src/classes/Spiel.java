@@ -12,10 +12,12 @@ public class Spiel {
 	public Spiel(Spieler s1, Spieler s2, Spieler s3, Spieler s4){
 		if (s1 == null || s2 == null) throw new RuntimeException("Ungültige Eingabe");
 		spieler = new Spieler[4];
+		this.spielbrett = new Spielbrett();
 		spieler[0] = s1;
 		spieler[1] = s2;
 		spieler[2] = s3;
 		spieler[3] = s4;
+		spielerAmZug = spieler[0];
 	}
 	
 	/**
@@ -44,13 +46,6 @@ public class Spiel {
 		s.getFigur(0).getFarbe();
 	}
 	
-	public void spielStarten(){
-		this.spielbrett = new Spielbrett();
-		spielerAmZug = spieler[0];
-		
-		
-		
-	}
 	
 	public boolean hatFreieFigur(Spieler spieler){
 		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
