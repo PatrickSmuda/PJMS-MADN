@@ -46,6 +46,9 @@ public class Spiel {
 	
 	public void spielStarten(){
 		this.spielbrett = new Spielbrett();
+		spielerAmZug = spieler[0];
+		
+		
 		
 	}
 	
