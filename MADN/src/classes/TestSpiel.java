@@ -2,6 +2,7 @@ package classes;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestSpiel {
@@ -12,8 +13,13 @@ public class TestSpiel {
 	protected Spieler s3;
 	protected Spieler s4;
 	
+	
+	
 	@Test
 	public void test() {
+		
+		
+		
 		fail("Not yet implemented");
 	}
 	
