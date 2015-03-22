@@ -1,9 +1,9 @@
 package classes;
 
-public class Spiel {
+public class Spiel implements iBediener {
 
 	private Spielbrett spielbrett;
-	private Spieler[] spieler;
+	private Spieler[] spieler; 
 	private Spieler spielerAmZug;
 	private Spielfigur ausgewaehlteFigur;
 	private boolean darfWuerfeln;
@@ -42,10 +42,13 @@ public class Spiel {
 		sf.setPosition(position);
 	}
 	
-	public void figurRaus(Spieler s){
-		s.getFigur(0).getFarbe();
+	public void figurRaus(Spielfigur sf){
+		
 	}
 	
+	private void figurRein(Spielfigur sf){
+		
+	}
 	
 	public boolean hatFreieFigur(Spieler spieler){
 		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
