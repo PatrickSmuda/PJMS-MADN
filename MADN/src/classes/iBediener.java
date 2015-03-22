@@ -6,5 +6,9 @@ package classes;
  */
 
 public interface iBediener {
-
+	
+	public void wuerfeln();
+	
+	public void bewege();
+	
 }

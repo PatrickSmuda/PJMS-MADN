@@ -39,7 +39,9 @@ public class Spielfeld {
 	public void setFigur(Spielfigur figur){
 		if(figur!=null){
 		this.figur=figur;
-		} else throw new RuntimeException ("Andere Spielfigur ist schon drauf");
+		} else {
+			
+		}
 	}
 	
 	/**Gibt die ID fuer das Feld zurueck
