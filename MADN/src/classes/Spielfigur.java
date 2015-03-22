@@ -12,7 +12,7 @@ package classes;
 	
 	private static int anz_rot;
 	private static int anz_blau;
-	private static int anz_grün;
+	private static int anz_gruen;
 	private static int anz_gelb;
 	
 	/**
@@ -21,7 +21,7 @@ package classes;
 	 * @param position Spielfeld auf der die Spielfigur startet
 	 */
 	public Spielfigur(FarbEnum farbe, Spielfeld position, Spieler spieler){
-		if(farbe == null || position == null || position.getFigur() != null) throw new RuntimeException("Ungültige Farbe oder Position der Spielfigur");
+		if(farbe == null || position == null || position.getFigur() != null) throw new RuntimeException("Ungueltige Farbe oder Position der Spielfigur");
 		if (spieler == null) throw new RuntimeException("Spieler muss vorhanden sein!");
 		this.spieler = spieler;
 		this.farbe = farbe;
@@ -31,26 +31,26 @@ package classes;
 		{
 		case rot: if(this.anz_rot >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_rot++;  break;
 		case blau: if(this.anz_blau >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_blau++;  break;
-		case grün: if(this.anz_grün >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_grün++; break;
+		case gruen: if(this.anz_gruen >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_gruen++; break;
 		case gelb: if(this.anz_gelb >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.anz_gelb++; break;
 		}
 	}
 	/**
-	 * Die Methode gibt die Farbe der Figur zurück
+	 * Die Methode gibt die Farbe der Figur zurueck
 	 * @return farbe, die Farbe der Figur 
 	 */
 	public FarbEnum getFarbe(){
 		return this.farbe;
 	}
 	/**
-	 * Die Methode gibt die Position der Figur zurück
+	 * Die Methode gibt die Position der Figur zurueck
 	 * @return position Position der Figur auf dem Spielbrett
 	 */
 	public Spielfeld getPosition(){
 		return this.position;
 	}
 	/**
-	 * Die Methode gibt die Startposition der Figur zurück
+	 * Die Methode gibt die Startposition der Figur zurueck
 	 * @return position Position der Figur auf dem Spielbrett
 	 */
 	public Spielfeld getStartPosition(){
@@ -59,7 +59,7 @@ package classes;
 	
 	/*
 	/**
-	 * Die Methode setzt die Spielfigur auf das Startfeld zurück
+	 * Die Methode setzt die Spielfigur auf das Startfeld zurueck
 	 */
 	/*public void geschlagen(){
 		this.position = startPosition;

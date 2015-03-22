@@ -1,6 +1,6 @@
 package classes;
 /**
- * Test-Klasse für die Klasse Spieler
+ * Test-Klasse fuer die Klasse Spieler
  * @author Johannes Mändle
  */
 import static org.junit.Assert.*;
@@ -30,7 +30,7 @@ public class SpielerTest {
 		
 		
 		
-		Spieler s3 = new Spieler("Stefan", FarbEnum.grün, null, sb);
+		Spieler s3 = new Spieler("Stefan", FarbEnum.gruen, null, sb);
 		Spieler s4 = new Spieler("Stefan", FarbEnum.blau, null, sb);
 		Spieler s2 = new Spieler("Stefan", FarbEnum.gelb, null, sb);
 		System.out.println(s.getFigur(0).getFarbe());

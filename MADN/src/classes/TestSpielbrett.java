@@ -1,6 +1,6 @@
 package classes;
 /**
- * Die Klasse zum testen der Funktionalität des Spielbretts
+ * Die Klasse zum testen der Funktionalitaet des Spielbretts
  * @author Patrick Smuda
  * @version 1.0
  */
@@ -19,7 +19,7 @@ public class TestSpielbrett {
 	}
 	
 	/**
-	 * Prüffall für die Anzahl der Spielfelder auf dem Spielbrett
+	 * Prueffall fuer die Anzahl der Spielfelder auf dem Spielbrett
 	 */
 	@Test
 	public void test() {

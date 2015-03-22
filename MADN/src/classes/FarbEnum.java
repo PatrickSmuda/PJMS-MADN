@@ -7,6 +7,6 @@ package classes;
 public enum FarbEnum {
 	rot,
 	blau,
-	grün,
+	gruen,
 	gelb;
 }

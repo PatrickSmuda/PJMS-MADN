@@ -1,6 +1,6 @@
 package classes;
 /**
- * Die Klasse für die KI
+ * Die Klasse fuer die KI
  * @author Johannes Mändle
  *
  */
