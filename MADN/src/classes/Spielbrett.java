@@ -28,7 +28,7 @@ public class Spielbrett{
 			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.blau, n);
 		}
 		for (int n = 48; n < 52; n++) {
-			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.grün, n);
+			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.gruen, n);
 		}
 		for (int n = 52; n < 56; n++) {
 			spielbrett[n] = new Spielfeld(FeldTyp.Startfeld, FarbEnum.gelb, n);
@@ -42,7 +42,7 @@ public class Spielbrett{
 			spielbrett[n] = new Spielfeld(FeldTyp.Endfeld, FarbEnum.gelb, n);
 		}
 		for(int n = 64; n < 68; n++){
-			spielbrett[n] = new Spielfeld(FeldTyp.Endfeld, FarbEnum.grün, n);
+			spielbrett[n] = new Spielfeld(FeldTyp.Endfeld, FarbEnum.gruen, n);
 		}
 		for(int n = 68; n < 72; n++){
 			spielbrett[n] = new Spielfeld(FeldTyp.Endfeld, FarbEnum.rot, n);
@@ -51,7 +51,7 @@ public class Spielbrett{
 
 	
 	/**
-	 * Gibt das Spielfeld mit der übergebenen ID zurück
+	 * Gibt das Spielfeld mit der uebergebenen ID zurueck
 	 * @param id Spielfeld-ID
 	 * @return Spielfeld Das angefragte Spielfeld
 	 */

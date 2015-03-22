@@ -9,11 +9,11 @@ public class Spieler {
 
 	private String name;
 	private FarbEnum farbe;
-	private Würfel würfel;
+	private Wuerfel wuerfel;
 	private Spielfigur[] spielfigur;
 	private Spielbrett spielbrett;
 	private KI ki;
-	private static int zähler =1;
+	private static int zaehler =1;
 
 	/**
 	 * Konstruktor setzt den Spielernamen, die Farbe der Spielfiguren des Spielers und ggf. eine KI
@@ -22,39 +22,39 @@ public class Spieler {
 	 */
 	public Spieler(String name, FarbEnum farbe, KI ki, Spielbrett spielbrett)
 	{
-		if (zähler > 4) throw new RuntimeException("Zu viele Spieler");
-		if(name == null) throw new RuntimeException("Ungültiger Name!");
+		if (zaehler > 4) throw new RuntimeException("Zu viele Spieler");
+		if(name == null) throw new RuntimeException("Ungueltiger Name!");
 		if (spielbrett == null) throw new RuntimeException("Kein Spielbrett");
 		if (ki != null) this.ki = ki;
 		this.spielbrett = spielbrett;
 		this.name = name;
-		würfel = new Würfel();
+		wuerfel = new Wuerfel();
 		spielfigur  = new Spielfigur[4];
 		figurenInit(farbe);
-		zähler++;
+		zaehler++;
 	}
 
 	/**
-	 * Gibt eine der vier Spielfiguren zurück
+	 * Gibt eine der vier Spielfiguren zurueck
 	 * @param n Figur 1, 2, 3 oder 4
-	 * @return Spielfigur Gibt die Spielfigur zurück
+	 * @return Spielfigur Gibt die Spielfigur zurueck
 	 */
 	public Spielfigur getFigur(int n){
-		if (n <0 || n>3) throw new RuntimeException("Ungültige Position");
+		if (n <0 || n>3) throw new RuntimeException("Ungueltige Position");
 		if(spielfigur == null || spielfigur.length == 0) throw new RuntimeException("Keine Spielfiguren vorhanden");
 		return spielfigur[n];
 	}
 	
 	/**
-	 * Gibt den Würfel des Spielers zurück
-	 * @return würfel 
+	 * Gibt den Wuerfel des Spielers zurueck
+	 * @return wuerfel 
 	 */
-	public Würfel getWürfel(){
-		return this.würfel;
+	public Wuerfel getWuerfel(){
+		return this.wuerfel;
 	}
 	
 	/**
-	 * Die Methode initialisiert die Spielfiguren mit der übergebenen Farbe 
+	 * Die Methode initialisiert die Spielfiguren mit der uebergebenen Farbe 
 	 * und stellt sie auf ihre jeweilige Startposition.
 	 * @param farbe Die Farbe der Spielfiguren
 	 */
@@ -81,8 +81,8 @@ public class Spieler {
 				z1++;
 			}
 			break;
-		case grün: 
-			this.farbe = FarbEnum.grün;
+		case gruen: 
+			this.farbe = FarbEnum.gruen;
 			int z2=48;
 			for(int i =0; i<spielfigur.length; i++){
 				spielfigur[i] = new Spielfigur(farbe, spielbrett.getFeld(z2), this);
@@ -99,7 +99,7 @@ public class Spieler {
 				z3++;
 			}
 			break;
-		default: throw new RuntimeException("Farbe nicht verfügbar.");
+		default: throw new RuntimeException("Farbe nicht verfuegbar.");
 		}
 	}
 }

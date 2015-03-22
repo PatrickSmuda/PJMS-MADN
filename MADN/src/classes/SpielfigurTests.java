@@ -1,6 +1,6 @@
 package classes;
 /**
- * Die Klasse zum testen der Funktionalität der Spielfigur
+ * Die Klasse zum testen der Funktionalitaet der Spielfigur
  * @author Sebastian Stumm
  * @version 1.0
  */
@@ -14,7 +14,7 @@ public class SpielfigurTests {
 	private Spielbrett sb;
 	private Spieler s;
 	/**
-	 * Prüffall für anzahl der Figuren
+	 * Prueffall fuer anzahl der Figuren
 	 */
 	@Test
 	public void anzTest() {
@@ -33,7 +33,7 @@ public class SpielfigurTests {
 	}
 	
 	/**
-	 * Prüffall ob Figur auf null steht
+	 * Prueffall ob Figur auf null steht
 	 */
 	@Test
 	public void feldTest() {
@@ -51,7 +51,7 @@ public class SpielfigurTests {
 	}
 	
 	/**
-	 * Prüffall ob Figur eine Farbe besitzt
+	 * Prueffall ob Figur eine Farbe besitzt
 	 */
 	@Test
 	public void farbTest() {

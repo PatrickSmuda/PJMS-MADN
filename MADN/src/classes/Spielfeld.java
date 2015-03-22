@@ -12,7 +12,7 @@ public class Spielfeld {
 	private FarbEnum feldFarbe;
 	
 	
-	/**Konstruktor übergibt den Feldtyp, die Farbe und die ID vom Feld
+	/**Konstruktor uebergibt den Feldtyp, die Farbe und die ID vom Feld
 	 * 
 	 * @param typ Typ des Feldes
 	 * @param farbe Farbe des Feldes
@@ -24,12 +24,12 @@ public class Spielfeld {
 		case Normalfeld: this.typ = FeldTyp.Normalfeld; this.id=id;  feldFarbe = farbe;  break;
 		case Startfeld: this.typ = FeldTyp.Startfeld; this.id=id;  feldFarbe = farbe;  break;
 		case Endfeld: this.typ = FeldTyp.Endfeld; this.id=id;  feldFarbe = farbe;  break;
-		default: throw new RuntimeException("Kein gültiges Feld konnte erstellt werden!");
+		default: throw new RuntimeException("Kein gueltiges Feld konnte erstellt werden!");
 		}
 	}
 	
-	/**Gibt die Spielfigur zurück
-	 * @return figur Gibt die Spielfigur zurück
+	/**Gibt die Spielfigur zurueck
+	 * @return figur Gibt die Spielfigur zurueck
 	 */
 	public Spielfigur getFigur(){
 		return this.figur;
@@ -42,23 +42,23 @@ public class Spielfeld {
 		} else throw new RuntimeException ("Andere Spielfigur ist schon drauf");
 	}
 	
-	/**Gibt die ID für das Feld zurück
+	/**Gibt die ID fuer das Feld zurueck
 	 * */
 	
 	public int getId(){ 
 		return this.id;
 	}
 	
-	/**Gibt den Feldtypen zurück
+	/**Gibt den Feldtypen zurueck
 	 * 
-	 * @return typ Gibt den Typ des Feldes zurück
+	 * @return typ Gibt den Typ des Feldes zurueck
 	 */
 	public FeldTyp getTyp(){ 
 		return this.typ;
 	}
 	
-	/**Die Methode gibt die Farbe vom Feld zurück
-	 * @return feldfarbe Gibt die Farbe des Feldes zurück
+	/**Die Methode gibt die Farbe vom Feld zurueck
+	 * @return feldfarbe Gibt die Farbe des Feldes zurueck
 	 */
 	public FarbEnum getFeldFarbe(){ 
 		return this.feldFarbe;
