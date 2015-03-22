@@ -1,22 +1,10 @@
 package classes;
 
-import static org.junit.Assert.*;
+public class SpielTest implements iBediener {
 
-import org.junit.Test;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-public class SpielTest {
-	protected Spielbrett s;
-	protected Wuerfel w;
-	protected Spieler s1;
-	protected Spieler s2;
-	protected Spieler s3;
-	protected Spieler s4;
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
-	
-	
 
 }

@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class SpielfigurTests {
+public class TestSpielfigur {
 
 	private Spielfigur sf[];
 	private Spielbrett sb;

@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class WuerfelTest {
+public class TestWuerfel {
 	protected Wuerfel w;
 	/**
 	 * Prueffall fuer das wuerfeln eines 6-Seitigen Wuerfels
