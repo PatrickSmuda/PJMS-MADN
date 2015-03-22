@@ -30,8 +30,8 @@ public class Spiel implements iBediener {
 	 * Methode zum bewegen der Spielfigur
 	 * @param position Position auf welche die Spielfigur zieht
 	 */
-	public void bewegeAuf(Spielfeld position, Spielfigur sf){
-		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert nicht");
+	public void bewege(Spielfigur sf){
+		/*if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert nicht");
 		if(position.getFigur() != null){
 			if (position.getFigur().getFarbe().equals(sf.getFarbe())){
 				zugBeenden();
@@ -39,7 +39,7 @@ public class Spiel implements iBediener {
 				geschlagen(position.getFigur());
 			}
 		}
-		sf.setPosition(position);
+		sf.setPosition(position);*/
 	}
 	
 	public void figurRaus(Spielfigur sf){

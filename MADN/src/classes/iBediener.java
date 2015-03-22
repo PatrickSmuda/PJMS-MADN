@@ -9,6 +9,6 @@ public interface iBediener {
 	
 	public void wuerfeln();
 	
-	public void bewege();
+	public void bewege(Spielfigur figur);
 	
 }
