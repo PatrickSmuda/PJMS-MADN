@@ -17,6 +17,22 @@ public class Spiel {
 		this.s4=s4;
 	}
 	
+	/**
+	 * Die Methode setzt die Spielfigur auf das Startfeld zurueck
+	 */
+	public void geschlagen(Spielfigur sf){
+		sf.getStartPosition();
+	}
+	/**
+	 * Methode zum bewegen der Spielfigur
+	 * @param position Position auf welche die Spielfigur zieht
+	 */
+	public void bewegeAuf(Spielfeld position, Spielfigur sf){
+		if(position == null) throw new RuntimeException("Spielfeld auf das die Spielfigur laufen soll existiert nicht");
+		if(position.getFigur() != null) position.getFigur().geschlagen(sf);
+		this.position = position;
+	}
+	
 	public void spielStarten(){
 		this.spielbrett = new Spielbrett();
 	}
