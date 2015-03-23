@@ -1,5 +1,9 @@
 package classes;
-
+/**
+ * Der JUnit Test zu Spiel
+ * @author 
+ * @version 1.0
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Before;
