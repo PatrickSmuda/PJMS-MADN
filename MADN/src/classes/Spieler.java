@@ -60,6 +60,10 @@ public class Spieler {
 		return this.farbe;
 	}
 	
+	public String getName(){ 
+		return this.name;
+	}
+	
 	/**
 	 * Die Methode initialisiert die Spielfiguren mit der uebergebenen Farbe 
 	 * und stellt sie auf ihre jeweilige Startposition.

@@ -1,14 +1,17 @@
 package classes;
 /**
+
  * Der JUnit Test zu Spiel
  * @author 
  * @version 1.0
  */
+
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class TestSpiel {
 	/**Ausgabe vor dem Test.
@@ -42,15 +45,10 @@ public class TestSpiel {
 		System.out.println(s3.getFigur(0).getFarbe());
 		System.out.println(s4.getFigur(0).getFarbe());
 	
+		assertTrue(Spieler.getName().equals("MyNameIsJeff"));
+		
 	}
-	
-	
-
-
-	
-	
-
-	
+		
 	@After 
 	public void nachgabe(){
 		System.out.println("Ende vom Test.");
