@@ -10,4 +10,5 @@ public interface iBediener {
 	public abstract void wuerfeln();
 	
 	public abstract void bewege(Spielfigur figur);
+	
 	}
