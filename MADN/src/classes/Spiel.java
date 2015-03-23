@@ -23,7 +23,7 @@ public class Spiel implements iBediener {
 	/**
 	 * Die Methode setzt die Spielfigur auf das Startfeld zurueck
 	 */
-	public void geschlagen(Spielfigur sf){
+	private void geschlagen(Spielfigur sf){
 		sf.getStartPosition();
 	}
 	/**
@@ -38,7 +38,7 @@ public class Spiel implements iBediener {
 		sf.setPosition(spielbrett.getFeld(neuePosition));
 	}
 	
-	public void figurRaus(Spielfigur sf){
+	private void figurRaus(Spielfigur sf){
 		
 	}
 	
@@ -46,7 +46,7 @@ public class Spiel implements iBediener {
 		
 	}
 	
-	public boolean hatFreieFigur(Spieler spieler){
+	private boolean hatFreieFigur(Spieler spieler){
 		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
 				spieler.getFigur(1).getPosition().getTyp() == FeldTyp.Startfeld &&
 				spieler.getFigur(2).getPosition().getTyp() == FeldTyp.Startfeld &&
@@ -54,7 +54,7 @@ public class Spiel implements iBediener {
 		return true;
 	}
 	
-	public void figurAuswaehlen(Spielfigur figur){
+	private void figurAuswaehlen(Spielfigur figur){
 		if(figur == null || figur.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
 		this.ausgewaehlteFigur = figur;
 	}
@@ -78,7 +78,7 @@ public class Spiel implements iBediener {
 	}
 	
 	
-	public void zugBeenden(){
+	private void zugBeenden(){
 		
 	}
 	
