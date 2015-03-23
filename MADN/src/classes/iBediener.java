@@ -11,4 +11,5 @@ public interface iBediener {
 	
 	public abstract void bewege(Spielfigur figur);
 	
+	
 	}

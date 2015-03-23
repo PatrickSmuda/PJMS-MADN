@@ -10,6 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestSpiel {
+	
+	@Before
+	public void ausgabe(){ 
+		System.out.println("Hier beginnt der Test.");
+	}
+	
 	protected Spielbrett s;
 	protected Wuerfel w;
 	protected Spieler s1;
@@ -18,13 +24,17 @@ public class TestSpiel {
 	protected Spieler s4;
 	
 	
-	
 	@Test
 	public void test() {
 		
+	}
+	
+	public void assertEquals(){
+		s1.equals(s2);
+	}
+	
+	public void assertNotNull(){ 
 		
-		
-		fail("Not yet implemented");
 	}
 	
 	
