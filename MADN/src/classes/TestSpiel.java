@@ -6,15 +6,19 @@ package classes;
  */
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestSpiel {
-	
+	/**Ausgabe vor dem Test.
+	  */
 	@Before
 	public void ausgabe(){ 
 		System.out.println("Hier beginnt der Test.");
 	}
+	
+	
 	
 	protected Spielbrett s;
 	protected Wuerfel w;
@@ -27,16 +31,31 @@ public class TestSpiel {
 	@Test
 	public void test() {
 		
-	}
-	
-	public void assertEquals(){
-		s1.equals(s2);
-	}
-	
-	public void assertNotNull(){ 
+		Spielbrett s = new Spielbrett();
+		Spieler s1 = new Spieler ("MyNameIsJeff", FarbEnum.gruen, null, s);
+		Spieler s2 = new Spieler ("Alex", FarbEnum.gelb, null, s);
+		Spieler s3 = new Spieler ("ElPresidente", FarbEnum.rot, null, s);
+		Spieler s4 = new Spieler ("Dumbledore", FarbEnum.blau, null, s);
 		
+		System.out.println(s1.getFigur(0).getFarbe());
+		assertNotNull(s);
+//		assertEquals(s1.equals(s2));
 	}
 	
+//	public void assertEquals(){
+//		s1.equals(s2);
+//	}
+
+	
+	
+//	public void assertNotNull(){ 
+//		System.out.println(s);
+//	}
+	
+	@After 
+	public void nachgabe(){
+		System.out.println("Ende vom Test.");
+	}
 	
 
 }
