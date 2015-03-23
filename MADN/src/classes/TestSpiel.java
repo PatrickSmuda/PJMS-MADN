@@ -45,7 +45,11 @@ public class TestSpiel {
 		System.out.println(s3.getFigur(0).getFarbe());
 		System.out.println(s4.getFigur(0).getFarbe());
 	
-		assertTrue(Spieler.getName().equals("MyNameIsJeff"));
+		assertTrue(s1.getName().equals("MyNameIsJeff"));
+		assertNotNull(s3.getName());
+		assertNotSame(s3.getFarbe().equals(s4));
+		//bitte hilfe 
+		//i have no idea what i am doing
 		
 	}
 		

@@ -61,7 +61,7 @@ public class Spieler {
 	}
 	
 	public String getName(){ 
-		return this.name;
+		return name;
 	}
 	
 	/**
