@@ -36,13 +36,18 @@ public class Spiel implements iBediener {
 		if(hatFreieFigur(spielerAmZug)){
 			neuePosition = sf.getPosition().getId();
 			neuePosition += bewegungsWert;
-			if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) zugBeenden();
+			 if(userIstDumm(neuePosition, sf)) zugBeenden();
 			sf.setPosition(spielbrett.getFeld(neuePosition));
 		} else {
 			neuePosition = sf.getFreiPosition();
-			if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) zugBeenden();
+			if(userIstDumm(neuePosition, sf)) zugBeenden();
 			sf.setPosition(spielbrett.getFeld(neuePosition));
 		}
+	}
+	
+	private boolean userIstDumm(int neuePosition, Spielfigur sf){
+		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) return true;
+		return false;
 	}
 	
 	private void figurRaus(Spielfigur sf){
