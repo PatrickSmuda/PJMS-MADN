@@ -37,10 +37,11 @@ public class Spielfeld {
 	
 	//
 	public void setFigur(Spielfigur figur){
-		if(figur!=null){
-		this.figur=figur;
-		} else {
-			
+		if(figur == null) throw new RuntimeException("Figur existiert nicht!");
+		if(this.figur == null) this.figur = figur;
+		else{
+			this.figur.setPosition(figur.getStartPosition());
+			this.figur = figur;
 		}
 	}
 	
