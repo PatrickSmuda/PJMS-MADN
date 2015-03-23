@@ -7,9 +7,9 @@ package classes;
 
 public interface iBediener {
 	
-	public abstract void wuerfeln();
+	public void wuerfeln();
 	
-	public abstract void bewege(Spielfigur figur);
+	public void bewege(Spielfigur figur);
 	
 	
 	}

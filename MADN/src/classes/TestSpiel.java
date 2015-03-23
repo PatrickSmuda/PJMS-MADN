@@ -38,19 +38,18 @@ public class TestSpiel {
 		Spieler s4 = new Spieler ("Dumbledore", FarbEnum.blau, null, s);
 		
 		System.out.println(s1.getFigur(0).getFarbe());
-		assertNotNull(s);
-//		assertEquals(s1.equals(s2));
+		System.out.println(s2.getFigur(0).getFarbe());
+		System.out.println(s3.getFigur(0).getFarbe());
+		System.out.println(s4.getFigur(0).getFarbe());
+	
 	}
 	
-//	public void assertEquals(){
-//		s1.equals(s2);
-//	}
+	
+
 
 	
 	
-//	public void assertNotNull(){ 
-//		System.out.println(s);
-//	}
+
 	
 	@After 
 	public void nachgabe(){
