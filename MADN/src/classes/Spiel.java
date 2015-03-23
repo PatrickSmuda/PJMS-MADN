@@ -8,6 +8,7 @@ public class Spiel implements iBediener {
 	private Spielfigur ausgewaehlteFigur;
 	private boolean darfWuerfeln;
 	private int bewegungsWert;
+	private boolean hatGewuerfelt;
 	
 	public Spiel(Spieler s1, Spieler s2, Spieler s3, Spieler s4){
 		if (s1 == null || s2 == null) throw new RuntimeException("Ungültige Eingabe");
@@ -18,6 +19,7 @@ public class Spiel implements iBediener {
 		spieler[2] = s3;
 		spieler[3] = s4;
 		spielerAmZug = spieler[0];
+		this.hatGewuerfelt = false;
 	}
 	
 	/**
@@ -32,16 +34,19 @@ public class Spiel implements iBediener {
 	 */
 	public void bewege(Spielfigur sf){
 		if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
+		if(hatGewuerfelt == false) throw new RuntimeException("Erst wuerfeln!");
 		int neuePosition;
 		if(hatFreieFigur(spielerAmZug)){
 			neuePosition = sf.getPosition().getId();
 			neuePosition += bewegungsWert;
 			 if(userIstDumm(neuePosition, sf)) zugBeenden();
 			sf.setPosition(spielbrett.getFeld(neuePosition));
+			hatGewuerfelt = false;
 		} else {
 			neuePosition = sf.getFreiPosition();
 			if(userIstDumm(neuePosition, sf)) zugBeenden();
 			sf.setPosition(spielbrett.getFeld(neuePosition));
+			hatGewuerfelt = false;
 		}
 	}
 	
@@ -82,16 +87,16 @@ public class Spiel implements iBediener {
 	}
 	
 	public void wuerfeln(){
-		if(this.darfWuerfeln == true && hatFreieFigur(this.spielerAmZug) == true){
+		if(this.darfWuerfeln == true){
 			this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
 			if(this.bewegungsWert == 6) this.darfWuerfeln = true;
 			else this.darfWuerfeln = false;
+			hatGewuerfelt = true;
 		}
 	}
 	
 	
 	private void zugBeenden(){
-		
 	}
 	
 }
