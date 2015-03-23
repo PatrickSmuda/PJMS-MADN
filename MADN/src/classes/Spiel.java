@@ -32,10 +32,17 @@ public class Spiel implements iBediener {
 	 */
 	public void bewege(Spielfigur sf){
 		if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
-		int neuePosition = sf.getPosition().getId();
-		neuePosition += bewegungsWert;
-		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) zugBeenden();
-		sf.setPosition(spielbrett.getFeld(neuePosition));
+		int neuePosition;
+		if(hatFreieFigur(spielerAmZug)){
+			neuePosition = sf.getPosition().getId();
+			neuePosition += bewegungsWert;
+			if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) zugBeenden();
+			sf.setPosition(spielbrett.getFeld(neuePosition));
+		} else {
+			neuePosition = sf.getFreiPosition();
+			if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) zugBeenden();
+			sf.setPosition(spielbrett.getFeld(neuePosition));
+		}
 	}
 	
 	private void figurRaus(Spielfigur sf){
