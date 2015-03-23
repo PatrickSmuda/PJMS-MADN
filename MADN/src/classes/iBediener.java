@@ -11,5 +11,6 @@ public interface iBediener {
 	
 	public void bewege(Spielfigur figur);
 	
+	public void spielerHinzufuegen(Spieler spieler);
 	
 	}
