@@ -39,7 +39,27 @@ public class Spiel implements iBediener {
 	}
 	
 	private void figurRaus(Spielfigur sf){
-		
+		FarbEnum farbe = sf.getFarbe();
+		switch (farbe) {
+		case rot:
+			Spielfeld sp = new Spielfeld(FeldTyp.Normalfeld, FarbEnum.rot, 1);
+			sf.setPosition(sp);
+			break;
+		case blau:
+			Spielfeld sp2 = new Spielfeld(FeldTyp.Normalfeld, FarbEnum.blau, 11);
+			sf.setPosition(sp2);
+			break;
+		case gruen:
+			Spielfeld sp3 = new Spielfeld(FeldTyp.Normalfeld, FarbEnum.gruen, 21);
+			sf.setPosition(sp3);
+			break;
+		case gelb:
+			Spielfeld sp4 = new Spielfeld(FeldTyp.Normalfeld, FarbEnum.gelb, 31);
+			sf.setPosition(sp4);
+			break;
+		default:
+			break;
+		}
 	}
 	
 	private void figurRein(Spielfigur sf){
