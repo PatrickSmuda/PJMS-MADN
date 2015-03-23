@@ -34,6 +34,7 @@ public class Spiel implements iBediener {
 		if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
 		int neuePosition = sf.getPosition().getId();
 		neuePosition += bewegungsWert;
+		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) zugBeenden();
 		sf.setPosition(spielbrett.getFeld(neuePosition));
 	}
 	
