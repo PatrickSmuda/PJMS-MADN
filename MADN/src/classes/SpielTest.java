@@ -21,8 +21,12 @@ public class SpielTest {
 		
 		p = s;
 		
+		
+		
 		p.wuerfeln();
 		p.bewege(s1.getFigur(1));
+		System.out.println(s1.getFigur(1).getPosition());
+		
 		
 	}
 }
