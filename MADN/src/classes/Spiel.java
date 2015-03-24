@@ -224,7 +224,7 @@ public class Spiel implements iBediener {
 			spielGewonnen(spielerAmZug);
 			return;
 		}
-		for(int i =0; i< spieler.size(); i++){
+		for(int i =0; i< spieler.size() -1; i++){
 			if(spieler.get(i) == spielerAmZug){
 				if(i == 3){
 					spielerAmZug = spieler.get(0);
