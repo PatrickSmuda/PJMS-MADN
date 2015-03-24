@@ -28,13 +28,13 @@ public class SpielTest {
 		p.bewege(s1.getFigur(1));
 		System.out.println("Neue Position: " + s1.getFigur(1).getPosition());
 		
-//		p.wuerfeln(); 
-//		p.bewege(s2.getFigur(1));
-//		System.out.println(s2.getFigur(1).getPosition());
+		p.wuerfeln(); 
+		p.bewege(s2.getFigur(1));
+		System.out.println(s2.getFigur(1).getPosition());
 		
-//		p.wuerfeln();
-//		p.bewege(s1.getFigur(1));
-//		System.out.println(s1.getFigur(1).getPosition());
+		p.wuerfeln();
+		p.bewege(s1.getFigur(1));
+		System.out.println(s1.getFigur(1).getPosition());
 
 		
 		
