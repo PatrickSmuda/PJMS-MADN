@@ -2,7 +2,7 @@ package classes;
 /**
  * Die Klasse Spiel 
  * @author Sebastian Stumm, Johannes Mändle
- *
+ * @version 1.0
  */
 public class Spiel implements iBediener {
 
@@ -14,6 +14,8 @@ public class Spiel implements iBediener {
 	private int bewegungsWert;
 	private boolean hatGewuerfelt;
 	private Spieler gewinner;
+	
+	
 
 	public Spiel(Spieler s1, Spieler s2, Spieler s3, Spieler s4){
 		if (s1 == null || s2 == null) throw new RuntimeException("Ungültige Eingabe");
