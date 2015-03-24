@@ -41,18 +41,25 @@ public class TestSpiel {
 		Spieler s4 = new Spieler ("Dumbledore", FarbEnum.blau, null, s);
 		
 		System.out.println(s1.getFigur(0).getFarbe());
-		System.out.println(s2.getFigur(0).getFarbe());
-		System.out.println(s3.getFigur(0).getFarbe());
-		System.out.println(s4.getFigur(0).getFarbe());
+		System.out.println(s2.getFigur(1).getFarbe());
+		System.out.println(s3.getFigur(2).getFarbe());
+		System.out.println(s4.getFigur(3).getFarbe());
 	
 		assertTrue(s1.getName().equals("MyNameIsJeff"));
 		assertNotNull(s3.getName());
-		assertNotSame(s3.getFarbe().equals(s4));
-		//bitte hilfe 
-		//i have no idea what i am doing
-		
 	}
 		
+	@Test 
+	public void negativeTest(){
+		try {
+		assertSame(s3.getFarbe(), s4.getFarbe());
+		assertEquals(s3.getName(), ("El Presidente"));
+//		fail("wenn das nich funktioniert dann wein ich");
+		}
+		catch(IllegalArgumentException ex){	
+		}
+	}
+	
 	@After 
 	public void nachgabe(){
 		System.out.println("Ende vom Test.");
