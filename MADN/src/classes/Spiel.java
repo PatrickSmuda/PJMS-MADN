@@ -1,30 +1,44 @@
 package classes;
 
+import java.util.ArrayList;
+
+import javax.management.RuntimeErrorException;
+
 public class Spiel implements iBediener {
 
 	private Spielbrett spielbrett;
-	private Spieler[] spieler; 
+	private ArrayList<Spieler> spieler; 
 	private Spieler spielerAmZug;
 	private Spielfigur ausgewaehlteFigur;
 	private boolean darfWuerfeln;
 	private int bewegungsWert;
 	private boolean hatGewuerfelt;
 	private Spieler gewinner;
+	private boolean spielHatBegonnen;
 
-	public Spiel(Spieler s1, Spieler s2, Spieler s3, Spieler s4){
-		if (s1 == null || s2 == null) throw new RuntimeException("Ungültige Eingabe");
-		spieler = new Spieler[4];
+	public Spiel(){
 		this.spielbrett = new Spielbrett();
-		spieler[0] = s1;
-		spieler[1] = s2;
-		spieler[2] = s3;
-		spieler[3] = s4;
-		spielerAmZug = spieler[0];
 		this.hatGewuerfelt = false;
 		this.darfWuerfeln = true;
+		this.spielHatBegonnen = false;
+		this.spieler = new ArrayList<Spieler>();
 	}
 
 	public void spielerHinzufuegen(Spieler spieler){
+		if(!spielHatBegonnen){
+			if(spieler == null) throw new RuntimeException("Spieler existiert nicht!");
+			for(int i = 0; i < this.spieler.size(); i++){
+				if(this.spieler.get(i).getFarbe() == spieler.getFarbe()) throw new RuntimeException("Der Spieler mit dieser Farbe nimmt bereits am Spiel teil!");
+			}
+			this.spieler.add(spieler);
+		}
+		
+	}
+
+	public void beginneSpiel(){
+		if(this.spieler.size() >= 2){
+			this.spielHatBegonnen = true;
+		} else throw new RuntimeException("Spiel muss mindestens 2 Spieler haben!");
 		
 	}
 	
@@ -33,22 +47,25 @@ public class Spiel implements iBediener {
 	 * @param sf Spielfigur die bewegt wird
 	 */
 	public void bewege(Spielfigur sf){
-		if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
-		if(hatGewuerfelt == false) throw new RuntimeException("Erst wuerfeln!");
-		int neuePosition;
-		if(sf.getPosition().getTyp() != FeldTyp.Startfeld){
-			if(!kannLaufen(sf)) ungueltigerZug();
-			neuePosition = sf.getPosition().getId();
-			neuePosition += bewegungsWert;
-			if(userIstDumm(neuePosition, sf)) zugBeenden();
-			sf.setPosition(spielbrett.getFeld(neuePosition));
-			hatGewuerfelt = false;
-		} else if(sf.getPosition().getTyp() != FeldTyp.Startfeld && bewegungsWert == 6){
-			neuePosition = sf.getFreiPosition();
-			if(userIstDumm(neuePosition, sf)) zugBeenden();
-			sf.setPosition(spielbrett.getFeld(neuePosition));
-			hatGewuerfelt = false;
+		if(spielHatBegonnen){
+			if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
+			if(hatGewuerfelt == false) throw new RuntimeException("Erst wuerfeln!");
+			int neuePosition;
+			if(sf.getPosition().getTyp() != FeldTyp.Startfeld){
+				if(!kannLaufen(sf)) ungueltigerZug();
+				neuePosition = sf.getPosition().getId();
+				neuePosition += bewegungsWert;
+				if(userIstDumm(neuePosition, sf)) zugBeenden();
+				sf.setPosition(spielbrett.getFeld(neuePosition));
+				hatGewuerfelt = false;
+			} else if(sf.getPosition().getTyp() != FeldTyp.Startfeld && bewegungsWert == 6){
+				neuePosition = sf.getFreiPosition();
+				if(userIstDumm(neuePosition, sf)) zugBeenden();
+				sf.setPosition(spielbrett.getFeld(neuePosition));
+				hatGewuerfelt = false;
+			}
 		}
+		
 	}
 	
 	private void ungueltigerZug(){
@@ -96,12 +113,15 @@ public class Spiel implements iBediener {
 	}
 
 	public void wuerfeln(){
-		if(this.darfWuerfeln == true){
-			this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
-			if(this.bewegungsWert == 6) this.darfWuerfeln = true;
-			else this.darfWuerfeln = false;
-			hatGewuerfelt = true;
+		if(spielHatBegonnen){
+			if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
+				this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
+				if(this.bewegungsWert == 6) this.darfWuerfeln = true;
+				else this.darfWuerfeln = false;
+				hatGewuerfelt = true;
+			}
 		}
+		
 	}
 
 
@@ -120,14 +140,14 @@ public class Spiel implements iBediener {
 			spielGewonnen(spielerAmZug);
 			return;
 		}
-		for(int i =0; i< spieler.length; i++){
-			if(spieler[i] == spielerAmZug){
+		for(int i =0; i< spieler.size(); i++){
+			if(spieler.get(i) == spielerAmZug){
 				if(i == 3){
-					spielerAmZug = spieler[0];
+					spielerAmZug = spieler.get(0);
 					darfWuerfeln = true;
 					break;
 				}else{
-					spielerAmZug = spieler[i +1];
+					spielerAmZug = spieler.get(i+1);
 					darfWuerfeln = true;
 					break;
 				}
