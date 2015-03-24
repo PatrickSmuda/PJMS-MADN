@@ -82,12 +82,14 @@ public class Spiel implements iBediener {
 				spielbrett.getFeld(neuePosition).setFigur(sf);
 				sf.setPosition(spielbrett.getFeld(neuePosition));
 				hatGewuerfelt = false;
+				if(bewegungsWert != 6) zugBeenden();
 			} else if(sf.getPosition().getTyp() != FeldTyp.Startfeld && bewegungsWert == 6){
 				neuePosition = sf.getFreiPosition();
 				if(userIstDumm(neuePosition, sf)) zugBeenden();
 				spielbrett.getFeld(neuePosition).setFigur(sf);
 				sf.setPosition(spielbrett.getFeld(neuePosition));
 				hatGewuerfelt = false;
+				if(bewegungsWert != 6) zugBeenden();
 			}
 		}
 		
