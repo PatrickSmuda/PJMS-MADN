@@ -1,5 +1,9 @@
 package classes;
-
+/**
+ * Die Klasse Spiel 
+ * @author Sebastian Stumm, Johannes Mändle
+ *
+ */
 public class Spiel implements iBediener {
 
 	private Spielbrett spielbrett;
