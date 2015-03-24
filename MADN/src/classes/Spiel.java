@@ -1,11 +1,21 @@
 package classes;
 
+/**
+ * Die Klasse Spiel 
+ * @author Sebastian Stumm, Johannes Mändle
+ * @version 1.0
+ */
+
+
 import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
 
 public class Spiel implements iBediener {
 
+	/**
+	 * Die Attribute der Klasse Spiel.
+	 */
 	private Spielbrett spielbrett;
 	private ArrayList<Spieler> spieler; 
 	private Spieler spielerAmZug;
@@ -15,7 +25,11 @@ public class Spiel implements iBediener {
 	private boolean hatGewuerfelt;
 	private Spieler gewinner;
 	private boolean spielHatBegonnen;
+	
 
+	/**
+	 * Der Konstruktor für die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
+	 */
 	public Spiel(){
 		this.spielbrett = new Spielbrett();
 		this.hatGewuerfelt = false;
@@ -24,6 +38,10 @@ public class Spiel implements iBediener {
 		this.spieler = new ArrayList<Spieler>();
 	}
 
+	/**
+	 * Fügt dem Spiel einen Spieler hinzu.
+	 * @param spieler Der Spieler, der hinzugefügt werden soll.
+	 */
 	public void spielerHinzufuegen(Spieler spieler){
 		if(!spielHatBegonnen){
 			if(spieler == null) throw new RuntimeException("Spieler existiert nicht!");
@@ -34,7 +52,9 @@ public class Spiel implements iBediener {
 		}
 		
 	}
-
+	/**
+	 * Die Methode beginnt das Spiel.
+	 */
 	public void beginneSpiel(){
 		if(this.spieler.size() >= 2){
 			this.spielHatBegonnen = true;
@@ -69,10 +89,18 @@ public class Spiel implements iBediener {
 		
 	}
 	
+	/**
+	 * Die Methode wird ausgeführt, wenn ein Zug ungültig ist.
+	 */
 	private void ungueltigerZug(){
 		zugBeenden();
 	}
 	
+	/**
+	 * Überprüft ob eine Spielfigur laufen darf.
+	 * @param sf Die zu überprüfende Spielfigur.
+	 * @return boolean Gibt einen boolschen Wert zurück.
+	 */
 	private boolean kannLaufen(Spielfigur sf){
 		switch(sf.getFarbe())
 		{
@@ -90,11 +118,22 @@ public class Spiel implements iBediener {
 		
 	}
 	
+	/**
+	 * Wird aufgerufen, wenn der User versucht seine eigene Figur zu schlagen.
+	 * @param neuePosition Die neue Position der Figur.
+	 * @param sf Die Spielfigur 
+	 * @return boolean Boolscher Rückgabewert
+	 */ 
 	private boolean userIstDumm(int neuePosition, Spielfigur sf){
 		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) return true;
 		return false;
 	}
 
+	/**
+	 * Überprüft ob ein Spieler eine freie Figur hat
+	 * @param spieler Der zu überprüfende Spieler
+	 * @return Gibt einen boolschen wert zurück, ob der Spieler eine freie Figur hat.
+	 */
 	private boolean hatFreieFigur(Spieler spieler){
 		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
 				spieler.getFigur(1).getPosition().getTyp() == FeldTyp.Startfeld &&
@@ -103,6 +142,10 @@ public class Spiel implements iBediener {
 		return true;
 	}
 
+	/**
+	 * Setzt eine Spielfigur auf die Startposition zurück.
+	 * @param figur Die Spielfigur
+	 */
 	private void aufStartPositionSetzen(Spielfigur figur){
 		switch(figur.getFarbe())
 		{
@@ -113,6 +156,9 @@ public class Spiel implements iBediener {
 		}
 	}
 
+	/**
+	 * Die Methode würfelt.
+	 */
 	public void wuerfeln(){
 		if(spielHatBegonnen){
 			if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
@@ -125,11 +171,17 @@ public class Spiel implements iBediener {
 		
 	}
 
-
+	/**
+	 * Gibt zurück, welcher Spieler gewonnen hat.
+	 * @param gewinner Der Spieler der gewonnen hat.
+	 */
 	private void spielGewonnen(Spieler gewinner){
 		System.out.println("Der Gewinner ist: " + gewinner.getName());
 	}
 	
+	/**
+	 * Die Methode beendet einen Zug.
+	 */
 	private void zugBeenden(){
 		int zaehler=0;
 		for(int i =0; i<4; i++){

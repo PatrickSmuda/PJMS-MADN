@@ -13,6 +13,4 @@ public interface iBediener {
 	
 	public void spielerHinzufuegen(Spieler spieler);
 	
-	public void beginneSpiel();
-	
 	}
