@@ -20,6 +20,7 @@ public class Spiel implements iBediener {
 		spieler[3] = s4;
 		spielerAmZug = spieler[0];
 		this.hatGewuerfelt = false;
+		this.darfWuerfeln = true;
 	}
 	
 	/**
@@ -36,18 +37,40 @@ public class Spiel implements iBediener {
 		if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
 		if(hatGewuerfelt == false) throw new RuntimeException("Erst wuerfeln!");
 		int neuePosition;
-		if(hatFreieFigur(spielerAmZug)){
+		if(sf.getPosition().getTyp() != FeldTyp.Startfeld){
+			if(!kannLaufen(sf)) ungueltigerZug();
 			neuePosition = sf.getPosition().getId();
 			neuePosition += bewegungsWert;
 			 if(userIstDumm(neuePosition, sf)) zugBeenden();
 			sf.setPosition(spielbrett.getFeld(neuePosition));
 			hatGewuerfelt = false;
-		} else {
+		} else if(sf.getPosition().getTyp() != FeldTyp.Startfeld && bewegungsWert == 6){
 			neuePosition = sf.getFreiPosition();
 			if(userIstDumm(neuePosition, sf)) zugBeenden();
 			sf.setPosition(spielbrett.getFeld(neuePosition));
 			hatGewuerfelt = false;
 		}
+	}
+	
+	private void ungueltigerZug(){
+		
+	}
+	
+	private boolean kannLaufen(Spielfigur sf){
+		switch(sf.getFarbe())
+		{
+		case rot:
+			if(sf.getPosition().getId() + bewegungsWert > 71) return false;
+		case blau:
+			if(sf.getPosition().getId() + bewegungsWert > 59) return false;
+		case gruen: 
+			if(sf.getPosition().getId() + bewegungsWert > 67) return false;
+		case gelb:
+			if(sf.getPosition().getId() + bewegungsWert > 63) return false;
+		default: break;
+		}
+		return true;
+		
 	}
 	
 	private boolean userIstDumm(int neuePosition, Spielfigur sf){
