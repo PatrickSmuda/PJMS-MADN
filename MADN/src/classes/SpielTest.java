@@ -25,29 +25,34 @@ public class SpielTest {
 		
 		p.beginneSpiel();
 		
+		for (int i = 0; i < 9; i++) {
+			
 		p.wuerfeln();
-		s1.getFarbe();
-		
-		p.bewege(s1.getFigur(1));
-		System.out.println("Neue Position: " + s1.getFigur(1).getPosition().getId());
-		
-		p.wuerfeln(); 
-		p.bewege(s2.getFigur(1));
-		System.out.println(s2.getFigur(1).getPosition());
-		
-		p.wuerfeln();
-		p.bewege(s3.getFigur(1));
-		System.out.println(s3.getFigur(1).getPosition());
-		
-		p.wuerfeln();
-		p.bewege(s4.getFigur(1));
-		System.out.println(s4.getFigur(1).getPosition());
+		switch (p.getSpielerAmZug().getFarbe()) {
+		case rot:
+			System.out.println("Alte Position von " + p.getSpielerAmZug().getFarbe() + ": " + s1.getFigur(1).getPosition().getId());
+			p.bewege(s1.getFigur(1));
+			System.out.println("Neue Position: " + s1.getFigur(1).getPosition().getId());
+			break;
 
-
-		p.wuerfeln();
-		p.bewege(s1.getFigur(1));
-		System.out.println("Neue Position: " + s1.getFigur(1).getPosition().getId());
-		
-		
+		case blau:
+			System.out.println("Alte Position von " + p.getSpielerAmZug().getFarbe() + ": " + s2.getFigur(1).getPosition().getId());
+			p.bewege(s2.getFigur(1));
+			System.out.println("Neue Position: " + s2.getFigur(1).getPosition().getId());
+			break;
+	
+		case gruen:
+			System.out.println("Alte Position von " + p.getSpielerAmZug().getFarbe() + ": " + s3.getFigur(1).getPosition().getId());
+			p.bewege(s3.getFigur(1));
+			System.out.println("Neue Position: " + s3.getFigur(1).getPosition().getId());
+			break;
+	
+		case gelb:
+			System.out.println("Alte Position von " + p.getSpielerAmZug().getFarbe() + ": " + s4.getFigur(1).getPosition().getId());
+			p.bewege(s4.getFigur(1));
+			System.out.println("Neue Position: " + s4.getFigur(1).getPosition().getId());
+			break;
+		}
+		}
 	}
 }

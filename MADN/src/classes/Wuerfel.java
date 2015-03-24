@@ -18,7 +18,9 @@ public class Wuerfel {
 	 * @return Die Funktion liefert eine Ganzzahl zwischen 1 und 6 zurueck
 	 */
 	public int werfen(){
-		return (int)((Math.random()*6)+1);
+		int zahl = (int)((Math.random()*6)+1);
+		System.out.println("Würfel Zahl: "+ zahl);
+		return zahl;
 	}
 	
 	
