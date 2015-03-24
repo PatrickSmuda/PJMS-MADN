@@ -83,13 +83,12 @@ public class Spiel implements iBediener {
 				sf.setPosition(spielbrett.getFeld(neuePosition));
 				hatGewuerfelt = false;
 				if(bewegungsWert != 6) zugBeenden();
-			} else if(sf.getPosition().getTyp() != FeldTyp.Startfeld && bewegungsWert == 6){
+			} else if(sf.getPosition().getTyp() == FeldTyp.Startfeld && bewegungsWert == 6){
 				neuePosition = sf.getFreiPosition();
 				if(userIstDumm(neuePosition, sf)) zugBeenden();
 				spielbrett.getFeld(neuePosition).setFigur(sf);
 				sf.setPosition(spielbrett.getFeld(neuePosition));
 				hatGewuerfelt = false;
-
 			} else if(sf.getPosition().getTyp() == FeldTyp.Startfeld && bewegungsWert != 6){
 				hatGewuerfelt = false;
 				zugBeenden();
@@ -224,7 +223,7 @@ public class Spiel implements iBediener {
 			spielGewonnen(spielerAmZug);
 			return;
 		}
-		for(int i =0; i< spieler.size() -1; i++){
+		for(int i =0; i< spieler.size(); i++){
 			if(spieler.get(i) == spielerAmZug){
 				if(i == 3){
 					spielerAmZug = spieler.get(0);

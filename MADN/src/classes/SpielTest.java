@@ -13,18 +13,21 @@ public class SpielTest {
 		Spielbrett sb = new Spielbrett();
 		Spieler s1 = new Spieler("hans", FarbEnum.rot, null, sb);
 		Spieler s2 = new Spieler("gretel", FarbEnum.blau, null, sb);
-//		Spieler s3 = new Spieler("hanni", FarbEnum.gruen, null, sb);
-//		Spieler s4 = new Spieler("nanni", FarbEnum.gelb, null, sb);
+		Spieler s3 = new Spieler("hanni", FarbEnum.gruen, null, sb);
+		Spieler s4 = new Spieler("nanni", FarbEnum.gelb, null, sb);
 		Spiel s = new Spiel();
 		iBediener p = s;
 		
 		p.spielerHinzufuegen(s1);
 		p.spielerHinzufuegen(s2);
+		p.spielerHinzufuegen(s3);
+		p.spielerHinzufuegen(s4);
 		
 		p.beginneSpiel();
 		
-		System.out.println("Alte Position: " + s1.getFigur(1).getPosition().getId());
 		p.wuerfeln();
+		s1.getFarbe();
+		
 		p.bewege(s1.getFigur(1));
 		System.out.println("Neue Position: " + s1.getFigur(1).getPosition().getId());
 		
@@ -33,9 +36,17 @@ public class SpielTest {
 		System.out.println(s2.getFigur(1).getPosition());
 		
 		p.wuerfeln();
-		p.bewege(s1.getFigur(1));
-		System.out.println(s1.getFigur(1).getPosition());
+		p.bewege(s3.getFigur(1));
+		System.out.println(s3.getFigur(1).getPosition());
+		
+		p.wuerfeln();
+		p.bewege(s4.getFigur(1));
+		System.out.println(s4.getFigur(1).getPosition());
 
+
+		p.wuerfeln();
+		p.bewege(s1.getFigur(1));
+		System.out.println("Neue Position: " + s1.getFigur(1).getPosition().getId());
 		
 		
 	}
