@@ -38,6 +38,7 @@ public class Spiel implements iBediener {
 	public void beginneSpiel(){
 		if(this.spieler.size() >= 2){
 			this.spielHatBegonnen = true;
+			this.spielerAmZug = this.spieler.get(0);
 		} else throw new RuntimeException("Spiel muss mindestens 2 Spieler haben!");
 		
 	}
@@ -69,7 +70,7 @@ public class Spiel implements iBediener {
 	}
 	
 	private void ungueltigerZug(){
-		
+		zugBeenden();
 	}
 	
 	private boolean kannLaufen(Spielfigur sf){
@@ -119,7 +120,7 @@ public class Spiel implements iBediener {
 				if(this.bewegungsWert == 6) this.darfWuerfeln = true;
 				else this.darfWuerfeln = false;
 				hatGewuerfelt = true;
-			}
+			}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
 		}
 		
 	}
