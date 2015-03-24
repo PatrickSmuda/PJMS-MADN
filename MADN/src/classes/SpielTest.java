@@ -23,10 +23,10 @@ public class SpielTest {
 		
 		p.beginneSpiel();
 		
-		System.out.println("Alte Position: " + s1.getFigur(1).getPosition());
+		System.out.println("Alte Position: " + s1.getFigur(1).getPosition().getId());
 		p.wuerfeln();
 		p.bewege(s1.getFigur(1));
-		System.out.println("Neue Position: " + s1.getFigur(1).getPosition());
+		System.out.println("Neue Position: " + s1.getFigur(1).getPosition().getId());
 		
 		p.wuerfeln(); 
 		p.bewege(s2.getFigur(1));
