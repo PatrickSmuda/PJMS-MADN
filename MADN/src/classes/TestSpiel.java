@@ -22,7 +22,7 @@ public class TestSpiel {
 	}
 	
 	
-	
+	protected Spiel spiel;
 	protected Spielbrett s;
 	protected Wuerfel w;
 	protected Spieler s1;
@@ -47,17 +47,24 @@ public class TestSpiel {
 	
 		assertTrue(s1.getName().equals("MyNameIsJeff"));
 		assertNotNull(s3.getName());
+		
 	}
 		
-	@Test 
-	public void negativeTest(){
-		try {
-		assertSame(s3.getFarbe(), s4.getFarbe());
-		assertEquals(s3.getName(), ("El Presidente"));
-//		fail("wenn das nich funktioniert dann wein ich");
-		}
-		catch(IllegalArgumentException ex){	
-		}
+//	@Test 
+//	public void negativeTest(){
+//		try {
+//		assertSame(s3.getFarbe(), s4.getFarbe());
+//		assertEquals(s3.getName(), ("El Presidente"));
+////		fail("wenn das nich funktioniert dann wein ich");
+//		}
+//		catch(IllegalArgumentException ex){	
+//		}
+//	}
+	
+	@Test
+	public void guterTest(){ 
+		assertEquals(w.werfen(), w.werfen());
+//		assertNotSame(spiel.bewege(s1.getFigur(0)), spiel.bewege(s3.getFigur(2)));
 	}
 	
 	@After 

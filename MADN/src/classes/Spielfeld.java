@@ -68,8 +68,8 @@ public class Spielfeld {
 	}
 	
 
-	/*public String toString(){
-		return this.feldFarbe+" "+this.typ;
-	}*/
+	public String toString(){
+	return this.id+" "+this.typ;
+}
 	
 }
