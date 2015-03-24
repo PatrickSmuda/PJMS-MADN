@@ -73,10 +73,12 @@ public class Spiel implements iBediener {
 			if(hatGewuerfelt == false) throw new RuntimeException("Erst wuerfeln!");
 			int neuePosition;
 			if(sf.getPosition().getTyp() != FeldTyp.Startfeld){
-				if(!kannLaufen(sf)) ungueltigerZug();
+				//if(!kannLaufen(sf)) ungueltigerZug();
 				neuePosition = sf.getPosition().getId();
 				neuePosition += bewegungsWert;
+				neuePosition = ueberlauf(neuePosition);
 				if(userIstDumm(neuePosition, sf)) zugBeenden();
+				if(kannLaufen(neuePosition, sf))
 				sf.setPosition(spielbrett.getFeld(neuePosition));
 				hatGewuerfelt = false;
 			} else if(sf.getPosition().getTyp() != FeldTyp.Startfeld && bewegungsWert == 6){
@@ -89,6 +91,13 @@ public class Spiel implements iBediener {
 		
 	}
 	
+	private int ueberlauf(int neuePosition){
+		if(neuePosition > 39){
+			return (neuePosition-39);
+		}
+		return neuePosition;
+	}
+	
 	/**
 	 * Die Methode wird ausgeführt, wenn ein Zug ungültig ist.
 	 */
@@ -96,25 +105,40 @@ public class Spiel implements iBediener {
 		zugBeenden();
 	}
 	
+	private boolean figurAufEndfeld(int id){
+		for(int i = 0; i < 3; i++){
+			if(spielbrett.getFeld(id+i).getFigur() != null) return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * Überprüft ob eine Spielfigur laufen darf.
 	 * @param sf Die zu überprüfende Spielfigur.
 	 * @return boolean Gibt einen boolschen Wert zurück.
 	 */
-	private boolean kannLaufen(Spielfigur sf){
+	private boolean kannLaufen(int neuePosition, Spielfigur sf){
 		switch(sf.getFarbe())
 		{
 		case rot:
-			if(sf.getPosition().getId() + bewegungsWert > 71) return false;
+			if(neuePosition > 1){
+				if(figurAufEndfeld(68)) return false;
+			}return true;
 		case blau:
-			if(sf.getPosition().getId() + bewegungsWert > 59) return false;
-		case gruen: 
-			if(sf.getPosition().getId() + bewegungsWert > 67) return false;
+			if(neuePosition > 11){
+				if(figurAufEndfeld(56)) return false;
+			}return true;
+		case gruen:
+			if(neuePosition > 21){
+				if(figurAufEndfeld(64)) return false;
+			}return true;
 		case gelb:
-			if(sf.getPosition().getId() + bewegungsWert > 63) return false;
-		default: break;
+			if(neuePosition > 31){
+				if(figurAufEndfeld(60)) return false;
+			}return true;
+		default: return false;
 		}
-		return true;
+		
 		
 	}
 	
