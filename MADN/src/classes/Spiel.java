@@ -148,6 +148,11 @@ public class Spiel implements iBediener {
 		
 	}
 	
+	public Spieler getSpielerAmZug(){
+		return this.spielerAmZug;
+	}
+	
+	
 	/**
 	 * Wird aufgerufen, wenn der User versucht seine eigene Figur zu schlagen.
 	 * @param neuePosition Die neue Position der Figur.
