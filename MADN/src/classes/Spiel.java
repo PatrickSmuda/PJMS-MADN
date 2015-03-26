@@ -121,6 +121,21 @@ public class Spiel implements iBediener {
 		return false;
 	}
 	
+	public int getBewegungsWert(){
+		if(hatGewuerfelt){
+			return this.bewegungsWert;
+		}else throw new RuntimeException ("Hat noch nicht nicht gewürfelt.");
+	}
+	
+	public boolean figurAufFeld(int id){
+		if(id<0 || id>72){ 
+			throw new RuntimeException ("Feld existiert nicht.");
+		}
+		if(spielbrett.getFeld(id).getFigur()!=null) return true;
+		return false;
+	}
+	
+	
 	/**
 	 * Überprüft ob eine Spielfigur laufen darf.
 	 * @param sf Die zu überprüfende Spielfigur.
@@ -198,6 +213,8 @@ public class Spiel implements iBediener {
 		}
 	}
 
+	
+	
 	/**
 	 * Die Methode würfelt.
 	 */
