@@ -15,6 +15,6 @@ public interface iBediener {
 	
 	public void beginneSpiel();
 	
-	public Spieler getSpielerAmZug();
+	public String getSpielerAmZug();
 	
 	}

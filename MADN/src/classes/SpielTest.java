@@ -25,7 +25,7 @@ public class SpielTest {
 		
 		p.beginneSpiel();
 		
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < 40; i++) {
 			
 		p.wuerfeln();
 		switch (p.getSpielerAmZug().getFarbe()) {

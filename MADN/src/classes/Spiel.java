@@ -155,8 +155,8 @@ public class Spiel implements iBediener {
 	 * Gibt den Spieler der am Zug ist zurück
 	 * @return spielerAmZug
 	 */
-	public Spieler getSpielerAmZug(){
-		return this.spielerAmZug;
+	public String getSpielerAmZug(){
+		return this.spielerAmZug.getName();
 	}
 	
 	
