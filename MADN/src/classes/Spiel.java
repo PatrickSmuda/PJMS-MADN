@@ -48,9 +48,8 @@ public class Spiel implements iBediener {
 				throw new RuntimeException("Spieler existiert nicht!");
 			for(int i = 0; i < this.spieler.size(); i++){
 				if(this.spieler.get(i).getFarbe() == spieler.getFarbe()) throw new RuntimeException("Der Spieler mit dieser Farbe nimmt bereits am Spiel teil!");
-				this.spieler.add(spieler);
 			}
-			
+			this.spieler.add(spieler);
 		}
 		
 	}
