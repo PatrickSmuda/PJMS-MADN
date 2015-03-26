@@ -44,11 +44,13 @@ public class Spiel implements iBediener {
 	 */
 	public void spielerHinzufuegen(Spieler spieler){
 		if(!spielHatBegonnen){
-			if(spieler == null) throw new RuntimeException("Spieler existiert nicht!");
+			if(spieler == null) 
+				throw new RuntimeException("Spieler existiert nicht!");
 			for(int i = 0; i < this.spieler.size(); i++){
 				if(this.spieler.get(i).getFarbe() == spieler.getFarbe()) throw new RuntimeException("Der Spieler mit dieser Farbe nimmt bereits am Spiel teil!");
+				this.spieler.add(spieler);
 			}
-			this.spieler.add(spieler);
+			
 		}
 		
 	}
@@ -71,7 +73,9 @@ public class Spiel implements iBediener {
 		if(spielHatBegonnen){
 			if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
 			if(hatGewuerfelt == false) throw new RuntimeException("Erst wuerfeln!");
+			
 			int neuePosition;
+			
 			if(sf.getPosition().getTyp() != FeldTyp.Startfeld){
 				//if(!kannLaufen(sf)) ungueltigerZug();
 				neuePosition = sf.getPosition().getId();
@@ -148,6 +152,10 @@ public class Spiel implements iBediener {
 		
 	}
 	
+	/**
+	 * Gibt den Spieler der am Zug ist zurück
+	 * @return spielerAmZug
+	 */
 	public Spieler getSpielerAmZug(){
 		return this.spielerAmZug;
 	}
