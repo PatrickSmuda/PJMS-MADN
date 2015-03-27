@@ -127,6 +127,8 @@ public class Spiel implements iBediener {
 		}else throw new RuntimeException ("Hat noch nicht nicht gewürfelt.");
 	}
 	
+	
+	
 	public boolean figurAufFeld(int id){
 		if(id<0 || id>72){ 
 			throw new RuntimeException ("Feld existiert nicht.");
