@@ -1,17 +1,21 @@
 package classes;
 /**
  * Die Klasse fuer die KI
- * @author Johannes Mändle
+ * @author 
  *
  */
 
 public abstract class KI {
 
+	/**
+	 * Attribute der Klasse KI
+	 */
+	
 	private Spieler spieler;
 	private Spiel spiel;
 	private boolean hatUeberlauf;
 	/**
-	 * Konstruktor
+	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
 	public KI(Spieler spieler, Spiel spiel){
 		if (spieler == null) throw new RuntimeException("Spieler muss vorhanden sein!");	
@@ -23,6 +27,9 @@ public abstract class KI {
 		hatUeberlauf=false;
 	} 
 	
+	/**
+	 * Methode bewegt die Figur zum Endfeld
+	 * */
 	private void geheAufEndfeld(){
 		int neueId;
 		for(int i=0; i<4; i++){
@@ -34,7 +41,11 @@ public abstract class KI {
 		}
 		} 
 	}
-	
+	/**
+	 * Hilfsmethode fuer die geheAufEndfeld, vermeidet dass die Spielfigur ueberspringen
+	 * 
+	 * @return neueId
+	 */
 	private boolean zugGueltigEndfeld(int neueId){
 		
 			switch(spieler.getFarbe())
@@ -78,7 +89,12 @@ public abstract class KI {
 		
 		}
 	
-	
+	/**
+	 * Methode um zu verhindern damit die Figur nicht ueber die Felder geht, ueber die sie nicht soll
+	 * (kommentar sollte man evtl aendern)
+	 * @param neueId
+	 * @return neueId
+	 */
 	private boolean kannEndfeldErreichen(int neueId){
 		switch(spieler.getFarbe())
 		{
@@ -90,7 +106,11 @@ public abstract class KI {
 		default: return false;
 		}
 	}
-	
+	/**
+	 * Hilfsmethode die einen ueberlauf erzeugt
+	 * @param neueId
+	 * @return die neueId
+	 */
 	private int ueberlauf(int neueId){
 		if(neueId>39){ 
 		hatUeberlauf=true;
