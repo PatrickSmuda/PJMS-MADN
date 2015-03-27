@@ -121,7 +121,9 @@ public abstract class KI {
 	
 	
 	private boolean betreteSpielfeld(){
-     
+     if(spiel.getBewegungsWert()==6){
+    	 spiel.bewege();
+     }return true;
 	}
 	
 	private boolean schlageGegner(){
