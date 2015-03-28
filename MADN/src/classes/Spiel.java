@@ -163,10 +163,9 @@ public class Spiel implements iBediener {
 				if(figurAufEndfeld(60)) return false;
 			}return true;
 		default: return false;
-		}
-		
-		
+		}	
 	}
+	
 	
 	/**
 	 * Gibt den Spieler der am Zug ist zurueck

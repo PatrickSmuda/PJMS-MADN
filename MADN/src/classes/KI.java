@@ -14,6 +14,7 @@ public abstract class KI {
 	private Spieler spieler;
 	private Spiel spiel;
 	private boolean hatUeberlauf;
+	private Spielfigur sf;
 	/**
 	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
@@ -126,8 +127,19 @@ public abstract class KI {
      }return true;
 	}
 	
+	
+	//notiz: hier sollte man gucken wenn zB sf1 auf feld 17 steht und sf2 auf feld 15 
+	//sf2 wuerfelt eine 2, schlaegt sf1 
 	private boolean schlageGegner(){
 		
+		
+		
+		if(spieler.getFarbe().equals(spieler.getFarbe())){
+			if(sf.getPosition().equals(spiel.getBewegungsWert())){ // weiﬂ dass das falsch is
+				spiel.bewege();
+				
+			}
+		}
 	}
 	
 	private boolean laufEinfach(){ 
