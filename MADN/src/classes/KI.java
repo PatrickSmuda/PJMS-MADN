@@ -14,7 +14,7 @@ public abstract class KI {
 	private Spieler spieler;
 	private Spiel spiel;
 	private boolean hatUeberlauf;
-	private Spielfigur sf;
+//	private Spielfigur sf;
 	/**
 	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
@@ -122,9 +122,14 @@ public abstract class KI {
 	
 	
 	private boolean betreteSpielfeld(){
-     if(spiel.getBewegungsWert()==6){
-    	 spiel.bewege();
+		
+		if(spiel.getBewegungsWert()==6){
+		for(int i=0; i<4; i++){
+    	 if(spieler.getFigur(i).getPosition().getTyp()==FeldTyp.Startfeld){
+    	 spiel.bewege(i);
      }return true;
+	}
+	}
 	}
 	
 	
@@ -135,7 +140,7 @@ public abstract class KI {
 		
 		
 		if(spieler.getFarbe().equals(spieler.getFarbe())){
-			if(sf.getPosition().equals(spiel.getBewegungsWert())){ // weiß dass das falsch is
+			if(spieler.getFigur(0).getPosition().equals(spiel.getBewegungsWert())){ // weiß dass das falsch is
 				spiel.bewege();
 				
 			}
