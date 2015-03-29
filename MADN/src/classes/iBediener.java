@@ -11,7 +11,7 @@ public interface iBediener {
 	
 	public void bewege(int id);
 	
-	public void spielerHinzufuegen(String name);
+	public void spielerHinzufuegen(String name, FarbEnum farbe);
 	
 	public void beginneSpiel();
 	
