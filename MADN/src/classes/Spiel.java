@@ -25,6 +25,7 @@ public class Spiel implements iBediener {
 	private boolean hatGewuerfelt;
 	private Spieler gewinner;
 	private boolean spielHatBegonnen;
+	private boolean hatUeberlauf;
 	
 
 	/**
@@ -36,11 +37,12 @@ public class Spiel implements iBediener {
 		this.darfWuerfeln = true;
 		this.spielHatBegonnen = false;
 		this.spieler = new ArrayList<Spieler>();
+		this.hatUeberlauf = false;
 	}
 
 	/**
-	 * Fuegt dem Spiel einen Spieler hinzu.
-	 * @param spieler Der Spieler, der hinzugefuegt werden soll.
+	 * Fügt dem Spiel einen Spieler hinzu.
+	 * @param spieler Der Spieler, der hinzugefügt werden soll.
 	 */
 	public void spielerHinzufuegen(Spieler spieler){
 		if(!spielHatBegonnen){
@@ -68,80 +70,137 @@ public class Spiel implements iBediener {
 	 * Methode zum bewegen der Spielfigur
 	 * @param sf Spielfigur die bewegt wird
 	 */
-	public void bewege(Spielfigur sf){
-		if(spielHatBegonnen){
-			if(sf == null || sf.getFarbe() != this.spielerAmZug.getFarbe()) throw new RuntimeException("Figur existiert nicht oder hat die falsche Farbe!");
-			if(hatGewuerfelt == false) throw new RuntimeException("Erst wuerfeln!");
+	public void bewege(int figurId){
+		if(this.spielHatBegonnen){
+			if(figurId > 4 || figurId < 0) throw new RuntimeException("Figur existiert nicht!");
 			
-			int neuePosition;
+			int neuePosition = this.spielerAmZug.getFigur(figurId).getPosition().getId() + this.bewegungsWert;
 			
-			if(sf.getPosition().getTyp() != FeldTyp.Startfeld){
-				//if(!kannLaufen(sf)) ungueltigerZug();
-				neuePosition = sf.getPosition().getId();
-				neuePosition += bewegungsWert;
-				neuePosition = ueberlauf(neuePosition);
-				if(userIstDumm(neuePosition, sf)) zugBeenden();
-				if(kannLaufen(neuePosition, sf))
-				spielbrett.getFeld(neuePosition).setFigur(sf);
-				sf.setPosition(spielbrett.getFeld(neuePosition));
-				hatGewuerfelt = false;
-				if(bewegungsWert != 6) zugBeenden();
-			} else if(sf.getPosition().getTyp() == FeldTyp.Startfeld && bewegungsWert == 6){
-				neuePosition = sf.getFreiPosition();
-				if(userIstDumm(neuePosition, sf)) zugBeenden();
-				spielbrett.getFeld(neuePosition).setFigur(sf);
-				sf.setPosition(spielbrett.getFeld(neuePosition));
-				hatGewuerfelt = false;
-			} else if(sf.getPosition().getTyp() == FeldTyp.Startfeld && bewegungsWert != 6){
-				hatGewuerfelt = false;
+			if(this.bewegungsWert == 6 && this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Startfeld){
+				neuePosition = this.spielerAmZug.getFigur(figurId).getFreiPosition();
+				if(userIstDumm(neuePosition, this.spielerAmZug.getFigur(figurId))){
+					zugBeenden();
+				}else{
+					this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
+					this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+				}
+			}
+			
+			else if(this.bewegungsWert != 6 && this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Startfeld){
 				zugBeenden();
 			}
-		}
-		
+			
+			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() != FeldTyp.Startfeld){
+				neuePosition = ueberlauf(this.spielerAmZug.getFigur(figurId).getPosition().getId() + this.bewegungsWert);
+				if(userIstDumm(neuePosition, this.spielerAmZug.getFigur(figurId))){
+					zugBeenden();
+				}else{
+					if(kannEndfeldErreichen(neuePosition)){
+						if(zugGueltigEndfeld(neuePosition)){
+							this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
+							this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+						}
+					}else{
+						this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
+						this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+					}
+					if(this.bewegungsWert != 6){
+						zugBeenden();
+					}
+				}
+			}
+			
+			hatGewuerfelt = false;
+			
+		}	
 	}
 	
 	private int ueberlauf(int neuePosition){
 		if(neuePosition > 39){
+			hatUeberlauf = true;
 			return (neuePosition-39);
 		}
+		hatUeberlauf = false;
 		return neuePosition;
 	}
 	
+	
+	private boolean zugGueltigEndfeld(int neuePosition){
+		switch(spielerAmZug.getFarbe())
+		{
+		case rot:
+			if(neuePosition < 4 && hatUeberlauf){
+				for(int i = 0; i < 4; i++){
+					if(figurAufEndfeld(68+i) && i < neuePosition){
+						return false;
+					}return true;
+				}
+			}
+			
+		case blau:
+			if(neuePosition < 14 && hatUeberlauf){
+				for(int i = 0; i < 4; i++){
+					if(figurAufEndfeld(56+i) && i < neuePosition-9){
+						return false;
+					}return true;
+				}
+			}
+			
+		case gruen:
+			if(neuePosition < 24 && hatUeberlauf){
+				for(int i = 0; i < 4; i++){
+					if(figurAufEndfeld(64+i) && i < neuePosition-19){
+						return false;
+					}return true;
+				}
+			}
+			
+		case gelb:
+			if(neuePosition < 34 && hatUeberlauf){
+				for(int i = 0; i < 4; i++){
+					if(figurAufEndfeld(60+i) && i < neuePosition-29){
+						return false;
+					}return true;
+				}
+			}
+			
+		default: return false;
+			
+		}
+		
+
+	}
+	
+	
+	private boolean kannEndfeldErreichen(int neuePosition){
+		switch(spielerAmZug.getFarbe())
+		{
+		case rot: 	if(neuePosition>=0&&hatUeberlauf) return true; return false;
+		case blau:	if(neuePosition>9&&hatUeberlauf) return true; return false;
+		case gruen:	if(neuePosition>19&&hatUeberlauf) return true; return false;
+		case gelb:	if(neuePosition>29&&hatUeberlauf) return true; return false;
+		default: return false;
+		}
+		}
+	
+	
 	/**
-	 * Die Methode wird ausgefuehrt, wenn ein Zug ungueltig ist.
+	 * Die Methode wird ausgeführt, wenn ein Zug ungültig ist.
 	 */
 	private void ungueltigerZug(){
 		zugBeenden();
 	}
 	
 	private boolean figurAufEndfeld(int id){
-		for(int i = 0; i < 3; i++){
-			if(spielbrett.getFeld(id+i).getFigur() != null) return true;
-		}
+		if(spielbrett.getFeld(id).getFigur() != null) 
+			return true;
 		return false;
 	}
-	
-	public int getBewegungsWert(){
-		if(hatGewuerfelt){
-			return this.bewegungsWert;
-		}else throw new RuntimeException ("Hat noch nicht nicht gewürfelt.");
-	}
-	
-	
-	
-	public boolean figurAufFeld(int id){
-		if(id<0 || id>72){ 
-			throw new RuntimeException ("Feld existiert nicht.");
-		}
-		if(spielbrett.getFeld(id).getFigur()!=null) return true;
-		return false;
-	}
-	
 	
 	/**
-	 * Ueberprueft ob eine Spielfigur laufen darf.
-	 * @param sf Die zu ueberprüfende Spielfigur.
-	 * @return boolean Gibt einen boolschen Wert zurueck.
+	 * Überprüft ob eine Spielfigur laufen darf.
+	 * @param sf Die zu überprüfende Spielfigur.
+	 * @return boolean Gibt einen boolschen Wert zurück.
 	 */
 	private boolean kannLaufen(int neuePosition, Spielfigur sf){
 		switch(sf.getFarbe())
@@ -149,30 +208,35 @@ public class Spiel implements iBediener {
 		case rot:
 			if(neuePosition > 1){
 				if(figurAufEndfeld(68)) return false;
+				return false;
 			}return true;
 		case blau:
 			if(neuePosition > 11){
 				if(figurAufEndfeld(56)) return false;
+				return false;
 			}return true;
 		case gruen:
 			if(neuePosition > 21){
 				if(figurAufEndfeld(64)) return false;
+				return false;
 			}return true;
 		case gelb:
 			if(neuePosition > 31){
 				if(figurAufEndfeld(60)) return false;
+				return false;
 			}return true;
 		default: return false;
-		}	
+		}
+		
+		
 	}
 	
-	
 	/**
-	 * Gibt den Spieler der am Zug ist zurueck
+	 * Gibt den Spieler der am Zug ist zurück
 	 * @return spielerAmZug
 	 */
-	public String getSpielerAmZug(){
-		return this.spielerAmZug.getName();
+	public Spieler getSpielerAmZug(){
+		return this.spielerAmZug;
 	}
 	
 	
@@ -180,7 +244,7 @@ public class Spiel implements iBediener {
 	 * Wird aufgerufen, wenn der User versucht seine eigene Figur zu schlagen.
 	 * @param neuePosition Die neue Position der Figur.
 	 * @param sf Die Spielfigur 
-	 * @return boolean Boolscher Rueckgabewert
+	 * @return boolean Boolscher Rückgabewert
 	 */ 
 	private boolean userIstDumm(int neuePosition, Spielfigur sf){
 		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) return true;
@@ -188,9 +252,9 @@ public class Spiel implements iBediener {
 	}
 
 	/**
-	 * Ueberprueft ob ein Spieler eine freie Figur hat
-	 * @param spieler Der zu ueberpruefende Spieler
-	 * @return Gibt einen boolschen wert zurueck, ob der Spieler eine freie Figur hat.
+	 * Überprüft ob ein Spieler eine freie Figur hat
+	 * @param spieler Der zu überprüfende Spieler
+	 * @return Gibt einen boolschen wert zurück, ob der Spieler eine freie Figur hat.
 	 */
 	private boolean hatFreieFigur(Spieler spieler){
 		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
@@ -201,7 +265,7 @@ public class Spiel implements iBediener {
 	}
 
 	/**
-	 * Setzt eine Spielfigur auf die Startposition zurueck.
+	 * Setzt eine Spielfigur auf die Startposition zurück.
 	 * @param figur Die Spielfigur
 	 */
 	private void aufStartPositionSetzen(Spielfigur figur){
@@ -214,10 +278,8 @@ public class Spiel implements iBediener {
 		}
 	}
 
-	
-	
 	/**
-	 * Die Methode wuerfelt.
+	 * Die Methode würfelt.
 	 */
 	public void wuerfeln(){
 		if(spielHatBegonnen){
@@ -232,7 +294,7 @@ public class Spiel implements iBediener {
 	}
 
 	/**
-	 * Gibt zurueck, welcher Spieler gewonnen hat.
+	 * Gibt zurück, welcher Spieler gewonnen hat.
 	 * @param gewinner Der Spieler der gewonnen hat.
 	 */
 	private void spielGewonnen(Spieler gewinner){
@@ -253,18 +315,18 @@ public class Spiel implements iBediener {
 			spielGewonnen(spielerAmZug);
 			return;
 		}
-		for(int i =0; i< spieler.size(); i++){
-			if(spieler.get(i) == spielerAmZug){
-				if(i == 3){
-					spielerAmZug = spieler.get(0);
-					darfWuerfeln = true;
-					break;
-				}else{
-					spielerAmZug = spieler.get(i+1);
-					darfWuerfeln = true;
-					break;
-				}
+		for(int i = 0; i< spieler.size(); i++){
+			if(i+1 > spieler.size()){
+				spielerAmZug = spieler.get(i-spieler.size());
+				darfWuerfeln = true;
+				break;
+			}else{
+				spielerAmZug = spieler.get(i+1);
+				darfWuerfeln = true;
+				break;
 			}
+			
+			
 		}
 	}
 
