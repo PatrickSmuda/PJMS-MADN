@@ -25,7 +25,9 @@ public class SpielTest {
 			System.out.println(p.getSpielerAmZug());
 			p.getSpielerAmZug();
 			p.wuerfeln();
-			p.bewege(1);		
+			for (int j = 0; j < 3; j++) {
+				p.bewege(j);	
+			}	
 		}
 		
 		
