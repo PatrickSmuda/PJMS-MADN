@@ -122,7 +122,7 @@ public class Spiel implements iBediener {
 	private int ueberlauf(int neuePosition){
 		if(neuePosition > 39){
 			hatUeberlauf = true;
-			return (neuePosition-39);
+			return (neuePosition-40);
 		}
 		hatUeberlauf = false;
 		return neuePosition;
