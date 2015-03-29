@@ -17,4 +17,8 @@ public interface iBediener {
 	
 	public String getSpielerAmZug();
 	
+	public int getBewegungsWert();
+	
+	public boolean figurAufFeld(int id);
+	
 	}

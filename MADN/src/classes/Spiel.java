@@ -39,8 +39,8 @@ public class Spiel implements iBediener {
 	}
 
 	/**
-	 * Fügt dem Spiel einen Spieler hinzu.
-	 * @param spieler Der Spieler, der hinzugefügt werden soll.
+	 * Fuegt dem Spiel einen Spieler hinzu.
+	 * @param spieler Der Spieler, der hinzugefuegt werden soll.
 	 */
 	public void spielerHinzufuegen(Spieler spieler){
 		if(!spielHatBegonnen){
@@ -116,7 +116,7 @@ public class Spiel implements iBediener {
 	}
 	
 	/**
-	 * Die Methode wird ausgeführt, wenn ein Zug ungültig ist.
+	 * Die Methode wird ausgefuehrt, wenn ein Zug ungueltig ist.
 	 */
 	private void ungueltigerZug(){
 		zugBeenden();
@@ -129,10 +129,27 @@ public class Spiel implements iBediener {
 		return false;
 	}
 	
+	public int getBewegungsWert(){
+		if(hatGewuerfelt){
+			return this.bewegungsWert;
+		}else throw new RuntimeException ("Hat noch nicht nicht gewürfelt.");
+	}
+	
+	
+	
+	public boolean figurAufFeld(int id){
+		if(id<0 || id>72){ 
+			throw new RuntimeException ("Feld existiert nicht.");
+		}
+		if(spielbrett.getFeld(id).getFigur()!=null) return true;
+		return false;
+	}
+	
+	
 	/**
-	 * Überprüft ob eine Spielfigur laufen darf.
-	 * @param sf Die zu überprüfende Spielfigur.
-	 * @return boolean Gibt einen boolschen Wert zurück.
+	 * Ueberprueft ob eine Spielfigur laufen darf.
+	 * @param sf Die zu ueberprüfende Spielfigur.
+	 * @return boolean Gibt einen boolschen Wert zurueck.
 	 */
 	private boolean kannLaufen(int neuePosition, Spielfigur sf){
 		switch(sf.getFarbe())
@@ -158,13 +175,12 @@ public class Spiel implements iBediener {
 				return false;
 			}return true;
 		default: return false;
-		}
-		
-		
+		}	
 	}
 	
+	
 	/**
-	 * Gibt den Spieler der am Zug ist zurück
+	 * Gibt den Spieler der am Zug ist zurueck
 	 * @return spielerAmZug
 	 */
 	public Spieler getSpielerAmZug(){
@@ -176,7 +192,7 @@ public class Spiel implements iBediener {
 	 * Wird aufgerufen, wenn der User versucht seine eigene Figur zu schlagen.
 	 * @param neuePosition Die neue Position der Figur.
 	 * @param sf Die Spielfigur 
-	 * @return boolean Boolscher Rückgabewert
+	 * @return boolean Boolscher Rueckgabewert
 	 */ 
 	private boolean userIstDumm(int neuePosition, Spielfigur sf){
 		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) return true;
@@ -184,9 +200,9 @@ public class Spiel implements iBediener {
 	}
 
 	/**
-	 * Überprüft ob ein Spieler eine freie Figur hat
-	 * @param spieler Der zu überprüfende Spieler
-	 * @return Gibt einen boolschen wert zurück, ob der Spieler eine freie Figur hat.
+	 * Ueberprueft ob ein Spieler eine freie Figur hat
+	 * @param spieler Der zu ueberpruefende Spieler
+	 * @return Gibt einen boolschen wert zurueck, ob der Spieler eine freie Figur hat.
 	 */
 	private boolean hatFreieFigur(Spieler spieler){
 		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
@@ -197,7 +213,7 @@ public class Spiel implements iBediener {
 	}
 
 	/**
-	 * Setzt eine Spielfigur auf die Startposition zurück.
+	 * Setzt eine Spielfigur auf die Startposition zurueck.
 	 * @param figur Die Spielfigur
 	 */
 	private void aufStartPositionSetzen(Spielfigur figur){
@@ -210,8 +226,10 @@ public class Spiel implements iBediener {
 		}
 	}
 
+	
+	
 	/**
-	 * Die Methode würfelt.
+	 * Die Methode wuerfelt.
 	 */
 	public void wuerfeln(){
 		if(spielHatBegonnen){
@@ -226,7 +244,7 @@ public class Spiel implements iBediener {
 	}
 
 	/**
-	 * Gibt zurück, welcher Spieler gewonnen hat.
+	 * Gibt zurueck, welcher Spieler gewonnen hat.
 	 * @param gewinner Der Spieler der gewonnen hat.
 	 */
 	private void spielGewonnen(Spieler gewinner){
