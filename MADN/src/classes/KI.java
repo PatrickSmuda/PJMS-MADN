@@ -14,7 +14,7 @@ public abstract class KI {
 	private Spieler spieler;
 	private Spiel spiel;
 	private boolean hatUeberlauf;
-	private Spielfigur sf;
+//	private Spielfigur sf;
 	/**
 	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
@@ -121,34 +121,49 @@ public abstract class KI {
 	}
 	
 	
-	private boolean betreteSpielfeld(){
-     if(spiel.getBewegungsWert()==6){
-    	 spiel.bewege();
-     }return true;
+	private void betreteSpielfeld(){
+		
+		if(spiel.getBewegungsWert()==6){
+		for(int i=0; i<4; i++){
+    	 if(spieler.getFigur(i).getPosition().getTyp()==FeldTyp.Startfeld){
+    	 spiel.bewege(i);
+    	 break;
+     }
+	}
+	}
 	}
 	
 	
-	//notiz: hier sollte man gucken wenn zB sf1 auf feld 17 steht und sf2 auf feld 15 
-	//sf2 wuerfelt eine 2, schlaegt sf1 
-	private boolean schlageGegner(){
+	private void schlageGegner(){
 		
-		
-		
-		if(spieler.getFarbe().equals(spieler.getFarbe())){
-			if(sf.getPosition().equals(spiel.getBewegungsWert())){ // weiß dass das falsch is
-				spiel.bewege();
-				
+		for(int i=0; i<4; i++){
+			if(spiel.figurAufFeld(ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId()))){
+				for(int j=0; j<4; i++){
+					if(spieler.getFigur(j).getPosition().getId()==ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId())){
+						
+					}else{
+						spiel.bewege(i); break;
+					}
+				}
 			}
 		}
 	}
 	
-	private boolean laufEinfach(){ 
+	private void laufEinfach(){ 
 		
+		int groessteId=spieler.getFigur(0).getPosition().getId();
+		int figurId=0; // Figur mit der größten ID
+		
+		for(int i=1; i<4; i++){ 
+			if(groessteId<spieler.getFigur(i).getPosition().getId()){
+				groessteId=spieler.getFigur(i).getPosition().getId();
+				figurId=i;
+			}
+		}
+		spiel.bewege(figurId);
 	}
 	
-	public void ausfuehren(){ 
-		
-	}
+	
 	
 	public abstract void kalkuliereSpielzug();
 
