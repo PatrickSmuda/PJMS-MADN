@@ -48,13 +48,37 @@ public class Spiel implements iBediener {
 	 * Fügt dem Spiel einen Spieler hinzu.
 	 * @param spieler Der Spieler, der hinzugefügt werden soll.
 	 */
-	public void spielerHinzufuegen(Spieler spieler){
+public void spielerHinzufuegen(String name, FarbEnum farbe){
+		
+		boolean rotvorhanden = false;
+		boolean blauvorhanden = false;
+		boolean gelbvorhanden = false;
+		boolean gruenvorhanden = false;
+		
 		if(!spielHatBegonnen){
-			if(spieler == null) 
+			if(spieler == null){
 				throw new RuntimeException("Spieler existiert nicht!");
-			for(int i = 0; i < this.spieler.size(); i++){
-				if(this.spieler.get(i).getFarbe() == spieler.getFarbe()) throw new RuntimeException("Der Spieler mit dieser Farbe nimmt bereits am Spiel teil!");
 			}
+			if (rotvorhanden == true || blauvorhanden == true || gelbvorhanden == true || gruenvorhanden == true) {
+				throw new RuntimeException("Farbe bereits belegt");
+			}
+			
+			switch (farbe) {
+			case rot:
+				rotvorhanden = true;
+				break;
+			case blau:
+				rotvorhanden = true;
+				break;
+			case gelb:
+				rotvorhanden = true;
+				break;
+			case gruen:
+				rotvorhanden = true;
+				break;				
+			}
+			
+			Spieler spieler = new Spieler(name, farbe, null, spielbrett);
 			this.spieler.add(spieler);
 		}
 		
