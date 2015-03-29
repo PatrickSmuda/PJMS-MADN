@@ -11,8 +11,8 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.blau, null, sb));
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.blau, null, sb));
+			s.spielerHinzufuegen("a", FarbEnum.blau);
+			s.spielerHinzufuegen("a", FarbEnum.blau);
 		}catch(RuntimeException e){
 			return;
 		}
@@ -24,7 +24,7 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen(null);
+			s.spielerHinzufuegen(null, null);
 		}catch(RuntimeException e){
 			return;
 		}
@@ -36,7 +36,7 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.blau, null, sb));
+			s.spielerHinzufuegen("a", FarbEnum.blau);
 			s.beginneSpiel();
 		}catch(RuntimeException e){
 			return;
@@ -49,11 +49,11 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.blau, null, sb));
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.gruen, null, sb));
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.rot, null, sb));
+			s.spielerHinzufuegen("a", FarbEnum.blau);
+			s.spielerHinzufuegen("a", FarbEnum.gruen);
+			s.spielerHinzufuegen("a", FarbEnum.rot);
 			s.beginneSpiel();
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.gelb, null, sb));
+			s.spielerHinzufuegen("a", FarbEnum.gelb);
 		}catch(RuntimeException e){
 			return;
 		}
@@ -65,9 +65,9 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.blau, null, sb));
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.gruen, null, sb));
-			s.spielerHinzufuegen(new Spieler("a", FarbEnum.rot, null, sb));
+			s.spielerHinzufuegen("a", FarbEnum.blau);
+			s.spielerHinzufuegen("a", FarbEnum.gruen);
+			s.spielerHinzufuegen("a", FarbEnum.rot);
 			s.beginneSpiel();
 			s.wuerfeln();
 			s.wuerfeln();
