@@ -26,7 +26,7 @@ public class Spiel implements iBediener {
 	private Spieler gewinner;
 	private boolean spielHatBegonnen;
 	private boolean hatUeberlauf;
-	
+	private int count=1;
 
 	/**
 	 * Der Konstruktor für die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
@@ -50,34 +50,10 @@ public class Spiel implements iBediener {
 	 */
 public void spielerHinzufuegen(String name, FarbEnum farbe){
 		
-		boolean rotvorhanden = false;
-		boolean blauvorhanden = false;
-		boolean gelbvorhanden = false;
-		boolean gruenvorhanden = false;
-		
 		if(!spielHatBegonnen){
 			if(spieler == null){
 				throw new RuntimeException("Spieler existiert nicht!");
 			}
-			if (rotvorhanden == true || blauvorhanden == true || gelbvorhanden == true || gruenvorhanden == true) {
-				throw new RuntimeException("Farbe bereits belegt");
-			}
-			
-			switch (farbe) {
-			case rot:
-				rotvorhanden = true;
-				break;
-			case blau:
-				rotvorhanden = true;
-				break;
-			case gelb:
-				rotvorhanden = true;
-				break;
-			case gruen:
-				rotvorhanden = true;
-				break;				
-			}
-			
 			Spieler spieler = new Spieler(name, farbe, null, spielbrett);
 			this.spieler.add(spieler);
 		}
@@ -112,9 +88,8 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 					this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
 					this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
 				}
-			}
-			
-			else if(this.bewegungsWert != 6 && this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Startfeld){
+			}else 
+				if(this.bewegungsWert != 6 && this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Startfeld){
 				zugBeenden();
 			}
 			
@@ -344,13 +319,15 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 			return;
 		}
 		for(int i = 0; i< spieler.size(); i++){
-			if(i+1 > spieler.size()){
-				spielerAmZug = spieler.get(i-spieler.size());
+			if(count == spieler.size()){
+				spielerAmZug = spieler.get(count-spieler.size());
 				darfWuerfeln = true;
+				count = 1;
 				break;
 			}else{
-				spielerAmZug = spieler.get(i+1);
+				spielerAmZug = spieler.get(count);
 				darfWuerfeln = true;
+				count = count+1;
 				break;
 			}
 			

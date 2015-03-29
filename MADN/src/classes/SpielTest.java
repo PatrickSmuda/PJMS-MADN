@@ -21,12 +21,19 @@ public class SpielTest {
 		
 		p.beginneSpiel();
 		
-		for (int i = 0; i < 40; i++) {
-			
-		p.wuerfeln();
+		for (int i = 0; i < 20; i++) {
+			System.out.println(p.getSpielerAmZug());
+			p.getSpielerAmZug();
+			p.wuerfeln();
+			p.bewege(1);		
+		}
 		
 		
-//			Funktioniert mit den neuen Änderungen nichtmehr
+		
+//		Funktioniert mit den neuen Änderungen nichtmehr		
+//		for (int i = 0; i < 40; i++) {
+//		p.wuerfeln();
+//
 //		switch (p.getSpielerAmZug()) {
 //		case rot:
 //			System.out.println("Alte Position von " + p.getSpielerAmZug().getFarbe() + ": " + s1.getFigur(1).getPosition().getId());
@@ -52,6 +59,6 @@ public class SpielTest {
 //			System.out.println("Neue Position: " + s4.getFigur(1).getPosition().getId());
 //			break;
 //		}
-		}
 	}
 }
+
