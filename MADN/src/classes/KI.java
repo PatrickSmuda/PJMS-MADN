@@ -134,24 +134,36 @@ public abstract class KI {
 	}
 	
 	
-	private boolean schlageGegner(){
+	private void schlageGegner(){
 		
 		for(int i=0; i<4; i++){
-			if(spiel.get){
-				
+			if(spiel.figurAufFeld(ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId()))){
+				for(int j=0; j<4; i++){
+					if(spieler.getFigur(j).getPosition().getId()==ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId())){
+						
+					}else{
+						spiel.bewege(i); break;
+					}
+				}
 			}
 		}
-		
-		
 	}
 	
-	private boolean laufEinfach(){ 
+	private void laufEinfach(){ 
 		
+		int groessteId=spieler.getFigur(0).getPosition().getId();
+		int figurId=0; // Figur mit der größten ID
+		
+		for(int i=1; i<4; i++){ 
+			if(groessteId<spieler.getFigur(i).getPosition().getId()){
+				groessteId=spieler.getFigur(i).getPosition().getId();
+				figurId=i;
+			}
+		}
+		spiel.bewege(figurId);
 	}
 	
-	public void ausfuehren(){ 
-		
-	}
+	
 	
 	public abstract void kalkuliereSpielzug();
 
