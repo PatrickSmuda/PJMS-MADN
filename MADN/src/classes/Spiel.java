@@ -76,12 +76,20 @@ public class Spiel implements iBediener {
 			int neuePosition;
 			
 			if(sf.getPosition().getTyp() != FeldTyp.Startfeld){
-				//if(!kannLaufen(sf)) ungueltigerZug();
 				neuePosition = sf.getPosition().getId();
-				neuePosition += bewegungsWert;
+				neuePosition = neuePosition + bewegungsWert;
 				neuePosition = ueberlauf(neuePosition);
-				if(userIstDumm(neuePosition, sf)) zugBeenden();
-				if(kannLaufen(neuePosition, sf))
+				if(userIstDumm(neuePosition, sf)){
+					zugBeenden();
+					hatGewuerfelt = false;
+					return;
+				}
+				if(!kannLaufen(neuePosition, sf)){
+					zugBeenden();
+					hatGewuerfelt = false;
+					return;
+				}
+					
 				spielbrett.getFeld(neuePosition).setFigur(sf);
 				sf.setPosition(spielbrett.getFeld(neuePosition));
 				hatGewuerfelt = false;
@@ -132,18 +140,22 @@ public class Spiel implements iBediener {
 		case rot:
 			if(neuePosition > 1){
 				if(figurAufEndfeld(68)) return false;
+				return false;
 			}return true;
 		case blau:
 			if(neuePosition > 11){
 				if(figurAufEndfeld(56)) return false;
+				return false;
 			}return true;
 		case gruen:
 			if(neuePosition > 21){
 				if(figurAufEndfeld(64)) return false;
+				return false;
 			}return true;
 		case gelb:
 			if(neuePosition > 31){
 				if(figurAufEndfeld(60)) return false;
+				return false;
 			}return true;
 		default: return false;
 		}
@@ -155,8 +167,8 @@ public class Spiel implements iBediener {
 	 * Gibt den Spieler der am Zug ist zurück
 	 * @return spielerAmZug
 	 */
-	public String getSpielerAmZug(){
-		return this.spielerAmZug.getName();
+	public Spieler getSpielerAmZug(){
+		return this.spielerAmZug;
 	}
 	
 	
