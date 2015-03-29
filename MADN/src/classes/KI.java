@@ -121,30 +121,28 @@ public abstract class KI {
 	}
 	
 	
-	private boolean betreteSpielfeld(){
+	private void betreteSpielfeld(){
 		
 		if(spiel.getBewegungsWert()==6){
 		for(int i=0; i<4; i++){
     	 if(spieler.getFigur(i).getPosition().getTyp()==FeldTyp.Startfeld){
     	 spiel.bewege(i);
-     }return true;
+    	 break;
+     }
 	}
 	}
 	}
 	
 	
-	//notiz: hier sollte man gucken wenn zB sf1 auf feld 17 steht und sf2 auf feld 15 
-	//sf2 wuerfelt eine 2, schlaegt sf1 
 	private boolean schlageGegner(){
 		
-		
-		
-		if(spieler.getFarbe().equals(spieler.getFarbe())){
-			if(spieler.getFigur(0).getPosition().equals(spiel.getBewegungsWert())){ // weiß dass das falsch is
-				spiel.bewege();
+		for(int i=0; i<4; i++){
+			if(spiel.get){
 				
 			}
 		}
+		
+		
 	}
 	
 	private boolean laufEinfach(){ 
