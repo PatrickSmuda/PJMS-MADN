@@ -40,6 +40,10 @@ public class Spiel implements iBediener {
 		this.hatUeberlauf = false;
 	}
 
+	public int getBewegungsWert(){
+		return this.bewegungsWert;
+	}
+	
 	/**
 	 * Fügt dem Spiel einen Spieler hinzu.
 	 * @param spieler Der Spieler, der hinzugefügt werden soll.
@@ -131,7 +135,7 @@ public class Spiel implements iBediener {
 		case rot:
 			if(neuePosition < 4 && hatUeberlauf){
 				for(int i = 0; i < 4; i++){
-					if(figurAufEndfeld(68+i) && i < neuePosition){
+					if(figurAufFeld(68+i) && i < neuePosition){
 						return false;
 					}return true;
 				}
@@ -140,7 +144,7 @@ public class Spiel implements iBediener {
 		case blau:
 			if(neuePosition < 14 && hatUeberlauf){
 				for(int i = 0; i < 4; i++){
-					if(figurAufEndfeld(56+i) && i < neuePosition-9){
+					if(figurAufFeld(56+i) && i < neuePosition-9){
 						return false;
 					}return true;
 				}
@@ -149,7 +153,7 @@ public class Spiel implements iBediener {
 		case gruen:
 			if(neuePosition < 24 && hatUeberlauf){
 				for(int i = 0; i < 4; i++){
-					if(figurAufEndfeld(64+i) && i < neuePosition-19){
+					if(figurAufFeld(64+i) && i < neuePosition-19){
 						return false;
 					}return true;
 				}
@@ -158,7 +162,7 @@ public class Spiel implements iBediener {
 		case gelb:
 			if(neuePosition < 34 && hatUeberlauf){
 				for(int i = 0; i < 4; i++){
-					if(figurAufEndfeld(60+i) && i < neuePosition-29){
+					if(figurAufFeld(60+i) && i < neuePosition-29){
 						return false;
 					}return true;
 				}
@@ -191,7 +195,7 @@ public class Spiel implements iBediener {
 		zugBeenden();
 	}
 	
-	private boolean figurAufEndfeld(int id){
+	public boolean figurAufFeld(int id){
 		if(spielbrett.getFeld(id).getFigur() != null) 
 			return true;
 		return false;
@@ -207,22 +211,22 @@ public class Spiel implements iBediener {
 		{
 		case rot:
 			if(neuePosition > 1){
-				if(figurAufEndfeld(68)) return false;
+				if(figurAufFeld(68)) return false;
 				return false;
 			}return true;
 		case blau:
 			if(neuePosition > 11){
-				if(figurAufEndfeld(56)) return false;
+				if(figurAufFeld(56)) return false;
 				return false;
 			}return true;
 		case gruen:
 			if(neuePosition > 21){
-				if(figurAufEndfeld(64)) return false;
+				if(figurAufFeld(64)) return false;
 				return false;
 			}return true;
 		case gelb:
 			if(neuePosition > 31){
-				if(figurAufEndfeld(60)) return false;
+				if(figurAufFeld(60)) return false;
 				return false;
 			}return true;
 		default: return false;
@@ -235,8 +239,8 @@ public class Spiel implements iBediener {
 	 * Gibt den Spieler der am Zug ist zurück
 	 * @return spielerAmZug
 	 */
-	public Spieler getSpielerAmZug(){
-		return this.spielerAmZug;
+	public String getSpielerAmZug(){
+		return this.spielerAmZug.getName();
 	}
 	
 	
