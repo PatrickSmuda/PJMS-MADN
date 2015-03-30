@@ -14,10 +14,10 @@ public class SpielTest {
 		Spiel s = new Spiel();
 		iBediener p = s;
 		
-		p.spielerHinzufuegen("hans", FarbEnum.rot);
-		p.spielerHinzufuegen("gretel", FarbEnum.blau);
-		p.spielerHinzufuegen("hanni", FarbEnum.gelb);
-		p.spielerHinzufuegen("nanni", FarbEnum.gruen);
+		p.spielerHinzufuegen("alpha", FarbEnum.rot);
+		p.spielerHinzufuegen("beta", FarbEnum.blau);
+		p.spielerHinzufuegen("gamma", FarbEnum.gelb);
+		p.spielerHinzufuegen("omega", FarbEnum.gruen);
 		
 		p.beginneSpiel();
 		
@@ -25,9 +25,7 @@ public class SpielTest {
 			System.out.print(p.getSpielerAmZug() + " würfelt eine ");
 			p.wuerfeln();
 			System.out.println(p.getBewegungsWert());
-			for (int j = 0; j < 3; j++) {
-				p.bewege(j);	
-			}	
+			p.bewege((int)((Math.random()*3)));	
 		}
 		
 		
