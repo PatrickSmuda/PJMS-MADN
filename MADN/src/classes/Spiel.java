@@ -241,7 +241,9 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 	public String getSpielerAmZug(){
 		return this.spielerAmZug.getName();
 	}
-	
+	public String getPosition(int n){
+		return this.spielerAmZug.getFigur(n).getPosition().toString();
+	}
 	
 	/**
 	 * Wird aufgerufen, wenn der User versucht seine eigene Figur zu schlagen.

@@ -21,4 +21,5 @@ public interface iBediener {
 	
 	public boolean figurAufFeld(int id);
 	
+	public String getPosition(int n);
 	}
