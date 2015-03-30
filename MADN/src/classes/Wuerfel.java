@@ -19,7 +19,6 @@ public class Wuerfel {
 	 */
 	public int werfen(){
 		int zahl = (int)((Math.random()*6)+1);
-		System.out.println("Würfel Zahl: "+ zahl);
 		return zahl;
 	}
 	

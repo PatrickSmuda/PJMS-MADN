@@ -22,9 +22,9 @@ public class SpielTest {
 		p.beginneSpiel();
 		
 		for (int i = 0; i < 20; i++) {
-			System.out.println(p.getSpielerAmZug());
-			p.getSpielerAmZug();
+			System.out.print(p.getSpielerAmZug() + " würfelt eine ");
 			p.wuerfeln();
+			System.out.println(p.getBewegungsWert());
 			for (int j = 0; j < 3; j++) {
 				p.bewege(j);	
 			}	
