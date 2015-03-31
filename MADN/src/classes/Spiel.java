@@ -101,7 +101,7 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 				zugBeenden();
 			}
 			
-			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() != FeldTyp.Startfeld){
+			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Normalfeld){
 				neuePosition = ueberlauf((this.spielerAmZug.getFigur(figurId).getPosition().getId() + this.bewegungsWert), figurId);
 				if(userIstDumm(neuePosition, this.spielerAmZug.getFigur(figurId))){
 					zugBeenden();
