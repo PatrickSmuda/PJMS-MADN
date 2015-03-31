@@ -45,7 +45,7 @@ public abstract class KI {
 	/**
 	 * Hilfsmethode fuer die geheAufEndfeld, vermeidet dass die Spielfiguren ueberspringen
 	 * 
-	 * @return neueId
+	 * @return boolean
 	 */
 	private boolean zugGueltigEndfeld(int neueId){
 		
@@ -94,7 +94,7 @@ public abstract class KI {
 	 * Methode um zu verhindern damit die Figur nicht ueber die Felder geht, ueber die sie nicht soll
 	 * 
 	 * @param neueId
-	 * @return neueId
+	 * @return boolean
 	 */
 	private boolean kannEndfeldErreichen(int neueId){
 		switch(spieler.getFarbe())
@@ -170,7 +170,9 @@ public abstract class KI {
 		spiel.bewege(figurId);
 	}
 	
-	
+	/**
+	 * Führt den eigentlichen Spielzeug der KI aus
+	 */
 	public abstract void kalkuliereSpielzug();
 
 }

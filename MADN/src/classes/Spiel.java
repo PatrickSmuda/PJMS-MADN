@@ -137,7 +137,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 			
 		}	
 	}
-	
+	/**
+	 * Die Methode beschreibt ob die Figuren die Grenze ueberschreiten
+	 * @param neuePosition
+	 * @return boolean
+	 */
 	private boolean grenzUeberschreitung(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -156,7 +160,12 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		default: throw new RuntimeException("Spieler hat keine Farbe!");
 		}
 	}
-	
+	/**
+	 * Die Methode beschreibt den Überlauf
+	 * @param neuePosition
+	 * @param figurId
+	 * @return neuePosition, figurId
+	 */
 	private int ueberlauf(int neuePosition, int figurId){
 		int hit = 0;
 		if(neuePosition > 39){
@@ -184,7 +193,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		
 		return neuePosition;
 	}
-	
+	/**
+	 * Die Methode weist die Endfelder zu
+	 * @param neuePosition
+	 * @return neue Position
+	 */
 	private int endfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -208,7 +221,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		}
 	}
 	
-	
+	/**
+	 * Diese Methode ueberprueft ob der Zug auf das Endfeld gueltig ist
+	 * @param neuePosition
+	 * @return boolean
+	 */
 	private boolean zugGueltigEndfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -254,7 +271,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		
 
 	}
-	
+	/**
+	 * Diese Methode ueberprueft ob der Spieler mit dem Zug das Endfeld erreichen kann
+	 * @param neuePosition
+	 * @return boolean
+	 */
 	
 	private boolean kannEndfeldErreichen(int neuePosition){
 		switch(spielerAmZug.getFarbe())
