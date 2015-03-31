@@ -14,10 +14,10 @@ public class SpielTest {
 		Spiel s = new Spiel();
 		iBediener p = s;
 		
-		p.spielerHinzufuegen("alpha", FarbEnum.rot);
-		p.spielerHinzufuegen("beta", FarbEnum.blau);
-		p.spielerHinzufuegen("gamma", FarbEnum.gelb);
-		p.spielerHinzufuegen("omega", FarbEnum.gruen);
+		p.spielerHinzufuegen("ROT", FarbEnum.rot);
+		p.spielerHinzufuegen("BLAU", FarbEnum.blau);
+		p.spielerHinzufuegen("GELB", FarbEnum.gelb);
+		p.spielerHinzufuegen("GRUEN", FarbEnum.gruen);
 		
 		p.beginneSpiel();
 		
