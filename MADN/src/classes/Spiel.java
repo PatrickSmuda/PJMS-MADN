@@ -28,6 +28,7 @@ public class Spiel implements iBediener {
 	private boolean hatUeberlauf;
 	private int count=1;
 	private ArrayList<Spielfigur> figurenUeberlauf;
+	
 
 	/**
 	 * Der Konstruktor für die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
@@ -137,7 +138,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 			
 		}	
 	}
-	
+	/**
+	 * Die Methode beschreibt ob die Figuren die Grenze ueberschreiten
+	 * @param neuePosition
+	 * @return boolean
+	 */
 	private boolean grenzUeberschreitung(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -156,7 +161,12 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		default: throw new RuntimeException("Spieler hat keine Farbe!");
 		}
 	}
-	
+	/**
+	 * Die Methode beschreibt den Überlauf
+	 * @param neuePosition
+	 * @param figurId
+	 * @return neuePosition, figurId
+	 */
 	private int ueberlauf(int neuePosition, int figurId){
 		int hit = 0;
 		if(neuePosition > 39){
@@ -184,7 +194,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		
 		return neuePosition;
 	}
-	
+	/**
+	 * Die Methode weist die Endfelder zu
+	 * @param neuePosition
+	 * @return neue Position
+	 */
 	private int endfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -208,7 +222,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		}
 	}
 	
-	
+	/**
+	 * Diese Methode ueberprueft ob der Zug auf das Endfeld gueltig ist
+	 * @param neuePosition
+	 * @return boolean
+	 */
 	private boolean zugGueltigEndfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -254,7 +272,11 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		
 
 	}
-	
+	/**
+	 * Diese Methode ueberprueft ob der Spieler mit dem Zug das Endfeld erreichen kann
+	 * @param neuePosition
+	 * @return boolean
+	 */
 	
 	private boolean kannEndfeldErreichen(int neuePosition){
 		switch(spielerAmZug.getFarbe())
@@ -388,8 +410,21 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 	 * @param gewinner Der Spieler der gewonnen hat.
 	 */
 	private void spielGewonnen(Spieler gewinner){
-		System.out.println("Der Gewinner ist: " + gewinner.getName());
+        if(gewinner!=null){ 
+		this.gewinner=gewinner;
+        }else throw new RuntimeException ("Gewinner existiert nicht!");
 	}
+	
+	/**
+	 * Hier wird der Gewinner zurückgegeben
+	 * @return String gewinner
+	 */
+	public String getGewinner(){
+		if(gewinner==null){
+			return null;
+		}else return gewinner.getName();
+	}
+	
 	
 	/**
 	 * Die Methode beendet einen Zug.

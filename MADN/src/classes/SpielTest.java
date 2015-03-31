@@ -21,11 +21,21 @@ public class SpielTest {
 		
 		p.beginneSpiel();
 		
+<<<<<<< HEAD
 		for (int i = 0; i < 20; i++) {
 			System.out.print(p.getSpielerAmZug() + " würfelt eine ");
+=======
+		for (int i = 0; i < 60; i++) {
+>>>>>>> branch 'master' of https://github.com/SebastianStumm/PJMS-MADN
 			p.wuerfeln();
+<<<<<<< HEAD
 			System.out.println(p.getBewegungsWert());
 			p.bewege((int)((Math.random()*3)));	
+=======
+			int x = (int)((Math.random()*4));
+			System.out.println(p.getSpielerAmZug() + " ist auf dem Feld " + p.getPosition(x) + " und würfelt eine " + p.getBewegungsWert());
+			p.bewege(x);	
+>>>>>>> branch 'master' of https://github.com/SebastianStumm/PJMS-MADN
 		}
 		
 		
