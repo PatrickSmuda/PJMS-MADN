@@ -11,7 +11,7 @@ public interface iBediener {
 	
 	public void bewege(int id);
 	
-	public void spielerHinzufuegen(String name, FarbEnum farbe);
+	public void spielerHinzufuegen(String name, int f);
 	
 	public void beginneSpiel();
 	
@@ -22,4 +22,7 @@ public interface iBediener {
 	public boolean figurAufFeld(int id);
 	
 	public String getPosition(int n);
+	
+	public String getGewinner();
+	
 	}

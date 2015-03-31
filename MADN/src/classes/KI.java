@@ -45,7 +45,7 @@ public abstract class KI {
 	/**
 	 * Hilfsmethode fuer die geheAufEndfeld, vermeidet dass die Spielfiguren ueberspringen
 	 * 
-	 * @return boolean
+	 * @return neueId
 	 */
 	private boolean zugGueltigEndfeld(int neueId){
 		
