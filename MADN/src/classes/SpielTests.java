@@ -83,7 +83,7 @@ public class SpielTests {
 		s.spielerHinzufuegen("Spieler 1", FarbEnum.gelb);
 		s.spielerHinzufuegen("Spieler 2", FarbEnum.gruen);
 		s.beginneSpiel();
-		for(int i = 0; i < 30; i++){
+		for(int i = 0; i < 40; i++){
 			System.out.print(s.getSpielerAmZug()+"\t\tPosition: "+s.getPositionFigur(0));
 			s.wuerfeln();
 			System.out.println("\t\tWuerfel: "+s.getBewegungsWert());
