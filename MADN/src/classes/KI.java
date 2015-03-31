@@ -31,7 +31,7 @@ public abstract class KI {
 	/**
 	 * Methode bewegt die Figur zum Endfeld
 	 * */
-	private void geheAufEndfeld(){
+	protected void geheAufEndfeld(){
 		int neueId;
 		for(int i=0; i<4; i++){
 		neueId = ueberlauf(spieler.getFigur(i).getPosition().getId() + spiel.getBewegungsWert());
@@ -47,7 +47,7 @@ public abstract class KI {
 	 * 
 	 * @return neueId
 	 */
-	private boolean zugGueltigEndfeld(int neueId){
+	protected boolean zugGueltigEndfeld(int neueId){
 		
 			switch(spieler.getFarbe())
 			{
@@ -96,7 +96,7 @@ public abstract class KI {
 	 * @param neueId
 	 * @return boolean
 	 */
-	private boolean kannEndfeldErreichen(int neueId){
+	protected boolean kannEndfeldErreichen(int neueId){
 		switch(spieler.getFarbe())
 		{
 		case rot: if(neueId>39) return true; return false;
@@ -112,7 +112,7 @@ public abstract class KI {
 	 * @param neueId
 	 * @return die neueId
 	 */
-	private int ueberlauf(int neueId){
+	protected int ueberlauf(int neueId){
 		if(neueId>39){ 
 		hatUeberlauf=true;
 		return	neueId-39;
@@ -123,7 +123,7 @@ public abstract class KI {
 	/**
 	 * Methode, die die Spielfiguren raus bewegt
 	 */
-	private void betreteSpielfeld(){
+	protected void betreteSpielfeld(){
 		
 		if(spiel.getBewegungsWert()==6){
 		for(int i=0; i<4; i++){
@@ -138,7 +138,7 @@ public abstract class KI {
 	/**
 	 *Die Methode schlägt die gegnerische Figur
 	 */
-	private void schlageGegner(){
+	protected void schlageGegner(){
 		
 		for(int i=0; i<4; i++){
 			if(spiel.figurAufFeld(ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId()))){
@@ -156,7 +156,7 @@ public abstract class KI {
 	/**
 	 * Die Methode die die Spielfiguren zum Laufen bringt
 	 */
-	private void laufEinfach(){ 
+	protected void laufEinfach(){ 
 		
 		int groessteId=spieler.getFigur(0).getPosition().getId();
 		int figurId=0; // Figur mit der größten ID
