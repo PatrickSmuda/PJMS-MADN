@@ -22,10 +22,10 @@ public class SpielTest {
 		p.beginneSpiel();
 		
 		for (int i = 0; i < 20; i++) {
-			System.out.print(p.getSpielerAmZug() + " würfelt eine ");
 			p.wuerfeln();
-			System.out.println(p.getBewegungsWert());
-			p.bewege((int)((Math.random()*3)));	
+			int x = 1;
+			System.out.println(p.getSpielerAmZug() + " ist auf dem Feld " + p.getPosition(x) + " und würfelt eine " + p.getBewegungsWert());
+			p.bewege(x);	
 		}
 		
 		

@@ -14,7 +14,7 @@ public abstract class KI {
 	private Spieler spieler;
 	private Spiel spiel;
 	private boolean hatUeberlauf;
-//	private Spielfigur sf;
+
 	/**
 	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
@@ -43,7 +43,7 @@ public abstract class KI {
 		} 
 	}
 	/**
-	 * Hilfsmethode fuer die geheAufEndfeld, vermeidet dass die Spielfigur ueberspringen
+	 * Hilfsmethode fuer die geheAufEndfeld, vermeidet dass die Spielfiguren ueberspringen
 	 * 
 	 * @return neueId
 	 */
@@ -92,7 +92,7 @@ public abstract class KI {
 	
 	/**
 	 * Methode um zu verhindern damit die Figur nicht ueber die Felder geht, ueber die sie nicht soll
-	 * (kommentar sollte man evtl aendern)
+	 * 
 	 * @param neueId
 	 * @return neueId
 	 */
@@ -120,7 +120,9 @@ public abstract class KI {
 		return neueId;
 	}
 	
-	
+	/**
+	 * Methode, die die Spielfiguren raus bewegt
+	 */
 	private void betreteSpielfeld(){
 		
 		if(spiel.getBewegungsWert()==6){
@@ -133,7 +135,9 @@ public abstract class KI {
 	}
 	}
 	
-	
+	/**
+	 *Die Methode schlägt die gegnerische Figur
+	 */
 	private void schlageGegner(){
 		
 		for(int i=0; i<4; i++){
@@ -149,6 +153,9 @@ public abstract class KI {
 		}
 	}
 	
+	/**
+	 * Die Methode die die Spielfiguren zum Laufen bringt
+	 */
 	private void laufEinfach(){ 
 		
 		int groessteId=spieler.getFigur(0).getPosition().getId();
@@ -162,7 +169,6 @@ public abstract class KI {
 		}
 		spiel.bewege(figurId);
 	}
-	
 	
 	
 	public abstract void kalkuliereSpielzug();
