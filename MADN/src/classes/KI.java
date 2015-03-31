@@ -11,14 +11,14 @@ public abstract class KI {
 	 * Attribute der Klasse KI
 	 */
 	
-	private Spieler spieler;
-	private Spiel spiel;
+	protected Spieler spieler;
+	protected iBediener spiel;
 	private boolean hatUeberlauf;
 
 	/**
 	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
-	public KI(Spieler spieler, Spiel spiel){
+	public KI(Spieler spieler, iBediener spiel){
 		if (spieler == null) throw new RuntimeException("Spieler muss vorhanden sein!");	
 		this.spieler = spieler;
 		
