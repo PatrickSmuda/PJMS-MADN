@@ -27,6 +27,7 @@ public class Spiel implements iBediener {
 	private boolean spielHatBegonnen;
 	private boolean hatUeberlauf;
 	private int count=1;
+	private ArrayList<Spielfigur> figurenUeberlauf;
 
 	/**
 	 * Der Konstruktor für die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
@@ -38,6 +39,7 @@ public class Spiel implements iBediener {
 		this.spielHatBegonnen = false;
 		this.spieler = new ArrayList<Spieler>();
 		this.hatUeberlauf = false;
+		this.figurenUeberlauf = new ArrayList<Spielfigur>();
 	}
 
 	public int getBewegungsWert(){
@@ -87,25 +89,43 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 				}else{
 					this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
 					this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+					
 				}
-			}else 
-				if(this.bewegungsWert != 6 && this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Startfeld){
+			}
+			
+			else if(this.bewegungsWert != 6 && this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Startfeld){
+				zugBeenden();
+			}
+			
+			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Endfeld){
 				zugBeenden();
 			}
 			
 			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() != FeldTyp.Startfeld){
-				neuePosition = ueberlauf(this.spielerAmZug.getFigur(figurId).getPosition().getId() + this.bewegungsWert);
+				neuePosition = ueberlauf((this.spielerAmZug.getFigur(figurId).getPosition().getId() + this.bewegungsWert), figurId);
 				if(userIstDumm(neuePosition, this.spielerAmZug.getFigur(figurId))){
 					zugBeenden();
 				}else{
 					if(kannEndfeldErreichen(neuePosition)){
 						if(zugGueltigEndfeld(neuePosition)){
-							this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
-							this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+							if(endfeld(neuePosition) == neuePosition){
+								zugBeenden();
+							}else{
+								this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(endfeld(neuePosition)));
+								this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+							}
+							
+							
 						}
 					}else{
-						this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
-						this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+						if(!grenzUeberschreitung(neuePosition)){
+							this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
+							this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+							
+						}else{
+							zugBeenden();
+						}
+						
 					}
 					if(this.bewegungsWert != 6){
 						zugBeenden();
@@ -118,13 +138,74 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 		}	
 	}
 	
-	private int ueberlauf(int neuePosition){
+	private boolean grenzUeberschreitung(int neuePosition){
+		switch(spielerAmZug.getFarbe())
+		{
+		case rot: 
+			if(neuePosition > 39) return true;
+			return false;
+		case blau: 
+			if(neuePosition > 9 && hatUeberlauf) return true;
+			return false;
+		case gruen: 
+			if(neuePosition > 19 && hatUeberlauf) return true;
+			return false;
+		case gelb: 
+			if(neuePosition > 29 && hatUeberlauf) return true;
+			return false;
+		default: throw new RuntimeException("Spieler hat keine Farbe!");
+		}
+	}
+	
+	private int ueberlauf(int neuePosition, int figurId){
+		int hit = 0;
 		if(neuePosition > 39){
+			for(int i = 0; i < figurenUeberlauf.size(); i++){
+				if(spielerAmZug.getFigur(figurId) == figurenUeberlauf.get(i) && spielerAmZug.getFigur(figurId).getPosition().getTyp() != FeldTyp.Endfeld){
+					throw new RuntimeException("Figur will 2 mal ueber 0 laufen!");
+				}
+			}
+			figurenUeberlauf.add(spielerAmZug.getFigur(figurId));
 			hatUeberlauf = true;
 			return (neuePosition-40);
 		}
-		hatUeberlauf = false;
+		
+		for(int i = 0; i < figurenUeberlauf.size(); i++){
+			if(spielerAmZug.getFigur(figurId) == figurenUeberlauf.get(i) && spielerAmZug.getFigur(figurId).getPosition().getTyp() != FeldTyp.Endfeld){
+				hit++;
+			}
+		}
+		
+		if(hit != 0){
+			hatUeberlauf = true;
+		}else{
+			hatUeberlauf = false;
+		}
+		
 		return neuePosition;
+	}
+	
+	private int endfeld(int neuePosition){
+		switch(spielerAmZug.getFarbe())
+		{
+		case rot: 
+			if(68+neuePosition-40 <= 71)
+				return (68+neuePosition-40);
+			return neuePosition;
+		case blau:
+			if(56+neuePosition-10 <= 59)
+				return (56+(neuePosition-10));
+			return neuePosition;
+		case gruen:
+			if(64+neuePosition-20 <= 67)
+				return (64+(neuePosition-20));
+			return neuePosition;
+		case gelb:
+			if(60+neuePosition-30 <= 63)
+				return (60+(neuePosition-30));
+			return neuePosition;
+		default: throw new RuntimeException("Fehler beim betreten des Endfeldes!");
+		}
 	}
 	
 	
@@ -265,6 +346,10 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 				spieler.getFigur(2).getPosition().getTyp() == FeldTyp.Startfeld &&
 				spieler.getFigur(3).getPosition().getTyp() == FeldTyp.Startfeld )return false;
 		return true;
+	}
+	
+	public int getPositionFigur(int figurId){
+		return this.spielerAmZug.getFigur(figurId).getPosition().getId();
 	}
 
 	/**
