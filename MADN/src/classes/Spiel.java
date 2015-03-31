@@ -28,6 +28,7 @@ public class Spiel implements iBediener {
 	private boolean hatUeberlauf;
 	private int count=1;
 	private ArrayList<Spielfigur> figurenUeberlauf;
+	
 
 	/**
 	 * Der Konstruktor für die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
@@ -409,8 +410,21 @@ public void spielerHinzufuegen(String name, FarbEnum farbe){
 	 * @param gewinner Der Spieler der gewonnen hat.
 	 */
 	private void spielGewonnen(Spieler gewinner){
-		System.out.println("Der Gewinner ist: " + gewinner.getName());
+        if(gewinner!=null){ 
+		this.gewinner=gewinner;
+        }else throw new RuntimeException ("Gewinner existiert nicht!");
 	}
+	
+	/**
+	 * Hier wird der Gewinner zurückgegeben
+	 * @return String gewinner
+	 */
+	public String getGewinner(){
+		if(gewinner==null){
+			return null;
+		}else return gewinner.getName();
+	}
+	
 	
 	/**
 	 * Die Methode beendet einen Zug.
