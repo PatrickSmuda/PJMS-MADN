@@ -21,9 +21,9 @@ public class SpielTest {
 		
 		p.beginneSpiel();
 		
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 60; i++) {
 			p.wuerfeln();
-			int x = 1;
+			int x = (int)((Math.random()*4));
 			System.out.println(p.getSpielerAmZug() + " ist auf dem Feld " + p.getPosition(x) + " und würfelt eine " + p.getBewegungsWert());
 			p.bewege(x);	
 		}
