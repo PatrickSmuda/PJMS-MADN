@@ -11,8 +11,8 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen("a", FarbEnum.blau);
-			s.spielerHinzufuegen("a", FarbEnum.blau);
+			s.spielerHinzufuegen("a", 1);
+			s.spielerHinzufuegen("a", 1);
 		}catch(RuntimeException e){
 			return;
 		}
@@ -24,7 +24,7 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen(null, null);
+			s.spielerHinzufuegen(null, 6);
 		}catch(RuntimeException e){
 			return;
 		}
@@ -36,7 +36,7 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen("a", FarbEnum.blau);
+			s.spielerHinzufuegen("a", 1);
 			s.beginneSpiel();
 		}catch(RuntimeException e){
 			return;
@@ -49,11 +49,11 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen("a", FarbEnum.blau);
-			s.spielerHinzufuegen("a", FarbEnum.gruen);
-			s.spielerHinzufuegen("a", FarbEnum.rot);
+			s.spielerHinzufuegen("a", 1);
+			s.spielerHinzufuegen("a", 2);
+			s.spielerHinzufuegen("a", 0);
 			s.beginneSpiel();
-			s.spielerHinzufuegen("a", FarbEnum.gelb);
+			s.spielerHinzufuegen("a", 3);
 		}catch(RuntimeException e){
 			return;
 		}
@@ -65,9 +65,9 @@ public class SpielTests {
 		Spiel s = new Spiel();
 		Spielbrett sb = new Spielbrett();
 		try{
-			s.spielerHinzufuegen("a", FarbEnum.blau);
-			s.spielerHinzufuegen("a", FarbEnum.gruen);
-			s.spielerHinzufuegen("a", FarbEnum.rot);
+			s.spielerHinzufuegen("a", 1);
+			s.spielerHinzufuegen("a", 2);
+			s.spielerHinzufuegen("a", 0);
 			s.beginneSpiel();
 			s.wuerfeln();
 			s.wuerfeln();
@@ -80,8 +80,8 @@ public class SpielTests {
 	@Test
 	public void kleinerTest(){
 		Spiel s = new Spiel();
-		s.spielerHinzufuegen("Spieler 1", FarbEnum.gelb);
-		s.spielerHinzufuegen("Spieler 2", FarbEnum.gruen);
+		s.spielerHinzufuegen("Spieler 1", 3);
+		s.spielerHinzufuegen("Spieler 2", 2);
 		s.beginneSpiel();
 		for(int i = 0; i < 40; i++){
 			System.out.print(s.getSpielerAmZug()+"\t\tPosition: "+s.getPositionFigur(0));

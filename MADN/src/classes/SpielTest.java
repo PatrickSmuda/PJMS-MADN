@@ -14,21 +14,21 @@ public class SpielTest {
 		Spiel s = new Spiel();
 		iBediener p = s;
 		
-		p.spielerHinzufuegen("ROT", FarbEnum.rot);
-		p.spielerHinzufuegen("BLAU", FarbEnum.blau);
-		p.spielerHinzufuegen("GELB", FarbEnum.gelb);
-		p.spielerHinzufuegen("GRUEN", FarbEnum.gruen);
+		p.spielerHinzufuegen("ROT", 0);
+		p.spielerHinzufuegen("BLAU", 1);
+		p.spielerHinzufuegen("GELB", 3);
+		p.spielerHinzufuegen("GRUEN", 2);
 		
 		p.beginneSpiel();
 		
 
 		
-		for (int i = 0; i < 60; i++) {
+		for (int i = 0; i < 100; i++) {
 			p.wuerfeln();
 			int x = (int)((Math.random()*4));
 			System.out.println(p.getSpielerAmZug() + " ist auf dem Feld " + p.getPosition(x) + " und würfelt eine " + p.getBewegungsWert());
 			p.bewege(x);	
-
+			
 		}
 		
 		
