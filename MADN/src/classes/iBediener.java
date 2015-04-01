@@ -11,7 +11,7 @@ public interface iBediener {
 	
 	public void bewege(int id);
 	
-	public void spielerHinzufuegen(String name, int f);
+	public void spielerHinzufuegen(String name, int f, int KI);
 	
 	public void beginneSpiel();
 	

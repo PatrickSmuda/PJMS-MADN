@@ -51,20 +51,28 @@ public class Spiel implements iBediener {
 	 * Fügt dem Spiel einen Spieler hinzu.
 	 * @param spieler Der Spieler, der hinzugefügt werden soll.
 	 */
-public void spielerHinzufuegen(String name, int f){
+public void spielerHinzufuegen(String name, int f, int KI){
 		
 		if(!spielHatBegonnen){
 			if(spieler == null){
 				throw new RuntimeException("Spieler existiert nicht!");
 			}
 			Spieler spieler;
-			switch(f)
+			FarbEnum farbe = null;
+			switch (f) {
+			case 0:
+				
+				break;
+
+			default:
+				break;
+			}
+			switch(KI)
 			{
-			case 0: spieler = new Spieler(name, FarbEnum.rot, null, spielbrett); break;
-			case 1: spieler = new Spieler(name, FarbEnum.blau, null, spielbrett); break;
-			case 2: spieler = new Spieler(name, FarbEnum.gruen, null, spielbrett); break;
-			case 3: spieler = new Spieler(name, FarbEnum.gelb, null, spielbrett); break;
-			default: throw new RuntimeException("Farbe existiert nicht!");
+			case 0: spieler = new Spieler(name, farbe, null, spielbrett); break;
+			case 1: spieler = new Spieler(name, farbe, null, spielbrett); break;
+			case 2: spieler = new Spieler(name, farbe, null, spielbrett); break;
+			default: throw new RuntimeException("Spieler konnte nicht erstellt werden!");
 			}
 			this.spieler.add(spieler);
 		}
