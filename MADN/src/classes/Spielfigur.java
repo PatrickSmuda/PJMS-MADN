@@ -1,10 +1,13 @@
 package classes;
+
+import java.io.Serializable;
+
 /**
  * Die Klasse Spielfigur
  * @author Sebastian Stumm
  * @version 1.0
  */
- class Spielfigur {
+ class Spielfigur implements Serializable {
 	private FarbEnum farbe;
 	private Spielfeld position;
 	private Spielfeld startPosition;
