@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 public class DatenzugriffSerialisiert implements iDatenzugriff {
 
 	
-	
+	//Test
 	ObjectOutputStream oos = null;
 	
 	public void speichern(Spiel spiel){
