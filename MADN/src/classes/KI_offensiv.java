@@ -9,6 +9,33 @@ public class KI_offensiv extends KI{
 	}
 
 	@Override
+	public void kalkuliereSpielzug(){
+		int k =0;
+		
+		do{
+			spiel.wuerfeln();
+			k = spiel.getBewegungsWert();
+			if (schlageGegner() == true){
+				break;
+			}else
+			{
+				if (spiel.getSpielerAmZug().equals(spieler.getName()) && betreteSpielfeld() == true){
+					break;
+				}
+				else{
+					if (spiel.getSpielerAmZug().equals(spieler.getName()) && geheAufEndfeld() == true){
+						break;
+					}else{
+						laufEinfach();
+					}
+				}
+			}
+		}while(k == 6);
+		
+	}
+	
+	/*
+	@Override
 	public void kalkuliereSpielzug() {
 		int k;
 		
@@ -43,5 +70,5 @@ public class KI_offensiv extends KI{
 		}while(k==6);
 	
 	}
-
+*/
 }
