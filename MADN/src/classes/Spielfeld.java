@@ -1,10 +1,13 @@
 package classes;
+
+import java.io.Serializable;
+
 /**
  * Die Klasse Spielfeld
  * @author ""
  * @version 1.0
  **/
-public class Spielfeld {
+public class Spielfeld implements Serializable {
 	
 	private Spielfigur figur;
 	private int id;

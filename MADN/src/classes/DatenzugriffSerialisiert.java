@@ -1,6 +1,6 @@
 package classes;
 
-public class DatenzugriffSerialisiert implements iDatenzugriff {
+public class DatenzugriffSerialisiert implements iDatenzugriff  {
 
 	public void speichern(){
 		

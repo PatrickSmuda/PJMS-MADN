@@ -1,10 +1,13 @@
 package classes;
+
+import java.io.Serializable;
+
 /**
  * Klasse Spielbrett
  * @author Patrick Smuda
  * @version 1.0
  */
-public class Spielbrett{
+public class Spielbrett implements Serializable{
 	
 	private Spielfeld[] spielbrett;
 	

@@ -1,11 +1,14 @@
 package classes;
+
+import java.io.Serializable;
+
 /**
  * Die Klasse Spieler
  * @author Johannes Mändle
  * @version 1.0
  */
 
-public class Spieler {
+public class Spieler implements Serializable {
 
 	private String name;
 	private FarbEnum farbe;
