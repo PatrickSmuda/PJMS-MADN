@@ -1,11 +1,6 @@
 package classes;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-
-public class DatenzugriffSerialisiert implements iDatenzugriff {
+public class DatenzugriffSerialisiert implements iDatenzugriff  {
 
 	
 	//Test
