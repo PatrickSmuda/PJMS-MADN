@@ -5,7 +5,7 @@ package classes;
  * @version 1.0
  */
 
-public interface iBediener {
+public interface iBediener{
 	
 	public void wuerfeln();
 	

@@ -1,10 +1,13 @@
 package classes;
+
+import java.io.Serializable;
+
 /**
  * Klasse Wuerfel
  * @author Sebastian Stumm, Johannes Mändle
  * @version 1.0
  */
-public class Wuerfel {
+public class Wuerfel implements Serializable{
 	
 	/**
 	 * Default-Konstruktor der Klasse Wuerfel
