@@ -20,23 +20,107 @@ public class SpielTest {
 		
 		p.beginneSpiel();
 		
+		//Test fürs rausgehn
+		System.out.println("Test fürs rausgehn");
+		System.out.println();
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.wuerfeln6();
+		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
+		p.bewege(1);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		
+		p.zugBeenden();
+		System.out.println();
+		
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.wuerfeln6();
+		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
+		p.bewege(1);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.zugBeenden();
+		
+		System.out.println();
+		System.out.println("--------------------------");
+		System.out.println();
+		
+		//Test fürs schlagen
+		System.out.println("Test fürs schlagen");
+		System.out.println();
 		p.setTestPosition(1, 12);
-		System.out.println(p.getSpielerAmZug() + "    " + p.getPosition(1));
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		p.zugBeenden();
 		
 		p.setTestPosition(1, 14);
-		System.out.println(p.getSpielerAmZug() + "    " + p.getPosition(1));
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		p.zugBeenden();
 		
-		System.out.println("------------");
+		System.out.println();
 		
 		p.wuerfeln2();
 		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
 		p.bewege(1);
-		
-		System.out.println(p.getSpielerAmZug() + "    " + p.getPosition(1));
 		p.zugBeenden();
-		System.out.println(p.getSpielerAmZug() + "    " + p.getPosition(1));
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.zugBeenden();
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.zugBeenden();
+		
+		System.out.println();
+		System.out.println("--------------------------");
+		System.out.println();
+		
+		//Test fürs auf Endfeld gehn
+		System.out.println("Test fürs auf Endfeld gehn");
+		System.out.println();
+		
+		p.setTestPosition(1, 39);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.wuerfeln2();
+		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
+		p.bewege(1);
+		p.zugBeenden();
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.zugBeenden();
+		
+		p.setTestPosition(1, 9);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.wuerfeln2();
+		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
+		p.bewege(1);
+		p.zugBeenden();
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.zugBeenden();
+		
+		System.out.println();
+		System.out.println("--------------------------");
+		System.out.println();
+		
+		//Test fürs aufm Endfeld überspringen
+		System.out.println("Test fürs aufm Endfeld überspringen");
+		System.out.println();
+		
+		p.setTestPosition(1, 68);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.setTestPosition(2, 69);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(2));
+		System.out.println();
+		p.wuerfeln2();
+		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
+		System.out.println("Rot zeiht mit seiner ersten Figur von Feld ID 68 auf 70");
+		p.bewege(1);
+		p.zugBeenden();
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(2));
+		System.out.println();
+		p.wuerfeln2();
+		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
+		System.out.println("Rot zeiht mit seiner ersten Figur von Feld ID 69 auf 71");
+		p.bewege(2);
+		p.zugBeenden();
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(2));
+		
+		
 		
 //		for (int i = 0; i < 100; i++) {
 //			p.wuerfeln();

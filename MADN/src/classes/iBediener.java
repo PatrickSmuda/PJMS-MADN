@@ -29,6 +29,8 @@ public interface iBediener {
 	//Für die TestKlasse
 		public void wuerfeln2();
 
+		public void wuerfeln6();
+		
 		public void setTestPosition(int figurId, int id);
 		
 		public void zugBeenden();

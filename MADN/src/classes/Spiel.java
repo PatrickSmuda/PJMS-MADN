@@ -434,6 +434,16 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
 			}
 		}
+		public void wuerfeln6(){
+			if(spielHatBegonnen){
+				if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
+					this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen6();
+					if(this.bewegungsWert == 6) this.darfWuerfeln = true;
+					else this.darfWuerfeln = false;
+					hatGewuerfelt = true;
+				}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
+			}
+		}
 		public void setTestPosition(int figurId, int id) {
 			this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(id));
 		}
