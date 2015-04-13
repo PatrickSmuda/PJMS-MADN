@@ -59,21 +59,24 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			}
 			Spieler spieler;
 			FarbEnum farbe = null;
-			switch (f) {
-			case 0:
-				
-				break;
-
-			default:
-				break;
-			}
+		
 			switch(KI)
 			{
-			case 0: spieler = new Spieler(name, farbe, null, spielbrett); break;
-			case 1: spieler = new Spieler(name, farbe, null, spielbrett); break;
-			case 2: spieler = new Spieler(name, farbe, null, spielbrett); break;
-			default: throw new RuntimeException("Spieler konnte nicht erstellt werden!");
+//			case 0: spieler = new Spieler(name, farbe, null, spielbrett); break;
+//			case 1: spieler = new Spieler(name, farbe, null, spielbrett); break;
+//			case 2: spieler = new Spieler(name, farbe, null, spielbrett); break;
+//			default: throw new RuntimeException("Spieler konnte nicht erstellt werden!");
+			default: break;
 			}
+			
+			switch (f) {
+			case 0: spieler = new Spieler(name, FarbEnum.rot, null, spielbrett); break;
+			case 1: spieler = new Spieler(name, FarbEnum.blau, null, spielbrett); break;
+			case 2: spieler = new Spieler(name, FarbEnum.gruen, null, spielbrett); break;
+			case 3: spieler = new Spieler(name, FarbEnum.gelb, null, spielbrett); break;
+			default: throw new RuntimeException("Farbe existiert nicht!");
+			}
+			
 			this.spieler.add(spieler);
 		}
 		
@@ -418,9 +421,33 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				hatGewuerfelt = true;
 			}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
 		}
-		
 	}
 
+	//Für die TestKlasse. Später löschen!
+		public void wuerfeln2(){
+			if(spielHatBegonnen){
+				if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
+					this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen2();
+					if(this.bewegungsWert == 6) this.darfWuerfeln = true;
+					else this.darfWuerfeln = false;
+					hatGewuerfelt = true;
+				}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
+			}
+		}
+		public void wuerfeln6(){
+			if(spielHatBegonnen){
+				if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
+					this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen6();
+					if(this.bewegungsWert == 6) this.darfWuerfeln = true;
+					else this.darfWuerfeln = false;
+					hatGewuerfelt = true;
+				}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
+			}
+		}
+		public void setTestPosition(int figurId, int id) {
+			this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(id));
+		}
+	
 	/**
 	 * Gibt zurück, welcher Spieler gewonnen hat.
 	 * @param gewinner Der Spieler der gewonnen hat.
@@ -445,7 +472,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	/**
 	 * Die Methode beendet einen Zug.
 	 */
-	private void zugBeenden(){
+	public void zugBeenden(){
 		int zaehler=0;
 		for(int i =0; i<4; i++){
 			if (spielerAmZug.getFigur(i).getPosition().getTyp() == FeldTyp.Endfeld){

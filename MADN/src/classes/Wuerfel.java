@@ -24,7 +24,14 @@ public class Wuerfel implements Serializable{
 		int zahl = (int)((Math.random()*6)+1);
 		return zahl;
 	}
-	
+	public int werfen2(){
+		int zahl = 2;
+		return zahl;
+	}
+	public int werfen6(){
+		int zahl = 6;
+		return zahl;
+	}
 	
 //	public int werfen(){
 //		return (int)6;
