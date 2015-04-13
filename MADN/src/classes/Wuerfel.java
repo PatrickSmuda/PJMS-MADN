@@ -21,7 +21,10 @@ public class Wuerfel {
 		int zahl = (int)((Math.random()*6)+1);
 		return zahl;
 	}
-	
+	public int werfen2(){
+		int zahl = 2;
+		return zahl;
+	}
 	
 //	public int werfen(){
 //		return (int)6;
