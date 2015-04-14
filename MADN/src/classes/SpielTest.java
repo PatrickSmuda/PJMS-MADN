@@ -112,13 +112,7 @@ public class SpielTest {
 		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(2));
 		System.out.println();
-		p.wuerfeln2();
-		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
-		System.out.println("Rot zeiht mit seiner ersten Figur von Feld ID 69 auf 71");
-		p.bewege(2);
-		p.zugBeenden();
-		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
-		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(2));
+
 		
 		
 		
