@@ -29,6 +29,10 @@ public class Wuerfel {
 		int zahl = 6;
 		return zahl;
 	}
+	public int werfen42(){
+		int zahl = 42;
+		return zahl;
+	}
 	
 //	public int werfen(){
 //		return (int)6;

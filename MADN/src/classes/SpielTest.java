@@ -73,18 +73,18 @@ public class SpielTest {
 		System.out.println("Test fürs auf Endfeld gehn");
 		System.out.println();
 		
-		p.setTestPosition(1, 39);
+		p.setTestPosition(1, 1);
 		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
-		p.wuerfeln2();
+		p.wuerfeln42();
 		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
 		p.bewege(1);
 		p.zugBeenden();
 		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		p.zugBeenden();
 		
-		p.setTestPosition(1, 9);
+		p.setTestPosition(1,11);
 		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
-		p.wuerfeln2();
+		p.wuerfeln42();
 		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
 		p.bewege(1);
 		p.zugBeenden();
