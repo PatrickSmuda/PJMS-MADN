@@ -222,8 +222,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		switch(spielerAmZug.getFarbe())
 		{
 		case rot: 
-			if(68+neuePosition-40 <= 71)
-				return (68+neuePosition-40);
+			if(68+neuePosition <= 71)
+				return (68+neuePosition);
 			return neuePosition;
 		case blau:
 			if(56+neuePosition-10 <= 59)
