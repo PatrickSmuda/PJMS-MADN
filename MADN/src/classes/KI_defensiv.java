@@ -2,7 +2,7 @@ package classes;
 
 /**
  * Die Defensive KI-Klasse
- * @author Sebastian Stumm
+ * @author Sebastian Stumm, Patrick Smuda, Mersiha Dervisevic
  * @version 1.0
  */
 
