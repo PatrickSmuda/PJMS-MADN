@@ -14,22 +14,20 @@ public class KiTest {
 		Spiel s = new Spiel();
 		iBediener p = s;
 		
-		p.spielerHinzufuegen("ROT", 0);
-		p.spielerHinzufuegen("BLAU", 1);
-		p.spielerHinzufuegen("GELB", 3);
-		p.spielerHinzufuegen("GRUEN", 2);
+
+		p.spielerHinzufuegen("ROT", 0, 2);
+		p.spielerHinzufuegen("BLAU", 1, 0);
+		
 		
 		p.beginneSpiel();
 		
-
+		//Test fürs rausgehn
+				System.out.println("Test fürs rausgehn");
+				System.out.println();
+				System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+				p.benutzeKI();
+				System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		
-		for (int i = 0; i < 100; i++) {
-			p.wuerfeln();
-			int x = (int)((Math.random()*4));
-			System.out.println(p.getSpielerAmZug() + " ist auf dem Feld " + p.getPosition(x) + " und würfelt eine " + p.getBewegungsWert());
-			p.bewege(x);	
-			
-		}
 		
 		
 		

@@ -27,6 +27,9 @@ public interface iBediener{
 	
 	
 	//Für die TestKlasse
+	
+		public void benutzeKI();
+	
 		public void wuerfeln2();
 
 		public void wuerfeln6();

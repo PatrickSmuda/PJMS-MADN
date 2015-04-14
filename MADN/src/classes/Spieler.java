@@ -66,6 +66,19 @@ public class Spieler implements Serializable {
 	public String getName(){ 
 		return name;
 	}
+	/**
+	 * Setzt die KI
+	 * @param ki die gesetzt wird
+	 */
+	public void setKI(KI ki){
+		if(ki != null){
+			this.ki = ki;
+		}else throw new RuntimeException("Keine KI uebergeben bekommen!");
+	}
+	
+	public KI getKI(){
+		return this.ki;
+	}
 	
 	/**
 	 * Die Methode initialisiert die Spielfiguren mit der uebergebenen Farbe 
