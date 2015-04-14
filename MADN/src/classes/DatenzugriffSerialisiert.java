@@ -34,12 +34,14 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 		ObjectInputStream ois = null;
 		try{
 			ois=new ObjectInputStream(new FileInputStream("out.ser"));
-			
+			Spiel geladenesSpiel = (Spiel)ois.readObject();
 		}catch(FileNotFoundException e){
 			System.err.println("Datei konnte nicht geladen werden!");
 		} catch (IOException e) {
 			System.err.println("Fehler bei Ein-/Ausgabe: " + e);
-	}finally{
+	} catch (ClassNotFoundException e) {
+			System.err.println("Datei enthaelt kein Objekt von Typ Spiel!");
+		}finally{
 		try{
 			ois.close();
 		}catch(Exception e){
