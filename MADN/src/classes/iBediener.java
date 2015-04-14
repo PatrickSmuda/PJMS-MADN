@@ -34,6 +34,8 @@ public interface iBediener{
 
 		public void wuerfeln6();
 		
+		public void wuerfeln42();
+		
 		public void setTestPosition(int figurId, int id);
 		
 		public void zugBeenden();

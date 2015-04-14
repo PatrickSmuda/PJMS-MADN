@@ -7,15 +7,17 @@ package classes;
  */
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
 
-public class Spiel implements iBediener {
+public class Spiel implements iBediener, Serializable {
 
 	/**
 	 * Die Attribute der Klasse Spiel.
 	 */
+	private static final long serialVersionUID = 1L;
 	private Spielbrett spielbrett;
 	private ArrayList<Spieler> spieler; 
 	private Spieler spielerAmZug;
@@ -450,6 +452,16 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			if(spielHatBegonnen){
 				if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
 					this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen6();
+					if(this.bewegungsWert == 6) this.darfWuerfeln = true;
+					else this.darfWuerfeln = false;
+					hatGewuerfelt = true;
+				}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
+			}
+		}
+		public void wuerfeln42(){
+			if(spielHatBegonnen){
+				if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
+					this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen42();
 					if(this.bewegungsWert == 6) this.darfWuerfeln = true;
 					else this.darfWuerfeln = false;
 					hatGewuerfelt = true;
