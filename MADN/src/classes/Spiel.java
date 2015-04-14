@@ -446,6 +446,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		}
 		public void setTestPosition(int figurId, int id) {
 			this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(id));
+			this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
 		}
 	
 	/**
