@@ -6,7 +6,7 @@ package classes;
  * @version 1.0
  */
 
-public class KI_defensiv extends KI{
+public class KI_aggressiv extends KI{
 	
 	private iBediener p;
 	private boolean repeat = false;
@@ -18,7 +18,7 @@ public class KI_defensiv extends KI{
 	 * @param spiel das Spiel an der die KI teil nimmt
 	 */
 	
-	public KI_defensiv(Spieler spieler, Spiel spiel){
+	public KI_aggressiv(Spieler spieler, Spiel spiel){
 		super(spieler, spiel);
 		p = spiel;
 	}
@@ -33,7 +33,7 @@ public class KI_defensiv extends KI{
 			p.wuerfeln();
 			//ASDF
 			//System.out.println(p.getBewegungsWert());
-			if(bewegt == false && geheAufEndfeld()){
+			if(bewegt == false && schlageGegner()){
 				if(p.getBewegungsWert() == 6){
 					bewegt = true;
 					repeat = true;
@@ -51,7 +51,7 @@ public class KI_defensiv extends KI{
 					repeat = false;
 					break;
 				}
-			}else if(bewegt == false &&schlageGegner()){
+			}else if(bewegt == false &&geheAufEndfeld()){
 				if(p.getBewegungsWert() == 6){
 					bewegt = true;
 					repeat = true;

@@ -6,12 +6,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+/**
+ * 
+ * @author 
+ * Die Klasse DatenzugriffSerialisiert
+ *
+ */
 public class DatenzugriffSerialisiert implements iDatenzugriff  {
 
 	//Test
 	ObjectOutputStream oos = null;
 	
+	/**
+	 * Die Methode speichern, um das Spiel serialisiert zu speichern
+	 */
 	public void speichern(Spiel spiel){
 		try{
 			oos = new ObjectOutputStream(new FileOutputStream("out.ser"));
@@ -29,7 +37,9 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 			}
 		}
 	}
-	
+	/**
+	 * Die Methode laden, um das Spiel zu de-serialisieren
+	 */
 	public void laden() { 
 		ObjectInputStream ois = null;
 		try{
@@ -50,5 +60,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	}
 	
 }
+
+	
 	
 }
