@@ -75,7 +75,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			case 0: spieler = new Spieler(name, farbe, null, spielbrett); break;
 			case 1: 
 				spieler = new Spieler(name, farbe, null, spielbrett);
-				KI_offensiv ofKI = new KI_offensiv(spieler, this); 
+				KI_aggressiv ofKI = new KI_aggressiv(spieler, this); 
 				spieler.setKI(ofKI); break;
 			case 2: 
 				spieler = new Spieler(name, farbe, null, spielbrett);
