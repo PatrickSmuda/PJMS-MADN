@@ -7,15 +7,17 @@ package classes;
  */
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
 
-public class Spiel implements iBediener {
+public class Spiel implements iBediener, Serializable {
 
 	/**
 	 * Die Attribute der Klasse Spiel.
 	 */
+	private static final long serialVersionUID = 1L;
 	private Spielbrett spielbrett;
 	private ArrayList<Spieler> spieler; 
 	private Spieler spielerAmZug;
