@@ -5,7 +5,7 @@ package classes;
  * @version 1.0
  */
 
-public interface iBediener {
+public interface iBediener{
 	
 	public void wuerfeln();
 	
@@ -27,6 +27,9 @@ public interface iBediener {
 	
 	
 	//Für die TestKlasse
+	
+		public void benutzeKI();
+	
 		public void wuerfeln2();
 
 		public void wuerfeln6();

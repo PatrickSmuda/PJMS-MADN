@@ -62,22 +62,29 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			Spieler spieler;
 			FarbEnum farbe = null;
 		
-			switch(KI)
-			{
-//			case 0: spieler = new Spieler(name, farbe, null, spielbrett); break;
-//			case 1: spieler = new Spieler(name, farbe, null, spielbrett); break;
-//			case 2: spieler = new Spieler(name, farbe, null, spielbrett); break;
-//			default: throw new RuntimeException("Spieler konnte nicht erstellt werden!");
-			default: break;
-			}
-			
 			switch (f) {
-			case 0: spieler = new Spieler(name, FarbEnum.rot, null, spielbrett); break;
-			case 1: spieler = new Spieler(name, FarbEnum.blau, null, spielbrett); break;
-			case 2: spieler = new Spieler(name, FarbEnum.gruen, null, spielbrett); break;
-			case 3: spieler = new Spieler(name, FarbEnum.gelb, null, spielbrett); break;
+			case 0: farbe = FarbEnum.rot; break;
+			case 1: farbe = FarbEnum.blau; break;
+			case 2: farbe = FarbEnum.gruen; break;
+			case 3: farbe = FarbEnum.gelb; break;
 			default: throw new RuntimeException("Farbe existiert nicht!");
 			}
+			
+			switch(KI)
+			{
+			case 0: spieler = new Spieler(name, farbe, null, spielbrett); break;
+			case 1: 
+				spieler = new Spieler(name, farbe, null, spielbrett);
+				KI_offensiv ofKI = new KI_offensiv(spieler, this); 
+				spieler.setKI(ofKI); break;
+			case 2: 
+				spieler = new Spieler(name, farbe, null, spielbrett);
+				KI_defensiv defKI = new KI_defensiv(spieler, this); 
+				spieler.setKI(defKI); break;
+			default: throw new RuntimeException("Spieler konnte nicht erstellt werden!");
+			}
+			
+			
 			
 			this.spieler.add(spieler);
 		}
@@ -228,16 +235,16 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				return (68+neuePosition);
 			return neuePosition;
 		case blau:
-			if(56+neuePosition-10 <= 59)
-				return (56+(neuePosition-10));
+			if(56+neuePosition <= 59)
+				return (56+neuePosition);
 			return neuePosition;
 		case gruen:
-			if(64+neuePosition-20 <= 67)
-				return (64+(neuePosition-20));
+			if(64+neuePosition <= 67)
+				return (64+neuePosition);
 			return neuePosition;
 		case gelb:
-			if(60+neuePosition-30 <= 63)
-				return (60+(neuePosition-30));
+			if(60+neuePosition <= 63)
+				return (60+neuePosition);
 			return neuePosition;
 		default: throw new RuntimeException("Fehler beim betreten des Endfeldes!");
 		}
@@ -426,6 +433,11 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 
 	//Für die TestKlasse. Später löschen!
+	public void benutzeKI(){
+		if(spielerAmZug.getKI() == null) throw new RuntimeException("Spieler hat keine KI!");
+		spielerAmZug.getKI().kalkuliereSpielzug();
+	}
+	
 		public void wuerfeln2(){
 			if(spielHatBegonnen){
 				if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
