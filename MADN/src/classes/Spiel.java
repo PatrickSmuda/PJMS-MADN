@@ -127,7 +127,12 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			}
 			
 			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Endfeld){
-				zugBeenden();
+				if (zugGueltigAufEndfeld(neuePosition, figurId)) {
+					this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
+					this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+				}else {
+					zugBeenden();
+				}
 			}
 			
 			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Normalfeld){
@@ -235,16 +240,16 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				return (68+neuePosition);
 			return neuePosition;
 		case blau:
-			if(56+neuePosition <= 59)
-				return (56+neuePosition);
+			if(56+neuePosition-10 <= 59)
+				return (56+(neuePosition-10));
 			return neuePosition;
 		case gruen:
-			if(64+neuePosition <= 67)
-				return (64+neuePosition);
+			if(64+neuePosition-20 <= 67)
+				return (64+(neuePosition-20));
 			return neuePosition;
 		case gelb:
-			if(60+neuePosition <= 63)
-				return (60+neuePosition);
+			if(60+neuePosition-30 <= 63)
+				return (60+(neuePosition-30));
 			return neuePosition;
 		default: throw new RuntimeException("Fehler beim betreten des Endfeldes!");
 		}
@@ -263,8 +268,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				for(int i = 0; i < 4; i++){
 					if(figurAufFeld(68+i) && i < neuePosition){
 						return false;
-					}return true;
-				}
+					}
+				}return true;
 			}
 			
 		case blau:
@@ -272,8 +277,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				for(int i = 0; i < 4; i++){
 					if(figurAufFeld(56+i) && i < neuePosition-9){
 						return false;
-					}return true;
-				}
+					}
+				}return true;
 			}
 			
 		case gruen:
@@ -281,8 +286,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				for(int i = 0; i < 4; i++){
 					if(figurAufFeld(64+i) && i < neuePosition-19){
 						return false;
-					}return true;
-				}
+					}
+				}return true;
 			}
 			
 		case gelb:
@@ -290,8 +295,71 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				for(int i = 0; i < 4; i++){
 					if(figurAufFeld(60+i) && i < neuePosition-29){
 						return false;
-					}return true;
+					}
+				}return true;
+			}
+			
+		default: return false;
+			
+		}
+		
+
+	}
+	
+	private boolean zugGueltigAufEndfeld(int neuePosition, int n){
+		int x = 0;
+		switch(spielerAmZug.getFarbe())
+		{
+		case rot:
+			x = 71 - spielerAmZug.getFigur(n).getPosition().getId();
+			if(spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert() > 71){
+				return false;
+			}else{
+				for (int i = spielerAmZug.getFigur(n).getPosition().getId(); i < spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert(); i++) {
+					if (figurAufFeld(i+1)) {
+						return false;
+					}
 				}
+				return true;
+			}
+			
+		case blau:
+			x = 59 - spielerAmZug.getFigur(n).getPosition().getId();
+			if(spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert() > 59){
+				return false;
+			}else{
+				for (int i = spielerAmZug.getFigur(n).getPosition().getId(); i < spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert(); i++) {
+					if (figurAufFeld(i+1)) {
+						return false;
+					}
+				}
+				return true;
+			}
+			
+		case gruen:
+			x = 67 - spielerAmZug.getFigur(n).getPosition().getId();
+			if(spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert() > 67){
+				return false;
+			}else{
+				for (int i = spielerAmZug.getFigur(n).getPosition().getId(); i < spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert(); i++) {
+					if (figurAufFeld(i+1)) {
+						return false;
+					}
+				}
+				return true;
+			}
+			
+		case gelb:
+			x = 63 - spielerAmZug.getFigur(n).getPosition().getId();
+			if(spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert() > 63){
+				return false;
+			}else{
+				for (int i = spielerAmZug.getFigur(n).getPosition().getId(); i < spielerAmZug.getFigur(n).getPosition().getId()+getBewegungsWert(); i++) {
+					if (figurAufFeld(i+1)) {
+						return false;
+					}
+				}
+				return true;
 			}
 			
 		default: return false;

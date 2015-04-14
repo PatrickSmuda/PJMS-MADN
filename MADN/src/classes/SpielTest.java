@@ -16,7 +16,7 @@ public class SpielTest {
 		
 
 		p.spielerHinzufuegen("ROT", 0, 0);
-		p.spielerHinzufuegen("BLAU", 1, 1);
+		p.spielerHinzufuegen("BLAU", 1, 0);
 		
 		p.beginneSpiel();
 		
@@ -106,13 +106,27 @@ public class SpielTest {
 		System.out.println();
 		p.wuerfeln2();
 		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
-		System.out.println("Rot zeiht mit seiner ersten Figur von Feld ID 68 auf 70");
+		System.out.println("Rot zieht mit seiner ersten Figur von Feld ID 68 auf 70");
 		p.bewege(1);
 		p.zugBeenden();
 		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(2));
 		System.out.println();
-
+		System.out.println();
+		p.zugBeenden();
+		
+		//Test fürs aufm Endfeld laufen
+		System.out.println("Test fürs aufm Endfeld laufen");
+		System.out.println();
+		
+		p.setTestPosition(1, 56);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		p.wuerfeln2();
+		System.out.println(p.getSpielerAmZug() + "  Würfelt eine:   " + p.getBewegungsWert());
+		System.out.println("Blau zieht mit seiner ersten Figur von Feld ID 56 auf 58");
+		p.bewege(1);
+		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		System.out.println();
 		
 		
 		
