@@ -7,7 +7,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	}
 	
 	
-	public void laden(){ 
+	public void laden(int zaehler){ 
 		
 	}
 

@@ -14,15 +14,19 @@ import java.io.ObjectOutputStream;
  */
 public class DatenzugriffSerialisiert implements iDatenzugriff  {
 
-	//Test
-	ObjectOutputStream oos = null;
+	private ObjectOutputStream oos = null;
+	private String dateiName = "Speicherstand_";
+	private static int zaehler;
 	
 	/**
 	 * Die Methode speichern, um das Spiel serialisiert zu speichern
 	 */
 	public void speichern(Object spiel){
+		dateiName = dateiName+zaehler;
+		this.zaehler++;
+		System.out.println(zaehler);
 		try{
-			oos = new ObjectOutputStream(new FileOutputStream("out.ser"));
+			oos = new ObjectOutputStream(new FileOutputStream((dateiName + ".ser")));
 			oos.writeObject(spiel);
 		} catch(FileNotFoundException e){
 			System.err.println("Datei konnte nicht erstellt werden!");
@@ -40,7 +44,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	/**
 	 * Die Methode laden, um das Spiel zu de-serialisieren
 	 */
-	public void laden() { 
+	public void laden(int zaehler) { 
 		ObjectInputStream ois = null;
 		try{
 			ois=new ObjectInputStream(new FileInputStream("out.ser"));
