@@ -1,8 +1,10 @@
 package classes;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -16,17 +18,35 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 
 	private ObjectOutputStream oos = null;
 	private String dateiName = "Speicherstand_";
-	private static int zaehler;
+	
 	
 	/**
 	 * Die Methode speichern, um das Spiel serialisiert zu speichern
 	 */
 	public void speichern(Object spiel){
-		dateiName = dateiName+zaehler;
-		this.zaehler++;
-		System.out.println(zaehler);
+
+		if(spiel != null && spiel instanceof Spiel){
+			
+		}else{
+			throw new RuntimeException("Das zu speichernde Objekt ist nicht vom Typ Spiel!");
+		}
+		
+		
+		int count = 1;
+		
+		File dir = new File("C:\\Speicherstand");
+		File[] files = dir.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.endsWith("ser");
+			}
+		});
+		for (File file : files) {
+			count++;
+		}
+		dateiName = dateiName + count;
+		
 		try{
-			oos = new ObjectOutputStream(new FileOutputStream((dateiName + ".ser")));
+			oos = new ObjectOutputStream(new FileOutputStream(("C:\\Speicherstand\\" + dateiName + ".ser")));
 			oos.writeObject(spiel);
 		} catch(FileNotFoundException e){
 			System.err.println("Datei konnte nicht erstellt werden!");
@@ -46,25 +66,34 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	 */
 	public void laden(int zaehler) { 
 		ObjectInputStream ois = null;
-		try{
-			ois=new ObjectInputStream(new FileInputStream("out.ser"));
-			Spiel geladenesSpiel = (Spiel)ois.readObject();
-		}catch(FileNotFoundException e){
-			System.err.println("Datei konnte nicht geladen werden!");
-		} catch (IOException e) {
-			System.err.println("Fehler bei Ein-/Ausgabe: " + e);
-	} catch (ClassNotFoundException e) {
-			System.err.println("Datei enthaelt kein Objekt von Typ Spiel!");
-		}finally{
-		try{
-			ois.close();
-		}catch(Exception e){
-			System.err.println("Fehler beim Schlieﬂen!");
+		String test = null;
+		File dir = new File("C:\\Speicherstand");
+		File[] files = dir.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.endsWith("ser");
+			}
+		});
+		for (File file : files) {
+			if(file.getName().equals((dateiName + zaehler + ".ser"))){
+				try{
+					ois=new ObjectInputStream(new FileInputStream(("C:\\Speicherstand\\" + dateiName + zaehler + ".ser")));
+					Spiel geladenesSpiel = (Spiel)ois.readObject();
+				}catch(FileNotFoundException e){
+					System.err.println("Datei konnte nicht geladen werden!");
+				} catch (IOException e) {
+					System.err.println("Fehler bei Ein-/Ausgabe: " + e);
+			} catch (ClassNotFoundException e) {
+					System.err.println("Datei enthaelt kein Objekt von Typ Spiel!");
+				}finally{
+				try{
+					ois.close();
+				}catch(Exception e){
+					System.err.println("Fehler beim Schlieﬂen!");
+				}
+			}
+				return;
+			}
+			throw new RuntimeException("Datei exsistiert nicht");
 		}
-	}
-	
 }
-
-	
-	
 }

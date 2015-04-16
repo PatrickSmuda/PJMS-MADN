@@ -3,8 +3,9 @@ package classes;
 public class SpielTestLaden {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		iDatenzugriff d;
+		d= new DatenzugriffSerialisiert();
+		d.laden(1);
 	}
 
 }
