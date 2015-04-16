@@ -20,7 +20,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	/**
 	 * Die Methode speichern, um das Spiel serialisiert zu speichern
 	 */
-	public void speichern(Spiel spiel){
+	public void speichern(Object spiel){
 		try{
 			oos = new ObjectOutputStream(new FileOutputStream("out.ser"));
 			oos.writeObject(spiel);
