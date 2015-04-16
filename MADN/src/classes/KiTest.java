@@ -15,19 +15,27 @@ public class KiTest {
 		iBediener p = s;
 		
 
-		p.spielerHinzufuegen("ROT", 0, 2);
-		p.spielerHinzufuegen("BLAU", 1, 0);
+		p.spielerHinzufuegen("ROT", 0, 1);
+		p.spielerHinzufuegen("BLAU", 1, 1);
 		
 		
 		p.beginneSpiel();
 		
-		//Test fürs rausgehn
-				System.out.println("Test fürs rausgehn");
-				System.out.println();
-				System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
-				p.benutzeKI();
-				System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+		for (int i = 0; i < 100; i++) {
+			System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+			p.benutzeKI();
+		}
 		
+		
+		
+		
+		//Test fürs rausgehn
+//				System.out.println("Test fürs rausgehn");
+//				System.out.println();
+//				System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+//				p.benutzeKI();
+//				System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
+//		
 		
 		
 		

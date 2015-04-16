@@ -145,17 +145,12 @@ public abstract class KI {
 	 */
 	protected boolean schlageGegner(){
 
-		for(int i=0; i<4; i++)
-		{
-			if(spiel.figurAufFeld(ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId())))
-			{
-				for(int j=0; j<4; i++)
-				{
-					if(spieler.getFigur(j).getPosition().getId()==ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId()))
-					{
+		for(int i=0; i<4; i++){
+			if(spiel.figurAufFeld(ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId()))){
+				for(int j=0; j<4; i++){
+					if(spieler.getFigur(j).getPosition().getId()==ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId())){
 						
-					}else
-					{
+					}else{
 						spiel.bewege(i); 
 						return true;
 					}

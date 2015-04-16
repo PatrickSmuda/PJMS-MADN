@@ -32,7 +32,7 @@ public class KI_aggressiv extends KI{
 		do{
 			p.wuerfeln();
 			//ASDF
-			//System.out.println(p.getBewegungsWert());
+			System.out.println("Würfelwert: " + p.getBewegungsWert());
 			if(bewegt == false && schlageGegner()){
 				if(p.getBewegungsWert() == 6){
 					bewegt = true;
@@ -70,7 +70,7 @@ public class KI_aggressiv extends KI{
 					break;
 				}
 			}
-			System.out.println(p.getPosition(1));
+			System.out.println("Neue Pos: " + p.getPosition(1));
 			bewegt = false;
 		}while(repeat);
 		

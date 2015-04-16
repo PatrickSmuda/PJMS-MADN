@@ -70,7 +70,7 @@ public class KI_defensiv extends KI{
 					break;
 				}
 			}
-			System.out.println(p.getPosition(1));
+			System.out.println("Würfelwert: " + p.getBewegungsWert() + "   Neue Pos: " + p.getPosition(1));
 			bewegt = false;
 		}while(repeat);
 		
