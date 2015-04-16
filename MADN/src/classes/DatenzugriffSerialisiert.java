@@ -64,9 +64,10 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	/**
 	 * Die Methode laden, um das Spiel zu de-serialisieren
 	 */
-	public void laden(int zaehler) { 
+	public Object laden(int zaehler) { 
 		ObjectInputStream ois = null;
 		String test = null;
+		Spiel geladenesSpiel = null;
 		File dir = new File("C:\\Speicherstand");
 		File[] files = dir.listFiles(new FilenameFilter() {
 			public boolean accept(File dir, String name) {
@@ -77,7 +78,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 			if(file.getName().equals((dateiName + zaehler + ".ser"))){
 				try{
 					ois=new ObjectInputStream(new FileInputStream(("C:\\Speicherstand\\" + dateiName + zaehler + ".ser")));
-					Spiel geladenesSpiel = (Spiel)ois.readObject();
+					geladenesSpiel = (Spiel)ois.readObject();
 				}catch(FileNotFoundException e){
 					System.err.println("Datei konnte nicht geladen werden!");
 				} catch (IOException e) {
@@ -91,9 +92,9 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 					System.err.println("Fehler beim Schlieﬂen!");
 				}
 			}
-				return;
+				return geladenesSpiel;
 			}
-			throw new RuntimeException("Datei exsistiert nicht");
 		}
+		throw new RuntimeException("Datei exsistiert nicht");
 }
 }
