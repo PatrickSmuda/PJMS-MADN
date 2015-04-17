@@ -1,6 +1,10 @@
 package classes;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -37,7 +41,25 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	
 	
 	public Object laden(int zaehler){ 
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName + zaehler + ".ser"));
+			Spiel s = new Spiel();
+			System.out.println(s);
+		} catch (FileNotFoundException e) {
+			System.err.println("Konnte Datei nicht öffnen");
+		} catch (IOException e) {
+			System.err.println("Fehler bei der Ein-/Ausgabe: " + e);
+		}
+		finally{
+			try {
+				reader.close();
+			} catch (Exception e) {
+				System.err.println("Fehler beim schließen der Datei");
+			}
+		}
 		
+		return null;
 	}
 
 	
