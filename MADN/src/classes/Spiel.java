@@ -113,7 +113,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			
 			if(this.bewegungsWert == 6 && this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Startfeld){
 				neuePosition = this.spielerAmZug.getFigur(figurId).getFreiPosition();
-				if(userIstDumm(neuePosition, this.spielerAmZug.getFigur(figurId))){
+				if(userIstDumm(neuePosition, figurId)){
 					zugBeenden();
 				}else{
 					this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
@@ -137,7 +137,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			
 			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Normalfeld){
 				neuePosition = ueberlauf((this.spielerAmZug.getFigur(figurId).getPosition().getId() + this.bewegungsWert), figurId);
-				if(userIstDumm(neuePosition, this.spielerAmZug.getFigur(figurId))){
+				if(userIstDumm(neuePosition, figurId)){
 					zugBeenden();
 				}else{
 					if(kannEndfeldErreichen(neuePosition)){
@@ -176,7 +176,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param neuePosition
 	 * @return boolean
 	 */
-	private boolean grenzUeberschreitung(int neuePosition){
+	public boolean grenzUeberschreitung(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
 		case rot: 
@@ -200,7 +200,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param figurId
 	 * @return neuePosition, figurId
 	 */
-	private int ueberlauf(int neuePosition, int figurId){
+	public int ueberlauf(int neuePosition, int figurId){
 		int hit = 0;
 		if(neuePosition > 39){
 			for(int i = 0; i < figurenUeberlauf.size(); i++){
@@ -232,7 +232,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param neuePosition
 	 * @return neue Position
 	 */
-	private int endfeld(int neuePosition){
+	public int endfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
 		case rot: 
@@ -260,7 +260,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param neuePosition
 	 * @return boolean
 	 */
-	private boolean zugGueltigEndfeld(int neuePosition){
+	public boolean zugGueltigEndfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
 		case rot:
@@ -306,7 +306,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 
 	}
 	
-	private boolean zugGueltigAufEndfeld(int neuePosition, int n){
+	public boolean zugGueltigAufEndfeld(int neuePosition, int n){
 		int x = 0;
 		switch(spielerAmZug.getFarbe())
 		{
@@ -374,7 +374,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @return boolean
 	 */
 	
-	private boolean kannEndfeldErreichen(int neuePosition){
+	public boolean kannEndfeldErreichen(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
 		case rot: 	if(neuePosition>=0&&hatUeberlauf) return true; return false;
@@ -450,8 +450,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param sf Die Spielfigur 
 	 * @return boolean Boolscher Rückgabewert
 	 */ 
-	private boolean userIstDumm(int neuePosition, Spielfigur sf){
-		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == sf.getFarbe())) return true;
+	public boolean userIstDumm(int neuePosition, int figurId){
+		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == spielerAmZug.getFigur(figurId).getFarbe())) return true;
 		return false;
 	}
 

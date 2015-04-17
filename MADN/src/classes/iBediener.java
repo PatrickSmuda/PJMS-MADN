@@ -25,6 +25,20 @@ public interface iBediener{
 	
 	public String getGewinner();
 	
+	public boolean grenzUeberschreitung(int neuePosition);
+	
+	public int ueberlauf(int neuePosition, int figurId);
+	
+	public int endfeld(int neuePosition);
+	
+	public boolean zugGueltigEndfeld(int neuePosition);
+	
+	public boolean zugGueltigAufEndfeld(int neuePosition, int n);
+	
+	public boolean kannEndfeldErreichen(int neuePosition);
+	
+	public boolean userIstDumm(int neuePosition, int figurId);
+	
 	
 	//Für die TestKlasse
 	

@@ -15,17 +15,17 @@ public class KiTest {
 		iBediener p = s;
 		
 
-		p.spielerHinzufuegen("ROT", 0, 1);
+		p.spielerHinzufuegen("ROT", 0, 0);
 		p.spielerHinzufuegen("BLAU", 1, 1);
 		
 		
 		p.beginneSpiel();
 		
-		for (int i = 0; i < 100; i++) {
-			System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
-			p.benutzeKI();
-		}
+		p.wuerfeln();
+		p.bewege(0);
 		
+		
+		p.benutzeKI();
 		
 		
 		

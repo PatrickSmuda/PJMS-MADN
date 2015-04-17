@@ -1,4 +1,7 @@
 package classes;
+
+import java.util.ArrayList;
+
 /**
  * Die Klasse fuer die KI
  * @author 
@@ -14,11 +17,12 @@ public abstract class KI {
 	protected Spieler spieler;
 	protected iBediener spiel;
 	private boolean hatUeberlauf;
-
+	private ArrayList<Spielfigur> figurenUeberlauf;
+	
 	/**
 	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
-	public KI(Spieler spieler, iBediener spiel){
+	public KI(Spieler spieler, Spiel spiel){
 		if (spieler == null) throw new RuntimeException("Spieler muss vorhanden sein!");	
 		this.spieler = spieler;
 
@@ -27,7 +31,7 @@ public abstract class KI {
 
 		hatUeberlauf=false;
 	} 
-
+	
 	/**
 	 * Methode bewegt die Figur zum Endfeld
 	 * */
@@ -35,105 +39,40 @@ public abstract class KI {
 		int neueId;
 		for(int i=0; i<4; i++)
 		{
-			neueId = ueberlauf(spieler.getFigur(i).getPosition().getId() + spiel.getBewegungsWert());
-			if(kannEndfeldErreichen(neueId)){
-				if(zugGueltigEndfeld(neueId)){
-					spiel.bewege(i);
-					return true;
+			neueId = spieler.getFigur(i).getPosition().getId() + spiel.getBewegungsWert();
+			neueId = spiel.ueberlauf(neueId, i);
+			if(spiel.kannEndfeldErreichen(neueId) && spiel.userIstDumm(neueId, i) == false){
+				if(spiel.zugGueltigEndfeld(neueId)){
+					if(spiel.endfeld(neueId) == neueId){
+						
+					}else{
+						spiel.bewege(i);
+						return true;
+					}
 				}
 			}
 		} 
 		return false;
 	}
-	/**
-	 * Hilfsmethode fuer die geheAufEndfeld, vermeidet dass die Spielfiguren ueberspringen
-	 * 
-	 * @return neueId
-	 */
-	protected boolean zugGueltigEndfeld(int neueId){
-
-		switch(spieler.getFarbe())
-		{
-		case rot: 
-			if(neueId<44){
-				for(int i=0; i<4; i++){
-					if(spiel.figurAufFeld(68+i)&&(i<neueId-39)){
-						return false;
-					}return true;
-				}
-			}
-		case blau:
-			if(neueId<14 && hatUeberlauf){
-				for(int i=0; i<4; i++){
-					if(spiel.figurAufFeld(56+i)&&(i<neueId-9)){
-						return false;
-					}return true;
-				}
-			}
-		case gruen:
-			if(neueId<24 && hatUeberlauf){
-				for(int i=0; i<4; i++){
-					if(spiel.figurAufFeld(64+i)&&(i<neueId-19)){
-						return false;
-					}return true;
-				}
-			}
-		case gelb:
-			if(neueId<34 && hatUeberlauf){
-				for(int i=0; i<4; i++){
-					if(spiel.figurAufFeld(60+i)&&(i<neueId-29)){
-						return false;
-					}return true;
-				}
-			}
-		default: return false;
-		}
-
-
-
-	}
-
-	/**
-	 * Methode um zu verhindern damit die Figur nicht ueber die Felder geht, ueber die sie nicht soll
-	 * 
-	 * @param neueId
-	 * @return boolean
-	 */
-	protected boolean kannEndfeldErreichen(int neueId){
-		switch(spieler.getFarbe())
-		{
-		case rot: if(neueId>39) return true; return false;
-		case blau: neueId=ueberlauf(neueId); if(neueId>9&&hatUeberlauf) return true; return false;
-		case gruen: neueId=ueberlauf(neueId); if(neueId>19&&hatUeberlauf) return true; return false;
-		case gelb: neueId=ueberlauf(neueId); if(neueId>29&&hatUeberlauf) return true; return false;
-
-		default: return false;
-		}
-	}
-	/**
-	 * Hilfsmethode die einen ueberlauf erzeugt
-	 * @param neueId
-	 * @return die neueId
-	 */
-	protected int ueberlauf(int neueId){
-		if(neueId>39){ 
-			hatUeberlauf=true;
-			return	neueId-39;
-		}hatUeberlauf=false;
-		return neueId;
-	}
-
+	
 	/**
 	 * Methode, die die Spielfiguren raus bewegt
 	 */
 	protected boolean betreteSpielfeld(){
-
+		
+		int neueId;
+		
 		if(spiel.getBewegungsWert()==6)
 		{
 			for(int i=0; i<4; i++){
-				if(spieler.getFigur(i).getPosition().getTyp()==FeldTyp.Startfeld){
-					spiel.bewege(i);
-					return true;
+				if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Startfeld){
+					neueId = spieler.getFigur(i).getFreiPosition();
+					if(spiel.userIstDumm(neueId, i)){
+						
+					}else{
+						spiel.bewege(i);
+						return true;
+					}
 				}
 			}
 		}
@@ -145,10 +84,19 @@ public abstract class KI {
 	 */
 	protected boolean schlageGegner(){
 
+		int neueId;
+		
 		for(int i=0; i<4; i++){
-			if(spiel.figurAufFeld(ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId()))){
+			if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Startfeld){
+				neueId = spieler.getFigur(i).getFreiPosition();
+				if(!spiel.userIstDumm(neueId, i)){
+					
+				}
+			}
+			
+			if(spiel.figurAufFeld(spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), i))){
 				for(int j=0; j<4; i++){
-					if(spieler.getFigur(j).getPosition().getId()==ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId())){
+					if(spieler.getFigur(j).getPosition().getId()==spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), j)){
 						
 					}else{
 						spiel.bewege(i); 
