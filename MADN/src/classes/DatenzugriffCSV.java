@@ -16,28 +16,68 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	
 	public void speichern(Object spiel){ 
 		
-		int count = 1;	
 		
-		File dir = new File("C:\\Speicherstand");
-		File[] files = dir.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return name.endsWith("ser");
-			}
-		});
-		for (File file : files) {
-			count++;
-		}
-		dateiName = dateiName + count;
-		
-		PrintWriter pw;
-		try {
-			pw = new PrintWriter(new FileWriter("C:\\Speicherstand\\" + dateiName + ".ser"));
-		} catch (IOException e) {
-			System.err.println("Datei konnte nicht geladen werden!");
+        if(spiel != null && spiel instanceof Spiel){
+			
+        	Spiel s=(Spiel)spiel;
+        	
+        	int count=1;
+        	
+        	File dir = new File("C:\\Speicherstand\\");
+    		File[] files = dir.listFiles(new FilenameFilter() {
+    			public boolean accept(File dir, String name) {
+    				return name.endsWith("csv");
+    			}
+    		});
+    		for (File file : files) {
+    			count++;
+    		}
+    		dateiName = dateiName + count + ".csv";
+    		String text = s.csvString(); 
+    		dir = new File("C:\\Speicherstand\\"+dateiName);
+    		
+    		
+    		try{
+    			FileWriter writer = new FileWriter(dir);
+    			
+    			writer.write(text);
+    	
+    			writer.flush();
+    			writer.close();
+    			
+    		}catch(IOException e){
+    			e.printStackTrace();
+    		}
+        	
+		}else{
+			throw new RuntimeException("Das zu speichernde Objekt ist nicht vom Typ Spiel!");
 		}
 		
 		
 	}
+		
+//		int count = 1;	
+//		
+//		File dir = new File("C:\\Speicherstand");
+//		File[] files = dir.listFiles(new FilenameFilter() {
+//			public boolean accept(File dir, String name) {
+//				return name.endsWith("ser");
+//			}
+//		});
+//		for (File file : files) {
+//			count++;
+//		}
+//		dateiName = dateiName + count;
+//		
+//		PrintWriter pw;
+//		try {
+//			pw = new PrintWriter(new FileWriter("C:\\Speicherstand\\" + dateiName + ".ser"));
+//		} catch (IOException e) {
+//			System.err.println("Datei konnte nicht geladen werden!");
+//		}
+		
+		
+	
 	
 	
 	public Object laden(int zaehler){ 

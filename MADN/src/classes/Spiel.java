@@ -102,6 +102,26 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 	
 	/**
+	 * Hilfsmethode fuer CSV
+	 *
+	 * @return String s, vorgefertigter String
+	 */
+	
+	public String csvString(){ 
+		String s= "";
+		
+		for(int i=0;i<spieler.size();i++){
+			s+=spieler.get(i).getName()+";"+spieler.get(i).getFarbe()+";"
+					+spieler.get(i).getFigur(0).getPosition().getId()+";"
+					+spieler.get(i).getFigur(1).getPosition().getId()+";"
+					+spieler.get(i).getFigur(2).getPosition().getId()+";"
+					+spieler.get(i).getFigur(3).getPosition().getId()+";\n";
+		}
+		s+=spielerAmZug.getName();
+		return s;
+	}
+	
+	/**
 	 * Methode zum bewegen der Spielfigur
 	 * @param sf Spielfigur die bewegt wird
 	 */

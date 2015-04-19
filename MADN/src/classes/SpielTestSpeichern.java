@@ -10,5 +10,9 @@ public class SpielTestSpeichern {
 		s.spielerHinzufuegen("Sebi", 1, 0);
 		s.beginneSpiel();
 		d.speichern(s);
+		
+		d=new DatenzugriffCSV();
+		d.speichern(s);
+		
 	}
 }
