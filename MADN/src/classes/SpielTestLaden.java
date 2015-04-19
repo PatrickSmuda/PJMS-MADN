@@ -3,7 +3,7 @@ package classes;
 public class SpielTestLaden {
 
 	public static void main(String[] args) {
-//		iDatenzugriff d;
+		iDatenzugriff d;
 //		d= new DatenzugriffSerialisiert();
 //		iBediener p = (Spiel) d.laden(1);
 		Spiel s = new Spiel();
@@ -12,8 +12,9 @@ public class SpielTestLaden {
 		s.beginneSpiel();
 //		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		
-		System.out.println(s.csvString());
-		
+		d = new DatenzugriffCSV();
+		d.laden();
+         		
 	}
 	
 }

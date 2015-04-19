@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class DatenzugriffCSV implements iDatenzugriff {
 
@@ -80,12 +81,45 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	
 	
 	
-	public Object laden(int zaehler){ 
+	public Object laden(){ 
 		BufferedReader reader = null;
+		
 		try {
-			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName + zaehler + ".ser"));
+			
+             int count=0;
+        	
+        	File dir = new File("C:\\Speicherstand\\");
+    		File[] files = dir.listFiles(new FilenameFilter() {
+    			public boolean accept(File dir, String name) {
+    				return name.endsWith("csv");
+    			}
+    		});
+    		for (File file : files) {
+    			count++;
+    		}
+    		
+    		dateiName = dateiName + count + ".csv";
+			System.out.println(dateiName);
+			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName ));
+			
 			Spiel s = new Spiel();
-			System.out.println(s);
+			
+           ArrayList <String> zeug = new ArrayList <String>();
+           String [] anderesZeug;
+           
+            int i=0; //anzahl von Zeilen
+            
+            do{
+            	zeug.add(reader.readLine());
+            	i++;
+            }while(zeug.get(i-1)!=null);
+           
+            anderesZeug = new String[zeug.size()];
+            
+        	for(int j=0; j<zeug.size(); j++){
+//        		anderesZeug[j]=zeug.get(j).split(";");
+        	}
+            
 		} catch (FileNotFoundException e) {
 			System.err.println("Konnte Datei nicht öffnen");
 		} catch (IOException e) {
