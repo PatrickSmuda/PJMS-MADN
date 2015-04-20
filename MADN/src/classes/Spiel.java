@@ -176,7 +176,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 							this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
 							this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
 							System.out.println(spielerAmZug.getFigur(figurId).getPosition().getId());
-							System.out.println(spielbrett.getFeld(id));
+							//System.out.println(spielbrett.getFeld(id));
 						}else{
 							zugBeenden();
 						}

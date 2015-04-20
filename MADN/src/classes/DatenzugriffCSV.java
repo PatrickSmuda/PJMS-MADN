@@ -81,7 +81,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	
 	
 	
-	public Object laden(){ 
+	public Object laden(int zaehler){ 
 		BufferedReader reader = null;
 		
 		try {
@@ -102,70 +102,79 @@ public class DatenzugriffCSV implements iDatenzugriff {
 			System.out.println(dateiName);
 			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName ));
 						
-           ArrayList <String> zeug = new ArrayList <String>();
-           String [][] anderesZeug;
+           ArrayList <String> inhaltStrings = new ArrayList <String>();
+           String[] inhalt = null;
+           Spiel s = new Spiel();
            
            
-            int i=0; //anzahl von Zeilen
+            String currentLine = reader.readLine();
             
-            do{
-            	zeug.add(reader.readLine());
-            	i++;
-            }while(zeug.get(i-1)!=null);
+            while(currentLine != null){
+    			inhaltStrings.add(currentLine);
+    			currentLine = reader.readLine();
+    		}
+            
+           ArrayList<String> namen = new ArrayList<String>();
+           ArrayList<String> farben = new ArrayList<String>();
+           ArrayList<String> kiTyp = new ArrayList<String>();
+           ArrayList<String> positionen = new ArrayList<String>();
+           ArrayList<String> ueberlaeufe = new ArrayList<String>();
            
-            anderesZeug = new String[5][];
+           for(int i = 0; i < inhaltStrings.size(); i++){
+        	   inhalt = inhaltStrings.get(i).split(";");
+        	   for(int j = 0; j < inhalt.length; j++){
+        		   if(i < inhaltStrings.size()-1){
+        			   switch(j)
+            		   {
+            		   case 0:	namen.add(inhalt[0]); break;
+            		   case 1:	farben.add(inhalt[1]); break;
+            		   case 2:	kiTyp.add(inhalt[2]); break;
+            		   case 3:	positionen.add(inhalt[3]); break;
+            		   case 4:	ueberlaeufe.add(inhalt[4]); break;
+            		   case 5:	positionen.add(inhalt[5]); break;
+            		   case 6:	ueberlaeufe.add(inhalt[6]); break;
+            		   case 7:	positionen.add(inhalt[7]); break;
+            		   case 8:	ueberlaeufe.add(inhalt[8]); break;
+            		   case 9:	positionen.add(inhalt[9]); break;
+            		   case 10:	ueberlaeufe.add(inhalt[10]); break;
+            		   }
+        		   }
+        		   
+        	   }
+        	   
+        	   
+           }
+           
+           for(int i = 0; i < namen.size(); i++){
+        	   int f = Integer.parseInt(farben.get(i));
+        	   int ki = Integer.parseInt(kiTyp.get(i));
+        	   s.spielerHinzufuegen(namen.get(i), f, ki);
+           }
+           
+           
             
-//            anderesZeug [0] = new String [zeug.size()-1]; // name vom spieler
-//            anderesZeug [1] = new String [zeug.size()-1]; // farbe vom spieler
-//            anderesZeug [2] = new String [(zeug.size()-1)*4]; // positionen von den figuren
-//            anderesZeug [3] = new String [(zeug.size()-1)*4]; // ueberlauf
-//            anderesZeug [4] = new String [1]; // spieler am zug
+           for(int i = 0; i < namen.size(); i++){
+        	   System.out.println(namen.get(i));
+           }System.out.println("-------");
             
-            Spieler [] spieler = new Spieler [zeug.size()-1];
-			Spiel s = new Spiel();
-			Spielbrett sb = new Spielbrett();
-			 int x=0;
-			 String spielerAmZug;
-			 int f; //farbe
-     
-			String [] neuerString;
-            
-           for(int k=0; k<zeug.size();k++){ 
- 
-              neuerString = zeug.get(k).split(";");
-               
-              switch (neuerString[1]){
-              
-               case "Rot": f=0;
-               break; 
-               
-               case "Blau" : f=1;
-               break;
-               
-               case "Gelb" : f=3;
-               break; 
-               
-               case "Gruen" : f=2;
-               break;
-               
-               default: throw new RuntimeException ("Farbe wurde nicht abgespeichert");
-               
-               }
-              
-              try{
-            	x=Integer.parseInt(neuerString[3]); 
-              }catch(NumberFormatException e){ 
-            	  System.err.println("KI is kein int! man");
-              }
-              
-              if(k<=zeug.size()-1){
-               s.spielerHinzufuegen(neuerString[0], f, x);
-              }else {
-            	  spielerAmZug = neuerString[4];
-              }
-        	   }            
-        	
-            
+           for(int i = 0; i < farben.size(); i++){
+        	   System.out.println(farben.get(i));
+           }System.out.println("-------");
+           
+           for(int i = 0; i < kiTyp.size(); i++){
+        	   System.out.println(kiTyp.get(i));
+           }System.out.println("-------");
+           
+           for(int i = 0; i < positionen.size(); i++){
+        	   System.out.println(positionen.get(i));
+           }System.out.println("-------");
+           
+           for(int i = 0; i < ueberlaeufe.size(); i++){
+        	   System.out.println(ueberlaeufe.get(i));
+           }System.out.println("-------");
+           
+           
+           
 		} catch (FileNotFoundException e) {
 			System.err.println("Konnte Datei nicht öffnen");
 		} catch (IOException e) {

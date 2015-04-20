@@ -98,16 +98,10 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 					return geladenesSpiel;
 				}
 			}
-<<<<<<< HEAD
+
 				return geladenesSpiel;
 			}
-		}
-		throw new RuntimeException("Datei exsistiert nicht");
+		
 }
-=======
-			throw new RuntimeException("Datei exsistiert nicht");
-	}
+
 	
->>>>>>> branch 'master' of https://github.com/SebastianStumm/PJMS-MADN
-	
-}
