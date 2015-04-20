@@ -26,7 +26,7 @@ public class KiTest {
 			System.out.println(p.getSpielerAmZug() + "   ");
 			p.benutzeKI();
 			p.zugBeenden();
-			System.out.println("Würfelwert: " + p.getBewegungsWert() + "   Neue Pos: " + p.getPosition(0) + "  " + p.getPosition(1) + "  " + p.getPosition(2) + "  " + p.getPosition(3));
+			System.out.println("Neue Pos: " + p.getPosition(0) + "  " + p.getPosition(1) + "  " + p.getPosition(2) + "  " + p.getPosition(3));
 			p.zugBeenden();
 			System.out.println("--------------------------------------------------------");
 		}

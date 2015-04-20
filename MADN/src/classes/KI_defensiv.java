@@ -32,7 +32,7 @@ public class KI_defensiv extends KI{
 		
 		do{
 			p.wuerfeln();
-
+			System.out.println("Würfelwert: " + p.getBewegungsWert());
 			if(bewegt == false && geheAufEndfeld()){
 				if(p.getBewegungsWert() == 6){
 					bewegt = true;
