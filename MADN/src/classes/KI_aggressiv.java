@@ -30,7 +30,7 @@ public class KI_aggressiv extends KI{
 	public void kalkuliereSpielzug() {
 		
 		do{
-			p.wuerfeln();
+			p.wuerfeln6();
 			//ASDF
 			System.out.println("Würfelwert: " + p.getBewegungsWert());
 			if(bewegt == false && schlageGegner()){

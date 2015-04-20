@@ -175,7 +175,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 						if(!grenzUeberschreitung(neuePosition)){
 							this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
 							this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
-							
+							System.out.println(spielerAmZug.getFigur(figurId).getPosition().getId());
+							System.out.println(spielbrett.getFeld(id));
 						}else{
 							zugBeenden();
 						}
@@ -471,7 +472,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @return boolean Boolscher Rückgabewert
 	 */ 
 	public boolean userIstDumm(int neuePosition, int figurId){
-		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == spielerAmZug.getFigur(figurId).getFarbe())) return true;
+		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == spielerAmZug.getFarbe())) return true;
 		return false;
 	}
 

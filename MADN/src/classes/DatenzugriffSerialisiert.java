@@ -97,4 +97,5 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 		}
 		throw new RuntimeException("Datei exsistiert nicht");
 }
+	
 }

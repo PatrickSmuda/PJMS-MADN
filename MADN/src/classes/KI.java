@@ -92,12 +92,15 @@ public abstract class KI {
 			if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Startfeld){
 				neueId = spieler.getFigur(i).getFreiPosition();
 				if(!spiel.userIstDumm(neueId, i)){
-					spiel.bewege(i);
-					return true;
+					if(spiel.figurAufFeld(neueId)){
+						spiel.bewege(i);
+						return true;
+					}
+					
 				}
 			}
 			
-			if(spiel.figurAufFeld(spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), i)) && spieler.getFigur(i).getPosition().getTyp() != FeldTyp.Startfeld){
+			if(spieler.getFigur(i).getPosition().getTyp() != FeldTyp.Startfeld && spiel.figurAufFeld(spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), i))){
 				for(int j=0; j<4; i++){
 					if(spieler.getFigur(j).getPosition().getId()==spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), j)){
 						
