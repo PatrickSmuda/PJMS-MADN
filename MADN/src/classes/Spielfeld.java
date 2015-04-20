@@ -38,7 +38,10 @@ public class Spielfeld implements Serializable {
 		return this.figur;
 	}
 	
-	//
+	/**
+	 * Die Methode setzt die Figur auf die Startposition
+	 * @param figur 
+	 */
 	public void setFigur(Spielfigur figur){
 		if(figur == null) throw new RuntimeException("Figur existiert nicht!");
 		if(this.figur == null) this.figur = figur;
@@ -49,7 +52,8 @@ public class Spielfeld implements Serializable {
 	}
 	
 	/**Gibt die ID fuer das Feld zurueck
-	 * */
+	 *@return id Die ID fuer ein Feld
+	 */ 
 	
 	public int getId(){ 
 		return this.id;
@@ -69,8 +73,11 @@ public class Spielfeld implements Serializable {
 	public FarbEnum getFeldFarbe(){ 
 		return this.feldFarbe;
 	}
-	
-
+	/**
+	 * Die Methode toString wird überschrieben
+	 * @return id,typ 
+	 */
+	@Override
 	public String toString(){
 	return this.id+" "+this.typ;
 }
