@@ -62,6 +62,10 @@ public class Spieler implements Serializable {
 	public FarbEnum getFarbe(){
 		return this.farbe;
 	}
+	/**
+	 * Gibt den Namen des Spielers zurueck
+	 * @return name
+	 */
 	
 	public String getName(){ 
 		return name;
@@ -75,6 +79,10 @@ public class Spieler implements Serializable {
 			this.ki = ki;
 		}else throw new RuntimeException("Keine KI uebergeben bekommen!");
 	}
+	/**
+	 * Gibt mir die Ki zurueck
+	 * @return ki
+	 */
 	
 	public KI getKI(){
 		return this.ki;
