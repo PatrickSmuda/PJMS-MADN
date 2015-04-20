@@ -13,7 +13,7 @@ public class SpielTestLaden {
 //		System.out.println(p.getSpielerAmZug() + "  ist auf dem Feld mit der ID  " + p.getPosition(1));
 		
 		d = new DatenzugriffCSV();
-		d.laden();
+		d.laden(3);
          		
 	}
 	

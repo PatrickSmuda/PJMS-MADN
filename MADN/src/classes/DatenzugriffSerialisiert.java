@@ -64,38 +64,50 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	/**
 	 * Die Methode laden, um das Spiel zu de-serialisieren
 	 */
-	public Object laden(int zaehler) { 
-		ObjectInputStream ois = null;
-		String test = null;
-		Spiel geladenesSpiel = null;
-		File dir = new File("C:\\Speicherstand");
-		File[] files = dir.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return name.endsWith("ser");
-			}
-		});
-		for (File file : files) {
-			if(file.getName().equals((dateiName + zaehler + ".ser"))){
-				try{
-					ois=new ObjectInputStream(new FileInputStream(("C:\\Speicherstand\\" + dateiName + zaehler + ".ser")));
-					geladenesSpiel = (Spiel)ois.readObject();
-				}catch(FileNotFoundException e){
-					System.err.println("Datei konnte nicht geladen werden!");
-				} catch (IOException e) {
-					System.err.println("Fehler bei Ein-/Ausgabe: " + e);
-			} catch (ClassNotFoundException e) {
-					System.err.println("Datei enthaelt kein Objekt von Typ Spiel!");
-				}finally{
-				try{
-					ois.close();
-				}catch(Exception e){
-					System.err.println("Fehler beim Schlieﬂen!");
+
+
+	@Override
+	public Object laden(int zaehler) {
+			ObjectInputStream ois = null;
+			String test = null;
+			Spiel geladenesSpiel = null;
+			File dir = new File("C:\\Speicherstand");
+			File[] files = dir.listFiles(new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.endsWith("ser");
+				}
+			});
+			for (File file : files) {
+				if(file.getName().equals((dateiName + zaehler + ".ser"))){
+					try{
+						ois=new ObjectInputStream(new FileInputStream(("C:\\Speicherstand\\" + dateiName + zaehler + ".ser")));
+						geladenesSpiel = (Spiel)ois.readObject();
+					}catch(FileNotFoundException e){
+						System.err.println("Datei konnte nicht geladen werden!");
+					} catch (IOException e) {
+						System.err.println("Fehler bei Ein-/Ausgabe: " + e);
+				} catch (ClassNotFoundException e) {
+						System.err.println("Datei enthaelt kein Objekt von Typ Spiel!");
+					}finally{
+					try{
+						ois.close();
+					}catch(Exception e){
+						System.err.println("Fehler beim Schlieﬂen!");
+					}
+				}
+					return geladenesSpiel;
 				}
 			}
+<<<<<<< HEAD
 				return geladenesSpiel;
 			}
 		}
 		throw new RuntimeException("Datei exsistiert nicht");
 }
+=======
+			throw new RuntimeException("Datei exsistiert nicht");
+	}
+	
+>>>>>>> branch 'master' of https://github.com/SebastianStumm/PJMS-MADN
 	
 }

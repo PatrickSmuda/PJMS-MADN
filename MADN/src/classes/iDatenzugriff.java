@@ -10,6 +10,6 @@ public interface iDatenzugriff {
 
 	public void speichern(Object spiel);
 	
-	public Object laden();
+	public Object laden(int zaehler);
 	
 }

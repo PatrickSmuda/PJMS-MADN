@@ -98,14 +98,13 @@ public class DatenzugriffCSV implements iDatenzugriff {
     			count++;
     		}
     		
-    		dateiName = dateiName + count + ".csv";
+    		dateiName = dateiName + zaehler + ".csv";
 			System.out.println(dateiName);
 			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName ));
-			
-			Spiel s = new Spiel();
-			
+						
            ArrayList <String> zeug = new ArrayList <String>();
-           String [] anderesZeug;
+           String [][] anderesZeug;
+           
            
             int i=0; //anzahl von Zeilen
             
@@ -114,11 +113,58 @@ public class DatenzugriffCSV implements iDatenzugriff {
             	i++;
             }while(zeug.get(i-1)!=null);
            
-            anderesZeug = new String[zeug.size()];
+            anderesZeug = new String[5][];
             
-        	for(int j=0; j<zeug.size(); j++){
-//        		anderesZeug[j]=zeug.get(j).split(";");
-        	}
+//            anderesZeug [0] = new String [zeug.size()-1]; // name vom spieler
+//            anderesZeug [1] = new String [zeug.size()-1]; // farbe vom spieler
+//            anderesZeug [2] = new String [(zeug.size()-1)*4]; // positionen von den figuren
+//            anderesZeug [3] = new String [(zeug.size()-1)*4]; // ueberlauf
+//            anderesZeug [4] = new String [1]; // spieler am zug
+            
+            Spieler [] spieler = new Spieler [zeug.size()-1];
+			Spiel s = new Spiel();
+			Spielbrett sb = new Spielbrett();
+			 int x=0;
+			 String spielerAmZug;
+			 int f; //farbe
+     
+			String [] neuerString;
+            
+           for(int k=0; k<zeug.size();k++){ 
+ 
+              neuerString = zeug.get(k).split(";");
+               
+              switch (neuerString[1]){
+              
+               case "Rot": f=0;
+               break; 
+               
+               case "Blau" : f=1;
+               break;
+               
+               case "Gelb" : f=3;
+               break; 
+               
+               case "Gruen" : f=2;
+               break;
+               
+               default: throw new RuntimeException ("Farbe wurde nicht abgespeichert");
+               
+               }
+              
+              try{
+            	x=Integer.parseInt(neuerString[3]); 
+              }catch(NumberFormatException e){ 
+            	  System.err.println("KI is kein int! man");
+              }
+              
+              if(k<=zeug.size()-1){
+               s.spielerHinzufuegen(neuerString[0], f, x);
+              }else {
+            	  spielerAmZug = neuerString[4];
+              }
+        	   }            
+        	
             
 		} catch (FileNotFoundException e) {
 			System.err.println("Konnte Datei nicht öffnen");
