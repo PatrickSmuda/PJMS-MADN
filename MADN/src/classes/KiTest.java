@@ -20,12 +20,17 @@ public class KiTest {
 		
 		
 		p.beginneSpiel();
-		
+		System.out.println(p.getSpielerAmZug());
 		p.wuerfeln();
+		System.out.println(p.getBewegungsWert());
 		p.bewege(0);
+		if(p.getBewegungsWert() != 6){
+			System.out.println(p.getSpielerAmZug());
+			p.benutzeKI();
+		}
 		
 		
-		p.benutzeKI();
+		
 		
 		
 		

@@ -39,6 +39,7 @@ public abstract class KI {
 		int neueId;
 		for(int i=0; i<4; i++)
 		{
+			if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Normalfeld){
 			neueId = spieler.getFigur(i).getPosition().getId() + spiel.getBewegungsWert();
 			neueId = spiel.ueberlauf(neueId, i);
 			if(spiel.kannEndfeldErreichen(neueId) && spiel.userIstDumm(neueId, i) == false){
@@ -50,6 +51,7 @@ public abstract class KI {
 						return true;
 					}
 				}
+			}
 			}
 		} 
 		return false;
@@ -90,11 +92,12 @@ public abstract class KI {
 			if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Startfeld){
 				neueId = spieler.getFigur(i).getFreiPosition();
 				if(!spiel.userIstDumm(neueId, i)){
-					
+					spiel.bewege(i);
+					return true;
 				}
 			}
 			
-			if(spiel.figurAufFeld(spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), i))){
+			if(spiel.figurAufFeld(spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), i)) && spieler.getFigur(i).getPosition().getTyp() != FeldTyp.Startfeld){
 				for(int j=0; j<4; i++){
 					if(spieler.getFigur(j).getPosition().getId()==spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), j)){
 						
@@ -115,11 +118,11 @@ public abstract class KI {
 
 		int groessteId=spieler.getFigur(0).getPosition().getId();
 		int figurId=0; // Figur mit der größten ID
-
-		for(int i=1; i<4; i++)
 		
+		
+		for(int i=1; i<4; i++)
 		{ 
-			if(groessteId<spieler.getFigur(i).getPosition().getId()){
+			if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Normalfeld && groessteId<spieler.getFigur(i).getPosition().getId()){
 				groessteId=spieler.getFigur(i).getPosition().getId();
 				figurId=i;
 			}
