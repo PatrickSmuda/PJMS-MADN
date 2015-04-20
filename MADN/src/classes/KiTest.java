@@ -15,23 +15,35 @@ public class KiTest {
 		iBediener p = s;
 		
 
-		p.spielerHinzufuegen("ROT", 0, 0);
-		p.spielerHinzufuegen("BLAU", 1, 1);
+		p.spielerHinzufuegen("ROTAggressiv", 0, 1);
+		p.spielerHinzufuegen("BLAUDefensiv", 1, 2);
 		
 		
 		p.beginneSpiel();
-		System.out.println(p.getSpielerAmZug());
-		p.wuerfeln();
-		System.out.println(p.getBewegungsWert());
-		p.bewege(0);
-		if(p.getBewegungsWert() != 6){
-			System.out.println(p.getSpielerAmZug());
+		
+		
+		for (int i = 0; i < 80; i++) {
+			System.out.println(p.getSpielerAmZug() + "   ");
 			p.benutzeKI();
+			p.zugBeenden();
+			System.out.println("Neue Pos: " + p.getPosition(0) + "  " + p.getPosition(1) + "  " + p.getPosition(2) + "  " + p.getPosition(3));
+			p.zugBeenden();
+			System.out.println("--------------------------------------------------------");
 		}
 		
 		
 		
 		
+		
+//		System.out.println(p.getSpielerAmZug());
+//		p.wuerfeln();
+//		System.out.println(p.getBewegungsWert());
+//		p.bewege(0);
+//		if(p.getBewegungsWert() != 6){
+//			System.out.println(p.getSpielerAmZug());
+//			p.benutzeKI();
+//		}
+//		
 		
 		
 		//Test fürs rausgehn
