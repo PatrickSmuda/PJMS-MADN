@@ -121,19 +121,49 @@ public class DatenzugriffCSV implements iDatenzugriff {
 //            anderesZeug [3] = new String [(zeug.size()-1)*4]; // ueberlauf
 //            anderesZeug [4] = new String [1]; // spieler am zug
             
-            Spieler [] spieler;
+            Spieler [] spieler = new Spieler [zeug.size()-1];
 			Spiel s = new Spiel();
+			Spielbrett sb = new Spielbrett();
+			 int x=0;
+			 String spielerAmZug;
+			 int f; //farbe
      
-			
+			String [] neuerString;
             
            for(int k=0; k<zeug.size();k++){ 
  
-               String [] neuerString = zeug.get(k).split(";");
-
+              neuerString = zeug.get(k).split(";");
                
-        	   
-        	   }
-            
+              switch (neuerString[1]){
+              
+               case "Rot": f=0;
+               break; 
+               
+               case "Blau" : f=1;
+               break;
+               
+               case "Gelb" : f=3;
+               break; 
+               
+               case "Gruen" : f=2;
+               break;
+               
+               default: throw new RuntimeException ("Farbe wurde nicht abgespeichert");
+               
+               }
+              
+              try{
+            	x=Integer.parseInt(neuerString[3]); 
+              }catch(NumberFormatException e){ 
+            	  System.err.println("KI is kein int! man");
+              }
+              
+              if(k<=zeug.size()-1){
+               s.spielerHinzufuegen(neuerString[0], f, x);
+              }else {
+            	  spielerAmZug = neuerString[4];
+              }
+        	   }            
         	
             
 		} catch (FileNotFoundException e) {

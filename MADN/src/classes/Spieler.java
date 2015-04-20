@@ -81,6 +81,27 @@ public class Spieler implements Serializable {
 	}
 	
 	/**
+	 * Gibt den Wert der KI zurueck
+	 * @return KI Wert
+	 */
+	
+	public int getKIWert(){
+		
+		if(ki == null){ 
+		return 0;	
+		}
+		
+		if(ki instanceof KI_aggressiv){
+			return 1;
+		}
+		
+		if(ki instanceof KI_defensiv){
+			return 2;
+		}
+		throw new RuntimeException ("Spieler existiert nich!");
+	}
+	
+	/**
 	 * Die Methode initialisiert die Spielfiguren mit der uebergebenen Farbe 
 	 * und stellt sie auf ihre jeweilige Startposition.
 	 * @param farbe Die Farbe der Spielfiguren

@@ -111,7 +111,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		String s= "";
 		
 		for(int i=0;i<spieler.size();i++){
-			s+=spieler.get(i).getName()+";"+spieler.get(i).getFarbe()+";"
+			s+=spieler.get(i).getName()+";"+spieler.get(i).getFarbe()+";"+spieler.get(i).getKIWert()+";"
 					+spieler.get(i).getFigur(0).getPosition().getId()+";"+figurenUeberlauf.contains(spieler.get(i))+";"
 					+spieler.get(i).getFigur(1).getPosition().getId()+";"+figurenUeberlauf.contains(spieler.get(i))+";"
 					+spieler.get(i).getFigur(2).getPosition().getId()+";"+figurenUeberlauf.contains(spieler.get(i))+";"

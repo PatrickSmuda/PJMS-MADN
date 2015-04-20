@@ -1,5 +1,6 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,12 +9,12 @@ import java.util.ArrayList;
  *
  */
 
-public abstract class KI {
+public abstract class KI implements Serializable{
 
 	/**
 	 * Attribute der Klasse KI
 	 */
-
+	private static final long serialVersionUID = 1L;
 	protected Spieler spieler;
 	protected iBediener spiel;
 	private boolean hatUeberlauf;

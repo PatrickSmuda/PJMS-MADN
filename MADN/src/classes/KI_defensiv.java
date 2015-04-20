@@ -8,6 +8,7 @@ package classes;
 
 public class KI_defensiv extends KI{
 	
+	private static final long serialVersionUID = 1L;
 	private iBediener p;
 	private boolean repeat = false;
 	private boolean bewegt = false;
