@@ -81,7 +81,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	
 	
 	
-	public Object laden(){ 
+	public Object laden(int zaehler){ 
 		BufferedReader reader = null;
 		
 		try {
@@ -98,14 +98,13 @@ public class DatenzugriffCSV implements iDatenzugriff {
     			count++;
     		}
     		
-    		dateiName = dateiName + count + ".csv";
+    		dateiName = dateiName + zaehler + ".csv";
 			System.out.println(dateiName);
 			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName ));
-			
-			Spiel s = new Spiel();
-			
+						
            ArrayList <String> zeug = new ArrayList <String>();
-           String [] anderesZeug;
+           String [][] anderesZeug;
+           
            
             int i=0; //anzahl von Zeilen
             
@@ -114,11 +113,28 @@ public class DatenzugriffCSV implements iDatenzugriff {
             	i++;
             }while(zeug.get(i-1)!=null);
            
-            anderesZeug = new String[zeug.size()];
+            anderesZeug = new String[5][];
             
-        	for(int j=0; j<zeug.size(); j++){
-//        		anderesZeug[j]=zeug.get(j).split(";");
-        	}
+//            anderesZeug [0] = new String [zeug.size()-1]; // name vom spieler
+//            anderesZeug [1] = new String [zeug.size()-1]; // farbe vom spieler
+//            anderesZeug [2] = new String [(zeug.size()-1)*4]; // positionen von den figuren
+//            anderesZeug [3] = new String [(zeug.size()-1)*4]; // ueberlauf
+//            anderesZeug [4] = new String [1]; // spieler am zug
+            
+            Spieler [] spieler;
+			Spiel s = new Spiel();
+     
+			
+            
+           for(int k=0; k<zeug.size();k++){ 
+ 
+               String [] neuerString = zeug.get(k).split(";");
+
+               
+        	   
+        	   }
+            
+        	
             
 		} catch (FileNotFoundException e) {
 			System.err.println("Konnte Datei nicht öffnen");
