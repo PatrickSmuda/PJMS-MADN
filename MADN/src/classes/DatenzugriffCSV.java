@@ -1,4 +1,9 @@
 package classes;
+/**
+ * Die Klasse DatenzugriffCSV
+ * @author
+ * @version 1.0
+ */
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,9 +16,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+
+
 public class DatenzugriffCSV implements iDatenzugriff {
 
 	private String dateiName = "SpeicherstandCSV_";
+	
+	/**
+	 * Die Methode speichern, um das Spiel serialisiert zu speichern
+	 */
 	
 	public void speichern(Object spiel){ 
 		
@@ -79,7 +90,9 @@ public class DatenzugriffCSV implements iDatenzugriff {
 		
 		
 	
-	
+	/**
+	 * Die Methode laden, um das Spiel de-serialisiert zu laden
+	 */
 	
 	public Object laden(int zaehler){ 
 		BufferedReader reader = null;
