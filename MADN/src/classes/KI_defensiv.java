@@ -32,8 +32,7 @@ public class KI_defensiv extends KI{
 		
 		do{
 			p.wuerfeln();
-			//ASDF
-			//System.out.println(p.getBewegungsWert());
+
 			if(bewegt == false && geheAufEndfeld()){
 				if(p.getBewegungsWert() == 6){
 					bewegt = true;
@@ -71,7 +70,6 @@ public class KI_defensiv extends KI{
 					break;
 				}
 			}
-			System.out.println("Würfelwert: " + p.getBewegungsWert() + "   Neue Pos: " + p.getPosition(1));
 			bewegt = false;
 		}while(repeat);
 		
