@@ -46,7 +46,10 @@ import java.io.Serializable;
 	public FarbEnum getFarbe(){
 		return this.farbe;
 	}
-	
+	/**
+	 * Die Methode setzt die Position in einem Spielfeld 
+	 * @param sf, das Spielfeld
+	 */
 	public void setPosition(Spielfeld sf){
 		this.position = sf;
 	}
@@ -64,7 +67,10 @@ import java.io.Serializable;
 	public Spielfeld getStartPosition(){
 		return this.startPosition;
 	}
-	
+	/**
+	 * Die Methode gibt die FreiPosition der Figur zurueck
+	 * @return freiposition Position der Figur auf dem Spielbrett
+	 */
 	public int getFreiPosition(){
 		return this.freiPosition;
 	}
@@ -85,7 +91,11 @@ import java.io.Serializable;
 		if(position.getFigur() != null) position.getFigur().geschlagen();
 		this.position = position;
 	}*/
-
+	
+/**
+ * Die Methode toString wird überschrieben
+ * @return position 
+ */
 	@Override 
 	public String toString(){
 	 return this.position + " ";	
