@@ -70,7 +70,7 @@ public class KI_aggressiv extends KI{
 					break;
 				}
 			}
-			System.out.println("Neue Pos: " + p.getPosition(1));
+			System.out.println("Neue Pos: " + p.getPosition(0));
 			bewegt = false;
 		}while(repeat);
 		
