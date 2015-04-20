@@ -83,7 +83,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	
 	public Object laden(int zaehler){ 
 		BufferedReader reader = null;
-		
+		Spiel s = new Spiel();
 		try {
 			
              int count=0;
@@ -104,8 +104,8 @@ public class DatenzugriffCSV implements iDatenzugriff {
 						
            ArrayList <String> inhaltStrings = new ArrayList <String>();
            String[] inhalt = null;
-           Spiel s = new Spiel();
            
+           String spielerAmZug = null;
            
             String currentLine = reader.readLine();
             
@@ -142,14 +142,44 @@ public class DatenzugriffCSV implements iDatenzugriff {
         		   
         	   }
         	   
-        	   
+        	   spielerAmZug = inhalt[0];
            }
            
+           int[] positionenArray = new int[positionen.size()];
+           boolean[] ueberlaeufeArray = new boolean[ueberlaeufe.size()];
+           System.out.println(namen.size());
            for(int i = 0; i < namen.size(); i++){
-        	   int f = Integer.parseInt(farben.get(i));
+        	   int f = 0;
+        	   if(farben.get(i).equals("rot")){
+        		   f = 0;
+        	   }
+        	   if(farben.get(i).equals("blau")){
+        		   f = 1;
+        	   }
+        	   if(farben.get(i).equals("gruen")){
+        		   f = 2;
+        	   }
+        	   if(farben.get(i).equals("gelb")){
+        		   f = 3;
+        	   }
+        	   
         	   int ki = Integer.parseInt(kiTyp.get(i));
         	   s.spielerHinzufuegen(namen.get(i), f, ki);
+        	   for(int j = 0; j < positionen.size(); j++){
+        		   positionenArray[j] = Integer.parseInt(positionen.get(j));
+        		   if(ueberlaeufe.get(j).equals("true")){
+        			   ueberlaeufeArray[j] = true;
+        		   }else{
+        			   ueberlaeufeArray[j] = false;
+        		   }
+        	   }
+        	   s.csvLadenSetter(positionenArray, f, ueberlaeufeArray, spielerAmZug);
            }
+           
+           
+           
+           
+           
            
            
             
@@ -187,8 +217,10 @@ public class DatenzugriffCSV implements iDatenzugriff {
 				System.err.println("Fehler beim schließen der Datei");
 			}
 		}
+		s.beginneSpiel();
+		return s;
 		
-		return null;
+		
 	}
 
 	

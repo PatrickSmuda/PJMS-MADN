@@ -248,6 +248,35 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		
 		return neuePosition;
 	}
+	
+	public void csvLadenSetter(int[] positionen, int farbe, boolean[] ueberlaeufe, String spielerAmZug){
+		FarbEnum f;
+		switch(farbe)
+		{
+		case 0: f = FarbEnum.rot; break;
+		case 1: f = FarbEnum.blau; break;
+		case 2: f = FarbEnum.gruen; break;
+		case 3: f = FarbEnum.gelb; break;
+		default: throw new RuntimeException("Keine Farbe wurde uebergeben!");
+		}
+		for(int i = 0; i < spieler.size(); i++){
+			if(spieler.get(i).getFarbe() == f){
+				for(int j = 0; j < 4; j++){
+					spieler.get(i).getFigur(j).setPosition(this.spielbrett.getFeld(positionen[j]));
+					spieler.get(i).getFigur(j).getPosition().setFigur(spieler.get(i).getFigur(j));
+					if(ueberlaeufe[j] == true){
+						figurenUeberlauf.add(spieler.get(i).getFigur(j));
+					}
+				}
+				
+			}
+			if(spieler.get(i).getName() == spielerAmZug){
+				this.spielerAmZug = spieler.get(i);
+			}
+		}
+		
+	}
+	
 	/**
 	 * Die Methode weist die Endfelder zu
 	 * @param neuePosition

@@ -33,10 +33,10 @@ import java.io.Serializable;
 		this.position = startPosition;
 		switch(this.farbe)
 		{
-		case rot: if(this.anz_rot >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.freiPosition = 0; this.anz_rot++;  break;
-		case blau: if(this.anz_blau >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.freiPosition = 10; this.anz_blau++;  break;
-		case gruen: if(this.anz_gruen >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.freiPosition = 20; this.anz_gruen++; break;
-		case gelb: if(this.anz_gelb >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!"); this.freiPosition = 30; this.anz_gelb++; break;
+		case rot: /*if(this.anz_rot >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!");*/ this.freiPosition = 0; this.anz_rot++;  break;
+		case blau: /*if(this.anz_blau >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!");*/ this.freiPosition = 10; this.anz_blau++;  break;
+		case gruen: /*if(this.anz_gruen >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!");*/ this.freiPosition = 20; this.anz_gruen++; break;
+		case gelb: /*if(this.anz_gelb >= 4)throw new RuntimeException("Mehr als 4 Figuren sind nicht erlaubt!");*/ this.freiPosition = 30; this.anz_gelb++; break;
 		}
 	}
 	/**
