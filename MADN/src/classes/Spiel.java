@@ -44,6 +44,10 @@ public class Spiel implements iBediener, Serializable {
 		this.hatUeberlauf = false;
 		this.figurenUeberlauf = new ArrayList<Spielfigur>();
 	}
+	/**
+	 * Gibt den Bewegungwert eines Spielzug zurueck
+	 * @return bewegungsWert
+	 */
 
 	public int getBewegungsWert(){
 		return this.bewegungsWert;
@@ -249,6 +253,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		return neuePosition;
 	}
 	
+	// JavaDoc
 	public void csvLadenSetter(int[] positionen, int farbe, boolean[] ueberlaeufe, String spielerAmZug){
 		FarbEnum f;
 		switch(farbe)
@@ -355,7 +360,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		
 
 	}
-	
+	// JavaDoc
 	public boolean zugGueltigAufEndfeld(int neuePosition, int n){
 		int x = 0;
 		switch(spielerAmZug.getFarbe())
@@ -442,7 +447,11 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	private void ungueltigerZug(){
 		zugBeenden();
 	}
-	
+	/**
+	 * Überprüft ob sich eine Figur auf dem Feld befindet
+	 * @param id Die Feld ID
+	 * @return boolean Gibt boolschen Wert zurueck
+	 */
 	public boolean figurAufFeld(int id){
 		if(spielbrett.getFeld(id).getFigur() != null) 
 			return true;
@@ -517,7 +526,11 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				spieler.getFigur(3).getPosition().getTyp() == FeldTyp.Startfeld )return false;
 		return true;
 	}
-	
+	/**
+	 * Die Methode gibt die Position einer Spielfigur zurueck, von dem Spieler der gerade dran ist
+	 * @param figurId
+	 * @return figurId
+	 */
 	public int getPositionFigur(int figurId){
 		return this.spielerAmZug.getFigur(figurId).getPosition().getId();
 	}
@@ -549,6 +562,10 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
 		}
 	}
+	
+	/**
+	 * TestMethode für die KI
+	 */
 
 	//Für die TestKlasse. Später löschen!
 	public void benutzeKI(){
