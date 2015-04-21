@@ -173,10 +173,10 @@ public void spielerHinzufuegen(String name, int f, int KI){
 						}
 					}else{
 						if(!grenzUeberschreitung(neuePosition)){
+							int test = this.spielerAmZug.getFigur(figurId).getPosition().getId();
+							this.spielbrett.getFeld(test).setFigur(null);
 							this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
 							this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
-							System.out.println(spielerAmZug.getFigur(figurId).getPosition().getId());
-							//System.out.println(spielbrett.getFeld(id));
 						}else{
 							zugBeenden();
 						}

@@ -102,14 +102,14 @@ public abstract class KI implements Serializable{
 			}
 			
 			if(spieler.getFigur(i).getPosition().getTyp() != FeldTyp.Startfeld && spiel.figurAufFeld(spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), i))){
-				for(int j=0; j<4; i++){
-					if(spieler.getFigur(j).getPosition().getId()==spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), j)){
+					neueId = spieler.getFigur(i).getPosition().getId()+spiel.getBewegungsWert();
+					if(spiel.userIstDumm(neueId, i)){
 						
 					}else{
 						spiel.bewege(i); 
 						return true;
 					}
-				}
+				
 			}
 		}
 		return false;
@@ -129,7 +129,26 @@ public abstract class KI implements Serializable{
 			if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Normalfeld && groessteId<spieler.getFigur(i).getPosition().getId()){
 				groessteId=spieler.getFigur(i).getPosition().getId();
 				figurId=i;
+				
 			}
+			if(spieler.getFigur(i).getPosition().getId() == spieler.getFigur(i).getFreiPosition()){
+				int neueId = spieler.getFigur(i).getPosition().getId()+spiel.getBewegungsWert();
+				if(!spiel.userIstDumm(neueId, i)){
+					figurId = i;
+					break;
+				}else{
+					for(int j = 0; j < 4; j++){
+						if(spieler.getFigur(j).getPosition().getId() == neueId){
+							if(!spiel.userIstDumm(neueId+spiel.getBewegungsWert(), j)){
+								figurId = j;
+								break;
+							}
+							
+						}
+					}
+				}
+			}
+			
 		}
 		spiel.bewege(figurId);
 		return true;

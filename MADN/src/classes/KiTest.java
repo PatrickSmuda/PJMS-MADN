@@ -22,13 +22,8 @@ public class KiTest {
 		p.beginneSpiel();
 		
 		
-		for (int i = 0; i < 80; i++) {
-			System.out.println(p.getSpielerAmZug() + "   ");
+		for(int i = 0; i < 30; i++){
 			p.benutzeKI();
-			p.zugBeenden();
-			System.out.println("Neue Pos: " + p.getPosition(0) + "  " + p.getPosition(1) + "  " + p.getPosition(2) + "  " + p.getPosition(3));
-			p.zugBeenden();
-			System.out.println("--------------------------------------------------------");
 		}
 		
 		

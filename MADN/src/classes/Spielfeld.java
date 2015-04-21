@@ -40,7 +40,7 @@ public class Spielfeld implements Serializable {
 	
 	//
 	public void setFigur(Spielfigur figur){
-		if(figur == null) throw new RuntimeException("Figur existiert nicht!");
+		if(figur == null) this.figur = null;
 		if(this.figur == null) this.figur = figur;
 		else{
 			this.figur.setPosition(figur.getStartPosition());

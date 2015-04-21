@@ -33,7 +33,12 @@ public class KI_aggressiv extends KI{
 		do{
 			p.wuerfeln();
 			//ASDF
+			System.out.println("Spieler: " + spieler.getName());
 			System.out.println("Würfelwert: " + p.getBewegungsWert());
+			System.out.println("Figur 1: "+ spieler.getFigur(0).getPosition()+"\tFigur 2: "
+			+ spieler.getFigur(1).getPosition()+"\tFigur 3: "
+					+ spieler.getFigur(2).getPosition()+"\tFigur 4: "
+			+ spieler.getFigur(3).getPosition());
 			if(bewegt == false && schlageGegner()){
 				if(p.getBewegungsWert() == 6){
 					bewegt = true;
@@ -41,7 +46,7 @@ public class KI_aggressiv extends KI{
 				}else{
 					bewegt = false;
 					repeat = false;
-					break;
+					//break;
 				}
 			}else if(bewegt == false && betreteSpielfeld()){
 				if(p.getBewegungsWert() == 6){
@@ -50,7 +55,7 @@ public class KI_aggressiv extends KI{
 				}else{
 					bewegt = false;
 					repeat = false;
-					break;
+					//break;
 				}
 			}else if(bewegt == false &&geheAufEndfeld()){
 				if(p.getBewegungsWert() == 6){
@@ -59,7 +64,7 @@ public class KI_aggressiv extends KI{
 				}else{
 					bewegt = false;
 					repeat = false;
-					break;
+					//break;
 				}
 			}else if(bewegt == false && laufEinfach()){
 				if(p.getBewegungsWert() == 6){
@@ -68,10 +73,15 @@ public class KI_aggressiv extends KI{
 				}else{
 					bewegt = false;
 					repeat = false;
-					break;
+					//break;
 				}
 			}
-			System.out.println("Neue Pos: " + p.getPosition(0));
+			
+			System.out.println("Figur 1: "+ spieler.getFigur(0).getPosition()+"\tFigur 2: "
+					+ spieler.getFigur(1).getPosition()+"\tFigur 3: "
+							+ spieler.getFigur(2).getPosition()+"\tFigur 4: "
+					+ spieler.getFigur(3).getPosition());
+			System.out.println("--------------------------------------------------------------");
 			bewegt = false;
 		}while(repeat);
 		
