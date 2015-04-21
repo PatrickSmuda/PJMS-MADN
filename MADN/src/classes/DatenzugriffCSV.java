@@ -23,9 +23,10 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	private String dateiName = "SpeicherstandCSV_";
 	
 	/**
-	 * Die Methode speichern, um das Spiel serialisiert zu speichern
+	 * Die Methode speichern, um das Spiel in CSV zu speichern
 	 */
 	
+	@Override
 	public void speichern(Object spiel){ 
 		
 		
@@ -91,9 +92,10 @@ public class DatenzugriffCSV implements iDatenzugriff {
 		
 	
 	/**
-	 * Die Methode laden, um das Spiel de-serialisiert zu laden
+	 * Die Methode laden, um das Spiel zu laden
 	 */
 	
+	@Override
 	public Object laden(int zaehler){ 
 		BufferedReader reader = null;
 		Spiel s = new Spiel();
