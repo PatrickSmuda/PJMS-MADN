@@ -21,10 +21,8 @@ public class Spielerangaben {
 		default: anz = 4; break;
 		}
 		int ki = 0;
-//		JCheckBox box = new JCheckBox("KI");
 		String eingabe[] = new String[anz];
 		for(int i = 0; i < anz; i++){
-//			box.setSelected(false);
 			eingabe[i] = JOptionPane.showInputDialog(null,"Geben Sie Ihren Namen ein",
 	                "Namensgebung",
 	                JOptionPane.PLAIN_MESSAGE);
