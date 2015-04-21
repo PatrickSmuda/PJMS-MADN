@@ -230,7 +230,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		if(neuePosition > 39){
 			for(int i = 0; i < figurenUeberlauf.size(); i++){
 				if(spielerAmZug.getFigur(figurId) == figurenUeberlauf.get(i) && spielerAmZug.getFigur(figurId).getPosition().getTyp() != FeldTyp.Endfeld){
-					throw new RuntimeException("Figur will 2 mal ueber 0 laufen!");
+					//throw new RuntimeException("Figur will 2 mal ueber 0 laufen!");
 				}
 			}
 			figurenUeberlauf.add(spielerAmZug.getFigur(figurId));
