@@ -49,6 +49,7 @@ public class Spiel implements iBediener, Serializable {
 	 * @return bewegungsWert
 	 */
 
+	@Override
 	public int getBewegungsWert(){
 		return this.bewegungsWert;
 	}
@@ -57,6 +58,8 @@ public class Spiel implements iBediener, Serializable {
 	 * Fügt dem Spiel einen Spieler hinzu.
 	 * @param spieler Der Spieler, der hinzugefügt werden soll.
 	 */
+	
+	@Override
 public void spielerHinzufuegen(String name, int f, int KI){
 		
 		if(!spielHatBegonnen){
@@ -97,6 +100,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	/**
 	 * Die Methode beginnt das Spiel.
 	 */
+	
+	@Override
 	public void beginneSpiel(){
 		if(this.spieler.size() >= 2){
 			this.spielHatBegonnen = true;
@@ -129,6 +134,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * Methode zum bewegen der Spielfigur
 	 * @param sf Spielfigur die bewegt wird
 	 */
+	@Override
 	public void bewege(int figurId){
 		if(this.spielHatBegonnen){
 			if(figurId > 4 || figurId < 0) throw new RuntimeException("Figur existiert nicht!");
@@ -201,6 +207,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param neuePosition
 	 * @return boolean
 	 */
+	@Override
 	public boolean grenzUeberschreitung(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -225,6 +232,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param figurId
 	 * @return neuePosition, figurId
 	 */
+	@Override
 	public int ueberlauf(int neuePosition, int figurId){
 		int hit = 0;
 		if(neuePosition > 39){
@@ -253,7 +261,13 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		return neuePosition;
 	}
 	
-	// JavaDoc
+	/**
+	 * Die Methode setzt die geladenen Wert
+	 * @param positionen
+	 * @param farbe
+	 * @param ueberlaeufe
+	 * @param spielerAmZug
+	 */
 	public void csvLadenSetter(int[] positionen, int farbe, boolean[] ueberlaeufe, String spielerAmZug){
 		FarbEnum f;
 		switch(farbe)
@@ -287,6 +301,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param neuePosition
 	 * @return neue Position
 	 */
+	
+	@Override
 	public int endfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -315,6 +331,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param neuePosition
 	 * @return boolean
 	 */
+	
+	@Override
 	public boolean zugGueltigEndfeld(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -360,7 +378,10 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		
 
 	}
-	// JavaDoc
+	/**
+	 * Die Methode ueberpreuft ob der Spieler sich auf dem Endfeld bewegen darf
+	 */
+	@Override
 	public boolean zugGueltigAufEndfeld(int neuePosition, int n){
 		int x = 0;
 		switch(spielerAmZug.getFarbe())
@@ -429,6 +450,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @return boolean
 	 */
 	
+	@Override
 	public boolean kannEndfeldErreichen(int neuePosition){
 		switch(spielerAmZug.getFarbe())
 		{
@@ -452,6 +474,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param id Die Feld ID
 	 * @return boolean Gibt boolschen Wert zurueck
 	 */
+	@Override
 	public boolean figurAufFeld(int id){
 		if(spielbrett.getFeld(id).getFigur() != null) 
 			return true;
@@ -496,9 +519,16 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * Gibt den Spieler der am Zug ist zurück
 	 * @return spielerAmZug
 	 */
+	
+	@Override
 	public String getSpielerAmZug(){
 		return this.spielerAmZug.getName();
 	}
+	
+	/**
+	 * Gibt die Position der Spielfigur zurueck
+	 */
+	@Override
 	public String getPosition(int n){
 		return this.spielerAmZug.getFigur(n).getPosition().toString();
 	}
@@ -509,6 +539,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param sf Die Spielfigur 
 	 * @return boolean Boolscher Rückgabewert
 	 */ 
+	
+	@Override
 	public boolean userIstDumm(int neuePosition, int figurId){
 		if((spielbrett.getFeld(neuePosition).getFigur() != null) && (spielbrett.getFeld(neuePosition).getFigur().getFarbe() == spielerAmZug.getFarbe())) return true;
 		return false;
@@ -552,6 +584,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	/**
 	 * Die Methode würfelt.
 	 */
+	
+	@Override
 	public void wuerfeln(){
 		if(spielHatBegonnen){
 			if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
