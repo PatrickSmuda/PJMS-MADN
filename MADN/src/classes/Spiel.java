@@ -593,7 +593,10 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				if(this.bewegungsWert == 6) this.darfWuerfeln = true;
 				else this.darfWuerfeln = false;
 				hatGewuerfelt = true;
-			}else throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
+			}else{
+				zugBeenden();
+				//throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
+			}
 		}
 	}
 	
