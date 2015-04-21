@@ -21,10 +21,10 @@ public class Spielerangaben {
 		default: anz = 4; break;
 		}
 		int ki = 0;
-		JCheckBox box = new JCheckBox("KI");
+//		JCheckBox box = new JCheckBox("KI");
 		String eingabe[] = new String[anz];
 		for(int i = 0; i < anz; i++){
-			box.setSelected(false);
+//			box.setSelected(false);
 			eingabe[i] = JOptionPane.showInputDialog(null,"Geben Sie Ihren Namen ein",
 	                "Namensgebung",
 	                JOptionPane.PLAIN_MESSAGE);
@@ -32,8 +32,29 @@ public class Spielerangaben {
 		for(int i = 0; i< anz; i++){
 			System.out.println(eingabe[i]);
 		}
-		
+		setKI();
 	}
-	
+	public void setKI(){
+		JFrame meinJFrame = new JFrame();
+        meinJFrame.setSize(150,100);
+        meinJFrame.setTitle("Spieler oder KI?");
+ 
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel();
+ 
+        panel.add(label);
+
+        //JCheckBoxen werden erstellt
+        JCheckBox checkSpieler = new JCheckBox("Spieler");
+        JCheckBox checkKI = new JCheckBox("KI");
+ 
+        //JCheckBoxen werden Panel hinzugefügt
+        panel.add(checkSpieler);
+        panel.add(checkKI);
+ 
+        meinJFrame.add(panel);
+ 
+        meinJFrame.setVisible(true);
+	}
 	
 }
