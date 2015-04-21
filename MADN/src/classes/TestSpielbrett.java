@@ -11,8 +11,12 @@ import org.junit.Test;
 
 public class TestSpielbrett {
 	protected Spielbrett s;
-
 	
+	
+	/**
+	 * Ausgabe vor dem Test
+	 * erstellt ein Spielbrett
+	 */
 	@Before
 	public void init() {
 		s = new Spielbrett();

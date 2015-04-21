@@ -14,6 +14,7 @@ import org.junit.Test;
 
 
 public class TestSpiel {
+	
 	/**Ausgabe vor dem Test.
 	  */
 	@Before
@@ -30,7 +31,10 @@ public class TestSpiel {
 	protected Spieler s3;
 	protected Spieler s4;
 	
-	
+
+	/**
+	 * Testszenario erstellt Spielbrett und Spieler
+	 */
 	@Test
 	public void test() {
 		
@@ -57,13 +61,18 @@ public class TestSpiel {
 //		catch(IllegalArgumentException ex){	
 //		}
 //	}
-	
+	/**
+	 * testet zwei Objekte, in dem Fall ob es der selbe Würfel ist mit Funktion werfen
+	 */
 	@Test
 	public void guterTest(){ 
 		assertEquals(w.werfen(), w.werfen());
 //		assertNotSame(spiel.bewege(s1.getFigur(0)), spiel.bewege(s3.getFigur(2)));
 	}
 	
+	/**
+	 * Ausgabe nach dem Test
+	 */
 	@After 
 	public void nachgabe(){
 		System.out.println("Ende vom Test.");

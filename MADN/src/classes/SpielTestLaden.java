@@ -1,7 +1,14 @@
 package classes;
+/**
+ * Klasse SpielTestLaden
+ * @author 
+ * @version 1.0
+ */
 
 public class SpielTestLaden {
-
+	
+	/**Erstellung von einem Spiel, anschlieﬂend Laden des Spieles aus einer Datei
+	*/
 	public static void main(String[] args) {
 		iDatenzugriff d;
 //		d= new DatenzugriffSerialisiert();
