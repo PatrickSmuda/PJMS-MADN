@@ -112,7 +112,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
     		}
     		
     		dateiName = dateiName + zaehler + ".csv";
-			System.out.println(dateiName);
+			//System.out.println(dateiName);
 			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName ));
 						
            ArrayList <String> inhaltStrings = new ArrayList <String>();
@@ -160,7 +160,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
            
            int[] positionenArray = new int[positionen.size()];
            boolean[] ueberlaeufeArray = new boolean[ueberlaeufe.size()];
-           System.out.println(namen.size());
+           //System.out.println(namen.size());
            for(int i = 0; i < namen.size(); i++){
         	   int f = 0;
         	   if(farben.get(i).equals("rot")){
@@ -196,7 +196,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
            
            
             
-           for(int i = 0; i < namen.size(); i++){
+          /* for(int i = 0; i < namen.size(); i++){
         	   System.out.println(namen.get(i));
            }System.out.println("-------");
             
@@ -214,7 +214,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
            
            for(int i = 0; i < ueberlaeufe.size(); i++){
         	   System.out.println(ueberlaeufe.get(i));
-           }System.out.println("-------");
+           }System.out.println("-------");*/
            
            
            

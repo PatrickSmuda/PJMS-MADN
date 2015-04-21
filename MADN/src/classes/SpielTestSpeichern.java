@@ -13,8 +13,8 @@ public class SpielTestSpeichern {
 		iDatenzugriff d;
 		d= new DatenzugriffSerialisiert();
 		Spiel s = new Spiel();
-		s.spielerHinzufuegen("Patrick", 0, 0);
-		s.spielerHinzufuegen("Sebi", 1, 1);
+		s.spielerHinzufuegen("Spieler 1", 0, 0);
+		s.spielerHinzufuegen("Spieler 2", 1, 1);
 		s.beginneSpiel();
 		d.speichern(s);
 		
