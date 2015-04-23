@@ -5,10 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-
+import javax.swing.*;
 
 
 public class Aufgabe_b extends JFrame{
@@ -24,18 +21,18 @@ public void rahmen(){
 
 	frame.setVisible(true);
 //    frame.pack();
+	
 	frame.setResizable(false);
 	frame.setLocationRelativeTo(null);  
 
     
-    JButton north = new JButton("NORTH");
 	JButton south = new JButton("AUSGABE, STATUS");
 	JButton center = new JButton("SPIELBRETT");
 	JButton west = new JButton("WUERFEL");
 	JButton east = new JButton("SPIELFIGUREN, STEUERUNG");
 	
 	
-	frame.getContentPane().add(north, BorderLayout.NORTH);
+	
 	frame.getContentPane().add(center, BorderLayout.CENTER);
 	frame.getContentPane().add(south, BorderLayout.SOUTH);
 	frame.getContentPane().add(west, BorderLayout.WEST);
