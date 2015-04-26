@@ -4,7 +4,7 @@ public class TestB {
 
 	public static void main (String [] args){ 
 		
-		AufgabeB GUI = new AufgabeB();
+		Aufgabe_b GUI = new Aufgabe_b();
 		GUI.rahmen();
 		
 		//		GUI.show();

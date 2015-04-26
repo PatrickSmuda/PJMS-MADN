@@ -25,8 +25,8 @@ public class Aufgabe_b extends JFrame{
 //		validate();	
 //	}
 	
-	private static final int SIZE = 900;
-	private static final int SIZET = 650;
+	private static final int SIZE = 1200;
+	private static final int SIZET = 900;
 	
 public void rahmen(){ 
 	JFrame frame = new JFrame("Spiel");
@@ -51,9 +51,9 @@ public void rahmen(){
 
 	 validate();	
 	 
-	 JFileChooser fc = new JFileChooser();
-	 fc.showOpenDialog(null);
-	 JLabel label = new JLabel(new ImageIcon(fc.getSelectedFile().getAbsolutePath()));
+//	 JFileChooser fc = new JFileChooser();
+//	 fc.showOpenDialog(null);
+//	 JLabel label = new JLabel(new ImageIcon(fc.getSelectedFile().getAbsolutePath()));
 	 
 	 JButton south = new JButton("AUSGABE, STATUS");
 	 JButton center = new JButton("Center");
@@ -61,7 +61,7 @@ public void rahmen(){
 	 JButton west = new JButton("WUERFEL");
 	 JButton east = new JButton("SPIELFIGUREN, STEUERUNG");
 	 
-     frame.getContentPane().add(BorderLayout.CENTER, label);
+//     frame.getContentPane().add(BorderLayout.CENTER, label);
 //	
 //        setTitle("DA");
 //		setVisible(true);
