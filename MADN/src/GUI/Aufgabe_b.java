@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.EventListener;
 
 import javax.swing.*;
@@ -39,48 +41,40 @@ public void rahmen(){
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
 	
-	JButton Feld1 = new JButton();
-	center.add(Feld1);
-	Feld1.setBounds(13, 204, 35, 35);
-	Feld1.setOpaque(false);
-	Feld1.setContentAreaFilled(false);
-	//Feld1.setBorderPainted(false);
-	Feld1.addActionListener(new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-				eh.buttonClicked(1);
-		}
-	});
 	
-	JButton Feld2 = new JButton();
-	center.add(Feld2);
-	Feld2.setBounds(54, 204, 35, 35);
-	Feld2.setOpaque(false);
-	Feld2.setContentAreaFilled(false);
-	//Feld1.setBorderPainted(false);
-	Feld2.addActionListener(new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-				eh.buttonClicked(2);
-		}
-	});		
+	JButton felder[] = new JButton[72];
+	for (int i = 0; i < felder.length; i++) {
+		felder[i] = new JButton();
+		center.add(felder[i]);
+		felder[i].setOpaque(false);
+		felder[i].setContentAreaFilled(false);
+		//Feld1.setBorderPainted(false);
+		final int x = i+1;
+		felder[i].addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					eh.buttonClicked(x);
+			}
+		});
+	}
+	felder[0].setBounds(13, 204, 35, 35);
+	felder[1].setBounds(54, 204, 35, 35);
+	felder[2].setBounds(100, 204, 35, 35);
+	felder[3].setBounds(146, 204, 35, 35);
+	felder[4].setBounds(202, 202, 35, 35);
+	felder[5].setBounds(202, 153, 35, 35);
+	felder[6].setBounds(202, 105, 35, 35);
+	felder[7].setBounds(202, 55, 35, 35);
+	felder[8].setBounds(202, 12, 35, 35);
+	felder[9].setBounds(252, 12, 35, 35);
+	felder[10].setBounds(300, 11, 35, 35);
+	felder[11].setBounds(300, 50, 35, 35);
+	felder[12].setBounds(100, 204, 35, 35);
+	felder[13].setBounds(100, 204, 35, 35);
+	felder[14].setBounds(100, 204, 35, 35);
+	felder[15].setBounds(100, 204, 35, 35);
+	felder[16].setBounds(100, 204, 35, 35);
 	
-	
-	JButton Feld3 = new JButton();
-	center.add(Feld3);
-	Feld3.setBounds(100, 204, 35, 35);
-	Feld3.setOpaque(false);
-	Feld3.setContentAreaFilled(false);
-	//Feld1.setBorderPainted(false);
-	Feld3.addActionListener(new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-				eh.buttonClicked(3);
-		}
-	});		
 	
 	
 	frame.getContentPane().add(center, BorderLayout.CENTER);
