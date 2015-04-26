@@ -27,7 +27,7 @@ public void rahmen(){
 	frame.setLocationRelativeTo(null);  
 	 
 	JButton south = new JButton("AUSGABE, STATUS");
-	JButton center = new JButton();
+	JLabel center = new JLabel();
 	center.setIcon(new ImageIcon("Spielbrett.png"));
 	JButton west = new JButton("WUERFEL");
 	JButton east = new JButton("SPIELFIGUREN, STEUERUNG");
@@ -37,8 +37,8 @@ public void rahmen(){
 	frame.getContentPane().add(west, BorderLayout.WEST);
 	frame.getContentPane().add(east, BorderLayout.EAST);
 	
-	east.setPreferredSize(new Dimension(225, 100));
-	west.setPreferredSize(new Dimension(225, 100));
+	east.setPreferredSize(new Dimension(227, 100));
+	west.setPreferredSize(new Dimension(227, 100));
 	south.setPreferredSize(new Dimension(300, 125));
     
     frame.setVisible(true);
