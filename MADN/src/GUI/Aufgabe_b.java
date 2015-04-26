@@ -57,25 +57,19 @@ public void rahmen(){
 			}
 		});
 	}
-	felder[0].setBounds(13, 204, 35, 35);
-	felder[1].setBounds(54, 204, 35, 35);
-	felder[2].setBounds(100, 204, 35, 35);
-	felder[3].setBounds(146, 204, 35, 35);
-	felder[4].setBounds(202, 202, 35, 35);
-	felder[5].setBounds(202, 153, 35, 35);
-	felder[6].setBounds(202, 105, 35, 35);
-	felder[7].setBounds(202, 55, 35, 35);
-	felder[8].setBounds(202, 12, 35, 35);
-	felder[9].setBounds(252, 12, 35, 35);
-	felder[10].setBounds(300, 11, 35, 35);
-	felder[11].setBounds(300, 50, 35, 35);
-	felder[12].setBounds(100, 204, 35, 35);
-	felder[13].setBounds(100, 204, 35, 35);
-	felder[14].setBounds(100, 204, 35, 35);
-	felder[15].setBounds(100, 204, 35, 35);
-	felder[16].setBounds(100, 204, 35, 35);
+	felder[0].setBounds(10, 207, 35, 35);
+	felder[1].setBounds(58, 207, 35, 35);
+	felder[2].setBounds(107, 207, 35, 35);
+	felder[3].setBounds(156, 207, 35, 35);
+	felder[4].setBounds(205, 207, 35, 35);
 	
+	felder[59].setBounds(254, 207, 35, 35);
 	
+	felder[14].setBounds(302, 207, 35, 35);
+	felder[15].setBounds(350, 207, 35, 35);
+	felder[16].setBounds(398, 207, 35, 35);
+	felder[17].setBounds(446, 207, 35, 35);
+	felder[18].setBounds(494, 207, 35, 35);
 	
 	frame.getContentPane().add(center, BorderLayout.CENTER);
 	frame.getContentPane().add(south, BorderLayout.SOUTH);
