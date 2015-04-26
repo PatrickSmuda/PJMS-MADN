@@ -18,10 +18,7 @@ import javax.swing.*;
 
 
 public class Aufgabe_b extends JFrame{
-	JPanel jp = new JPanel();
-	JButton jb = new JButton();
-
-	private static final int SIZEBreite = 1000;
+private static final int SIZEBreite = 1000;
 	private static final int SIZEHoehe = 700;
 	private EventHandler eh = new EventHandler();
 	
@@ -40,7 +37,9 @@ public void rahmen(){
 	center.setIcon(new ImageIcon("Spielbrett.png"));
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
-	
+	JButton wuerfel = new JButton();
+	west.add(wuerfel);
+	wuerfel.setBounds(90, 200, 50, 50);;
 	
 	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {
@@ -57,11 +56,14 @@ public void rahmen(){
 			}
 		});
 	}
+	//Immer +48
 	felder[0].setBounds(10, 207, 35, 35);
 	felder[1].setBounds(58, 207, 35, 35);
 	felder[2].setBounds(107, 207, 35, 35);
 	felder[3].setBounds(156, 207, 35, 35);
 	felder[4].setBounds(205, 207, 35, 35);
+	felder[5].setBounds(205, 159, 35, 35);
+	felder[6].setBounds(205, 111, 35, 35);
 	
 	felder[59].setBounds(254, 207, 35, 35);
 	
@@ -70,6 +72,7 @@ public void rahmen(){
 	felder[16].setBounds(398, 207, 35, 35);
 	felder[17].setBounds(446, 207, 35, 35);
 	felder[18].setBounds(494, 207, 35, 35);
+	
 	
 	frame.getContentPane().add(center, BorderLayout.CENTER);
 	frame.getContentPane().add(south, BorderLayout.SOUTH);
