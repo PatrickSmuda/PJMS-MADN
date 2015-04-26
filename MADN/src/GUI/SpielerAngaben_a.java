@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -12,7 +13,7 @@ public class SpielerAngaben_a {
 		
 		JFrame meinJFrame = new JFrame();
         meinJFrame.setSize(400,400);
-        meinJFrame.setTitle("Spieler oder KI?");
+        meinJFrame.setTitle("Spielangaben");
  
         JPanel panel = new JPanel();
         JLabel label = new JLabel();
@@ -36,8 +37,42 @@ public class SpielerAngaben_a {
 	    int selected = 	JOptionPane.showOptionDialog(null, "Anzahl der Spieler", "Alternativen",JOptionPane.DEFAULT_OPTION, 
 	    				JOptionPane.INFORMATION_MESSAGE, 
 					    null, options, options[0]);
-	    //setNamen();
+	    setNamen();
 	}
 	
+	public void setNamen(){
+		int anz;
+		int anzSpieler = 3;
+		switch(anzSpieler)
+		{
+		case 0: anz = 2; break;
+		case 1: anz = 3; break;
+		case 2: anz = 4; break;
+		default: anz = 4; break;
+		}
+		int ki = 0;
+		String eingabe[] = new String[anz];
+		for(int i = 0; i < anz; i++){
+			eingabe[i] = JOptionPane.showInputDialog(null,"Geben Sie Ihren Namen ein",
+	                "Namensgebung",
+	                JOptionPane.PLAIN_MESSAGE);
+		}
+		for(int i = 0; i< anz; i++){
+			System.out.println(eingabe[i]);
+		}
+		
+		
+//		setKI();
+	
+	}
+	
+//	public void setKI(){
+//		JCheckBox checkSpieler = new JCheckBox("Spieler");
+//        JCheckBox checkKI = new JCheckBox("KI");
+// 
+//        //JCheckBoxen werden Panel hinzugefügt
+//        panel.add(checkSpieler);
+//        panel.add(checkKI);
+//	}
 
 }
