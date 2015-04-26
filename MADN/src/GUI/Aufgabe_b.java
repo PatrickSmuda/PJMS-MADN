@@ -44,10 +44,7 @@ public void rahmen(){
 
 	
 	
-    JButton south = new JButton("AUSGABE, STATUS");
-    JButton center = new JButton("CENTER");
-    JButton west = new JButton("WUERFEL");
-	JButton east = new JButton("SPIELFIGUREN, STEUERUNG");
+
 //	JButton north = new JButton ("menue");
 	
 //	 ImageIcon myfile = new ImageIcon("C:\\Users\\Mersiha\\Desktop\\inf\\blatt2\\grafik"); 
@@ -58,7 +55,11 @@ public void rahmen(){
 	 fc.showOpenDialog(null);
 	 JLabel label = new JLabel(new ImageIcon(fc.getSelectedFile().getAbsolutePath()));
 	 
-	 
+	 JButton south = new JButton("AUSGABE, STATUS");
+	 JButton center = new JButton("Center");
+	 center.setIcon(new ImageIcon("C:\\Users\\Patrick\\Desktop\\Spielbrett.png"));
+	 JButton west = new JButton("WUERFEL");
+	 JButton east = new JButton("SPIELFIGUREN, STEUERUNG");
 	 
      frame.getContentPane().add(BorderLayout.CENTER, label);
 //	
