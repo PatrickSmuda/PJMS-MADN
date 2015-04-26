@@ -41,7 +41,7 @@ public class Spielerangaben {
 	}
 	
 	
-	
+
 	public void setNamen(){
 		
 		JFrame meinJFrame = new JFrame();
