@@ -30,10 +30,10 @@ public class Spielerangaben {
         meinJFrame.add(panel);
  
         meinJFrame.setVisible(true);
-//		Object[] options = {"2", "3", "4"};
-//	    int selected = 	JOptionPane.showOptionDialog(null, "Anzahl der Spieler", "Alternativen",JOptionPane.DEFAULT_OPTION, 
-//	    				JOptionPane.INFORMATION_MESSAGE, 
-//					    null, options, options[0]);
+		Object[] options = {"2", "3", "4"};
+	    int selected = 	JOptionPane.showOptionDialog(null, "Anzahl der Spieler", "Alternativen",JOptionPane.DEFAULT_OPTION, 
+	    				JOptionPane.INFORMATION_MESSAGE, 
+					    null, options, options[0]);
 	    setNamen();
 	}
 	
@@ -63,25 +63,25 @@ public class Spielerangaben {
 		
 		
 		
-//		int anz;
-//		int anzSpieler = 3;
-//		switch(anzSpieler)
-//		{
-//		case 0: anz = 2; break;
-//		case 1: anz = 3; break;
-//		case 2: anz = 4; break;
-//		default: anz = 4; break;
-//		}
-//		int ki = 0;
-//		String eingabe[] = new String[anz];
-//		for(int i = 0; i < anz; i++){
-//			eingabe[i] = JOptionPane.showInputDialog(null,"Geben Sie Ihren Namen ein",
-//	                "Namensgebung",
-//	                JOptionPane.PLAIN_MESSAGE);
-//		}
-//		for(int i = 0; i< anz; i++){
-//			System.out.println(eingabe[i]);
-//		}
+		int anz;
+		int anzSpieler = 3;
+		switch(anzSpieler)
+		{
+		case 0: anz = 2; break;
+		case 1: anz = 3; break;
+		case 2: anz = 4; break;
+		default: anz = 4; break;
+		}
+		int ki = 0;
+		String eingabe[] = new String[anz];
+		for(int i = 0; i < anz; i++){
+			eingabe[i] = JOptionPane.showInputDialog(null,"Geben Sie Ihren Namen ein",
+	                "Namensgebung",
+	                JOptionPane.PLAIN_MESSAGE);
+		}
+		for(int i = 0; i< anz; i++){
+			System.out.println(eingabe[i]);
+		}
 		setKI();
 	}
 	public void setKI(){

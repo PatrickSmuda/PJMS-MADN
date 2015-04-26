@@ -45,20 +45,22 @@ public void rahmen(){
 	
 	
     JButton south = new JButton("AUSGABE, STATUS");
-    JButton center = new JButton("SPIELBRETT");
+    JButton center = new JButton("CENTER");
     JButton west = new JButton("WUERFEL");
 	JButton east = new JButton("SPIELFIGUREN, STEUERUNG");
 //	JButton north = new JButton ("menue");
 	
 //	 ImageIcon myfile = new ImageIcon("C:\\Users\\Mersiha\\Desktop\\inf\\blatt2\\grafik"); 
 
-//	 validate();	
-//	 
-//	 JFileChooser fc = new JFileChooser();
-//	 fc.showOpenDialog(null);
-//	 JLabel label = new JLabel(new ImageIcon(fc.getSelectedFile().getAbsolutePath()));
-//	 
-//     frame.getContentPane().add(BorderLayout.CENTER, label);
+	 validate();	
+	 
+	 JFileChooser fc = new JFileChooser();
+	 fc.showOpenDialog(null);
+	 JLabel label = new JLabel(new ImageIcon(fc.getSelectedFile().getAbsolutePath()));
+	 
+	 
+	 
+     frame.getContentPane().add(BorderLayout.CENTER, label);
 //	
 //        setTitle("DA");
 //		setVisible(true);
