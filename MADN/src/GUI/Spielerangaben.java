@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Spielerangaben {
 	//Plan B ist dass Plan A funktioniert
 	
-	//man muss das Spiel laden und einbinden nicht die Spielerzahl auswählen etc Dialogfenster für schon existierendes Spiel
+	
 	public void anzahlSpieler(){
 		JFrame meinJFrame = new JFrame();
         meinJFrame.setSize(400,400);
@@ -37,7 +37,10 @@ public class Spielerangaben {
 	    setNamen();
 	}
 	
+	
+	
 	public void setNamen(){
+		
 		JFrame meinJFrame = new JFrame();
         meinJFrame.setSize(400,400);
         meinJFrame.setTitle("Spieler oder KI?");
