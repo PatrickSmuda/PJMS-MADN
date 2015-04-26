@@ -26,11 +26,11 @@ public void rahmen(){
 	frame.setResizable(false);
 	frame.setLocationRelativeTo(null);  
 	 
-	JButton south = new JButton("AUSGABE, STATUS");
+	JLabel south = new JLabel("AUSGABE, STATUS");
 	JLabel center = new JLabel();
 	center.setIcon(new ImageIcon("Spielbrett.png"));
-	JButton west = new JButton("WUERFEL");
-	JButton east = new JButton("SPIELFIGUREN, STEUERUNG");
+	JLabel west = new JLabel("WUERFEL");
+	JLabel east = new JLabel("SPIELFIGUREN, STEUERUNG");
      
 	frame.getContentPane().add(center, BorderLayout.CENTER);
 	frame.getContentPane().add(south, BorderLayout.SOUTH);
