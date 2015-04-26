@@ -76,7 +76,7 @@ public void rahmen(){
 	frame.getContentPane().add(west, BorderLayout.WEST);
 	frame.getContentPane().add(east, BorderLayout.EAST);
 
-	System.out.println(new File("Pfad des Bildes").exists());
+	System.out.println(new File("C:\\Users\\Mers\\Desktop\\Spielbrett.png").exists());
 	
 	east.setPreferredSize(new Dimension(200, 100));
 	west.setPreferredSize(new Dimension(200, 100));
@@ -89,13 +89,5 @@ public void rahmen(){
     frame.setVisible(true);
 	
 	}
-
-
-
-
-      public void wuerfel(Graphics g){ 
-    	  g.setColor (Color.CYAN);
-          g.fillRect (10, 10, 50, 50);
-      }
       
 }
