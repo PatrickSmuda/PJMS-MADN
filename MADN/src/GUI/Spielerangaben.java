@@ -1,4 +1,6 @@
 package GUI;
+import java.util.Locale;
+
 import javax.swing.*;
 
 //import classes.Spiel;
@@ -8,6 +10,7 @@ public class Spielerangaben {
 	
 	
 	public void anzahlSpieler(){
+	
 		JFrame meinJFrame = new JFrame();
         meinJFrame.setSize(400,400);
         meinJFrame.setTitle("Spieler oder KI?");
