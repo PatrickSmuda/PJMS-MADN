@@ -39,6 +39,11 @@ public void rahmen(){
 	center.setIcon(new ImageIcon("Spielbrett.png"));
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
+	final JLabel wrfl = new JLabel();
+	west.add(wrfl);
+	wrfl.setBounds(0, 0, 221, 216);
+	
+	
 	
 	final JTextArea logging = new JTextArea();
 	//south.add(logging);
@@ -52,7 +57,15 @@ public void rahmen(){
 	
 	JButton wuerfel = new JButton();
 	west.add(wuerfel);
-	wuerfel.setBounds(90, 200, 50, 50);;
+	wuerfel.setBounds(90, 200, 50, 50);
+	wuerfel.addActionListener(new ActionListener(){
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			eh.wrflAnzeigen(wrfl);
+		}
+		
+	});
 	
 	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {
@@ -98,6 +111,8 @@ public void rahmen(){
     
     frame.setVisible(true);
 	
+    
+    
 	}
       
 }

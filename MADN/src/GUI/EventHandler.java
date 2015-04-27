@@ -4,13 +4,18 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
+
+import classes.iBediener;
 
 public class EventHandler extends JFrame implements ActionListener {
 
 	private JButton button;
+	private iBediener ib;
 	
 	public EventHandler(){
 		button = new JButton ("bla");
@@ -36,6 +41,26 @@ public class EventHandler extends JFrame implements ActionListener {
        		
 	}
 	
+	public void wrflAnzeigen(Component c){
+		JLabel jl =(JLabel)c;
+//		ib.wuerfeln();
+		int wrflWrt = wrfln();
+		switch (wrflWrt){
+			case 1:jl.setIcon(new ImageIcon ("Augenzahl1.jpg")); break;
+			case 2:jl.setIcon(new ImageIcon ("Augenzahl2.jpg")); break;
+			case 3:jl.setIcon(new ImageIcon ("Augenzahl3.jpg")); break;
+			case 4:jl.setIcon(new ImageIcon ("Augenzahl4.jpg")); break;
+			case 5:jl.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
+			case 6:jl.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
+		}
+
+	}
+	
+	
+	
+	public int wrfln(){ 
+		return (int)((Math.random()*6)+1);
+	}
 	
 
 	
