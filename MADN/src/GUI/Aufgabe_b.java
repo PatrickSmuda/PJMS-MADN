@@ -57,7 +57,7 @@ public void rahmen(){
 	
 	JButton wuerfel = new JButton();
 	west.add(wuerfel);
-	wuerfel.setBounds(90, 200, 50, 50);
+	wuerfel.setBounds(60, 300, 100, 30);
 	wuerfel.addActionListener(new ActionListener(){
 
 		@Override
