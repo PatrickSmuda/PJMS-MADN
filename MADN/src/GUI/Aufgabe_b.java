@@ -82,7 +82,7 @@ public void rahmen(){
 			}
 		});
 	}
-	//Immer +48
+	//Immer +-48
 	felder[0].setBounds(10, 207, 35, 35);
 	felder[1].setBounds(58, 207, 35, 35);
 	felder[2].setBounds(107, 207, 35, 35);
@@ -90,14 +90,49 @@ public void rahmen(){
 	felder[4].setBounds(205, 207, 35, 35);
 	felder[5].setBounds(205, 159, 35, 35);
 	felder[6].setBounds(205, 111, 35, 35);
-	
-	felder[59].setBounds(254, 207, 35, 35);
-	
+	felder[7].setBounds(205, 63, 35, 35);
+	felder[8].setBounds(205, 15, 35, 35);
+	felder[9].setBounds(253, 15, 35, 35);
+	felder[10].setBounds(301, 15, 35, 35);
+	felder[11].setBounds(301, 63, 35, 35);
+	felder[12].setBounds(301, 111, 35, 35);
+	felder[13].setBounds(301, 159, 35, 35);
 	felder[14].setBounds(302, 207, 35, 35);
 	felder[15].setBounds(350, 207, 35, 35);
 	felder[16].setBounds(398, 207, 35, 35);
 	felder[17].setBounds(446, 207, 35, 35);
 	felder[18].setBounds(494, 207, 35, 35);
+	felder[19].setBounds(494, 255, 35, 35);
+	felder[20].setBounds(494, 303, 35, 35);
+	felder[21].setBounds(446, 303, 35, 35);
+	felder[22].setBounds(398, 303, 35, 35);
+	felder[23].setBounds(350, 303, 35, 35);
+	felder[24].setBounds(302, 303, 35, 35);
+	felder[25].setBounds(302, 352, 35, 35);
+	felder[26].setBounds(302, 401, 35, 35);
+	felder[27].setBounds(302, 449, 35, 35);
+	felder[28].setBounds(302, 497, 35, 35);
+	felder[29].setBounds(254, 498, 35, 35);
+	felder[30].setBounds(204, 498, 35, 35);
+	felder[31].setBounds(204, 450, 35, 35);
+	felder[32].setBounds(204, 402, 35, 35);
+	felder[33].setBounds(204, 353, 35, 35);
+	felder[34].setBounds(204, 304, 35, 35);
+	felder[35].setBounds(156, 304, 35, 35);
+	felder[36].setBounds(108, 304, 35, 35);
+	felder[37].setBounds(59, 304, 35, 35);
+	felder[38].setBounds(10, 304, 35, 35);
+	felder[39].setBounds(10, 256, 35, 35);
+	//Endfelder Blau
+	felder[56].setBounds(253, 62, 35, 35);
+	felder[57].setBounds(253, 110, 35, 35);
+	felder[58].setBounds(253, 158, 35, 35);
+	felder[59].setBounds(253, 207, 35, 35);
+	//Endfelder Gelb
+	felder[60].setBounds(253, 450, 35, 35);
+	felder[61].setBounds(253, 402, 35, 35);
+	felder[62].setBounds(253, 353, 35, 35);
+	felder[63].setBounds(253, 304, 35, 35);
 	
 	
 	frame.getContentPane().add(center, BorderLayout.CENTER);
