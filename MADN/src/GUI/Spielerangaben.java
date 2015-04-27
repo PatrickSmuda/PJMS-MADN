@@ -27,6 +27,8 @@ public class Spielerangaben extends JFrame {
 	private JLabel playerSelectLabel;
 	private ButtonGroup bg[] = new ButtonGroup[4];
 	private JComboBox farbe[] = new JComboBox[4];
+	private JButton accept; 
+	private JButton cancel;
 	
 	public void init(){
 		mainFrame = new JFrame("Spielererstellung");
@@ -67,7 +69,23 @@ public class Spielerangaben extends JFrame {
 		});
 		
 		
+		accept = new JButton();
+		accept.setText("Annehmen");
+		mainFrame.add(accept);
+		accept.setBounds(15, 420, 100, 20);
 		
+		accept.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		cancel = new JButton();
+		cancel.setText("Abbrechen");
+		mainFrame.add(cancel);
+		cancel.setBounds(125, 420, 100, 20);
 		
 		mainFrame.setVisible(true);
 	}
