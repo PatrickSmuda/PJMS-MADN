@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.Graphics;
+import java.awt.ScrollPane;
+import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -37,6 +39,17 @@ public void rahmen(){
 	center.setIcon(new ImageIcon("Spielbrett.png"));
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
+	
+	final JTextArea logging = new JTextArea();
+	//south.add(logging);
+	//logging.setBounds(0, 0, 1000, 125);
+	logging.setEditable(false);
+	JScrollPane sp = new JScrollPane();
+	sp.setViewportView(logging);
+	south.add(sp);
+	sp.setBounds(0,0,995,125);
+	
+	
 	JButton wuerfel = new JButton();
 	west.add(wuerfel);
 	wuerfel.setBounds(90, 200, 50, 50);;
@@ -52,7 +65,7 @@ public void rahmen(){
 		felder[i].addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					eh.buttonClicked(x);
+					eh.buttonClicked(x, logging);
 			}
 		});
 	}
