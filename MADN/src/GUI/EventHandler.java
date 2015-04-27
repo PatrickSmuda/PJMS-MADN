@@ -40,6 +40,7 @@ public class EventHandler extends JFrame implements ActionListener {
 				case 5:jl.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
 				case 6:jl.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
 			}
+			System.out.println(cases);
 			break;
 			
 		case "Feld_0":
@@ -117,16 +118,16 @@ public class EventHandler extends JFrame implements ActionListener {
 			System.out.println(cases);
 			break;
 		case "Bewege_0":	
-
+			System.out.println(cases);
 			break;
 		case "Bewege_1":	
-
+			System.out.println(cases);
 			break;
 		case "Bewege_2":	
-
+			System.out.println(cases);
 			break;
 		case "Bewege_3":	
-
+			System.out.println(cases);
 			break;
 		
 		default:
