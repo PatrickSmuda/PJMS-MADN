@@ -15,14 +15,13 @@ import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.EventListener;
-
 import javax.swing.*;
 
 
 public class Aufgabe_b extends JFrame{
-private static final int SIZEBreite = 1000;
+	private static final int SIZEBreite = 1000;
 	private static final int SIZEHoehe = 700;
-	private EventHandler eh = new EventHandler();
+	private EventHandler eh = new EventHandler(this);
 	
 public void rahmen(){ 
 	JFrame frame = new JFrame("Spiel");
@@ -55,19 +54,22 @@ public void rahmen(){
 	sp.setBounds(0,0,995,125);
 	
 	
-	JButton wuerfel = new JButton();
+	JButton wuerfel = new JButton("Wuerfeln");
+	wuerfel.setName("wuerfel");
 	west.add(wuerfel);
 	wuerfel.setBounds(60, 300, 100, 30);
-	wuerfel.addActionListener(new ActionListener(){
+	wuerfel.addActionListener(eh);
 
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			eh.wrflAnzeigen(wrfl);
-		}
-		
-	});
+	JButton bewege[] = new JButton[3];
+	for (int i = 0; i < bewege.length; i++) {
+		bewege[i] = new JButton();
+		bewege[i].setName("Bewege_"+i);
+		east.add(bewege[i]);
+		bewege[i].setBounds(60, ((i*100)+100), 100, 50);
+		bewege[i].addActionListener(eh);
+	}
 	
-	JButton felder[] = new JButton[72];
+	JButton felder[] = new JButton[71];
 	for (int i = 0; i < felder.length; i++) {
 		felder[i] = new JButton();
 		felder[i].setName("Feld_"+i);
@@ -75,13 +77,14 @@ public void rahmen(){
 		felder[i].setOpaque(false);
 		felder[i].setContentAreaFilled(false);
 		felder[i].setBorderPainted(false);
-		final int x = i+1;
-		felder[i].addActionListener(new ActionListener() {	
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					eh.buttonClicked(x, logging);
-			}
-		});
+		felder[i].addActionListener(eh);
+//		final int x = i+1;
+//		felder[i].addActionListener(new ActionListener() {	
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//					eh.buttonClicked(x, logging);
+//			}
+//		});
 	}
 	//Circa +-48 Abstand der Felder
 	felder[0].setBounds(10, 207, 35, 35);
@@ -175,9 +178,6 @@ public void rahmen(){
 	south.setPreferredSize(new Dimension(300, 125));
     
     frame.setVisible(true);
-	
-    
-    
 	}
       
 }

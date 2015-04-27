@@ -8,5 +8,4 @@ public class TestB {
 		Aufgabe_b GUI = new Aufgabe_b();
 		GUI.rahmen();
 	}
-	
 }
