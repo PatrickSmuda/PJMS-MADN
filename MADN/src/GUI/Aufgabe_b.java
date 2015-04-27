@@ -57,7 +57,7 @@ public void rahmen(){
 	
 	JButton wuerfel = new JButton();
 	west.add(wuerfel);
-	wuerfel.setBounds(90, 200, 50, 50);
+	wuerfel.setBounds(60, 300, 100, 30);
 	wuerfel.addActionListener(new ActionListener(){
 
 		@Override
@@ -70,10 +70,11 @@ public void rahmen(){
 	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {
 		felder[i] = new JButton();
+		felder[i].setName("Feld_"+i);
 		center.add(felder[i]);
 		felder[i].setOpaque(false);
 		felder[i].setContentAreaFilled(false);
-		//Feld1.setBorderPainted(false);
+		felder[i].setBorderPainted(false);
 		final int x = i+1;
 		felder[i].addActionListener(new ActionListener() {	
 			@Override
@@ -82,7 +83,7 @@ public void rahmen(){
 			}
 		});
 	}
-	//Immer +-48
+	//Circa +-48 Abstand der Felder
 	felder[0].setBounds(10, 207, 35, 35);
 	felder[1].setBounds(58, 207, 35, 35);
 	felder[2].setBounds(107, 207, 35, 35);
@@ -123,6 +124,26 @@ public void rahmen(){
 	felder[37].setBounds(59, 304, 35, 35);
 	felder[38].setBounds(10, 304, 35, 35);
 	felder[39].setBounds(10, 256, 35, 35);
+	//Startfelder Rot
+	felder[40].setBounds(8, 11, 40, 40);
+	felder[41].setBounds(56, 11, 40, 40);
+	felder[42].setBounds(8, 59, 40, 40);
+	felder[43].setBounds(56, 59, 40, 40);
+	//Startfelder Blau
+	felder[44].setBounds(444, 11, 40, 40);
+	felder[45].setBounds(492, 11, 40, 40);
+	felder[46].setBounds(444, 59, 40, 40);
+	felder[47].setBounds(492, 59, 40, 40);
+	//Startfelder Gruen
+	felder[48].setBounds(444, 447, 40, 40);
+	felder[49].setBounds(492, 447, 40, 40);
+	felder[50].setBounds(444, 496, 40, 40);
+	felder[51].setBounds(492, 496, 40, 40);
+	//Startfelder Gelb
+	felder[52].setBounds(8, 447, 40, 40);
+	felder[53].setBounds(56, 447, 40, 40);
+	felder[54].setBounds(8, 496, 40, 40);
+	felder[55].setBounds(56, 496, 40, 40);
 	//Endfelder Blau
 	felder[56].setBounds(253, 62, 35, 35);
 	felder[57].setBounds(253, 110, 35, 35);
@@ -133,7 +154,16 @@ public void rahmen(){
 	felder[61].setBounds(253, 402, 35, 35);
 	felder[62].setBounds(253, 353, 35, 35);
 	felder[63].setBounds(253, 304, 35, 35);
-	
+	//Endfelder Gruen
+	felder[64].setBounds(302, 255, 35, 35);
+	felder[65].setBounds(350, 255, 35, 35);
+	felder[66].setBounds(398, 255, 35, 35);
+	felder[67].setBounds(446, 255, 35, 35);
+	//Endfelder Rot
+	felder[68].setBounds(58, 256, 35, 35);
+	felder[69].setBounds(107, 256, 35, 35);
+	felder[70].setBounds(156, 256, 35, 35);
+	felder[71].setBounds(205, 256, 35, 35);
 	
 	frame.getContentPane().add(center, BorderLayout.CENTER);
 	frame.getContentPane().add(south, BorderLayout.SOUTH);
