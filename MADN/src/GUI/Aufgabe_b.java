@@ -60,7 +60,7 @@ public void rahmen(){
 	wuerfel.setBounds(60, 300, 100, 30);
 	wuerfel.addActionListener(eh);
 
-	JButton bewege[] = new JButton[3];
+	JButton bewege[] = new JButton[4];
 	for (int i = 0; i < bewege.length; i++) {
 		bewege[i] = new JButton();
 		bewege[i].setName("Bewege_"+i);
@@ -69,7 +69,7 @@ public void rahmen(){
 		bewege[i].addActionListener(eh);
 	}
 	
-	JButton felder[] = new JButton[71];
+	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {
 		felder[i] = new JButton();
 		felder[i].setName("Feld_"+i);
