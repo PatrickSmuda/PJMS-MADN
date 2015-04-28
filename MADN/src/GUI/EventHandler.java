@@ -9,18 +9,33 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRootPane;
 import javax.swing.JTextArea;
 
 import classes.Wuerfel;
 import classes.iBediener;
+/**
+ * Die Klasse EventHandler
+ * @author 
+ *
+ */
+
 
 public class EventHandler extends JFrame implements ActionListener {
 
+	/**
+	 * Attribute von der Klasse EventHandler
+	 */
+	
 	private Aufgabe_b gui = null;
 	private iBediener ib;
 	public EventHandler(Aufgabe_b gui){
 		this.gui = gui;
 	}
+	
+	/**
+	 * Die Methode faengt das Event ab und fuehrt die jeweilige Aktion aus 
+	 */
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -124,8 +139,13 @@ public class EventHandler extends JFrame implements ActionListener {
 			System.out.println(cases);
 			break;
 		case "Bewege_0":	
-			System.out.println(cases);
+			JLabel figur = null;
+			JLabel jl = (JLabel) c.getParent();
+			
+			
+			
 			break;
+			
 		case "Bewege_1":	
 			System.out.println(cases);
 			break;

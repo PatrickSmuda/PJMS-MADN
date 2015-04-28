@@ -11,7 +11,11 @@ import classes.Spiel;
 import classes.iBediener;
 
 //import classes.Spiel;
-
+/**
+ * Klasse fuer Spielererstellung
+ * @author Mersiha, Sebastian, Patrick
+ *
+ */
 public class Spielerangaben extends JFrame {
 	//Plan B ist dass Plan A funktioniert
 	
@@ -37,6 +41,10 @@ public class Spielerangaben extends JFrame {
 	private JLabel mainLabel;
 	private iBediener ib;
 	
+	
+	/**
+	 * initalisiert die GUI
+	 */
 	public void init(){
 		mainFrame = new JFrame("Spielererstellung");
 		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -209,7 +217,10 @@ public class Spielerangaben extends JFrame {
 		mainFrame.setVisible(true);
 	}
 	
-	
+	/**
+	 * Zeichnet die Spielerauswahl
+	 * @param players anzahl der Spieler
+	 */
 	private void paintSelection(int players){
 		
 		for(int i = 0; i < players; i++){

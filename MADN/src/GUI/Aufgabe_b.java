@@ -17,7 +17,11 @@ import java.util.ArrayList;
 import java.util.EventListener;
 import javax.swing.*;
 
-
+/**
+ * Die Klasse Aufgabe_b, die die GUI darstellt
+ * @author 
+ *
+ */
 public class Aufgabe_b extends JFrame{
 	private static final int SIZEBreite = 1000;
 	private static final int SIZEHoehe = 700;
@@ -29,6 +33,9 @@ public class Aufgabe_b extends JFrame{
 	private JLabel [] figurBlau = new JLabel[4];
 	
 	
+	/**
+	 * Die Methode erstellt den Rahmen mit dem Inhalt
+	 */
 	
 public void rahmen(){ 
 	JFrame frame = new JFrame("Spiel");
@@ -45,6 +52,7 @@ public void rahmen(){
 	center.setIcon(new ImageIcon("Spielbrett.png"));
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
+	east.setName("east");
 	final JLabel wrfl = new JLabel();
 	wrfl.setName("wuerfelLabel");
 	west.add(wrfl);
@@ -56,6 +64,14 @@ public void rahmen(){
 		figurBlau[i]=new JLabel();
 		figurGelb[i]=new JLabel();
 		figurGruen[i]=new JLabel();
+		
+		figurRot[i].setName("r"+i);
+		figurBlau[i].setName("b"+i);
+		figurGelb[i].setName("ge"+i);
+		figurGruen[i].setName("gr"+i);
+
+
+		
 		
 		center.add(figurRot[i]);
 		center.add(figurBlau[i]);
@@ -227,6 +243,7 @@ public void rahmen(){
 	south.setPreferredSize(new Dimension(300, 125));
     
     frame.setVisible(true);
+   
 	}
       
 }
