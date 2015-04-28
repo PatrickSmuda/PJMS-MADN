@@ -112,13 +112,12 @@ public void rahmen(){
 	
 	
 	final JTextArea logging = new JTextArea();
-	//south.add(logging);
-	//logging.setBounds(0, 0, 1000, 125);
 	logging.setEditable(false);
 	JScrollPane sp = new JScrollPane();
 	sp.setViewportView(logging);
 	south.add(sp);
 	sp.setBounds(0,0,995,125);
+	logging.setName("Logging");
 	
 	
 	JButton wuerfel = new JButton("Wuerfeln");

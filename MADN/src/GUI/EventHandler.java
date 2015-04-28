@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JViewport;
 
 import classes.Wuerfel;
 import classes.iBediener;
@@ -139,41 +140,32 @@ public class EventHandler extends JFrame implements ActionListener {
 		case "Feld_69":
 		case "Feld_70":
 		case "Feld_71":
-//			System.out.println(gui.getFrames()[0].getName());
-//			System.out.println(gui.getFrames()[1].getName());
-//			System.out.println(gui.getFrames()[2].getName());
-//
-//			JLabel jlb2 = null;
-//			JLabel jf2 = (JLabel) c.getParent();
-			JRootPane test = (JRootPane) gui.getFrames()[2].getComponent(0);
-			System.out.println(test.getComponent(0));
-			System.out.println(test.getComponent(1));
-			JLayeredPane test2 = (JLayeredPane) test.getComponent(1);
-			//JRootPane test3 = (JRootPane) test.getComponent(1);
-			//System.out.println(test2.getComponent(0));
-			JPanel test4 = (JPanel) test2.getComponent(0);
-			
-			System.out.println(test4.getComponent(1).getName());
-			//System.out.println(test3.getComponentCount());
-			
-			for(int i = 0; i < gui.getFrames()[2].getComponentCount(); i++){
-				if(test4.getComponent(1).getName().equals("south")){
-					System.out.println("YATA");
-					
+			JRootPane ebene1 = (JRootPane) gui.getFrames()[2].getComponent(0);
+			JLayeredPane ebene2 = (JLayeredPane) ebene1.getComponent(1);
+			JPanel ebene3 = (JPanel) ebene2.getComponent(0);
+			JLabel southEbene1 = null;
+			for(int i = 0; i < ebene3.getComponentCount(); i++){
+				if(ebene3.getComponent(i).getName().equals("south")){
+					southEbene1 = (JLabel) ebene3.getComponent(i);
 					break;
 				}
 			}
+			System.out.println(southEbene1.getName());
+			JScrollPane logsp = (JScrollPane) southEbene1.getComponent(0);
+			System.out.println(logsp.getComponentCount());
+			System.out.println(logsp.getComponent(0));
+			System.out.println(logsp.getComponent(1));
+			System.out.println(logsp.getComponent(2));
 			
-//			final JTextArea logging = new JTextArea();
-//			logging.setEditable(false);
-//			JScrollPane sp = new JScrollPane();
-//			sp.setViewportView(logging);
-//			south.add(sp);
-//			sp.setBounds(0,0,995,125);
+			JViewport ebene4 = (JViewport) logsp.getComponent(0);
+			System.out.println(ebene4.getComponent(0));
+			JTextArea logta = (JTextArea) ebene4.getComponent(0);
+			String s = logta.getText();
+			String split[] = cases.split("_");
+			int x = Integer.parseInt(split[1]);
+			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
 			
 			
-			System.out.println(cases);
-			break;
 		case "Bewege_0":	
 			JLabel figur = null;
 			JLabel jl = (JLabel) c.getParent();
