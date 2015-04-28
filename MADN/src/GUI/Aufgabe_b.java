@@ -23,6 +23,12 @@ public class Aufgabe_b extends JFrame{
 	private static final int SIZEHoehe = 700;
 	private EventHandler eh = new EventHandler(this);
 	
+	private JLabel [] figurGruen = new JLabel[4];
+	private JLabel [] figurRot = new JLabel[4];
+	private JLabel [] figurGelb = new JLabel[4];
+	private JLabel [] figurBlau = new JLabel[4];
+	
+	
 	
 public void rahmen(){ 
 	JFrame frame = new JFrame("Spiel");
@@ -45,7 +51,46 @@ public void rahmen(){
 	wrfl.setBounds(0, 0, 221, 216);
 	
 	
+	for(int i=0;i<4;i++){
+		figurRot[i]=new JLabel();
+		figurBlau[i]=new JLabel();
+		figurGelb[i]=new JLabel();
+		figurGruen[i]=new JLabel();
+		
+		center.add(figurRot[i]);
+		center.add(figurBlau[i]);
+		center.add(figurGelb[i]);
+		center.add(figurGruen[i]);
+		
+		figurRot[i].setIcon(new ImageIcon("SpielfigurRot.jpg"));
+		figurBlau[i].setIcon(new ImageIcon("SpielfigurBlau.jpg"));
+		figurGelb[i].setIcon(new ImageIcon("SpielfigurGelb.jpg"));
+		figurGruen[i].setIcon(new ImageIcon("SpielfigurGruen.jpg"));
 	
+	}
+	
+	figurRot[0].setBounds(8, 11, 30, 30);
+	figurRot[1].setBounds(56, 11, 30, 30);
+	figurRot[2].setBounds(8, 59, 30, 30);
+	figurRot[3].setBounds(56, 59, 30, 30);
+	
+	figurBlau[0].setBounds(444, 11, 30, 30);
+	figurBlau[1].setBounds(492, 11, 30, 30);
+	figurBlau[2].setBounds(444, 59, 30, 30);
+	figurBlau[3].setBounds(492, 59, 30, 30);
+	
+	figurGelb[0].setBounds(8, 447, 30, 30);
+	figurGelb[1].setBounds(56, 447, 30, 30 );
+	figurGelb[2].setBounds(8, 496, 30, 30 );
+	figurGelb[3].setBounds(56, 496, 30, 30);
+	
+	figurGruen[0].setBounds(444, 447, 30, 30);
+	figurGruen[1].setBounds(492, 447, 30, 30);
+	figurGruen[2].setBounds(444, 496, 30, 30);
+	figurGruen[3].setBounds(492, 496, 30, 30);
+
+
+
 	
 	
 	final JTextArea logging = new JTextArea();
