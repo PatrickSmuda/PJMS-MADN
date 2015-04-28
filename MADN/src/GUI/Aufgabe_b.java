@@ -23,6 +23,7 @@ public class Aufgabe_b extends JFrame{
 	private static final int SIZEHoehe = 700;
 	private EventHandler eh = new EventHandler(this);
 	
+	
 public void rahmen(){ 
 	JFrame frame = new JFrame("Spiel");
 	
@@ -39,8 +40,11 @@ public void rahmen(){
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
 	final JLabel wrfl = new JLabel();
+	wrfl.setName("wuerfelLabel");
 	west.add(wrfl);
 	wrfl.setBounds(0, 0, 221, 216);
+	
+	
 	
 	
 	

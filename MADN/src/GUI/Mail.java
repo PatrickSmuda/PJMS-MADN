@@ -80,7 +80,7 @@ public class Mail extends Thread {
 	@Override
 	public void run(){
 		try{
-			System.out.println("Starte mit Mail schreiben an"+p.getProperty("an"));
+			System.out.println("Starte mit Mail schreiben an"+ " " + p.getProperty("an"));
 			MailAuthenticator ath=new MailAuthenticator();
 			Session session=Session.getDefaultInstance(p, ath);
 			Message msg=new MimeMessage(session);
@@ -115,7 +115,7 @@ public class Mail extends Thread {
 					"wurde erfolgreich gesendet :>");
 			
 		}catch(Exception e){
-			System.out.println("Das Senden der E-Mail an"+p.getProperty("an")+ 
+			System.out.println("Das Senden der E-Mail an" + " " +p.getProperty("an")+ " " +
 					"leider nein. leider garnicht.");
 			e.printStackTrace();
 		}

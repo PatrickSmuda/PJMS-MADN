@@ -26,21 +26,31 @@ public class EventHandler extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Component c = (Component) e.getSource();
 		String cases = c.getName();
-		System.out.println(c.getName());
+		//System.out.println(c.getName());
+		
 		switch (cases) {
 		case "wuerfel":
-			JLabel jl =(JLabel)c;
-			ib.wuerfeln();
+			JLabel jlb=null;
+			JLabel jf = (JLabel) c.getParent();
+			for(int i = 0; i < jf.getComponentCount(); i++){
+//				System.out.println(jf.getComponent(i).getName());
+				if(jf.getComponent(i).getName().equals("wuerfelLabel")){
+					jlb=(JLabel) jf.getComponent(i);
+					break;
+				}
+			}
+			
+			
 			int wrflWrt = (int)((Math.random()*6)+1);
 			switch (wrflWrt){
-				case 1:jl.setIcon(new ImageIcon ("Augenzahl1.jpg")); break;
-				case 2:jl.setIcon(new ImageIcon ("Augenzahl2.jpg")); break;
-				case 3:jl.setIcon(new ImageIcon ("Augenzahl3.jpg")); break;
-				case 4:jl.setIcon(new ImageIcon ("Augenzahl4.jpg")); break;
-				case 5:jl.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
-				case 6:jl.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
+				case 1:jlb.setIcon(new ImageIcon ("Augenzahl1.jpg")); break;
+				case 2:jlb.setIcon(new ImageIcon ("Augenzahl2.jpg")); break;
+				case 3:jlb.setIcon(new ImageIcon ("Augenzahl3.jpg")); break;
+				case 4:jlb.setIcon(new ImageIcon ("Augenzahl4.jpg")); break;
+				case 5:jlb.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
+				case 6:jlb.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
 			}
-			System.out.println(cases);
+//			System.out.println(cases);
 			break;
 			
 		case "Feld_0":
