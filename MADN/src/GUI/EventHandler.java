@@ -26,21 +26,18 @@ public class EventHandler extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Component c = (Component) e.getSource();
 		String cases = c.getName();
-		//System.out.println(c.getName());
 		
 		switch (cases) {
 		case "wuerfel":
 			JLabel jlb=null;
 			JLabel jf = (JLabel) c.getParent();
 			for(int i = 0; i < jf.getComponentCount(); i++){
-//				System.out.println(jf.getComponent(i).getName());
 				if(jf.getComponent(i).getName().equals("wuerfelLabel")){
 					jlb=(JLabel) jf.getComponent(i);
 					break;
 				}
 			}
-			
-			
+		
 			int wrflWrt = (int)((Math.random()*6)+1);
 			switch (wrflWrt){
 				case 1:jlb.setIcon(new ImageIcon ("Augenzahl1.jpg")); break;
@@ -50,7 +47,6 @@ public class EventHandler extends JFrame implements ActionListener {
 				case 5:jlb.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
 				case 6:jlb.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
 			}
-//			System.out.println(cases);
 			break;
 			
 		case "Feld_0":

@@ -66,10 +66,10 @@ public void rahmen(){
 
 	JButton bewege[] = new JButton[4];
 	for (int i = 0; i < bewege.length; i++) {
-		bewege[i] = new JButton();
+		bewege[i] = new JButton("Bewege Firgur "+(i+1));
 		bewege[i].setName("Bewege_"+i);
 		east.add(bewege[i]);
-		bewege[i].setBounds(60, ((i*100)+100), 100, 50);
+		bewege[i].setBounds(10, ((i*100)+60), 200, 50);
 		bewege[i].addActionListener(eh);
 	}
 	
