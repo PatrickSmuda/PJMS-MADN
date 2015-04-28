@@ -31,15 +31,14 @@ public class Aufgabe_b extends JFrame{
 	private JLabel [] figurRot = new JLabel[4];
 	private JLabel [] figurGelb = new JLabel[4];
 	private JLabel [] figurBlau = new JLabel[4];
-	
+	private JFrame frame = new JFrame("Spiel");
 	
 	/**
 	 * Die Methode erstellt den Rahmen mit dem Inhalt
 	 */
 	
 public void rahmen(){ 
-	JFrame frame = new JFrame("Spiel");
-	
+	frame.setName("DerFrame");
     frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     
     frame.setSize(SIZEBreite, SIZEHoehe);
@@ -53,6 +52,9 @@ public void rahmen(){
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
 	east.setName("east");
+	west.setName("west");
+	south.setName("south");
+	center.setName("center");
 	final JLabel wrfl = new JLabel();
 	wrfl.setName("wuerfelLabel");
 	west.add(wrfl);
@@ -245,5 +247,7 @@ public void rahmen(){
     frame.setVisible(true);
    
 	}
-      
+    public JFrame getFrame(){
+    	return frame;
+    }
 }
