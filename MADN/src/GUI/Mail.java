@@ -39,13 +39,13 @@ public class Mail extends Thread {
 		if((an==null)||(an.length()==0)) return;
 		p=new Properties();
 		p.put("mail.smtp.host", "maildap.yahoo.de");
-		p.put("mail.smtp.user", "DER BENUTZERNAME BITTE.");
-		p.put("mail.smtp.passwort", "NUN DAS PASSWORT S'IL VOUS PLAIT.");
+		p.put("mail.smtp.user", "madn_pms@yahoo.de");
+		p.put("mail.smtp.passwort", "Penis#42");
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.sel.SSLSocketFactory");
 		p.put("mail.smtp.auth", "true");
 		p.put("mail.smtp.port", "465");
-		p.put("von", "DIE MAILADRESSE.");
+		p.put("von", "mersiha.d@gmx.de");
 		p.put("an", an);
 		p.put("betreff", betreff);
 		p.put("text", text);
