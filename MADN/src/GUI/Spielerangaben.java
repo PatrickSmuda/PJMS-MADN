@@ -194,9 +194,10 @@ public class Spielerangaben extends JFrame {
 						if(ki_d[j].isSelected()){
 							ki = 2;
 						}
-						ib.spielerHinzufuegen(names[j].getText(), farbe[j].getSelectedIndex(), ki);
-						mainFrame.dispose();
+						ib.spielerHinzufuegen(names[j].getText(), farbe[j].getSelectedIndex(), ki);	
 					}
+					Aufgabe_b b = new Aufgabe_b(ib);
+					mainFrame.dispose();
 				}
 			}
 		});
