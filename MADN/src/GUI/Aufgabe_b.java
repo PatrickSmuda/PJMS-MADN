@@ -15,7 +15,10 @@ import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.EventListener;
+
 import javax.swing.*;
+
+import classes.iBediener;
 
 /**
  * Die Klasse Aufgabe_b, die die GUI darstellt
@@ -33,9 +36,19 @@ public class Aufgabe_b extends JFrame{
 	private JLabel [] figurBlau = new JLabel[4];
 	private JFrame frame = new JFrame("Spiel");
 	
+	private iBediener ib;
+	
 	/**
 	 * Die Methode erstellt den Rahmen mit dem Inhalt
 	 */
+	
+	public Aufgabe_b(iBediener ib){
+		if(ib != null){
+			this.ib = ib;
+			rahmen();
+		}
+	}
+	
 	
 public void rahmen(){ 
 	frame.setName("DerFrame");
@@ -126,14 +139,19 @@ public void rahmen(){
 	wuerfel.setBounds(60, 300, 100, 30);
 	wuerfel.addActionListener(eh);
 
-	JButton bewege[] = new JButton[4];
-	for (int i = 0; i < bewege.length; i++) {
-		bewege[i] = new JButton("Bewege Firgur "+(i+1));
-		bewege[i].setName("Bewege_"+i);
-		east.add(bewege[i]);
-		bewege[i].setBounds(10, ((i*100)+60), 200, 50);
-		bewege[i].addActionListener(eh);
-	}
+//	JButton bewege[] = new JButton[4];
+//	for (int i = 0; i < bewege.length; i++) {
+//		bewege[i] = new JButton("Bewege Firgur "+(i+1));
+//		bewege[i].setName("Bewege_"+i);
+//		east.add(bewege[i]);
+//		bewege[i].setBounds(10, ((i*100)+60), 200, 50);
+//		bewege[i].addActionListener(eh);
+//	}
+	JButton bewege = new JButton();
+	bewege.setName("Bewege");
+	east.add(bewege);
+	bewege.setBounds(10, 400, 200, 50);
+	bewege.addActionListener(eh);
 	
 	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {
