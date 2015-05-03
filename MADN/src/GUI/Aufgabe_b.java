@@ -15,7 +15,10 @@ import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.EventListener;
+
 import javax.swing.*;
+
+import classes.iBediener;
 
 /**
  * Die Klasse Aufgabe_b, die die GUI darstellt
@@ -33,9 +36,19 @@ public class Aufgabe_b extends JFrame{
 	private JLabel [] figurBlau = new JLabel[4];
 	private JFrame frame = new JFrame("Spiel");
 	
+	private iBediener ib;
+	
 	/**
 	 * Die Methode erstellt den Rahmen mit dem Inhalt
 	 */
+	
+	public Aufgabe_b(iBediener ib){
+		if(ib != null){
+			this.ib = ib;
+			rahmen();
+		}
+	}
+	
 	
 public void rahmen(){ 
 	frame.setName("DerFrame");
