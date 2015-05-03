@@ -147,10 +147,10 @@ public void rahmen(){
 //		bewege[i].setBounds(10, ((i*100)+60), 200, 50);
 //		bewege[i].addActionListener(eh);
 //	}
-	JButton bewege = new JButton();
+	JButton bewege = new JButton("Bewege");
 	bewege.setName("Bewege");
 	east.add(bewege);
-	bewege.setBounds(10, 400, 200, 50);
+	bewege.setBounds(10, 100, 200, 50);
 	bewege.addActionListener(eh);
 	
 	JButton felder[] = new JButton[72];
