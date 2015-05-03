@@ -62,7 +62,7 @@ public class EventHandler extends JFrame implements ActionListener {
 		String s = logta.getText();
 		String split[] = cases.split("_");
 		int x = Integer.parseInt(split[1]);
-
+		boolean nextBewege = false;
 		
 		switch (cases) {
 		case "wuerfel":
@@ -160,12 +160,12 @@ public class EventHandler extends JFrame implements ActionListener {
 		case "Feld_71":
 
 			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
-//			ib.figurAufFeld(x);
-//			logta.setText(s+"Die Figur " + ib.figurAufFeld(x) + " wurde angewaehlt. \n");
-			
+			if (nextBewege == true) {
+				ib.bewege(x);
+			}
 		case "Bewege_0":	
-	
-//			ib.bewege(x);
+		
+			nextBewege = true;
 			break;
 		
 		default:
