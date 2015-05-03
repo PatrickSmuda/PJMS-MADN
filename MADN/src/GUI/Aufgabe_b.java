@@ -126,14 +126,19 @@ public void rahmen(){
 	wuerfel.setBounds(60, 300, 100, 30);
 	wuerfel.addActionListener(eh);
 
-	JButton bewege[] = new JButton[4];
-	for (int i = 0; i < bewege.length; i++) {
-		bewege[i] = new JButton("Bewege Firgur "+(i+1));
-		bewege[i].setName("Bewege_"+i);
-		east.add(bewege[i]);
-		bewege[i].setBounds(10, ((i*100)+60), 200, 50);
-		bewege[i].addActionListener(eh);
-	}
+//	JButton bewege[] = new JButton[4];
+//	for (int i = 0; i < bewege.length; i++) {
+//		bewege[i] = new JButton("Bewege Firgur "+(i+1));
+//		bewege[i].setName("Bewege_"+i);
+//		east.add(bewege[i]);
+//		bewege[i].setBounds(10, ((i*100)+60), 200, 50);
+//		bewege[i].addActionListener(eh);
+//	}
+	JButton bewege = new JButton();
+	bewege.setName("Bewege");
+	east.add(bewege);
+	bewege.setBounds(10, 400, 200, 50);
+	bewege.addActionListener(eh);
 	
 	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {
