@@ -196,8 +196,9 @@ public class Spielerangaben extends JFrame {
 						}
 						ib.spielerHinzufuegen(names[j].getText(), farbe[j].getSelectedIndex(), ki);	
 					}
+					ib.beginneSpiel();
 					b = new Aufgabe_b(ib);
-					mainFrame.dispose();
+					//mainFrame.dispose();
 				}
 			}
 		});

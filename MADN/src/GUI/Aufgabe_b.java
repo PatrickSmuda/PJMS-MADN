@@ -35,7 +35,6 @@ public class Aufgabe_b extends JFrame{
 	private JLabel [] figurGelb = new JLabel[4];
 	private JLabel [] figurBlau = new JLabel[4];
 	private JFrame frame = new JFrame("Spiel");
-	
 	private iBediener ib;
 	
 	/**
@@ -45,6 +44,7 @@ public class Aufgabe_b extends JFrame{
 	public Aufgabe_b(iBediener ib){
 		if(ib != null){
 			this.ib = ib;
+			eh.setBediener(ib);
 			rahmen();
 		}
 	}
