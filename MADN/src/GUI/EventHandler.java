@@ -46,6 +46,24 @@ public class EventHandler extends JFrame implements ActionListener {
 		Component c = (Component) e.getSource();
 		String cases = c.getName();
 		
+		JRootPane ebene1 = (JRootPane) gui.getFrames()[2].getComponent(0);
+		JLayeredPane ebene2 = (JLayeredPane) ebene1.getComponent(1);
+		JPanel ebene3 = (JPanel) ebene2.getComponent(0);
+		JLabel southEbene1 = null;
+		for(int i = 0; i < ebene3.getComponentCount(); i++){
+			if(ebene3.getComponent(i).getName().equals("south")){
+				southEbene1 = (JLabel) ebene3.getComponent(i);
+				break;
+			}
+		}
+		JScrollPane logsp = (JScrollPane) southEbene1.getComponent(0);
+		JViewport ebene4 = (JViewport) logsp.getComponent(0);
+		JTextArea logta = (JTextArea) ebene4.getComponent(0);
+		String s = logta.getText();
+		String split[] = cases.split("_");
+		int x = Integer.parseInt(split[1]);
+
+		
 		switch (cases) {
 		case "wuerfel":
 			JLabel jlb=null;
@@ -140,48 +158,14 @@ public class EventHandler extends JFrame implements ActionListener {
 		case "Feld_69":
 		case "Feld_70":
 		case "Feld_71":
-			JRootPane ebene1 = (JRootPane) gui.getFrames()[2].getComponent(0);
-			JLayeredPane ebene2 = (JLayeredPane) ebene1.getComponent(1);
-			JPanel ebene3 = (JPanel) ebene2.getComponent(0);
-			JLabel southEbene1 = null;
-			for(int i = 0; i < ebene3.getComponentCount(); i++){
-				if(ebene3.getComponent(i).getName().equals("south")){
-					southEbene1 = (JLabel) ebene3.getComponent(i);
-					break;
-				}
-			}
-			System.out.println(southEbene1.getName());
-			JScrollPane logsp = (JScrollPane) southEbene1.getComponent(0);
-			System.out.println(logsp.getComponentCount());
-			System.out.println(logsp.getComponent(0));
-			System.out.println(logsp.getComponent(1));
-			System.out.println(logsp.getComponent(2));
-			
-			JViewport ebene4 = (JViewport) logsp.getComponent(0);
-			System.out.println(ebene4.getComponent(0));
-			JTextArea logta = (JTextArea) ebene4.getComponent(0);
-			String s = logta.getText();
-			String split[] = cases.split("_");
-			int x = Integer.parseInt(split[1]);
+
 			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
-			
+//			ib.figurAufFeld(x);
+//			logta.setText(s+"Die Figur " + ib.figurAufFeld(x) + " wurde angewaehlt. \n");
 			
 		case "Bewege_0":	
-			JLabel figur = null;
-			JLabel jl = (JLabel) c.getParent();
-			
-			
-			
-			break;
-			
-		case "Bewege_1":	
-			System.out.println(cases);
-			break;
-		case "Bewege_2":	
-			System.out.println(cases);
-			break;
-		case "Bewege_3":	
-			System.out.println(cases);
+	
+//			ib.bewege(x);
 			break;
 		
 		default:
