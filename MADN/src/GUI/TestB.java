@@ -2,11 +2,14 @@
 
 package GUI;
 
+import classes.Spiel;
+import classes.iBediener;
+
 public class TestB {
 
 	public static void main (String [] args){ 
-		
-		//Aufgabe_b GUI = new Aufgabe_b();
-		//GUI.rahmen();
+		iBediener ib = new Spiel();
+		Aufgabe_b GUI = new Aufgabe_b(ib);
+		GUI.rahmen();
 	}//Test
 }
