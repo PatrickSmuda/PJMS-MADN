@@ -20,59 +20,66 @@ import javax.mail.internet.MimeMultipart;
 
 public class Mail extends Thread {
 
+	
+	
 	private Properties p;
 	
 	private class MailAuthenticator extends Authenticator{
 		private String user, password;
 		public MailAuthenticator(){
 			this.user=""+p.get("mail.smtp.user");
-			this.password=""+p.get("mail.stmp.password");
+			this.password=""+p.get("mail.smtp.password");
 		}
+		
+
 		public PasswordAuthentication getPasswordAuthentication(){
 			return new PasswordAuthentication(user, password);
 		}
+		
 	}
 	
-	public Mail (String an, String betreff, String text, 
+	
+	public Mail (String an, String betreff, String text,
 			String anhangPfad1, String anhangName1, String anhangPfad2, String anhangName2){
 		
 		if((an==null)||(an.length()==0)) throw new RuntimeException ("an is leer?");
 		p=new Properties();
-		p.put("mail.smtp.host", "maildap.yahoo.de");
+//		p.put("mail.smtp.starttls.enable","true");
+		p.put("mail.smtp.host", "smtp.mail.yahoo.com");
 		p.put("mail.smtp.user", "madn_pms@yahoo.de");
-		p.put("mail.smtp.passwort", "Penis#42");
+		p.put("mail.smtp.password", "Penis#42");
 		p.put("mail.smtp.socketFactory.port", "465");
-		p.put("mail.smtp.socketFactory.class", "javax.net.sel.SSLSocketFactory");
+		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.auth", "true");
 		p.put("mail.smtp.port", "465");
-		p.put("von", "mersiha.d@gmx.de");
+		p.put("von", "madn_pms@yahoo.de");
 		p.put("an", an);
 		p.put("betreff", betreff);
 		p.put("text", text);
 		
-		if(anhangPfad1==null){
+		if(anhangPfad1==null)
 			p.put("anhangPfad1", "");
-		}else{
+		else
 			p.put("anhangPfad1", anhangPfad1);
-		}
 		
-		if(anhangPfad2==null){
+		
+		if(anhangPfad2==null)
 			p.put("anhangPfad2", "");
-		}else{
+		else
 			p.put("anhangPfad2", anhangPfad2);
-		}
 		
-		if(anhangName1==null){ 
+		
+		if(anhangName1==null)
 			p.put("anhangName1", "");
-		}else{
+		else
 			p.put("anhangName1", anhangName1);
-		}
 		
-		if(anhangName2==null){ 
+		
+		if(anhangName2==null)
 			p.put("anhangName2", "");
-		}else{
+		else
 			p.put("anhangName2", anhangName1);
-		}
+		
 		
 		this.start();
 	}
@@ -81,18 +88,18 @@ public class Mail extends Thread {
 	public void run(){
 		try{
 			System.out.println("Starte mit Mail schreiben an"+ " " + p.getProperty("an"));
-			MailAuthenticator ath=new MailAuthenticator();
-			Session session=Session.getDefaultInstance(p, ath);
+			MailAuthenticator auth=new MailAuthenticator();
+			Session session=Session.getDefaultInstance(p, auth);
 			Message msg=new MimeMessage(session);
 			msg.setFrom(new InternetAddress(p.getProperty("von")));
 			msg.setRecipients(Message.RecipientType.TO, 
 					InternetAddress.parse(p.getProperty("an"), false));
 			msg.setSubject(p.getProperty("betreff"));
 			
-			MimeBodyPart bodyMsg = new MimeBodyPart();
-			bodyMsg.setText(p.getProperty("text"));
+			MimeBodyPart bodyNachricht = new MimeBodyPart();
+			bodyNachricht.setText(p.getProperty("text"));
 			Multipart body=new MimeMultipart();
-			body.addBodyPart(bodyMsg);
+			body.addBodyPart(bodyNachricht);
 			
 			for(int i=1;i<=2;i++){
 				if((!p.getProperty("anhangPfad"+i).equals(""))&&
@@ -111,12 +118,12 @@ public class Mail extends Thread {
 			msg.setContent(body);
 			msg.setSentDate(new Date());
 			Transport.send(msg);
-			System.out.println("Die E-Mail an"+p.getProperty("an")+
+			System.out.println("Die E-Mail an" + " "+p.getProperty("an")+
 					"wurde erfolgreich gesendet :>");
 			
 		}catch(Exception e){
 			System.out.println("Das Senden der E-Mail an" + " " +p.getProperty("an")+ " " +
-					"leider nein. leider garnicht.");
+					"funktioniert mal wieder nicht.");
 			e.printStackTrace();
 		}
 	}
