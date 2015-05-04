@@ -27,14 +27,21 @@ import classes.iBediener;
 
 public class EventHandler extends JFrame implements ActionListener {
 
+	
+	
+	
 	/**
 	 * Attribute von der Klasse EventHandler
 	 */
 	
 	private Aufgabe_b gui = null;
 	private iBediener ib;
+	
+	
 	public EventHandler(Aufgabe_b gui){
-		this.gui = gui;
+		if(gui != null){
+			this.gui = gui;
+		}
 	}
 	
 	/**
@@ -60,8 +67,6 @@ public class EventHandler extends JFrame implements ActionListener {
 		JViewport ebene4 = (JViewport) logsp.getComponent(0);
 		JTextArea logta = (JTextArea) ebene4.getComponent(0);
 		String s = logta.getText();
-		String split[] = cases.split("_");
-		int x = Integer.parseInt(split[1]);
 		boolean nextBewege = false;
 		
 		switch (cases) {
@@ -74,8 +79,8 @@ public class EventHandler extends JFrame implements ActionListener {
 					break;
 				}
 			}
-		
-			int wrflWrt = (int)((Math.random()*6)+1);
+			ib.wuerfeln();
+			int wrflWrt = ib.getBewegungsWert();
 			switch (wrflWrt){
 				case 1:jlb.setIcon(new ImageIcon ("Augenzahl1.jpg")); break;
 				case 2:jlb.setIcon(new ImageIcon ("Augenzahl2.jpg")); break;
@@ -84,6 +89,7 @@ public class EventHandler extends JFrame implements ActionListener {
 				case 5:jlb.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
 				case 6:jlb.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
 			}
+			logta.setText(s+"Augenanzahl: " + wrflWrt + "\n");
 			break;
 			
 		case "Feld_0":
@@ -159,6 +165,8 @@ public class EventHandler extends JFrame implements ActionListener {
 		case "Feld_70":
 		case "Feld_71":
 
+			String split[] = cases.split("_");
+			int x = Integer.parseInt(split[1]);
 			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
 			if (nextBewege == true) {
 				ib.bewege(x);
@@ -171,6 +179,8 @@ public class EventHandler extends JFrame implements ActionListener {
 		default:
 			throw new RuntimeException("Hups, "+ cases + " wurde nicht richtig gemacht!");
 		}
+		
+		
 	}
 
 	
@@ -227,6 +237,10 @@ public class EventHandler extends JFrame implements ActionListener {
 //	}
 //	
 
-	
+	public void setBediener(iBediener ib){
+		if(ib != null){
+			this.ib = ib;
+		}
+	}
 	
 }
