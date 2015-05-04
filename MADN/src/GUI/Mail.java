@@ -36,7 +36,7 @@ public class Mail extends Thread {
 	public Mail (String an, String betreff, String text, 
 			String anhangPfad1, String anhangName1, String anhangPfad2, String anhangName2){
 		
-		if((an==null)||(an.length()==0)) return;
+		if((an==null)||(an.length()==0)) throw new RuntimeException ("an is leer?");
 		p=new Properties();
 		p.put("mail.smtp.host", "maildap.yahoo.de");
 		p.put("mail.smtp.user", "madn_pms@yahoo.de");
