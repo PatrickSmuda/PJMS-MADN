@@ -189,8 +189,31 @@ public class EventHandler extends JFrame implements ActionListener {
 		}
 		
 		
+		
 	}
 
+	public void bitchBetterHaveMyMoney(JLabel center){
+		
+		for(int i=0; i<72; i++){ 
+			if(ib.figurAufFeld(i)){
+				int [] wieichwill = ib.figurInfos(i);
+				for(int j=0; j<center.getComponentCount(); j++){
+					String [] split = center.getComponent(j).getName().split("_");
+					switch (split[0]){
+					case "r": if(wieichwill[0]==0){
+						int keineAhnung = Integer.parseInt(split[1]);
+						if(keineAhnung==wieichwill[1]){
+//							center.getComponent(j).setBounds(x, y, width, height);
+						}
+					}
+					case "b":
+					case "ge":
+					case "gr":
+					}
+				}
+			}
+		}
+	}
 	
 	
 //	private JButton button;

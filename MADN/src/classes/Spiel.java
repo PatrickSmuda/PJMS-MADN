@@ -131,6 +131,39 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 	
 	/**
+	 * Diese Methode gibt die Farbe und die ID der Figur zurueck
+	 * @param feldId
+	 * @return int [] temp
+	 */
+	
+	public int [] figurInfos(int feldId){ 
+		
+		
+		if(figurAufFeld(feldId)){
+			for(int i=0; i<spieler.size(); i++){
+				for(int j=0; j<4; j++){
+					if(spieler.get(i).getFigur(j)==spielbrett.getFeld(feldId).getFigur()){
+						int [] temp = new int[2];
+						
+						switch (spieler.get(i).getFarbe()){
+						case rot: temp[0]=0; break;
+						case blau: temp[0]=1; break;
+						case gelb: temp[0]=3; break;
+						case gruen: temp[0]=2; break;
+						}
+						
+						temp[1]=j;
+						
+						return temp;
+						
+					}
+					
+				}
+			}
+		} throw new RuntimeException ("Auf dem Feld ist keine Figur");
+	}
+	
+	/**
 	 * Methode zum bewegen der Spielfigur
 	 * @param sf Spielfigur die bewegt wird
 	 */

@@ -75,10 +75,10 @@ public void rahmen(){
 		figurGelb[i]=new JLabel();
 		figurGruen[i]=new JLabel();
 		
-		figurRot[i].setName("r"+i);
-		figurBlau[i].setName("b"+i);
-		figurGelb[i].setName("ge"+i);
-		figurGruen[i].setName("gr"+i);
+		figurRot[i].setName("r_"+i);
+		figurBlau[i].setName("b_"+i);
+		figurGelb[i].setName("ge_"+i);
+		figurGruen[i].setName("gr_"+i);
 
 
 		

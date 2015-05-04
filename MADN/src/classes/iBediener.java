@@ -41,6 +41,8 @@ public interface iBediener{
 	
 	public boolean userIstDumm(int neuePosition, int figurId);
 	
+	public int [] figurInfos(int feldId);
+	
 	
 	//Für die TestKlasse
 	
