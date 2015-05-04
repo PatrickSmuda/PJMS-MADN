@@ -40,7 +40,7 @@ public class Spielerangaben extends JFrame {
 	private JLabel bgLabel;
 	private JLabel mainLabel;
 	private iBediener ib;
-	private Aufgabe_b b;
+	private Aufgabe_b b = new Aufgabe_b();
 	
 	/**
 	 * initalisiert die GUI
@@ -197,7 +197,8 @@ public class Spielerangaben extends JFrame {
 						ib.spielerHinzufuegen(names[j].getText(), farbe[j].getSelectedIndex(), ki);	
 					}
 					ib.beginneSpiel();
-					b = new Aufgabe_b(ib);
+					b.setBediener(ib);
+					b.rahmen();
 					//mainFrame.dispose();
 				}
 			}

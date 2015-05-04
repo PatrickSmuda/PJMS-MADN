@@ -36,7 +36,7 @@ public class EventHandler extends JFrame implements ActionListener {
 	
 	private Aufgabe_b gui = null;
 	private iBediener ib;
-	
+	private boolean nextBewege = false;
 	
 	public EventHandler(Aufgabe_b gui){
 		if(gui != null){
@@ -67,7 +67,6 @@ public class EventHandler extends JFrame implements ActionListener {
 		JViewport ebene4 = (JViewport) logsp.getComponent(0);
 		JTextArea logta = (JTextArea) ebene4.getComponent(0);
 		String s = logta.getText();
-		boolean nextBewege = false;
 		
 		switch (cases) {
 		case "wuerfel":
@@ -79,17 +78,22 @@ public class EventHandler extends JFrame implements ActionListener {
 					break;
 				}
 			}
-			ib.wuerfeln();
-			int wrflWrt = ib.getBewegungsWert();
-			switch (wrflWrt){
-				case 1:jlb.setIcon(new ImageIcon ("Augenzahl1.jpg")); break;
-				case 2:jlb.setIcon(new ImageIcon ("Augenzahl2.jpg")); break;
-				case 3:jlb.setIcon(new ImageIcon ("Augenzahl3.jpg")); break;
-				case 4:jlb.setIcon(new ImageIcon ("Augenzahl4.jpg")); break;
-				case 5:jlb.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
-				case 6:jlb.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
+			try{
+				ib.wuerfeln();
+				int wrflWrt = ib.getBewegungsWert();
+				switch (wrflWrt){
+					case 1:jlb.setIcon(new ImageIcon ("Augenzahl1.jpg")); break;
+					case 2:jlb.setIcon(new ImageIcon ("Augenzahl2.jpg")); break;
+					case 3:jlb.setIcon(new ImageIcon ("Augenzahl3.jpg")); break;
+					case 4:jlb.setIcon(new ImageIcon ("Augenzahl4.jpg")); break;
+					case 5:jlb.setIcon(new ImageIcon ("Augenzahl5.jpg")); break;
+					case 6:jlb.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
+				}
+				logta.setText(s+ib.getSpielerAmZug()+" hat eine " + wrflWrt + " gewuerfelt.\n");
+			}catch(RuntimeException h){
+				logta.setText(s+"Du darfst nicht 2 mal wuerfeln innerhalb eines Zuges!\n");
 			}
-			logta.setText(s+"Augenanzahl: " + wrflWrt + "\n");
+			
 			break;
 			
 		case "Feld_0":
@@ -164,15 +168,19 @@ public class EventHandler extends JFrame implements ActionListener {
 		case "Feld_69":
 		case "Feld_70":
 		case "Feld_71":
-
 			String split[] = cases.split("_");
 			int x = Integer.parseInt(split[1]);
 			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
 			if (nextBewege == true) {
-				ib.bewege(x);
+				try {
+					int fig = ib.figurIdAufFeld(x);
+					ib.bewege(fig);
+				} catch (Exception e2) {
+					logta.setText(s+"Keine Figur ausgewaehlt!\n");
+				}
 			}
-		case "Bewege_0":	
-		
+			break;
+		case "Bewege":	
 			nextBewege = true;
 			break;
 		

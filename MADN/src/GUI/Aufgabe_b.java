@@ -41,12 +41,7 @@ public class Aufgabe_b extends JFrame{
 	 * Die Methode erstellt den Rahmen mit dem Inhalt
 	 */
 	
-	public Aufgabe_b(iBediener ib){
-		if(ib != null){
-			this.ib = ib;
-			eh.setBediener(ib);
-			rahmen();
-		}
+	public Aufgabe_b(){
 	}
 	
 	
@@ -261,10 +256,19 @@ public void rahmen(){
 	west.setPreferredSize(new Dimension(227, 100));
 	south.setPreferredSize(new Dimension(300, 125));
     
+	logging.setText("Spieler am Zug: " + ib.getSpielerAmZug()+"\n");
+	eh.setBediener(ib);
     frame.setVisible(true);
    
 	}
     public JFrame getFrame(){
     	return frame;
     }
+    
+    public void setBediener(iBediener ib){
+    	if(ib != null){
+    		this.ib = ib;
+    	}
+    }
+    
 }

@@ -7,6 +7,8 @@ package classes;
 
 public interface iBediener{
 	
+	public int figurIdAufFeld(int feld);
+	
 	public void wuerfeln();
 	
 	public void bewege(int id);

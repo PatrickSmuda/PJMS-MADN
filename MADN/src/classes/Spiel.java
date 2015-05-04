@@ -580,6 +580,18 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		case gelb: this.spielbrett.getFeld(31).setFigur(figur); break;
 		}
 	}
+	
+	
+	public int figurIdAufFeld(int feld){
+		if(spielbrett.getFeld(feld).getFigur() != null){
+			for(int i = 0; i < 4; i++){
+				if(spielerAmZug.getFigur(i) == spielbrett.getFeld(feld).getFigur()){
+					return i;
+				}
+			}
+		}
+		throw new RuntimeException("Keine Figur ausgewaehlt!");
+	}
 
 	/**
 	 * Die Methode würfelt.
@@ -594,8 +606,8 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				else this.darfWuerfeln = false;
 				hatGewuerfelt = true;
 			}else{
-				zugBeenden();
-				//throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
+				//zugBeenden();
+				throw new RuntimeException("Darf nicht 2 mal Wuerfeln!");
 			}
 		}
 	}
