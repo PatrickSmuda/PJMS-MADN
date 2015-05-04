@@ -59,10 +59,13 @@ public void rahmen(){
 	center.setIcon(new ImageIcon("Spielbrett.png"));
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
+	JLabel north = new JLabel();
+	north.setIcon(new ImageIcon("mail.png"));
 	east.setName("east");
 	west.setName("west");
 	south.setName("south");
 	center.setName("center");
+	north.setName("north");
 	final JLabel wrfl = new JLabel();
 	wrfl.setName("wuerfelLabel");
 	west.add(wrfl);
@@ -133,7 +136,15 @@ public void rahmen(){
 	west.add(wuerfel);
 	wuerfel.setBounds(60, 300, 100, 30);
 	wuerfel.addActionListener(eh);
+	
+	JButton emailVersand = new JButton ("mail");
+	emailVersand.setName("mail");
+	north.add(emailVersand);
+	emailVersand.setBounds(20, 20, 20, 20);
+//	emailVersand.addActionListener(eh);
 
+	
+	
 //	JButton bewege[] = new JButton[4];
 //	for (int i = 0; i < bewege.length; i++) {
 //		bewege[i] = new JButton("Bewege Firgur "+(i+1));
@@ -251,10 +262,12 @@ public void rahmen(){
 	frame.getContentPane().add(south, BorderLayout.SOUTH);
 	frame.getContentPane().add(west, BorderLayout.WEST);
 	frame.getContentPane().add(east, BorderLayout.EAST);
+	frame.getContentPane().add(north, BorderLayout.NORTH);
 	
-	east.setPreferredSize(new Dimension(227, 100));
+	east.setPreferredSize(new Dimension(197, 100));
 	west.setPreferredSize(new Dimension(227, 100));
 	south.setPreferredSize(new Dimension(300, 125));
+	north.setPreferredSize(new Dimension(10,20));
     
 	logging.setText("Spieler am Zug: " + ib.getSpielerAmZug()+"\n");
 	eh.setBediener(ib);
