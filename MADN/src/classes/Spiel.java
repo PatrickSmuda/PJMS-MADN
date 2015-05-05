@@ -235,6 +235,19 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			
 		}	
 	}
+	
+	
+	public ArrayList<String> getAllFigures(){
+		ArrayList<String> temp = new ArrayList<String>();
+		for(int i = 0; i < spieler.size(); i++){
+			for(int j = 0; j < 4; j++){
+				temp.add(spieler.get(i).getFarbe()+"_"+spieler.get(i).getFigur(j).getPosition().getId()+"_"+j);
+			}
+			
+		}
+		return temp;
+	}
+	
 	/**
 	 * Die Methode beschreibt ob die Figuren die Grenze ueberschreiten
 	 * @param neuePosition
@@ -555,7 +568,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	
 	@Override
 	public String getSpielerAmZug(){
-		return this.spielerAmZug.getName();
+		return this.spielerAmZug.getName()+"("+this.spielerAmZug.getFarbe()+")";
 	}
 	
 	/**
@@ -579,16 +592,26 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		return false;
 	}
 
+	
+	public int getCurrentPlayerId(){
+		for(int i = 0; i < spieler.size(); i++){
+			if(spieler.get(i).equals(spielerAmZug)){
+				return i;
+			}
+		}
+		return 0;
+	}
+	
 	/**
 	 * Überprüft ob ein Spieler eine freie Figur hat
 	 * @param spieler Der zu überprüfende Spieler
 	 * @return Gibt einen boolschen wert zurück, ob der Spieler eine freie Figur hat.
 	 */
-	private boolean hatFreieFigur(Spieler spieler){
-		if(spieler.getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
-				spieler.getFigur(1).getPosition().getTyp() == FeldTyp.Startfeld &&
-				spieler.getFigur(2).getPosition().getTyp() == FeldTyp.Startfeld &&
-				spieler.getFigur(3).getPosition().getTyp() == FeldTyp.Startfeld )return false;
+	public boolean hatFreieFigur(int id){
+		if(spieler.get(id).getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
+				spieler.get(id).getFigur(1).getPosition().getTyp() == FeldTyp.Startfeld &&
+				spieler.get(id).getFigur(2).getPosition().getTyp() == FeldTyp.Startfeld &&
+				spieler.get(id).getFigur(3).getPosition().getTyp() == FeldTyp.Startfeld )return false;
 		return true;
 	}
 	/**

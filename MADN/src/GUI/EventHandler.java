@@ -3,6 +3,7 @@ package GUI;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
 import javax.swing.ImageIcon;
@@ -90,6 +91,11 @@ public class EventHandler extends JFrame implements ActionListener {
 					case 6:jlb.setIcon(new ImageIcon ("Augenzahl6.jpg")); break;
 				}
 				logta.setText(s+ib.getSpielerAmZug()+" hat eine " + wrflWrt + " gewuerfelt.\n");
+				int currentPlayer = ib.getCurrentPlayerId();
+				if(ib.getBewegungsWert() != 6 && ib.hatFreieFigur(currentPlayer) == false){
+					ib.bewege(0);
+					logta.setText(s+"Spieler am Zug: " + ib.getSpielerAmZug()+"\n");
+				}
 			}catch(RuntimeException h){
 				logta.setText(s+"Du darfst nicht 2 mal wuerfeln innerhalb eines Zuges!\n");
 			}
@@ -175,6 +181,9 @@ public class EventHandler extends JFrame implements ActionListener {
 				try {
 					int fig = ib.figurIdAufFeld(x);
 					ib.bewege(fig);
+					bitchBetterHaveMyMoney((JLabel)c.getParent());
+					logta.setText(s+"Spieler am Zug: " + ib.getSpielerAmZug()+"\n");
+					nextBewege = false;
 				} catch (Exception e2) {
 					logta.setText(s+"Keine Figur ausgewaehlt!\n");
 				}
@@ -182,6 +191,7 @@ public class EventHandler extends JFrame implements ActionListener {
 			break;
 		case "Bewege":	
 			nextBewege = true;
+			logta.setText(s+ib.getSpielerAmZug()+" ist bereit seinen Zug zu vollfuehren\n");
 			break;
 		
 		default:
@@ -193,28 +203,145 @@ public class EventHandler extends JFrame implements ActionListener {
 	}
 
 	public void bitchBetterHaveMyMoney(JLabel center){
+		String split[];
+		ArrayList<String> farben = new ArrayList<String>();
+		ArrayList<String> figuren = ib.getAllFigures();
+		int[] positionen = new int[figuren.size()];
+		int[] ids = new int[figuren.size()];
+		for(int i = 0; i < figuren.size(); i++){
+			split = figuren.get(i).split("_");
+			farben.add(split[0]);
+			positionen[i] = Integer.parseInt(split[1]);
+			ids[i] = Integer.parseInt(split[2]);
+		}
 		
-		for(int i=0; i<72; i++){ 
-			if(ib.figurAufFeld(i)){
-				int [] wieichwill = ib.figurInfos(i);
-				for(int j=0; j<center.getComponentCount(); j++){
-					String [] split = center.getComponent(j).getName().split("_");
-					switch (split[0]){
-					case "r": if(wieichwill[0]==0){
-						int keineAhnung = Integer.parseInt(split[1]);
-						if(keineAhnung==wieichwill[1]){
-//							center.getComponent(j).setBounds(x, y, width, height);
-						}
-					}
-					case "b":
-					case "ge":
-					case "gr":
+		for(int i = 0; i < farben.size(); i++){
+			
+			switch(farben.get(i))
+			{
+			case "rot":
+				for(int j = 0; j < center.getComponentCount(); j++){
+					String splitg[];
+					splitg = center.getComponent(j).getName().split("_");
+					int id = Integer.parseInt(splitg[1]);
+					if(splitg[0].equals("r") && id == ids[i]){
+						feldInfo(positionen[i], (JLabel)center.getComponent(j));
 					}
 				}
+				break;
+			case "blau":
+				for(int j = 0; j < center.getComponentCount(); j++){
+					String splitg[];
+					splitg = center.getComponent(j).getName().split("_");
+					int id = Integer.parseInt(splitg[1]);
+					if(splitg[0].equals("b") && id == ids[i]){
+						feldInfo(positionen[i], (JLabel)center.getComponent(j));
+					}
+				}
+				break;
+			case "gruen":
+				for(int j = 0; j < center.getComponentCount(); j++){
+					String splitg[];
+					splitg = center.getComponent(j).getName().split("_");
+					int id = Integer.parseInt(splitg[1]);
+					if(splitg[0].equals("gr") && id == ids[i]){
+						feldInfo(positionen[i], (JLabel)center.getComponent(j));
+					}
+				}
+				break;
+			case "gelb":
+				for(int j = 0; j < center.getComponentCount(); j++){
+					String splitg[];
+					splitg = center.getComponent(j).getName().split("_");
+					int id = Integer.parseInt(splitg[1]);
+					if(splitg[0].equals("ge") && id == ids[i]){
+						feldInfo(positionen[i], (JLabel)center.getComponent(j));
+					}
+				}
+				break;
 			}
 		}
+		
 	}
 	
+	
+	private void feldInfo(int id, JLabel fig){
+		switch(id){
+		case 0: fig.setBounds(10, 207, 35, 35); break;
+		case 1: fig.setBounds(58, 207, 35, 35); break;
+		case 2: fig.setBounds(107, 207, 35, 35); break;
+		case 3: fig.setBounds(156, 207, 35, 35); break;
+		case 4: fig.setBounds(205, 207, 35, 35); break;
+		case 5: fig.setBounds(205, 159, 35, 35); break;
+		case 6: fig.setBounds(205, 111, 35, 35); break;
+		case 7: fig.setBounds(205, 63, 35, 35); break;
+		case 8: fig.setBounds(205, 15, 35, 35); break;
+		case 9: fig.setBounds(253, 15, 35, 35); break;
+		case 10: fig.setBounds(301, 15, 35, 35); break;
+		case 11: fig.setBounds(301, 63, 35, 35); break;
+		case 12: fig.setBounds(301, 111, 35, 35); break;
+		case 13: fig.setBounds(301, 159, 35, 35); break;
+		case 14: fig.setBounds(302, 207, 35, 35); break;
+		case 15: fig.setBounds(350, 207, 35, 35); break;
+		case 16: fig.setBounds(398, 207, 35, 35); break;
+		case 17: fig.setBounds(446, 207, 35, 35); break;
+		case 18: fig.setBounds(494, 207, 35, 35); break;
+		case 19: fig.setBounds(494, 255, 35, 35); break;
+		case 20: fig.setBounds(494, 303, 35, 35); break;
+		case 21: fig.setBounds(446, 303, 35, 35); break;
+		case 22: fig.setBounds(398, 303, 35, 35); break;
+		case 23: fig.setBounds(350, 303, 35, 35); break;
+		case 24: fig.setBounds(302, 303, 35, 35); break;
+		case 25: fig.setBounds(302, 352, 35, 35); break;
+		case 26: fig.setBounds(302, 401, 35, 35); break;
+		case 27: fig.setBounds(302, 449, 35, 35); break;
+		case 28: fig.setBounds(302, 497, 35, 35); break;
+		case 29: fig.setBounds(254, 498, 35, 35); break;
+		case 30: fig.setBounds(204, 498, 35, 35); break;
+		case 31: fig.setBounds(204, 450, 35, 35); break;
+		case 32: fig.setBounds(204, 402, 35, 35); break;
+		case 33: fig.setBounds(204, 353, 35, 35); break;
+		case 34: fig.setBounds(204, 304, 35, 35); break;
+		case 35: fig.setBounds(156, 304, 35, 35); break;
+		case 36: fig.setBounds(108, 304, 35, 35); break;
+		case 37: fig.setBounds(59, 304, 35, 35); break;
+		case 38: fig.setBounds(10, 304, 35, 35); break;
+		case 39: fig.setBounds(10, 256, 35, 35); break;
+		case 40: fig.setBounds(8, 11, 35, 35); break;
+		case 41: fig.setBounds(56, 11, 35, 35); break;
+		case 42: fig.setBounds(8, 59, 35, 35); break;
+		case 43: fig.setBounds(56, 59, 35, 35); break;
+		case 44: fig.setBounds(444, 11, 35, 35); break;
+		case 45: fig.setBounds(492, 11, 35, 35); break;
+		case 46: fig.setBounds(444, 59, 35, 35); break;
+		case 47: fig.setBounds(492, 59, 35, 35); break;
+		case 48: fig.setBounds(444, 447, 35, 35); break;
+		case 49: fig.setBounds(492, 447, 35, 35); break;
+		case 50: fig.setBounds(444, 496, 35, 35); break;
+		case 51: fig.setBounds(492, 496, 35, 35); break;
+		case 52: fig.setBounds(8, 447, 35, 35); break;
+		case 53: fig.setBounds(56, 447, 35, 35); break;
+		case 54: fig.setBounds(8, 496, 35, 35); break;
+		case 55: fig.setBounds(56, 496, 35, 35); break;
+		case 56: fig.setBounds(253, 62, 35, 35); break;
+		case 57: fig.setBounds(253, 110, 35, 35); break;
+		case 58: fig.setBounds(253, 158, 35, 35); break;
+		case 59: fig.setBounds(253, 207, 35, 35); break;
+		case 60: fig.setBounds(253, 450, 35, 35); break;
+		case 61: fig.setBounds(253, 402, 35, 35); break;
+		case 62: fig.setBounds(253, 353, 35, 35); break;
+		case 63: fig.setBounds(253, 304, 35, 35); break;
+		case 64: fig.setBounds(302, 255, 35, 35); break;
+		case 65: fig.setBounds(350, 255, 35, 35); break;
+		case 66: fig.setBounds(398, 255, 35, 35); break;
+		case 67: fig.setBounds(446, 255, 35, 35); break;
+		case 68: fig.setBounds(58, 256, 35, 35); break;
+		case 69: fig.setBounds(107, 256, 35, 35); break;
+		case 70: fig.setBounds(156, 256, 35, 35); break;
+		case 71: fig.setBounds(205, 256, 35, 35); break;
+		}
+		fig.getParent().validate();
+	}
 	
 //	private JButton button;
 //	private iBediener ib;

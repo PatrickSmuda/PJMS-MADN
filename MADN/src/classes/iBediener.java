@@ -1,4 +1,7 @@
 package classes;
+
+import java.util.ArrayList;
+
 /**
  * Das Interface iBediener
  * @author 
@@ -6,6 +9,12 @@ package classes;
  */
 
 public interface iBediener{
+	
+	public int getCurrentPlayerId();
+	
+	public boolean hatFreieFigur(int id);
+	
+	public ArrayList<String> getAllFigures();
 	
 	public int figurIdAufFeld(int feld);
 	
