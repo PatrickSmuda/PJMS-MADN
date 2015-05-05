@@ -106,11 +106,11 @@ public class Mail extends Thread {
 						(!p.getProperty("anhangName"+i).equals(""))){
 					MimeBodyPart bodyAnhang=new MimeBodyPart();
 					DataSource source=new FileDataSource(
-							p.getProperty("anhangPfad"+i)
-							);
+							p.getProperty("anhangPfad"+i));
 					bodyAnhang.setDataHandler(new DataHandler(source));
 					bodyAnhang.setFileName(p.getProperty("anhangName"+i));
 					body.addBodyPart(bodyAnhang);
+//					bodyAnhang.setDisposition(Part.ATTACHMENT);
 				}
 					
 			}
@@ -127,9 +127,6 @@ public class Mail extends Thread {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
 }
 
 
