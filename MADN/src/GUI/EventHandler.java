@@ -39,6 +39,7 @@ public class EventHandler extends JFrame implements ActionListener {
 	private iBediener ib;
 	private boolean nextBewege = false;
 	private boolean gewuerfelt = false;
+	private Mail mail;
 	
 	public EventHandler(Aufgabe_b gui){
 		if(gui != null){
@@ -200,6 +201,22 @@ public class EventHandler extends JFrame implements ActionListener {
 			logta.setText(s+ib.getSpielerAmZug()+" ist bereit seinen Zug zu vollfuehren\n");
 			break;
 		
+		case "mail":
+			String address = null;
+			for(int i = 0; i < c.getParent().getComponentCount(); i++){
+				if(c.getParent().getComponent(i).getName().equals("address")){
+					JTextArea jt = (JTextArea)c.getParent().getComponent(i);
+					address = jt.getText();
+				}
+			}
+			new Mail(address, "Ich moechte ein Spiel spielen", "Hallo Adam, \n "
+					+ "du kennst mich nicht, aber ich kenne dich. "
+					+ "Das passiert wenn du verlierst: \n"
+					+ " ",
+					null, null, null, null);
+			logta.setText(s+"E-Mail wurde gesendet\n");
+			break;
+			
 		default:
 			throw new RuntimeException("Hups, "+ cases + " wurde nicht richtig gemacht!");
 		}

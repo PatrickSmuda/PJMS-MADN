@@ -60,7 +60,6 @@ public void rahmen(){
 	JLabel west = new JLabel();
 	JLabel east = new JLabel();
 	JLabel north = new JLabel();
-	north.setIcon(new ImageIcon("mail.png"));
 	east.setName("east");
 	west.setName("west");
 	south.setName("south");
@@ -140,8 +139,17 @@ public void rahmen(){
 	JButton emailVersand = new JButton ("mail");
 	emailVersand.setName("mail");
 	north.add(emailVersand);
-	emailVersand.setBounds(20, 20, 20, 20);
-//	emailVersand.addActionListener(eh);
+	emailVersand.setBounds(10, 0, 20, 20);
+	emailVersand.setIcon(new ImageIcon("mail.png"));
+	
+	JTextArea emailAddress = new JTextArea();
+	emailAddress.setName("address");
+	north.add(emailAddress);
+	emailAddress.setBounds(40, 0, 300, 20);
+	
+	emailVersand.addActionListener(eh);
+	
+
 
 	
 	
@@ -267,7 +275,7 @@ public void rahmen(){
 	east.setPreferredSize(new Dimension(197, 100));
 	west.setPreferredSize(new Dimension(227, 100));
 	south.setPreferredSize(new Dimension(300, 125));
-	north.setPreferredSize(new Dimension(10,20));
+	north.setPreferredSize(new Dimension(1000,20));
     
 	logging.setText("Spieler am Zug: " + ib.getSpielerAmZug()+"\n");
 	eh.setBediener(ib);
