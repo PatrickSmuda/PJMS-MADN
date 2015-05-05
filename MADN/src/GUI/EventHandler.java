@@ -38,6 +38,7 @@ public class EventHandler extends JFrame implements ActionListener {
 	private Aufgabe_b gui = null;
 	private iBediener ib;
 	private boolean nextBewege = false;
+	private boolean gewuerfelt = false;
 	
 	public EventHandler(Aufgabe_b gui){
 		if(gui != null){
@@ -95,7 +96,11 @@ public class EventHandler extends JFrame implements ActionListener {
 				if(ib.getBewegungsWert() != 6 && ib.hatFreieFigur(currentPlayer) == false){
 					ib.bewege(0);
 					logta.setText(s+"Spieler am Zug: " + ib.getSpielerAmZug()+"\n");
+					gewuerfelt = false;
+				}else{
+					gewuerfelt = true;
 				}
+				
 			}catch(RuntimeException h){
 				logta.setText(s+"Du darfst nicht 2 mal wuerfeln innerhalb eines Zuges!\n");
 			}
@@ -177,13 +182,14 @@ public class EventHandler extends JFrame implements ActionListener {
 			String split[] = cases.split("_");
 			int x = Integer.parseInt(split[1]);
 			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
-			if (nextBewege == true) {
+			if (nextBewege == true && gewuerfelt == true) {
 				try {
 					int fig = ib.figurIdAufFeld(x);
 					ib.bewege(fig);
 					bitchBetterHaveMyMoney((JLabel)c.getParent());
 					logta.setText(s+"Spieler am Zug: " + ib.getSpielerAmZug()+"\n");
 					nextBewege = false;
+					gewuerfelt = false;
 				} catch (Exception e2) {
 					logta.setText(s+"Keine Figur ausgewaehlt!\n");
 				}
@@ -201,7 +207,10 @@ public class EventHandler extends JFrame implements ActionListener {
 		
 		
 	}
-
+	/**
+	 * Die Update Funktion
+	 * @param center
+	 */
 	public void bitchBetterHaveMyMoney(JLabel center){
 		String split[];
 		ArrayList<String> farben = new ArrayList<String>();
@@ -264,7 +273,11 @@ public class EventHandler extends JFrame implements ActionListener {
 		
 	}
 	
-	
+	/**
+	 * enthält die Positionen der Felder und setzt die Figuren dem entsprechend
+	 * @param id
+	 * @param fig
+	 */
 	private void feldInfo(int id, JLabel fig){
 		switch(id){
 		case 0: fig.setBounds(10, 207, 35, 35); break;

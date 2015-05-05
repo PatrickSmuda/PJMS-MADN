@@ -592,7 +592,10 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		return false;
 	}
 
-	
+	/**
+	 * Methode gibt die ID des Spielers zurueck
+	 * @return i ID des Spielers
+	 */
 	public int getCurrentPlayerId(){
 		for(int i = 0; i < spieler.size(); i++){
 			if(spieler.get(i).equals(spielerAmZug)){
@@ -637,7 +640,11 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		}
 	}
 	
-	
+	/**
+	 * Methode gibt die ID der Figur zurueck auf einem feld
+	 * @param int feld feld das ueberprueft wird
+	 * @return int i id der Figur
+	 */
 	public int figurIdAufFeld(int feld){
 		if(spielbrett.getFeld(feld).getFigur() != null){
 			for(int i = 0; i < 4; i++){
