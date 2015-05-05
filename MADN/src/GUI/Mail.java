@@ -45,14 +45,14 @@ public class Mail extends Thread {
 		if((an==null)||(an.length()==0)) throw new RuntimeException ("an is leer?");
 		p=new Properties();
 //		p.put("mail.smtp.starttls.enable","true");
-		p.put("mail.smtp.host", "smtp.mail.yahoo.com");
-		p.put("mail.smtp.user", "madn_pms@yahoo.de");
-		p.put("mail.smtp.password", "Penis#42");
+		p.put("mail.smtp.host", "smtp.gmail.com");
+		p.put("mail.smtp.user", "madn.pms@gmail.com");
+		p.put("mail.smtp.password", "nbhftjzcooitqinf");
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.auth", "true");
 		p.put("mail.smtp.port", "465");
-		p.put("von", "madn_pms@yahoo.de");
+		p.put("von", "madn.pms@gmail.com");
 		p.put("an", an);
 		p.put("betreff", betreff);
 		p.put("text", text);
@@ -62,17 +62,17 @@ public class Mail extends Thread {
 		else
 			p.put("anhangPfad1", anhangPfad1);
 		
+		if(anhangName1==null)
+			p.put("anhangName1", "");
+		else
+			p.put("anhangName1", anhangName1);
+		
 		
 		if(anhangPfad2==null)
 			p.put("anhangPfad2", "");
 		else
 			p.put("anhangPfad2", anhangPfad2);
 		
-		
-		if(anhangName1==null)
-			p.put("anhangName1", "");
-		else
-			p.put("anhangName1", anhangName1);
 		
 		
 		if(anhangName2==null)
@@ -118,8 +118,8 @@ public class Mail extends Thread {
 			msg.setContent(body);
 			msg.setSentDate(new Date());
 			Transport.send(msg);
-			System.out.println("Die E-Mail an" + " "+p.getProperty("an")+
-					"wurde erfolgreich gesendet :>");
+			System.out.println("Die E-Mail an" +p.getProperty("an")+
+					" "+"wurde erfolgreich gesendet :>");
 			
 		}catch(Exception e){
 			System.out.println("Das Senden der E-Mail an" + " " +p.getProperty("an")+ " " +
@@ -131,3 +131,8 @@ public class Mail extends Thread {
 	
 	
 }
+
+
+
+
+
