@@ -46,7 +46,7 @@ public class Spielfeld implements Serializable {
 		if(figur == null) this.figur = null;
 		if(this.figur == null) this.figur = figur;
 		else{
-			this.figur.setPosition(figur.getStartPosition());
+			this.figur.setPosition(this.figur.getStartPosition());
 			this.figur = figur;
 		}
 	}
