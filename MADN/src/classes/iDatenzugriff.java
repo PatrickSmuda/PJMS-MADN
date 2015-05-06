@@ -1,4 +1,7 @@
 package classes;
+
+import java.io.File;
+
 /**
  * 
  * @author 
@@ -8,7 +11,7 @@ package classes;
  */
 public interface iDatenzugriff {
 
-	public void speichern(Object spiel);
+	public void speichern(Object spiel, File filefileAddressSave);
 	
 	public Object laden(int zaehler);
 	

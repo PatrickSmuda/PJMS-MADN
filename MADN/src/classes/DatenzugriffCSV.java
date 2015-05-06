@@ -27,28 +27,15 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	 */
 	
 	@Override
-	public void speichern(Object spiel){ 
+	public void speichern(Object spiel, File filefileAddressSave){ 
 		
 		
         if(spiel != null && spiel instanceof Spiel){
 			
         	Spiel s=(Spiel)spiel;
         	
-        	int count=1;
-        	
-        	File dir = new File("C:\\Speicherstand\\");
-    		File[] files = dir.listFiles(new FilenameFilter() {
-    			public boolean accept(File dir, String name) {
-    				return name.endsWith("csv");
-    			}
-    		});
-    		for (File file : files) {
-    			count++;
-    		}
-    		dateiName = dateiName + count + ".csv";
-    		String text = s.csvString(); 
-    		dir = new File("C:\\Speicherstand\\"+dateiName);
-    		
+        	String text = s.csvString(); 
+    		File dir = filefileAddressSave;
     		
     		try{
     			FileWriter writer = new FileWriter(dir);
@@ -221,7 +208,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
            
            
 		} catch (FileNotFoundException e) {
-			System.err.println("Konnte Datei nicht öffnen");
+			System.err.println("Konnte Datei nicht ï¿½ffnen");
 		} catch (IOException e) {
 			System.err.println("Fehler bei der Ein-/Ausgabe: " + e);
 		}
@@ -229,7 +216,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
 			try {
 				reader.close();
 			} catch (Exception e) {
-				System.err.println("Fehler beim schließen der Datei");
+				System.err.println("Fehler beim schlieï¿½en der Datei");
 			}
 		}
 		s.beginneSpiel();

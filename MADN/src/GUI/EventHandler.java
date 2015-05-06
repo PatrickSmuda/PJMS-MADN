@@ -3,11 +3,13 @@ package GUI;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -16,9 +18,16 @@ import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JViewport;
+import javax.swing.filechooser.FileFilter;
 
+import com.sun.deploy.uitoolkit.impl.fx.Utils;
+
+import classes.DatenzugriffCSV;
+import classes.DatenzugriffSerialisiert;
+import classes.Spiel;
 import classes.Wuerfel;
 import classes.iBediener;
+import classes.iDatenzugriff;
 /**
  * Die Klasse EventHandler
  * @author 
@@ -37,6 +46,7 @@ public class EventHandler extends JFrame implements ActionListener {
 	
 	private Aufgabe_b gui = null;
 	private iBediener ib;
+	private iDatenzugriff id;
 	private boolean nextBewege = false;
 	private boolean gewuerfelt = false;
 	private Mail mail;
@@ -217,6 +227,34 @@ public class EventHandler extends JFrame implements ActionListener {
 			logta.setText(s+"E-Mail wurde gesendet\n");
 			break;
 			
+		case "speichern":
+			JFileChooser fileAddressSave = new JFileChooser();
+			fileAddressSave.setName("fileAddress");
+			fileAddressSave.showOpenDialog(null);
+			
+			File filefileAddressSave = fileAddressSave.getSelectedFile();
+			System.out.println(fileAddressSave.getSelectedFile().getName());
+			String fileName = fileAddressSave.getSelectedFile().getName();
+			
+			String splitFile[] = fileName.split(".");
+			System.out.println(splitFile.length);
+			if (splitFile[1].equals("ser")) {
+				id = new DatenzugriffSerialisiert();
+			}
+			if (splitFile[1].equals("csv")) {
+				id = new DatenzugriffCSV();
+			}
+			
+			id.speichern(ib, filefileAddressSave);
+			break;
+			
+		case "laden":
+			JFileChooser fileAddressLoad = new JFileChooser();
+			fileAddressLoad.setName("fileAddress");
+			fileAddressLoad.showOpenDialog(null);
+			
+			
+			break;
 		default:
 			throw new RuntimeException("Hups, "+ cases + " wurde nicht richtig gemacht!");
 		}
@@ -291,7 +329,7 @@ public class EventHandler extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * enthält die Positionen der Felder und setzt die Figuren dem entsprechend
+	 * enthï¿½lt die Positionen der Felder und setzt die Figuren dem entsprechend
 	 * @param id
 	 * @param fig
 	 */

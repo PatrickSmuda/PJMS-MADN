@@ -136,21 +136,32 @@ public void rahmen(){
 	wuerfel.setBounds(60, 300, 100, 30);
 	wuerfel.addActionListener(eh);
 	
-	JButton emailVersand = new JButton ("mail");
+	JButton emailVersand = new JButton ();
 	emailVersand.setName("mail");
 	north.add(emailVersand);
 	emailVersand.setBounds(10, 0, 20, 20);
 	emailVersand.setIcon(new ImageIcon("mail.png"));
+	emailVersand.addActionListener(eh);
 	
 	JTextArea emailAddress = new JTextArea();
 	emailAddress.setName("address");
 	north.add(emailAddress);
 	emailAddress.setBounds(40, 0, 300, 20);
 	
-	emailVersand.addActionListener(eh);
 	
+	JButton speichern = new JButton ();
+	speichern.setName("speichern");
+	north.add(speichern);
+	speichern.setBounds(410, 0, 20, 20);
+	speichern.setIcon(new ImageIcon("save.png"));
+	speichern.addActionListener(eh);
 
-
+	JButton laden = new JButton ();
+	laden.setName("laden");
+	north.add(laden);
+	laden.setBounds(440, 0, 20, 20);
+	laden.setIcon(new ImageIcon("load.png"));
+	laden.addActionListener(eh);
 	
 	
 //	JButton bewege[] = new JButton[4];

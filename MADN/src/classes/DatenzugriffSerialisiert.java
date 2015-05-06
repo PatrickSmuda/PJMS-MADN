@@ -23,7 +23,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	/**
 	 * Die Methode speichern, um das Spiel serialisiert zu speichern
 	 */
-	public void speichern(Object spiel){
+	public void speichern(Object spiel, File filefileAddressSave){
 
 		if(spiel != null && spiel instanceof Spiel){
 			
@@ -31,22 +31,8 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 			throw new RuntimeException("Das zu speichernde Objekt ist nicht vom Typ Spiel!");
 		}
 		
-		
-		int count = 1;
-		
-		File dir = new File("C:\\Speicherstand");
-		File[] files = dir.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return name.endsWith("ser");
-			}
-		});
-		for (File file : files) {
-			count++;
-		}
-		dateiName = dateiName + count;
-		
 		try{
-			oos = new ObjectOutputStream(new FileOutputStream(("C:\\Speicherstand\\" + dateiName + ".ser")));
+			oos = new ObjectOutputStream(new FileOutputStream((filefileAddressSave)));
 			oos.writeObject(spiel);
 		} catch(FileNotFoundException e){
 			System.err.println("Datei konnte nicht erstellt werden!");
@@ -57,7 +43,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 			try{
 				oos.close();
 			}catch(Exception e){
-				System.err.println("Fehler beim Schließen!");
+				System.err.println("Fehler beim Schlieï¿½en!");
 			}
 		}
 	}
@@ -92,7 +78,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 					try{
 						ois.close();
 					}catch(Exception e){
-						System.err.println("Fehler beim Schließen!");
+						System.err.println("Fehler beim Schlieï¿½en!");
 					}
 				}
 					return geladenesSpiel;
@@ -103,5 +89,3 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 			}
 		
 }
-
-	
