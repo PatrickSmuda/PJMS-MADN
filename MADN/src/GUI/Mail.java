@@ -16,7 +16,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-
+/**
+ * Die Klasse Mail
+ * @author 
+ *
+ */
 
 public class Mail extends Thread {
 
@@ -24,6 +28,11 @@ public class Mail extends Thread {
 	
 	private Properties p;
 	
+	/**
+	 * Innere Klasse MailAuthenticator
+	 * @author 
+	 *
+	 */
 	private class MailAuthenticator extends Authenticator{
 		private String user, password;
 		public MailAuthenticator(){
@@ -38,7 +47,16 @@ public class Mail extends Thread {
 		
 	}
 	
-	
+	/**
+	 * Der Konstruktor 
+	 * @param an
+	 * @param betreff
+	 * @param text
+	 * @param anhangPfad1
+	 * @param anhangName1
+	 * @param anhangPfad2
+	 * @param anhangName2
+	 */
 	public Mail (String an, String betreff, String text,
 			String anhangPfad1, String anhangName1, String anhangPfad2, String anhangName2){
 		
@@ -72,8 +90,6 @@ public class Mail extends Thread {
 			p.put("anhangPfad2", "");
 		else
 			p.put("anhangPfad2", anhangPfad2);
-		
-		
 		
 		if(anhangName2==null)
 			p.put("anhangName2", "");
