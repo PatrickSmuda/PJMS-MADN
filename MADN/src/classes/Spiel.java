@@ -193,6 +193,9 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				if (zugGueltigAufEndfeld(neuePosition, figurId)) {
 					this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
 					this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
+					if(bewegungsWert != 6){
+						zugBeenden();
+					}
 				}else {
 					zugBeenden();
 				}
