@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JViewport;
 import javax.swing.filechooser.FileFilter;
 
-import com.sun.deploy.uitoolkit.impl.fx.Utils;
+//import com.sun.deploy.uitoolkit.impl.fx.Utils;
 
 import classes.DatenzugriffCSV;
 import classes.DatenzugriffSerialisiert;
@@ -211,6 +211,16 @@ public class EventHandler extends JFrame implements ActionListener {
 			logta.setText(s+ib.getSpielerAmZug()+" ist bereit seinen Zug zu vollfuehren\n");
 			break;
 		
+			
+		
+		case "ki":
+			logta.setText(s+ib.getSpielerAmZug()+" kalkuliert seinen Spielzug\n");
+			ib.benutzeKI();
+			bitchBetterHaveMyMoney((JLabel)ebene3.getComponent(0));
+			
+			
+			break;
+			
 		case "mail":
 			String address = null;
 			for(int i = 0; i < c.getParent().getComponentCount(); i++){

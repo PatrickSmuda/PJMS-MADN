@@ -178,6 +178,14 @@ public void rahmen(){
 	bewege.setBounds(10, 100, 200, 50);
 	bewege.addActionListener(eh);
 	
+	
+	JButton kiZug = new JButton("Kalkuliere Zug");
+	kiZug.setName("ki");
+	east.add(kiZug);
+	kiZug.setBounds(10, 200, 200, 50);
+	kiZug.addActionListener(eh);
+	
+	
 	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {
 		felder[i] = new JButton();
