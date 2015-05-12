@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.management.RuntimeErrorException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +23,9 @@ import javax.swing.JViewport;
 import javax.swing.filechooser.FileFilter;
 
 //import com.sun.deploy.uitoolkit.impl.fx.Utils;
+
+
+
 
 import classes.DatenzugriffCSV;
 import classes.DatenzugriffSerialisiert;
@@ -229,11 +234,59 @@ public class EventHandler extends JFrame implements ActionListener {
 					address = jt.getText();
 				}
 			}
+			JFrame anhang = new JFrame();
+			anhang.setVisible(true);
+			anhang.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+			anhang.setSize(300, 300);
+			anhang.setResizable(false);
+			anhang.setLocationRelativeTo(null);  
+			anhang.setLayout(null);
+			
+			JComboBox<String> anhangeList = new JComboBox<String>();
+			anhangeList.addItem("Ohne Anhang");
+			anhangeList.addItem("Mit Ser");
+			anhangeList.addItem("Mit PDF");
+			anhangeList.setBounds(75, 10, 150, 50);
+			anhang.add(anhangeList);
+			
+			JButton ok = new JButton("OK");
+			ok.setName("ok");
+			ok.setBounds(120, 150, 60, 40);
+			anhang.add(ok);
+			ok.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int x = anhangeList.getSelectedIndex();
+					switch (x) {
+					case 0:
+						
+						break;
+
+					case 1:
+						id = new DatenzugriffSerialisiert();
+						id.speichern(ib, new File("Anhang"));
+						
+						break;
+						
+					case 2:
+						logta.setText(s + "PDF noch nicht implementiert");
+						break;
+						
+					default:
+						break;
+					}
+				}
+			});
+			
+			
+			
+			
 			new Mail(address, "Ich moechte ein Spiel spielen", "Hallo Adam, \n "
 					+ "du kennst mich nicht, aber ich kenne dich. "
 					+ "Das passiert wenn du verlierst: \n"
 					+ " ",
-					null, null, null, null);
+					"Anhang.ser", "Spiel.ser", null, null);
 			logta.setText(s+"E-Mail wurde gesendet\n");
 			break;
 			
