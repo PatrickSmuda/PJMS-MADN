@@ -83,8 +83,8 @@ public class EventHandler extends JFrame implements ActionListener {
 		}
 		JScrollPane logsp = (JScrollPane) southEbene1.getComponent(0);
 		JViewport ebene4 = (JViewport) logsp.getComponent(0);
-		JTextArea logta = (JTextArea) ebene4.getComponent(0);
-		String s = logta.getText();
+		final JTextArea logta = (JTextArea) ebene4.getComponent(0);
+		final String s = logta.getText();
 		
 		switch (cases) {
 		case "wuerfel":
@@ -242,7 +242,7 @@ public class EventHandler extends JFrame implements ActionListener {
 			anhang.setLocationRelativeTo(null);  
 			anhang.setLayout(null);
 			
-			JComboBox<String> anhangeList = new JComboBox<String>();
+			final JComboBox<String> anhangeList = new JComboBox<String>();
 			anhangeList.addItem("Ohne Anhang");
 			anhangeList.addItem("Mit Ser");
 			anhangeList.addItem("Mit PDF");
@@ -253,20 +253,32 @@ public class EventHandler extends JFrame implements ActionListener {
 			ok.setName("ok");
 			ok.setBounds(120, 150, 60, 40);
 			anhang.add(ok);
+			final String address_f = address;
 			ok.addActionListener(new ActionListener() {
-				
+			
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					
 					int x = anhangeList.getSelectedIndex();
 					switch (x) {
 					case 0:
-						
+						new Mail(address_f, "Ich moechte ein Spiel spielen", "Hallo Adam, \n "
+								+ "du kennst mich nicht, aber ich kenne dich. "
+								+ "Das passiert wenn du verlierst: \n"
+								+ " ",
+								null, null, null, null);
+						logta.setText(s+"E-Mail wurde gesendet\n");
 						break;
 
 					case 1:
 						id = new DatenzugriffSerialisiert();
 						id.speichern(ib, new File("Anhang"));
-						
+						new Mail(address_f, "Ich moechte ein Spiel spielen", "Hallo Adam, \n "
+								+ "du kennst mich nicht, aber ich kenne dich. "
+								+ "Das passiert wenn du verlierst: \n"
+								+ " ",
+								"Anhang.ser", "Spiel.ser", null, null);
+						logta.setText(s+"E-Mail wurde gesendet\n");
 						break;
 						
 					case 2:
@@ -282,12 +294,7 @@ public class EventHandler extends JFrame implements ActionListener {
 			
 			
 			
-			new Mail(address, "Ich moechte ein Spiel spielen", "Hallo Adam, \n "
-					+ "du kennst mich nicht, aber ich kenne dich. "
-					+ "Das passiert wenn du verlierst: \n"
-					+ " ",
-					"Anhang.ser", "Spiel.ser", null, null);
-			logta.setText(s+"E-Mail wurde gesendet\n");
+			
 			break;
 			
 		case "speichern":
