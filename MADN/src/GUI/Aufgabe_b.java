@@ -155,6 +155,13 @@ public void rahmen(){
 	speichern.setBounds(410, 0, 20, 20);
 	speichern.setIcon(new ImageIcon("save.png"));
 	speichern.addActionListener(eh);
+	
+	JButton pdfSpeichern = new JButton ();
+	pdfSpeichern.setName("pdfSpeichern");
+	north.add(pdfSpeichern);
+	pdfSpeichern.setBounds(470, 0, 20, 20);
+	pdfSpeichern.setIcon(new ImageIcon("pdf.png"));
+	pdfSpeichern.addActionListener(eh);
 
 	JButton laden = new JButton ();
 	laden.setName("laden");

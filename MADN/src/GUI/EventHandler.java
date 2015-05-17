@@ -1,8 +1,10 @@
 package GUI;
 
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -23,6 +25,8 @@ import javax.swing.JViewport;
 import javax.swing.filechooser.FileFilter;
 
 //import com.sun.deploy.uitoolkit.impl.fx.Utils;
+
+
 
 
 
@@ -234,7 +238,7 @@ public class EventHandler extends JFrame implements ActionListener {
 					address = jt.getText();
 				}
 			}
-			JFrame anhang = new JFrame();
+			final JFrame anhang = new JFrame();
 			anhang.setVisible(true);
 			anhang.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 			anhang.setSize(300, 300);
@@ -254,6 +258,7 @@ public class EventHandler extends JFrame implements ActionListener {
 			ok.setBounds(120, 150, 60, 40);
 			anhang.add(ok);
 			final String address_f = address;
+			final BufferedImage image=getScreenShot((JLabel)ebene3.getComponent(0));
 			ok.addActionListener(new ActionListener() {
 			
 				@Override
@@ -282,12 +287,21 @@ public class EventHandler extends JFrame implements ActionListener {
 						break;
 						
 					case 2:
-						logta.setText(s + "PDF noch nicht implementiert");
+						
+						iDatenzugriff daten = new DatenzugriffPDF();
+						daten.speichern(image, new File("AnhangPdf.pdf"));
+						new Mail(address_f, "Ich moechte ein Spiel spielen", "Hallo Adam, \n "
+								+ "du kennst mich nicht, aber ich kenne dich. "
+								+ "Das passiert wenn du verlierst: \n"
+								+ " ",
+								"AnhangPdf.pdf", "Spiel.pdf", null, null);
+						logta.setText(s + "Mail mit PDF verschickt!\n");
 						break;
 						
 					default:
 						break;
 					}
+					anhang.dispose();
 				}
 			});
 			
@@ -324,7 +338,15 @@ public class EventHandler extends JFrame implements ActionListener {
 			fileAddressLoad.showOpenDialog(null);
 			
 			
+			
 			break;
+			
+		case "pdfSpeichern":
+			BufferedImage bImage=getScreenShot((JLabel)ebene3.getComponent(0));
+			iDatenzugriff daten = new DatenzugriffPDF();
+			daten.speichern(bImage, new File("pdf.pdf"));
+			break;
+			
 		default:
 			throw new RuntimeException("Hups, "+ cases + " wurde nicht richtig gemacht!");
 		}
@@ -538,5 +560,18 @@ public class EventHandler extends JFrame implements ActionListener {
 			this.ib = ib;
 		}
 	}
+	
+	private static BufferedImage getScreenShot(Component component) {
+
+		    BufferedImage image = new BufferedImage(
+		      component.getWidth(),
+		      component.getHeight(),
+		      BufferedImage.TYPE_INT_RGB
+		      );
+		    component.paint( image.getGraphics() ); // alternately use .printAll(..)
+		    return image;
+		  }
+	
+	
 	
 }

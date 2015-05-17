@@ -1,5 +1,6 @@
 package classes;
 
+import java.awt.Image;
 import java.io.File;
 
 /**
@@ -12,7 +13,7 @@ import java.io.File;
 public interface iDatenzugriff {
 
 	public void speichern(Object spiel, File filefileAddressSave);
-	
+		
 	public Object laden(int zaehler);
 	
 }
