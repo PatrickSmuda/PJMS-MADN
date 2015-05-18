@@ -96,7 +96,6 @@ public class Mail extends Thread {
 		else
 			p.put("anhangName2", anhangName1);
 		
-		
 		this.start();
 	}
 	

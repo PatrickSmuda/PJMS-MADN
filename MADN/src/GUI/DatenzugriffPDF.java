@@ -22,21 +22,20 @@ import classes.iDatenzugriff;
 
 public class DatenzugriffPDF implements iDatenzugriff {
 
-	private static Aufgabe_b gui;
-	
-	public DatenzugriffPDF(){
-		
-	}
-	
+
+	/**
+	 * Die Methode um eine PDF Datei mit Screenshot vom Center zu speichern.
+	 * @param Spiel, fileAdress
+	 */
 	@Override
-	public void speichern(Object spiel, File filefileAddressSave) {
+	public void speichern(Object spiel, File fileAddressSave) {
 
 		if(spiel instanceof BufferedImage){
 			
 			BufferedImage image=(BufferedImage)spiel;
 			try{
 				Document d=new Document();
-				PdfWriter.getInstance(d, new FileOutputStream(filefileAddressSave));
+				PdfWriter.getInstance(d, new FileOutputStream(fileAddressSave));
 				ByteArrayOutputStream baos = null;
 				byte[] imageInByte = null;
 				d.open();
@@ -63,18 +62,19 @@ public class DatenzugriffPDF implements iDatenzugriff {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else System.out.println("bla");
-		
-		
+		}
 	}
-	
-	
-	
+/**
+ * PDF wird nicht geladen. 
+ */
 	@Override
-	public Object laden(int zaehler) {
+	public Object laden(File fileAddressLoad) {
 		return null;
 	}
-
+	
+	
+	
+	
 	
 
 
