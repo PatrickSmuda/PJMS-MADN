@@ -373,9 +373,24 @@ public class EventHandler extends JFrame implements ActionListener {
 			break;
 			
 		case "pdfSpeichern":
-			BufferedImage bImage=getScreenShot((JLabel)ebene3.getComponent(0));
-			iDatenzugriff daten = new DatenzugriffPDF();
-			daten.speichern(bImage, new File("pdf.pdf"));
+			JFileChooser jfc=new JFileChooser();
+			jfc.showOpenDialog(null);
+			File f=jfc.getSelectedFile();
+			String fName=f.getName();
+			String [] bla;
+			try{
+				bla=fName.split("\\.");
+				if(bla[1].equals("pdf")){
+					BufferedImage bImage=getScreenShot((JLabel)ebene3.getComponent(0));
+					iDatenzugriff daten = new DatenzugriffPDF();
+					daten.speichern(bImage, f);
+				}else{
+					logta.setText(s+"Keine PDF Datei!!!\n");
+				}
+			}catch(Exception ex){
+			 logta.setText(s+"Keine PDF Datei!!!\n");
+			}
+			
 			break;
 			
 		default:
