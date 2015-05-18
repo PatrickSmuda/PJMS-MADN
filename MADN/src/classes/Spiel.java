@@ -764,10 +764,9 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				zaehler++;
 			}
 		}
-		/*if (zaehler == 4) {
+		if (zaehler == 4) {
 			spielGewonnen(spielerAmZug);
-			return;
-		}*/
+		}
 		for(int i = 0; i< spieler.size(); i++){
 			if(count == spieler.size()){
 				spielerAmZug = spieler.get(count-spieler.size());

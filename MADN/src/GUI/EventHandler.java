@@ -24,10 +24,12 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JViewport;
 import javax.swing.filechooser.FileFilter;
 
 //import com.sun.deploy.uitoolkit.impl.fx.Utils;
+
 
 
 
@@ -218,6 +220,40 @@ public class EventHandler extends JFrame implements ActionListener {
 				} catch (Exception e2) {
 					logta.setText(s+"Keine Figur ausgewaehlt!\n");
 				}
+			}
+			if(ib.getGewinner() != null){
+				final JFrame gewonnen = new JFrame("Spielende");
+				gewonnen.setVisible(true);
+				gewonnen.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+				gewonnen.setSize(500, 300);
+				gewonnen.setResizable(false);
+				gewonnen.setLocationRelativeTo(null);  
+				gewonnen.setLayout(null);
+				JLabel gewinner = new JLabel();
+				JTextField jtf = new JTextField();
+				jtf.setText(ib.getGewinner() + "hat gewonnen!");
+				jtf.setSize(180,30);
+				jtf.setEditable(false);
+				gewinner.add(jtf);
+				gewinner.setSize(500,300);
+				gewinner.setIcon(new ImageIcon("partyHard.gif"));
+				gewonnen.add(gewinner);
+				
+				JButton ok = new JButton("OK");
+				ok.setName("ok");
+				ok.setBounds(430, 240, 60, 30);
+				gewinner.add(ok);
+				ok.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						gewonnen.dispose();
+						gui.getFrames()[2].dispose();
+						
+					}
+				});
+				
+				
 			}
 			break;
 		case "Bewege":	
