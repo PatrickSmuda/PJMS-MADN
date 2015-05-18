@@ -203,10 +203,11 @@ public class EventHandler extends JFrame implements ActionListener {
 		case "Feld_69":
 		case "Feld_70":
 		case "Feld_71":
+			System.out.println("Eventhandler Gewuerfelt:" + gewuerfelt);
 			String split[] = cases.split("_");
 			int x = Integer.parseInt(split[1]);
 			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
-			if (nextBewege == true && gewuerfelt == true) {
+			if (nextBewege == true) {
 				try {
 					int fig = ib.figurIdAufFeld(x);
 					ib.bewege(fig);
@@ -370,6 +371,13 @@ public class EventHandler extends JFrame implements ActionListener {
 				}
 			}
 		
+			
+		/*	try{
+				ib.wuerfeln();
+			}catch(Exception e2){
+				gewuerfelt = true;
+			}
+			*/
 			break;
 			
 		case "pdfSpeichern":

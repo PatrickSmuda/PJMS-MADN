@@ -204,14 +204,17 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			
 			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Normalfeld){
 				neuePosition = ueberlauf((this.spielerAmZug.getFigur(figurId).getPosition().getId() + this.bewegungsWert), figurId);
-				if(userIstDumm(neuePosition, figurId)){
-					zugBeenden();
-				}else{
+				
+				
 					if(kannEndfeldErreichen(neuePosition)){
 						if(zugGueltigEndfeld(neuePosition)){
 							if(endfeld(neuePosition) == neuePosition){
 								zugBeenden();
-							}else{
+							}
+							else if(userIstDumm(neuePosition, figurId)){
+								zugBeenden();
+							}
+							else{
 								this.spielbrett.getFeld(this.spielerAmZug.getFigur(figurId).getPosition().getId()).setFigur(null);
 								this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(endfeld(neuePosition)));
 								this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
@@ -238,7 +241,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			
 			hatGewuerfelt = false;
 			
-		}	
+		
 	}
 	
 	
@@ -668,6 +671,11 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	@Override
 	public void wuerfeln(){
 		if(spielHatBegonnen){
+			System.out.println("Spiel darfWuerfeln: "+darfWuerfeln+"\nSpiel hatGewuerfelt: "+hatGewuerfelt+"\nSpiel spielerAmZug: "+spielerAmZug.getName()+"\nSpiel Bewegungswert: "+bewegungsWert+"\n"
+		+spielerAmZug.getFigur(0).getPosition().getId()+"\\"
+		+spielerAmZug.getFigur(1).getPosition().getId()+"\\"
+		+spielerAmZug.getFigur(2).getPosition().getId()+"\\"
+		+spielerAmZug.getFigur(3).getPosition().getId());
 			if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
 				this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
 				if(this.bewegungsWert == 6) this.darfWuerfeln = true;
@@ -756,10 +764,10 @@ public void spielerHinzufuegen(String name, int f, int KI){
 				zaehler++;
 			}
 		}
-		if (zaehler == 3) {
+		/*if (zaehler == 4) {
 			spielGewonnen(spielerAmZug);
 			return;
-		}
+		}*/
 		for(int i = 0; i< spieler.size(); i++){
 			if(count == spieler.size()){
 				spielerAmZug = spieler.get(count-spieler.size());
