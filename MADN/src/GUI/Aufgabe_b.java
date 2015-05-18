@@ -70,7 +70,7 @@ public void rahmen(){
 	west.add(wrfl);
 	wrfl.setBounds(0, 0, 221, 216);
 	
-	
+	//hier werden die figuren visualisiert
 	for(int i=0;i<4;i++){
 		figurRot[i]=new JLabel();
 		figurBlau[i]=new JLabel();
@@ -122,6 +122,7 @@ public void rahmen(){
 	south.add(sp);
 	sp.setBounds(0,0,995,125);
 	logging.setName("Logging");
+	
 	
 	JButton wuerfel = new JButton("Wuerfeln");
 	wuerfel.setName("wuerfel");

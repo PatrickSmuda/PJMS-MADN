@@ -510,7 +510,7 @@ public class EventHandler extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * enth�lt die Positionen der Felder und setzt die Figuren dem entsprechend
+	 * enthaelt die Positionen der Felder und setzt die Figuren dem entsprechend
 	 * @param id
 	 * @param fig
 	 */
@@ -657,7 +657,7 @@ public class EventHandler extends JFrame implements ActionListener {
 		      component.getHeight(),
 		      BufferedImage.TYPE_INT_RGB
 		      );
-		    component.paint( image.getGraphics() ); // alternately use .printAll(..)
+		    component.paint( image.getGraphics() );
 		    return image;
 		  }
 	
