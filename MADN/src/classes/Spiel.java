@@ -191,6 +191,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 			
 			else if(this.spielerAmZug.getFigur(figurId).getPosition().getTyp() == FeldTyp.Endfeld){
 				if (zugGueltigAufEndfeld(neuePosition, figurId)) {
+					this.spielbrett.getFeld(this.spielerAmZug.getFigur(figurId).getPosition().getId()).setFigur(null);
 					this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(neuePosition));
 					this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
 					if(bewegungsWert != 6){
@@ -211,6 +212,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 							if(endfeld(neuePosition) == neuePosition){
 								zugBeenden();
 							}else{
+								this.spielbrett.getFeld(this.spielerAmZug.getFigur(figurId).getPosition().getId()).setFigur(null);
 								this.spielerAmZug.getFigur(figurId).setPosition(this.spielbrett.getFeld(endfeld(neuePosition)));
 								this.spielerAmZug.getFigur(figurId).getPosition().setFigur(this.spielerAmZug.getFigur(figurId));
 							}

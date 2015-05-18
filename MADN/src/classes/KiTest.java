@@ -22,7 +22,7 @@ public class KiTest {
 		p.beginneSpiel();
 		
 		
-		for(int i = 0; i < 25; i++){
+		for(int i = 0; i < 80; i++){
 			p.benutzeKI();
 		}
 		

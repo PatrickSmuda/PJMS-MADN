@@ -103,7 +103,7 @@ public abstract class KI implements Serializable{
 			
 			if(spieler.getFigur(i).getPosition().getTyp() != FeldTyp.Startfeld && spiel.figurAufFeld(spiel.ueberlauf(spiel.getBewegungsWert()+spieler.getFigur(i).getPosition().getId(), i))){
 					neueId = spieler.getFigur(i).getPosition().getId()+spiel.getBewegungsWert();
-					if(spiel.userIstDumm(neueId, i)){
+					if(neueId < 72 && spiel.userIstDumm(neueId, i)){
 						
 					}else{
 						System.out.println("bewegt");

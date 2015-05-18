@@ -74,6 +74,10 @@ public class KI_defensiv extends KI{
 					repeat = false;
 					//break;
 				}
+			}else{
+				p.zugBeenden();
+				repeat = false;
+				bewegt = true;
 			}
 			
 			System.out.println("Figur 1: "+ spieler.getFigur(0).getPosition()+"\tFigur 2: "
