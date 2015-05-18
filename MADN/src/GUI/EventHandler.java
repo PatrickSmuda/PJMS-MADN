@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
@@ -25,6 +28,7 @@ import javax.swing.JViewport;
 import javax.swing.filechooser.FileFilter;
 
 //import com.sun.deploy.uitoolkit.impl.fx.Utils;
+
 
 
 
@@ -305,40 +309,67 @@ public class EventHandler extends JFrame implements ActionListener {
 				}
 			});
 			
-			
-			
-			
-			
 			break;
 			
 		case "speichern":
-			JFileChooser fileAddressSave = new JFileChooser();
-			fileAddressSave.setName("fileAddress");
-			fileAddressSave.showOpenDialog(null);
+			JFileChooser chooseAddressSave = new JFileChooser();
+			chooseAddressSave.setName("chooseAddressSave");
+			chooseAddressSave.showOpenDialog(null);
 			
-			File filefileAddressSave = fileAddressSave.getSelectedFile();
-			System.out.println(fileAddressSave.getSelectedFile().getName());
-			String fileName = fileAddressSave.getSelectedFile().getName();
-			
-			String splitFile[] = fileName.split(".");
-			System.out.println(splitFile.length);
-			if (splitFile[1].equals("ser")) {
-				id = new DatenzugriffSerialisiert();
+			File fileAddressSave = chooseAddressSave.getSelectedFile();
+			String fileNameSave = chooseAddressSave.getSelectedFile().getName();
+		
+			String splitFileSave[] = fileNameSave.split("\\.");
+			try {
+				if (splitFileSave[1].equals("ser")) {
+					id = new DatenzugriffSerialisiert();
+				}
+				if (splitFileSave[1].equals("csv")) {
+					id = new DatenzugriffCSV();
+				}
+				id.speichern(ib, fileAddressSave);
+			} catch (Exception e2) {
+				try {
+					id = new DatenzugriffSerialisiert();
+					id.speichern(ib, fileAddressSave);
+				} catch (Exception e3) {
+					logta.setText(s + "Fehler beim Speichern!\n");
+				}
+				
 			}
-			if (splitFile[1].equals("csv")) {
-				id = new DatenzugriffCSV();
-			}
-			
-			id.speichern(ib, filefileAddressSave);
 			break;
 			
 		case "laden":
-			JFileChooser fileAddressLoad = new JFileChooser();
-			fileAddressLoad.setName("fileAddress");
-			fileAddressLoad.showOpenDialog(null);
+			JFileChooser chooseAddressLoad = new JFileChooser();
+			chooseAddressLoad.setName("chooseAddressSave");
+			chooseAddressLoad.showOpenDialog(null);
 			
+			File fileAddressLoad = chooseAddressLoad.getSelectedFile();
+			String fileNameLoad = chooseAddressLoad.getSelectedFile().getName();
 			
-			
+			String splitFileLoad[] = fileNameLoad.split("\\.");
+	
+			try {
+				if (splitFileLoad[1].equals("ser") || splitFileLoad[1].equals("csv")) {
+					if (splitFileLoad[1].equals("ser")) {
+						id = new DatenzugriffSerialisiert();
+					}
+					if (splitFileLoad[1].equals("csv")) {
+						id = new DatenzugriffCSV();
+					}	
+				}
+				ib = (Spiel) id.laden(fileAddressLoad);
+				bitchBetterHaveMyMoney((JLabel)ebene3.getComponent(0));
+			} catch (Exception e2) {
+				try {
+					id = new DatenzugriffSerialisiert();
+					ib = (Spiel) id.laden(fileAddressLoad);
+					bitchBetterHaveMyMoney((JLabel)ebene3.getComponent(0));
+				} catch (Exception e3) {
+					logta.setText(s + "Fehler beim Laden!\n");
+				}
+			}
+		
 			break;
 			
 		case "pdfSpeichern":
@@ -350,10 +381,9 @@ public class EventHandler extends JFrame implements ActionListener {
 		default:
 			throw new RuntimeException("Hups, "+ cases + " wurde nicht richtig gemacht!");
 		}
-		
-		
-		
+
 	}
+	
 	/**
 	 * Die Update Funktion
 	 * @param center

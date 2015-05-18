@@ -81,9 +81,6 @@ public void rahmen(){
 		figurBlau[i].setName("b_"+i);
 		figurGelb[i].setName("ge_"+i);
 		figurGruen[i].setName("gr_"+i);
-
-
-		
 		
 		center.add(figurRot[i]);
 		center.add(figurBlau[i]);
@@ -117,9 +114,6 @@ public void rahmen(){
 	figurGruen[2].setBounds(444, 496, 30, 30);
 	figurGruen[3].setBounds(492, 496, 30, 30);
 
-
-
-	
 	
 	final JTextArea logging = new JTextArea();
 	logging.setEditable(false);
@@ -128,7 +122,6 @@ public void rahmen(){
 	south.add(sp);
 	sp.setBounds(0,0,995,125);
 	logging.setName("Logging");
-	
 	
 	JButton wuerfel = new JButton("Wuerfeln");
 	wuerfel.setName("wuerfel");
@@ -155,13 +148,6 @@ public void rahmen(){
 	speichern.setBounds(410, 0, 20, 20);
 	speichern.setIcon(new ImageIcon("save.png"));
 	speichern.addActionListener(eh);
-	
-	JButton pdfSpeichern = new JButton ();
-	pdfSpeichern.setName("pdfSpeichern");
-	north.add(pdfSpeichern);
-	pdfSpeichern.setBounds(470, 0, 20, 20);
-	pdfSpeichern.setIcon(new ImageIcon("pdf.png"));
-	pdfSpeichern.addActionListener(eh);
 
 	JButton laden = new JButton ();
 	laden.setName("laden");
@@ -170,28 +156,24 @@ public void rahmen(){
 	laden.setIcon(new ImageIcon("load.png"));
 	laden.addActionListener(eh);
 	
+	JButton pdfSpeichern = new JButton ();
+	pdfSpeichern.setName("pdfSpeichern");
+	north.add(pdfSpeichern);
+	pdfSpeichern.setBounds(500, 0, 20, 20);
+	pdfSpeichern.setIcon(new ImageIcon("pdf.png"));
+	pdfSpeichern.addActionListener(eh);
 	
-//	JButton bewege[] = new JButton[4];
-//	for (int i = 0; i < bewege.length; i++) {
-//		bewege[i] = new JButton("Bewege Firgur "+(i+1));
-//		bewege[i].setName("Bewege_"+i);
-//		east.add(bewege[i]);
-//		bewege[i].setBounds(10, ((i*100)+60), 200, 50);
-//		bewege[i].addActionListener(eh);
-//	}
 	JButton bewege = new JButton("Bewege");
 	bewege.setName("Bewege");
 	east.add(bewege);
-	bewege.setBounds(10, 100, 200, 50);
+	bewege.setBounds(10, 100, 150, 50);
 	bewege.addActionListener(eh);
-	
 	
 	JButton kiZug = new JButton("Kalkuliere Zug");
 	kiZug.setName("ki");
 	east.add(kiZug);
-	kiZug.setBounds(10, 200, 200, 50);
+	kiZug.setBounds(10, 200, 150, 50);
 	kiZug.addActionListener(eh);
-	
 	
 	JButton felder[] = new JButton[72];
 	for (int i = 0; i < felder.length; i++) {

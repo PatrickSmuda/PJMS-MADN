@@ -27,15 +27,14 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	 */
 	
 	@Override
-	public void speichern(Object spiel, File filefileAddressSave){ 
-		
+	public void speichern(Object spiel, File fileAddressSave){ 
 		
         if(spiel != null && spiel instanceof Spiel){
 			
         	Spiel s=(Spiel)spiel;
         	
         	String text = s.csvString(); 
-    		File dir = filefileAddressSave;
+    		File dir = fileAddressSave;
     		
     		try{
     			FileWriter writer = new FileWriter(dir);
@@ -83,31 +82,16 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	 */
 	
 	@Override
-	public Object laden(int zaehler){ 
+	public Object laden(File fileAddressLoad){ 
 		BufferedReader reader = null;
 		Spiel s = new Spiel();
 		try {
-			
-             int count=0;
-        	
-        	File dir = new File("C:\\Speicherstand\\");
-    		File[] files = dir.listFiles(new FilenameFilter() {
-    			public boolean accept(File dir, String name) {
-    				return name.endsWith("csv");
-    			}
-    		});
-    		for (File file : files) {
-    			count++;
-    		}
-    		
-    		dateiName = dateiName + zaehler + ".csv";
-			//System.out.println(dateiName);
-			reader = new BufferedReader(new FileReader("C:\\Speicherstand\\" + dateiName ));
+			reader = new BufferedReader(new FileReader(fileAddressLoad));
 						
-           ArrayList <String> inhaltStrings = new ArrayList <String>();
-           String[] inhalt = null;
+			ArrayList <String> inhaltStrings = new ArrayList <String>();
+			String[] inhalt = null;
            
-           String spielerAmZug = null;
+			String spielerAmZug = null;
            
             String currentLine = reader.readLine();
             
@@ -221,10 +205,6 @@ public class DatenzugriffCSV implements iDatenzugriff {
 		}
 		s.beginneSpiel();
 		return s;
-		
-		
 	}
-
-	
 	
 }

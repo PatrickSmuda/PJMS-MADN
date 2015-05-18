@@ -12,8 +12,8 @@ import java.io.File;
  */
 public interface iDatenzugriff {
 
-	public void speichern(Object spiel, File filefileAddressSave);
+	public void speichern(Object spiel, File fileAddressSave);
 		
-	public Object laden(int zaehler);
+	public Object laden(File fileAddressLoad);
 	
 }
