@@ -42,14 +42,16 @@ public abstract class KI implements Serializable{
 		{
 			if(spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Normalfeld){
 			neueId = spieler.getFigur(i).getPosition().getId() + spiel.getBewegungsWert();
-			neueId = spiel.ueberlauf(neueId, i);
-			if(spiel.kannEndfeldErreichen(neueId) && spiel.userIstDumm(neueId, i) == false){
-				if(spiel.zugGueltigEndfeld(neueId)){
-					if(spiel.endfeld(neueId) == neueId){
-						
-					}else{
-						spiel.bewege(i);
-						return true;
+			if (spieler.getFigur(i).getPosition().getId() != spieler.getFigur(i).getFreiPosition()) {
+				neueId = spiel.ueberlauf(neueId, i);
+				if(spiel.kannEndfeldErreichen(neueId) && spiel.userIstDumm(neueId, i) == false){
+					if(spiel.zugGueltigEndfeld(neueId)){
+						if(spiel.endfeld(neueId) == neueId){
+							
+						}else{
+							spiel.bewege(i);
+							return true;
+						}
 					}
 				}
 			}
@@ -83,7 +85,7 @@ public abstract class KI implements Serializable{
 	}
 
 	/**
-	 *Die Methode schlägt die gegnerische Figur
+	 *Die Methode schlï¿½gt die gegnerische Figur
 	 */
 	protected boolean schlageGegner(){
 
@@ -106,9 +108,7 @@ public abstract class KI implements Serializable{
 					if(neueId < 72 && spiel.userIstDumm(neueId, i)){
 						
 					}else{
-						//System.out.println("bewegt");
 						spiel.bewege(i); 
-						
 						return true;
 					}
 				
@@ -123,41 +123,48 @@ public abstract class KI implements Serializable{
 	protected boolean laufEinfach(){ 
 
 		int groessteId=spieler.getFigur(0).getPosition().getId();
-		int figurId=0; // Figur mit der größten ID
+		int figurId=0; // Figur mit der grï¿½ï¿½ten ID
 		
 		
 		for(int i=1; i<4; i++)
 		{ 
+			int neueId;
+			neueId = spieler.getFigur(i).getPosition().getId() + spiel.getBewegungsWert();
 			if(spieler.getFigur(i).getPosition().getTyp() != FeldTyp.Startfeld && groessteId<spieler.getFigur(i).getPosition().getId()){
 				groessteId=spieler.getFigur(i).getPosition().getId();
 				figurId=i;
-				
 			}
-			if(spieler.getFigur(i).getPosition().getId() == spieler.getFigur(i).getFreiPosition()){
-				int neueId = spieler.getFigur(i).getPosition().getId()+spiel.getBewegungsWert();
-				if(!spiel.userIstDumm(neueId, i)){
-					figurId = i;
+			neueId = spiel.ueberlauf(neueId, i);
+			if (spieler.getFigur(i).getPosition().getTyp() == FeldTyp.Endfeld) {
+				if (!spiel.zugGueltigAufEndfeld(neueId, i)) {
 					break;
-				}else{
-					for(int j = 0; j < 4; j++){
-						if(spieler.getFigur(j).getPosition().getId() == neueId){
-							if(!spiel.userIstDumm(neueId+spiel.getBewegungsWert(), j)){
-								figurId = j;
-								break;
+				}
+			}else{
+				neueId = spieler.getFigur(i).getPosition().getId() + spiel.getBewegungsWert();
+				if(spieler.getFigur(i).getPosition().getId() == spieler.getFigur(i).getFreiPosition()){
+					if(!spiel.userIstDumm(neueId, i)){
+						figurId = i;
+						break;
+					}else{
+						for(int j = 0; j < 4; j++){
+							if(spieler.getFigur(j).getPosition().getId() == neueId){
+								if(!spiel.userIstDumm(neueId+spiel.getBewegungsWert(), j)){
+									figurId = j;
+									break;
+								}
 							}
-							
 						}
 					}
 				}
 			}
-			
 		}
+		
 		spiel.bewege(figurId);
 		return true;
 	}
 
 	/**
-	 * Führt den eigentlichen Spielzeug der KI aus
+	 * Fï¿½hrt den eigentlichen Spielzeug der KI aus
 	 */
 	public abstract String kalkuliereSpielzug();
 

@@ -2,7 +2,7 @@ package classes;
 
 /**
  * Die Klasse Spiel 
- * @author Sebastian Stumm, Johannes Mändle
+ * @author Sebastian Stumm, Johannes Mï¿½ndle
  * @version 1.0
  */
 
@@ -33,7 +33,7 @@ public class Spiel implements iBediener, Serializable {
 	
 
 	/**
-	 * Der Konstruktor für die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
+	 * Der Konstruktor fï¿½r die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
 	 */
 	public Spiel(){
 		this.spielbrett = new Spielbrett();
@@ -55,8 +55,8 @@ public class Spiel implements iBediener, Serializable {
 	}
 	
 	/**
-	 * Fügt dem Spiel einen Spieler hinzu.
-	 * @param spieler Der Spieler, der hinzugefügt werden soll.
+	 * Fï¿½gt dem Spiel einen Spieler hinzu.
+	 * @param spieler Der Spieler, der hinzugefï¿½gt werden soll.
 	 */
 	
 	@Override
@@ -281,7 +281,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		}
 	}
 	/**
-	 * Die Methode beschreibt den Überlauf
+	 * Die Methode beschreibt den ï¿½berlauf
 	 * @param neuePosition
 	 * @param figurId
 	 * @return neuePosition, figurId
@@ -518,13 +518,13 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	
 	
 	/**
-	 * Die Methode wird ausgeführt, wenn ein Zug ungültig ist.
+	 * Die Methode wird ausgefï¿½hrt, wenn ein Zug ungï¿½ltig ist.
 	 */
 	private void ungueltigerZug(){
 		zugBeenden();
 	}
 	/**
-	 * Überprüft ob sich eine Figur auf dem Feld befindet
+	 * ï¿½berprï¿½ft ob sich eine Figur auf dem Feld befindet
 	 * @param id Die Feld ID
 	 * @return boolean Gibt boolschen Wert zurueck
 	 */
@@ -536,9 +536,9 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 	
 	/**
-	 * Überprüft ob eine Spielfigur laufen darf.
-	 * @param sf Die zu überprüfende Spielfigur.
-	 * @return boolean Gibt einen boolschen Wert zurück.
+	 * ï¿½berprï¿½ft ob eine Spielfigur laufen darf.
+	 * @param sf Die zu ï¿½berprï¿½fende Spielfigur.
+	 * @return boolean Gibt einen boolschen Wert zurï¿½ck.
 	 */
 	private boolean kannLaufen(int neuePosition, Spielfigur sf){
 		switch(sf.getFarbe())
@@ -570,7 +570,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 	
 	/**
-	 * Gibt den Spieler der am Zug ist zurück
+	 * Gibt den Spieler der am Zug ist zurï¿½ck
 	 * @return spielerAmZug
 	 */
 	
@@ -591,7 +591,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * Wird aufgerufen, wenn der User versucht seine eigene Figur zu schlagen.
 	 * @param neuePosition Die neue Position der Figur.
 	 * @param sf Die Spielfigur 
-	 * @return boolean Boolscher Rückgabewert
+	 * @return boolean Boolscher Rï¿½ckgabewert
 	 */ 
 	
 	@Override
@@ -614,9 +614,9 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 	
 	/**
-	 * Überprüft ob ein Spieler eine freie Figur hat
-	 * @param spieler Der zu überprüfende Spieler
-	 * @return Gibt einen boolschen wert zurück, ob der Spieler eine freie Figur hat.
+	 * ï¿½berprï¿½ft ob ein Spieler eine freie Figur hat
+	 * @param spieler Der zu ï¿½berprï¿½fende Spieler
+	 * @return Gibt einen boolschen wert zurï¿½ck, ob der Spieler eine freie Figur hat.
 	 */
 	public boolean hatFreieFigur(int id){
 		if(spieler.get(id).getFigur(0).getPosition().getTyp() == FeldTyp.Startfeld &&
@@ -635,7 +635,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 
 	/**
-	 * Setzt eine Spielfigur auf die Startposition zurück.
+	 * Setzt eine Spielfigur auf die Startposition zurï¿½ck.
 	 * @param figur Die Spielfigur
 	 */
 	private void aufStartPositionSetzen(Spielfigur figur){
@@ -665,7 +665,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 
 	/**
-	 * Die Methode würfelt.
+	 * Die Methode wï¿½rfelt.
 	 */
 	
 	@Override
@@ -689,11 +689,11 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 	
 	/**
-	 * TestMethode für die KI
+	 * TestMethode fï¿½r die KI
 	 * @return 
 	 */
 
-	//Für die TestKlasse. Später löschen!
+	//Fï¿½r die TestKlasse. Spï¿½ter lï¿½schen!
 	public String benutzeKI(){
 		if(spielerAmZug.getKI() == null) throw new RuntimeException("Spieler hat keine KI!");
 		return spielerAmZug.getKI().kalkuliereSpielzug();
@@ -735,7 +735,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 		}
 	
 	/**
-	 * Gibt zurück, welcher Spieler gewonnen hat.
+	 * Gibt zurï¿½ck, welcher Spieler gewonnen hat.
 	 * @param gewinner Der Spieler der gewonnen hat.
 	 */
 	private void spielGewonnen(Spieler gewinner){
@@ -745,7 +745,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	}
 	
 	/**
-	 * Hier wird der Gewinner zurückgegeben
+	 * Hier wird der Gewinner zurï¿½ckgegeben
 	 * @return String gewinner
 	 */
 	public String getGewinner(){
