@@ -238,6 +238,7 @@ public class EventHandler extends JFrame implements ActionListener {
 				gewinner.setSize(500,300);
 				gewinner.setIcon(new ImageIcon("ph.gif"));
 				gewonnen.add(gewinner);
+				gui.getFrames()[2].setEnabled(false);
 				
 				JButton ok = new JButton("OK");
 				ok.setName("ok");
