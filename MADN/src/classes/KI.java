@@ -159,6 +159,6 @@ public abstract class KI implements Serializable{
 	/**
 	 * Führt den eigentlichen Spielzeug der KI aus
 	 */
-	public abstract void kalkuliereSpielzug();
+	public abstract String kalkuliereSpielzug();
 
 }

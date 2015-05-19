@@ -265,9 +265,9 @@ public class EventHandler extends JFrame implements ActionListener {
 		
 		case "ki":
 			logta.setText(s+ib.getSpielerAmZug()+" kalkuliert seinen Spielzug\n");
-			ib.benutzeKI();
+			String s2 = ib.benutzeKI();
 			bitchBetterHaveMyMoney((JLabel)ebene3.getComponent(0));
-			
+			logta.setText(s + s2);
 			
 			break;
 			

@@ -55,7 +55,7 @@ public interface iBediener{
 	
 	//Für die TestKlasse
 	
-		public void benutzeKI();
+		public String benutzeKI();
 	
 		public void wuerfeln2();
 

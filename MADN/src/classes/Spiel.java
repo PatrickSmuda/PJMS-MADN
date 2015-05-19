@@ -690,12 +690,13 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	
 	/**
 	 * TestMethode für die KI
+	 * @return 
 	 */
 
 	//Für die TestKlasse. Später löschen!
-	public void benutzeKI(){
+	public String benutzeKI(){
 		if(spielerAmZug.getKI() == null) throw new RuntimeException("Spieler hat keine KI!");
-		spielerAmZug.getKI().kalkuliereSpielzug();
+		return spielerAmZug.getKI().kalkuliereSpielzug();
 	}
 	
 		public void wuerfeln2(){
