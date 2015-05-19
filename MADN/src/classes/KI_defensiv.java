@@ -25,7 +25,7 @@ public class KI_defensiv extends KI{
 	}
 	
 	/**
-	 * Die Methode die den eigentlichen Spielzug der KI durchführt
+	 * Die Methode die den eigentlichen Spielzug der KI durchfï¿½hrt
 	 */
 	@Override
 	public String kalkuliereSpielzug() {
@@ -33,7 +33,7 @@ public class KI_defensiv extends KI{
 		do{
 			/*p.wuerfeln();
 			System.out.println("Spieler: " + spieler.getName());
-			System.out.println("Würfelwert: " + p.getBewegungsWert());
+			System.out.println("Wï¿½rfelwert: " + p.getBewegungsWert());
 			System.out.println("Figur 1: "+ spieler.getFigur(0).getPosition()+"\tFigur 2: "
 			+ spieler.getFigur(1).getPosition()+"\tFigur 3: "
 					+ spieler.getFigur(2).getPosition()+"\tFigur 4: "
@@ -80,10 +80,10 @@ public class KI_defensiv extends KI{
 				repeat = false;
 				bewegt = true;
 			}
-			s = s + "Figur 1: "+ spieler.getFigur(0).getPosition()+"\tFigur 2: "
-					+ spieler.getFigur(1).getPosition()+"\tFigur 3: "
-					+ spieler.getFigur(2).getPosition()+"\tFigur 4: "
-			+ spieler.getFigur(3).getPosition()+"\n";
+			s = s + "Figur 1: "+ (spieler.getFigur(0).getPosition().getId()+1)+"\tFigur 2: "
+					+ (spieler.getFigur(1).getPosition().getId()+1)+"\tFigur 3: "
+					+ (spieler.getFigur(2).getPosition().getId()+1)+"\tFigur 4: "
+			+ (spieler.getFigur(3).getPosition().getId()+1)+"\n";
 			/*System.out.println("Figur 1: "+ spieler.getFigur(0).getPosition()+"\tFigur 2: "
 					+ spieler.getFigur(1).getPosition()+"\tFigur 3: "
 							+ spieler.getFigur(2).getPosition()+"\tFigur 4: "
