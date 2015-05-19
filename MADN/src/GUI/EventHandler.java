@@ -319,7 +319,7 @@ public class EventHandler extends JFrame implements ActionListener {
 
 					case 1:
 						id = new DatenzugriffSerialisiert();
-						id.speichern(ib, new File("Anhang"));
+						id.speichern(ib, new File("Anhang.ser"));
 						new Mail(address_f, "Ich moechte ein Spiel spielen", "Hallo Adam, \n "
 								+ "du kennst mich nicht, aber ich kenne dich. "
 								+ "Das passiert wenn du verlierst: \n"
