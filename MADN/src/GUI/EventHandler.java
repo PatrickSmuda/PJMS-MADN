@@ -231,7 +231,7 @@ public class EventHandler extends JFrame implements ActionListener {
 				gewonnen.setLayout(null);
 				JLabel gewinner = new JLabel();
 				JTextField jtf = new JTextField();
-				jtf.setText(ib.getGewinner() + "hat gewonnen!");
+				jtf.setText(ib.getGewinner() + " hat gewonnen!");
 				jtf.setSize(180,30);
 				jtf.setEditable(false);
 				gewinner.add(jtf);
@@ -398,11 +398,14 @@ public class EventHandler extends JFrame implements ActionListener {
 				}
 				ib = (Spiel) id.laden(fileAddressLoad);
 				bitchBetterHaveMyMoney((JLabel)ebene3.getComponent(0));
+				logta.setText(s+"Spiel wurde geladen\n"+"Spieler der momentan am Zug is:" + " " + ib.getSpielerAmZug()+"Letzter Wuerfelwert:"+ " " +  ib.getBewegungsWert() + "\n" );
+
 			} catch (Exception e2) {
 				try {
 					id = new DatenzugriffSerialisiert();
 					ib = (Spiel) id.laden(fileAddressLoad);
 					bitchBetterHaveMyMoney((JLabel)ebene3.getComponent(0));
+					logta.setText(s+"Spiel wurde geladen\n"+"Spieler der momentan am Zug is:" + " "+ ib.getSpielerAmZug() + "\n" +"Letzter Wuerfelwert:"+ " " + ib.getBewegungsWert() + "\n" );
 				} catch (Exception e3) {
 					logta.setText(s + "Fehler beim Laden!\n");
 				}
