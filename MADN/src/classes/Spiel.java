@@ -671,11 +671,11 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	@Override
 	public void wuerfeln(){
 		if(spielHatBegonnen){
-			System.out.println("Spiel darfWuerfeln: "+darfWuerfeln+"\nSpiel hatGewuerfelt: "+hatGewuerfelt+"\nSpiel spielerAmZug: "+spielerAmZug.getName()+"\nSpiel Bewegungswert: "+bewegungsWert+"\n"
+			/*System.out.println("Spiel darfWuerfeln: "+darfWuerfeln+"\nSpiel hatGewuerfelt: "+hatGewuerfelt+"\nSpiel spielerAmZug: "+spielerAmZug.getName()+"\nSpiel Bewegungswert: "+bewegungsWert+"\n"
 		+spielerAmZug.getFigur(0).getPosition().getId()+"\\"
 		+spielerAmZug.getFigur(1).getPosition().getId()+"\\"
 		+spielerAmZug.getFigur(2).getPosition().getId()+"\\"
-		+spielerAmZug.getFigur(3).getPosition().getId());
+		+spielerAmZug.getFigur(3).getPosition().getId());*/
 			if(this.darfWuerfeln == true && this.hatGewuerfelt == false){
 				this.bewegungsWert = this.spielerAmZug.getWuerfel().werfen();
 				if(this.bewegungsWert == 6) this.darfWuerfeln = true;

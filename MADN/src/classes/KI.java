@@ -106,7 +106,7 @@ public abstract class KI implements Serializable{
 					if(neueId < 72 && spiel.userIstDumm(neueId, i)){
 						
 					}else{
-						System.out.println("bewegt");
+						//System.out.println("bewegt");
 						spiel.bewege(i); 
 						
 						return true;

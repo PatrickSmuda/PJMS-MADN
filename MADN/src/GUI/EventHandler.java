@@ -205,7 +205,7 @@ public class EventHandler extends JFrame implements ActionListener {
 		case "Feld_69":
 		case "Feld_70":
 		case "Feld_71":
-			System.out.println("Eventhandler Gewuerfelt:" + gewuerfelt);
+			//System.out.println("Eventhandler Gewuerfelt:" + gewuerfelt);
 			String split[] = cases.split("_");
 			int x = Integer.parseInt(split[1]);
 			logta.setText(s+"Das Feld " + (x+1) + " wurde angewaehlt. \n");
@@ -236,7 +236,7 @@ public class EventHandler extends JFrame implements ActionListener {
 				jtf.setEditable(false);
 				gewinner.add(jtf);
 				gewinner.setSize(500,300);
-				gewinner.setIcon(new ImageIcon("partyHard.gif"));
+				gewinner.setIcon(new ImageIcon("ph.gif"));
 				gewonnen.add(gewinner);
 				
 				JButton ok = new JButton("OK");
