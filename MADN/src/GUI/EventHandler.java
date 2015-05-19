@@ -429,6 +429,7 @@ public class EventHandler extends JFrame implements ActionListener {
 					BufferedImage bImage=getScreenShot((JLabel)ebene3.getComponent(0));
 					iDatenzugriff daten = new DatenzugriffPDF();
 					daten.speichern(bImage, f);
+					logta.setText(s+"PDF wurde erstellt!\n");
 				}else{
 					logta.setText(s+"Keine PDF Datei!!!\n");
 				}
