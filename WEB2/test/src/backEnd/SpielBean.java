@@ -17,7 +17,7 @@ public class SpielBean implements iBedienerBean, Serializable {
 	/**
 	 * Die Attribute der Klasse Spiel.
 	 */
-	private static final long serialVersionUID = 1L;
+	public static final long serialVersionUID = 1L;
 	public Spielbrett getSpielbrett() {
 		return spielbrett;
 	}
@@ -86,18 +86,18 @@ public class SpielBean implements iBedienerBean, Serializable {
 	}
 
 
-	private Spielbrett spielbrett;
-	private ArrayList<Spieler> spieler; 
-	private Spieler spielerAmZug;
-	private Spielfigur ausgewaehlteFigur;
-	private boolean darfWuerfeln;
-	private int bewegungsWert;
-	private boolean hatGewuerfelt;
-	private Spieler gewinner;
-	private boolean spielHatBegonnen;
-	private boolean hatUeberlauf;
-	private int count=1;
-	private ArrayList<Spielfigur> figurenUeberlauf;
+	public Spielbrett spielbrett;
+	public ArrayList<Spieler> spieler; 
+	public Spieler spielerAmZug;
+	public Spielfigur ausgewaehlteFigur;
+	public boolean darfWuerfeln;
+	public int bewegungsWert;
+	public boolean hatGewuerfelt;
+	public Spieler gewinner;
+	public boolean spielHatBegonnen;
+	public boolean hatUeberlauf;
+	public int count=1;
+	public ArrayList<Spielfigur> figurenUeberlauf;
 	
 
 	/**
@@ -588,7 +588,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	/**
 	 * Die Methode wird ausgef�hrt, wenn ein Zug ung�ltig ist.
 	 */
-	private void ungueltigerZug(){
+	public void ungueltigerZug(){
 		zugBeenden();
 	}
 	/**
@@ -608,7 +608,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * @param sf Die zu �berpr�fende Spielfigur.
 	 * @return boolean Gibt einen boolschen Wert zur�ck.
 	 */
-	private boolean kannLaufen(int neuePosition, Spielfigur sf){
+	public boolean kannLaufen(int neuePosition, Spielfigur sf){
 		switch(sf.getFarbe())
 		{
 		case rot:
@@ -706,7 +706,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * Setzt eine Spielfigur auf die Startposition zur�ck.
 	 * @param figur Die Spielfigur
 	 */
-	private void aufStartPositionSetzen(Spielfigur figur){
+	public void aufStartPositionSetzen(Spielfigur figur){
 		switch(figur.getFarbe())
 		{
 		case rot: this.spielbrett.getFeld(0).setFigur(figur); break;
@@ -806,7 +806,7 @@ public void spielerHinzufuegen(String name, int f, int KI){
 	 * Gibt zur�ck, welcher Spieler gewonnen hat.
 	 * @param gewinner Der Spieler der gewonnen hat.
 	 */
-	private void spielGewonnen(Spieler gewinner){
+	public void spielGewonnen(Spieler gewinner){
         if(gewinner!=null){ 
 		this.gewinner=gewinner;
         }else throw new RuntimeException ("Gewinner existiert nicht!");
