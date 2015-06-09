@@ -19,7 +19,7 @@ public class KI_defensiv extends KI{
 	 * @param spiel das Spiel an der die KI teil nimmt
 	 */
 	
-	public KI_defensiv(Spieler spieler, Spiel spiel){
+	public KI_defensiv(Spieler spieler, SpielBean spiel){
 		super(spieler, spiel);
 		p = spiel;
 	}

@@ -12,12 +12,80 @@ import java.util.ArrayList;
 
 import javax.management.RuntimeErrorException;
 
-public class Spiel implements iBedienerBean, Serializable {
+public class SpielBean implements iBedienerBean, Serializable {
 
 	/**
 	 * Die Attribute der Klasse Spiel.
 	 */
 	private static final long serialVersionUID = 1L;
+	public Spielbrett getSpielbrett() {
+		return spielbrett;
+	}
+	public void setSpielbrett(Spielbrett spielbrett) {
+		this.spielbrett = spielbrett;
+	}
+	public ArrayList<Spieler> getSpieler() {
+		return spieler;
+	}
+	public void setSpieler(ArrayList<Spieler> spieler) {
+		this.spieler = spieler;
+	}
+	public Spielfigur getAusgewaehlteFigur() {
+		return ausgewaehlteFigur;
+	}
+	public void setAusgewaehlteFigur(Spielfigur ausgewaehlteFigur) {
+		this.ausgewaehlteFigur = ausgewaehlteFigur;
+	}
+	public boolean isDarfWuerfeln() {
+		return darfWuerfeln;
+	}
+	public void setDarfWuerfeln(boolean darfWuerfeln) {
+		this.darfWuerfeln = darfWuerfeln;
+	}
+	public boolean isHatGewuerfelt() {
+		return hatGewuerfelt;
+	}
+	public void setHatGewuerfelt(boolean hatGewuerfelt) {
+		this.hatGewuerfelt = hatGewuerfelt;
+	}
+	public boolean isSpielHatBegonnen() {
+		return spielHatBegonnen;
+	}
+	public void setSpielHatBegonnen(boolean spielHatBegonnen) {
+		this.spielHatBegonnen = spielHatBegonnen;
+	}
+	public boolean isHatUeberlauf() {
+		return hatUeberlauf;
+	}
+	public void setHatUeberlauf(boolean hatUeberlauf) {
+		this.hatUeberlauf = hatUeberlauf;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public ArrayList<Spielfigur> getFigurenUeberlauf() {
+		return figurenUeberlauf;
+	}
+	public void setFigurenUeberlauf(ArrayList<Spielfigur> figurenUeberlauf) {
+		this.figurenUeberlauf = figurenUeberlauf;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public void setSpielerAmZug(Spieler spielerAmZug) {
+		this.spielerAmZug = spielerAmZug;
+	}
+	public void setBewegungsWert(int bewegungsWert) {
+		this.bewegungsWert = bewegungsWert;
+	}
+	public void setGewinner(Spieler gewinner) {
+		this.gewinner = gewinner;
+	}
+
+
 	private Spielbrett spielbrett;
 	private ArrayList<Spieler> spieler; 
 	private Spieler spielerAmZug;
@@ -35,7 +103,7 @@ public class Spiel implements iBedienerBean, Serializable {
 	/**
 	 * Der Konstruktor f�r die Klasse Spiel erstellt ein Spielbrett und setzt die Anfangswerte
 	 */
-	public Spiel(){
+	public SpielBean(){
 		this.spielbrett = new Spielbrett();
 		this.hatGewuerfelt = false;
 		this.darfWuerfeln = true;

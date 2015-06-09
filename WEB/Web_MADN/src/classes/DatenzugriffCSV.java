@@ -29,9 +29,9 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	@Override
 	public void speichern(Object spiel, File fileAddressSave){ 
 		
-        if(spiel != null && spiel instanceof Spiel){
+        if(spiel != null && spiel instanceof SpielBean){
 			
-        	Spiel s=(Spiel)spiel;
+        	SpielBean s=(SpielBean)spiel;
         	
         	String text = s.csvString(); 
     		File dir = fileAddressSave;
@@ -84,7 +84,7 @@ public class DatenzugriffCSV implements iDatenzugriff {
 	@Override
 	public Object laden(File fileAddressLoad){ 
 		BufferedReader reader = null;
-		Spiel s = new Spiel();
+		SpielBean s = new SpielBean();
 		try {
 			reader = new BufferedReader(new FileReader(fileAddressLoad));
 						

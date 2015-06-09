@@ -25,7 +25,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	 */
 	public void speichern(Object spiel, File fileAddressSave){
 
-		if(spiel != null && spiel instanceof Spiel){
+		if(spiel != null && spiel instanceof SpielBean){
 			
 		}else{
 			throw new RuntimeException("Das zu speichernde Objekt ist nicht vom Typ Spiel!");
@@ -55,10 +55,10 @@ public class DatenzugriffSerialisiert implements iDatenzugriff  {
 	@Override
 	public Object laden(File fileAddressLoad) {
 		ObjectInputStream ois = null;
-		Spiel geladenesSpiel = null;
+		SpielBean geladenesSpiel = null;
 				try{
 					ois=new ObjectInputStream(new FileInputStream((fileAddressLoad)));
-					geladenesSpiel = (Spiel)ois.readObject();
+					geladenesSpiel = (SpielBean)ois.readObject();
 				}catch(FileNotFoundException e){
 					System.err.println("Datei konnte nicht geladen werden!");
 				} catch (IOException e) {

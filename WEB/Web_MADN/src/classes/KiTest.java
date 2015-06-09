@@ -11,7 +11,7 @@ public class KiTest {
 	*/
 	public static void main(String[] args) {
 		Spielbrett sb = new Spielbrett();
-		Spiel s = new Spiel();
+		SpielBean s = new SpielBean();
 		iBedienerBean p = s;
 		
 

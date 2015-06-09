@@ -19,7 +19,7 @@ public class KI_aggressiv extends KI{
 	 * @param spiel das Spiel an der die KI teil nimmt
 	 */
 	
-	public KI_aggressiv(Spieler spieler, Spiel spiel){
+	public KI_aggressiv(Spieler spieler, SpielBean spiel){
 		super(spieler, spiel);
 		p = spiel;
 	}

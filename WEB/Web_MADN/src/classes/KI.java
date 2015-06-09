@@ -23,7 +23,7 @@ public abstract class KI implements Serializable{
 	/**
 	 * Konstruktor, uebergibt Spieler und Spiel
 	 */
-	public KI(Spieler spieler, Spiel spiel){
+	public KI(Spieler spieler, SpielBean spiel){
 		if (spieler == null) throw new RuntimeException("Spieler muss vorhanden sein!");	
 		this.spieler = spieler;
 
