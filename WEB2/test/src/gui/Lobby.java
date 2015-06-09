@@ -93,9 +93,6 @@ public class Lobby extends HttpServlet {
 			}
 		}
 		out.println(getMenu(Integer.parseInt(request.getParameter("param2"))));
-		
-		String ausgabe = "";
-		out.println(ausgabe);
 		out.println("</body></html>");
 		out.close();
 	}
