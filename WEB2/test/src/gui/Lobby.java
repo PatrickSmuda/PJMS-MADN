@@ -26,7 +26,7 @@ public class Lobby extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -40,7 +40,6 @@ public class Lobby extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=ISO-8859-1");
 		PrintWriter out = response.getWriter();
-		response.setIntHeader("Refresh", 5);
 		out.println("<html><head></head><body>");
 		HttpSession ses = request.getSession(true);
 		if(request.getParameter("type").equals("host")){

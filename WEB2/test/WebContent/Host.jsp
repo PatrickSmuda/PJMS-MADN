@@ -5,27 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Create new Game</title>
-<script type="text/javascript">
-function menu(){
-	alert("huhuhuhu");
-	<%
-
-	String s = request.getParameter("param2");
-	out.println(s);
-	
-	for(int i = 0; i < 2; i++){
-		out.println("<select>");
-		out.println("<option>Mensch</option><option>Defensive KI</option><option>Offenssive KI</option>");
-		out.println("</select>");
-	}
-%>
-
-<label for="param2">Players</label><input name="param2" type="number" size="20" min="2" max="4" value="2" onfocus="menu();"></input>
-<%
-out.println(request.getParameterValues("param2"));
-%>
-}
-</script>
 </head>
 <body>
 <h1>Creating Game as Host</h1>
