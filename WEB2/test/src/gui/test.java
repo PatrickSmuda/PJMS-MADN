@@ -50,13 +50,30 @@ public class test extends HttpServlet {
 			}catch(NumberFormatException e){
 				
 			}
+			String overAll = "<table><tr><th>Names</th></tr><tr>";
 			for(int i = 0; i < playerCount; i++){
-				names = names+"<h3>Name "+(i+1)+" </h3><input name='name"+i+"' type='text' size='20' min='1'></input>";
-			}
-			ausgabe = "<form action='test' method='post'>"
-					+names
-					+"<br><input id='senden' type='submit' value='senden'></input>"
-					+ "</form>";
+				names = names + "<tr><td><input name='name"+i+"' type='text' size='20' min='1'></input></td><td><select name='farbe'"+i+" size='1'> "
+								+ "<option>Rot</option> "
+								+ "<option>Blau</option> "
+								+ "<option>Gruen</option> "
+								+ "<option>Gelb</option> "
+								+ "</select></td><td><select name='farbe'"+i+" size='1'> "
+								+ "<option>Human</option> "
+								+ "<option>Aggressive</option> "
+								+ "<option>Defensive</option> "
+								+"</td></tr>";
+				/*names = names+"<label for='name'"+i+"></label><input name='name"+i+"' type='text' size='20' min='1'></input>"
+						+ "<h3>Farbe "+(i+1)+" </h3><select name='farbe'"+i+" size='1'> "
+								+ "<option>Rot</option> "
+								+ "<option>Blau</option> "
+								+ "<option>Gruen</option> "
+								+ "<option>Gelb</option> "
+								+ "</select>";*/
+			}	
+			overAll = overAll + names + "</tr></table>";
+			ausgabe = ausgabe
+					+overAll
+					+"<br><input id='senden' type='submit' value='senden'></input>";
 			out.println(ausgabe);
 			out.println("</body></html>");
 			out.close();
