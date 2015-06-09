@@ -56,7 +56,7 @@ public class Lobby extends HttpServlet {
 			out.println("Spieler 1: <input type='text' value='"+request.getParameter("param1")+"' disabled>");
 			out.println("<input type='text' value='"+request.getParameter("color")+"' disabled>");
 			out.println("<input type='text' value='"+request.getParameter("ki")+"' disabled><br><br>");
-
+			out.println(getMenu(Integer.parseInt(request.getParameter("param2"))));
 		}else if(request.getParameter("type").equals("client")){
 			if(ses.getAttribute("gameLobby")==null){
 				
@@ -92,10 +92,6 @@ public class Lobby extends HttpServlet {
 				
 			}
 		}
-		out.println(getMenu(Integer.parseInt(request.getParameter("param2"))));
-		
-		String ausgabe = "";
-		out.println(ausgabe);
 		out.println("</body></html>");
 		out.close();
 	}
