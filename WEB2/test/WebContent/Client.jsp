@@ -28,7 +28,6 @@ Client
 <input id="senden" type="submit" value="join Lobby"></input>
 
 </form>
-
 		<form action="Speichern.jsp" method="post">
 		<input type="submit" name="ok" value="Speichern">
 	</form>
