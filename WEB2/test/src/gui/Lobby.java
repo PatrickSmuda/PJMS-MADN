@@ -3,6 +3,11 @@ package gui;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.Timer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import backEnd.SpielBean;
+import sun.font.CreatedFontTracker;
 
 /**
  * Servlet implementation class Lobby
@@ -31,17 +39,17 @@ public class Lobby extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		performTask(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=ISO-8859-1");
-		PrintWriter out = response.getWriter();
-		out.println("<html><head></head><body>");
 		HttpSession ses = request.getSession(true);
+		boolean addedNewClient = false;
+		PrintWriter out = response.getWriter();
+		
 		if(request.getParameter("type").equals("host")){
 			if(ses.getAttribute("gameLobby")==null){
 				ses.setAttribute("gameLobby", new ArrayList<Object[]>());
@@ -53,10 +61,9 @@ public class Lobby extends HttpServlet {
 				host[2] = request.getParameter("ki");
 				((ArrayList<Object[]>) ses.getAttribute("gameLobby")).add(host);
 			}
-			out.println("Spieler 1: <input type='text' value='"+request.getParameter("param1")+"' disabled>");
-			out.println("<input type='text' value='"+request.getParameter("color")+"' disabled>");
-			out.println("<input type='text' value='"+request.getParameter("ki")+"' disabled><br><br>");
-			out.println(getMenu(Integer.parseInt(request.getParameter("param2"))));
+			if(addedNewClient == true){
+				addedNewClient = false;
+			}
 		}else if(request.getParameter("type").equals("client")){
 			if(ses.getAttribute("gameLobby")==null){
 				
@@ -77,35 +84,61 @@ public class Lobby extends HttpServlet {
 					out.println("Farbe bereits vorhanden<br><br>"
 							+ "<form action='Client.jsp'><input type='submit' value='back'></form>");
 				}else{
-				
+					addedNewClient = true;
 					((ArrayList<Object>) ses.getAttribute("gameLobby")).add(client);
-					for(int i = 0; i < ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size(); i++){
-						out.println("Spieler "+(i+1)+"<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[0]+"' disabled>");
-						out.println("<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[1]+"' disabled>");
-						out.println("<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[2]+"' disabled>");
-						out.println("<br><br>");
-					}
-					if(((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size() == (int)ses.getAttribute("count")){
-						out.println("beginne Spiel..");
-					}
+					addedNewClient = false;
 				}
 				
 			}
 		}
-		out.println("</body></html>");
-		out.close();
+		
+		
+		performTask(request, response);
 	}
 	
-	public static String getMenu(int amountOfPlayers){
-		String s = "";
-		for(int i = 1; i < amountOfPlayers; i++){
-			s+="Spieler "+(i+1)+": "+"<input type='text' name='player"+i+"' disabled>"
-					+ "<input type='text' name='color"+i+"' disabled>"
-					+ "<input type='text' name='ki"+i+"' disabled>"
-					+ "<br><br>";
-		}
-		return s;
-		
+	private void performTask(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			response.setContentType("text/html");
+			response.addHeader("Refresh", "5");
+			PrintWriter out = response.getWriter();
+			HttpSession ses = request.getSession();
+			String s = "Spiel Lobby:\n";
+			for(int i = 0; i < ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size(); i++){
+				s+="Spieler "+(i+1)+"<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[0]+"' disabled>";
+				s+="<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[1]+"' disabled>";
+				s+="<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[2]+"' disabled>";
+				s+="<br><br>";
+			}
+			out.println(s);
+			
+			if(((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size() == (int)ses.getAttribute("count")){
+				out.println("Alle Spieler der Lobby beigetreten!");
+				SpielBean spiel = new SpielBean();
+				for(int i = 0; i < ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size(); i++){
+					
+					int f = 0;
+					int ki = 0;
+					switch((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[1]){
+					case "Rot": f = 0; break;
+					case "Blau": f = 1; break;
+					case "Gruen": f = 2; break;
+					case "Gelb": f = 3; break;
+					}
+					
+					switch((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[2]){
+					case "Mensch": ki = 0; break;
+					case "Defensive KI": ki = 1; break;
+					case "Offenssive KI": ki = 2; break;
+					}
+					
+					spiel.spielerHinzufuegen((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[0], 
+							f, 
+							ki);
+				}
+				response.sendRedirect("DirectLobby.jsp");	//temp
+				//Weiterleitung an die GUI
+			}
 	}
+			
+	
 
 }
