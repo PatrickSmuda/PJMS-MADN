@@ -84,6 +84,32 @@ public class Lobby extends HttpServlet {
 					out.println("Farbe bereits vorhanden<br><br>"
 							+ "<form action='Client.jsp'><input type='submit' value='back'></form>");
 				}else{
+					if(((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size() == (int)ses.getAttribute("count")){
+						out.println("Alle Spieler der Lobby beigetreten!");
+						SpielBean spiel = new SpielBean();
+						for(int i = 0; i < ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size(); i++){
+							
+							int f = 0;
+							int ki = 0;
+							switch((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[1]){
+							case "Rot": f = 0; break;
+							case "Blau": f = 1; break;
+							case "Gruen": f = 2; break;
+							case "Gelb": f = 3; break;
+							}
+							
+							switch((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[2]){
+							case "Mensch": ki = 0; break;
+							case "Defensive KI": ki = 1; break;
+							case "Offenssive KI": ki = 2; break;
+							}
+							
+							spiel.spielerHinzufuegen((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[0], 
+									f, 
+									ki);
+						}
+						//Weiterleitung an die GUI kommt noch
+					}
 					addedNewClient = true;
 					((ArrayList<Object>) ses.getAttribute("gameLobby")).add(client);
 					addedNewClient = false;
@@ -101,7 +127,8 @@ public class Lobby extends HttpServlet {
 			response.addHeader("Refresh", "5");
 			PrintWriter out = response.getWriter();
 			HttpSession ses = request.getSession();
-			String s = "Spiel Lobby:\n";
+			out.println("Lobby:<br>");
+			String s = "";
 			for(int i = 0; i < ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size(); i++){
 				s+="Spieler "+(i+1)+"<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[0]+"' disabled>";
 				s+="<input type='text' value='"+(String) (((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i))[1]+"' disabled>";
@@ -109,33 +136,10 @@ public class Lobby extends HttpServlet {
 				s+="<br><br>";
 			}
 			out.println(s);
-			
 			if(((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size() == (int)ses.getAttribute("count")){
-				out.println("Alle Spieler der Lobby beigetreten!");
-				SpielBean spiel = new SpielBean();
-				for(int i = 0; i < ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).size(); i++){
-					
-					int f = 0;
-					int ki = 0;
-					switch((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[1]){
-					case "Rot": f = 0; break;
-					case "Blau": f = 1; break;
-					case "Gruen": f = 2; break;
-					case "Gelb": f = 3; break;
-					}
-					
-					switch((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[2]){
-					case "Mensch": ki = 0; break;
-					case "Defensive KI": ki = 1; break;
-					case "Offenssive KI": ki = 2; break;
-					}
-					
-					spiel.spielerHinzufuegen((String) ((ArrayList<Object[]>) ses.getAttribute("gameLobby")).get(i)[0], 
-							f, 
-							ki);
-				}
-				//Weiterleitung an die GUI kommt noch
+				out.println("Alle Spieler beigetreten!");
 			}
+			
 	}
 			
 	
