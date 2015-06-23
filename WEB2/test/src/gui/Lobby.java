@@ -134,8 +134,7 @@ public class Lobby extends HttpServlet {
 							f, 
 							ki);
 				}
-				response.sendRedirect("DirectLobby.jsp");	//temp
-				//Weiterleitung an die GUI
+				//Weiterleitung an die GUI kommt noch
 			}
 	}
 			
